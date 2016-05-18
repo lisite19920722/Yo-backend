@@ -1,3 +1,11 @@
+//puck约定样式 start
+.pk-bg-lightgrey {background-color: rgb(231, 232, 235);}
+.pk-font-ch {font-family: 'PingFang SC','Songti SC','sans-serif';}
+.pk-b-all {border:1px solid #D3D3D3;}
+.pk-b-l {border-left:1px solid #D3D3D3;}
+.pk-b-r {border-right:1px solid #D3D3D3;}
+.pk-m-center {margin-left: auto;margin-right: auto;}
+//end
 .pos-rlt{position: relative;}
 .pos-stc{position: static !important;}
 .pos-abt{position: absolute;}
@@ -393,6 +401,57 @@
   width: 100%;
   min-height: 51px;
   background-color: white;
+}
+
+.tag-confirm-button {
+  width: 100px;
+  height: 32px;
+  line-height: 30px;
+  font-size: 15px;
+  font-weight: 100;
+  outline: none;
+}
+
+.tag-confirm-button:hover {
+  background-color: rgb(155,183,52);
+}
+
+.tag-cancel-button {
+  width: 100px;
+  height: 32px;
+  line-height: 30px;
+  background-color: white;
+  color: rgb(34,34,34);
+  font-size: 15px;
+  font-weight: 100;
+  border-style: solid;
+  border-color: $border-gray;
+  border-width: 1px;
+  outline: none;
+}
+
+.tag-cancel-button:hover {
+  background-color: rgb(231,230,235);
+}
+//upload file btn
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
 }
 
 input[type=checkbox]
