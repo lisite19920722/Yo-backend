@@ -1,0 +1,111 @@
+.puck-index-content{
+  overflow:hidden;
+  padding-top : 75px;
+  //index slide section
+  .banner-section {
+    // min-width: 1024px;
+    position: relative;
+    .intro-info {
+      position: absolute;
+      top: 0;
+      z-index: 1;
+      top: 150px;
+      left: 50px;
+      .title {
+        font-family: 'Songti SC';
+        font-size: 40px;
+        color: #373636;
+        line-height: 90px;
+      }
+    }
+    .carousel-control {
+      display: none;
+    }
+    .carousel-indicators {
+      bottom: 10px;
+      left: auto;
+      right: 30px;
+      width: auto;
+      margin-right: 0;
+      li {
+        background-color: #fff;
+        margin-left:8px;
+        width: 18px;
+        height: 18px;
+      }
+      .active {
+        width: 18px;
+        height: 18px;
+        // margin: 1px;
+        background-color: #373636;
+        border-color: #373636;
+      }
+    }
+    .carousel-inner {
+      min-height: 450px;
+      .item {
+        min-height: 450px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        .item-text {
+          font-size: 16px;
+          color: rgba(55,54,54,1);
+          position: absolute;
+          right: 30px;
+          bottom: 50px;
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  //index intro info section
+  .main-intro-info{
+    max-width: $content-width;
+    margin: 40px auto;
+    .intro-slogan{
+      font-size: 30px;
+    }
+    .main-intro-item{
+      margin-top: 20px;
+      img{
+        display: block;
+        margin: 0 auto;
+        width: 100px;
+      }
+      p{
+        font-size: 20px;
+        display: block;
+      }
+    }
+  }
+  //index intro example page
+  .main-intro-example{
+    width: 100%;
+    padding-top: 50px;
+    min-height: 520px;
+    background-image: url('../assets/images/portal/index/index-intro-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    .main-intro-example-content{
+      max-width: $content-width;
+      margin: 0 auto;
+      padding-top: 20px;
+      .intro-slogan{
+        font-size: 30px;
+      }
+      .main-intro-item{
+        margin-top: 10px;
+        img{
+          display: block;
+          margin: 0 auto;
+          width: 276px;
+          //适配平板类屏幕
+          @media screen and (max-width: 992px) and (min-width: 768px) {
+            width: 250px;
+          }
+        }
+      }
+    }
+  }
+}

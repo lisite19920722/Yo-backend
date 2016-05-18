@@ -1,0 +1,93 @@
+<puck-inner-header></puck-inner-header>
+
+<div class="puck-background-section">
+	<div class="person-manage-section">
+		<uib-tabset active="active">
+		    <uib-tab index="0" class="tab-list-section" heading="个人资料">
+		    	<div class="personal-info-section">
+		    		<div class="person-info-item">
+		    			<label class="label-text">头像</label>
+		    			<a><img id="person-icon-img" src="{{loginUser.icon}}" alt="icon"/></a>
+		    			<label class="label-button-section">
+		    				<button class="btn btn-default label-button">修改头像</button>
+		    			</label>
+		    		</div>
+		    		<div class="person-info-item">
+		    			<label class="label-text">姓名</label>
+						<label class="label-content">{{loginUser.userName}}</label>
+		    			<label class="label-button-section">
+		    				<button class="btn btn-default label-button">修改姓名</button>
+		    			</label>
+		    		</div>
+		    		<div class="person-info-item">
+		    			<label class="label-text">手机号</label>
+						<label class="label-content">{{loginUser.phoneNumber}}</label>
+		    			<label class="label-button-section">
+		    				<button class="btn btn-default label-button">修改手机</button>
+		    			</label>
+		    		</div>
+		    		<div class="person-info-item">
+		    			<label class="label-text">微信号</label>
+						<label class="label-content">{{loginUser.wechatName}}</label>
+		    			<label class="label-button-section">
+		    				<button class="btn btn-default label-button">修改微信</button>
+		    			</label>
+		    		</div>
+		    		<div class="person-info-item">
+		    			<label class="label-text">自定义昵称</label>
+						<label class="label-content">{{loginUser.nickname}}</label>
+		    			<label class="label-button-section">
+		    				<button class="btn btn-default label-button">修改昵称</button>
+		    			</label>
+		    		</div>
+		    		<div class="person-info-item">
+		    			<label class="label-text">个人介绍</label>
+						<label class="label-content">{{loginUser.introduction}}</label>
+		    			<label class="label-button-section">
+		    				<button class="btn btn-default label-button">修改简介</button>
+		    			</label>
+		    		</div>
+		    		<div class="person-info-item" style="border-bottom:none">
+		    			<label class="label-text">认证情况</label>
+						<label class="label-content">{{loginUser.verification}}</label>
+		    			<label class="label-button-section">
+		    				<button class="btn btn-default label-button">去认证</button>
+		    			</label>
+		    		</div>
+		    	</div>
+		    </uib-tab>
+		    <uib-tab index="1" class="tab-list-section" heading="修改密码">
+				<div class="change-pwd-section">
+					<div class="change-pwd">
+						<label class="change-pwd-text">请先输入登录密码来验证身份</label>
+						<div class="change-pwd-form">
+							<div class="change-pwd-item">
+								<label class="change-pwd-label">旧密码</label>
+								<input type="password" class="form-control change-pwd-input" id="inputPassword1">
+							</div>
+							<div class="change-pwd-item">
+								<label class="change-pwd-label">新密码</label>
+								<input type="password" class="form-control change-pwd-input" id="inputPassword1">
+							</div>
+							<div class="change-pwd-item">
+								<label class="change-pwd-label">新密码</label>
+								<input type="password" class="form-control change-pwd-input" id="inputPassword1">
+							</div>
+						</div>
+						<div class="change-pwd-submit">
+							<button class="pk-green-button">提交修改</button>
+						</div>
+					</div>
+					
+				</div>
+		    </uib-tab>
+		    <uib-tab index="2" class="tab-list-section" heading="认证申请">
+		    	<div class="verification-apply-section">
+		    		<img src="assets/images/portal/personMng/verify.png">
+		    	</div>
+		    </uib-tab>
+		</uib-tabset>
+	</div>
+</div>
+
+<div class="tail-section"> </div>

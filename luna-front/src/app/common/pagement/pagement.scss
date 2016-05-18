@@ -1,0 +1,80 @@
+.page-management-section{
+    .pagement {
+        float:left;
+
+        .page-left-button {
+            width: 70px;
+            height: 30px;
+            margin: 0px;
+            background-color: white;
+            border-width: 1px;
+            border-color: $background-gray;
+            font-size: 14px;
+        }
+        
+        .page-right-btn {
+            width: 70px;
+            height: 30px;
+            margin: 0px;
+            background-color: white;
+            border-width: 1px;
+            border-left: none;
+            border-color: $background-gray;
+            font-size: 14px;
+        }
+
+        .item-button{
+            width: 30px;
+            width: 30px;
+            margin: 0px;
+            padding: auto;
+            background-color: white;
+            border-radius: 0px;
+            border-width: 1px;
+            border-left: none;
+            border-color: $background-gray;
+            text-align: center;
+            color: black;
+
+            span {
+                text-align: center;
+            }
+        }
+
+        .item-button:active{
+            background-color: $puckGreen;
+            border-color: $puckGreen;
+            color: white;
+            outline: none;
+        }
+
+        .item-button:focus{
+            outline: none;
+        }
+
+        .separate{
+            width: 30px;
+            width: 30px;
+            margin: 0px;
+            padding: auto;
+            background-color: white;
+            border-radius: 0px;
+            border-width: 1px;
+            border-top-color: white;
+            border-bottom-color: white;
+            border-right-color: $background-gray;
+            text-align: center;
+            color: black;
+
+            span {
+                text-align: center;
+            }
+        }
+
+        .isChoose{
+            background-color: $puckGreen;
+            border-color: $puckGreen;
+            color: white;
+        }
+    }
+}

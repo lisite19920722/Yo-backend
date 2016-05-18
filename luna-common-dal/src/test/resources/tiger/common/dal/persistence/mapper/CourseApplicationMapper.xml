@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="tiger.common.dal.persistence.mapper.CourseApplicationMapper" >
+  <resultMap id="BaseResultMap" type="tiger.common.dal.persistence.course.CourseApplicationDO" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="account_id" property="accountId" jdbcType="BIGINT" />
+    <result column="biz_type" property="bizType" jdbcType="VARCHAR" />
+    <result column="biz_id" property="bizId" jdbcType="BIGINT" />
+    <result column="course_id" property="courseId" jdbcType="BIGINT" />
+    <result column="biz_value_type" property="bizValueType" jdbcType="VARCHAR" />
+    <result column="biz_value" property="bizValue" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, account_id, biz_type, biz_id, course_id, biz_value_type, biz_value, `state`, 
+    remark, create_time, update_time
+  </sql>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="tiger.common.dal.persistence.course.example.CourseApplicationExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from course_application
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExampleAndPage" resultMap="BaseResultMap" parameterType="tiger.common.dal.persistence.course.example.CourseApplicationExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from course_application
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="tiger.common.dal.persistence.course.example.CourseApplicationExample" >
+    delete from course_application
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <select id="countByExample" parameterType="tiger.common.dal.persistence.course.example.CourseApplicationExample" resultType="java.lang.Integer" >
+    select count(*) from course_application
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update course_application
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.accountId != null" >
+        account_id = #{record.accountId,jdbcType=BIGINT},
+      </if>
+      <if test="record.bizType != null" >
+        biz_type = #{record.bizType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bizId != null" >
+        biz_id = #{record.bizId,jdbcType=BIGINT},
+      </if>
+      <if test="record.courseId != null" >
+        course_id = #{record.courseId,jdbcType=BIGINT},
+      </if>
+      <if test="record.bizValueType != null" >
+        biz_value_type = #{record.bizValueType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bizValue != null" >
+        biz_value = #{record.bizValue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null" >
+        `state` = #{record.state,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = CURRENT_TIMESTAMP,
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update course_application
+    set id = #{record.id,jdbcType=BIGINT},
+      account_id = #{record.accountId,jdbcType=BIGINT},
+      biz_type = #{record.bizType,jdbcType=VARCHAR},
+      biz_id = #{record.bizId,jdbcType=BIGINT},
+      course_id = #{record.courseId,jdbcType=BIGINT},
+      biz_value_type = #{record.bizValueType,jdbcType=VARCHAR},
+      biz_value = #{record.bizValue,jdbcType=VARCHAR},
+      `state` = #{record.state,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = CURRENT_TIMESTAMP
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from course_application
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from course_application
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="tiger.common.dal.persistence.course.CourseApplicationDO" useGeneratedKeys="true" keyProperty="id" >
+    insert into course_application (account_id, biz_type, biz_id, 
+      course_id, biz_value_type, biz_value, 
+      `state`, remark, create_time, 
+      update_time)
+    values (#{accountId,jdbcType=BIGINT}, #{bizType,jdbcType=VARCHAR}, #{bizId,jdbcType=BIGINT}, 
+      #{courseId,jdbcType=BIGINT}, #{bizValueType,jdbcType=VARCHAR}, #{bizValue,jdbcType=VARCHAR}, 
+      #{state,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, CURRENT_TIMESTAMP,
+      CURRENT_TIMESTAMP)
+  </insert>
+  <insert id="insertSelective" parameterType="tiger.common.dal.persistence.course.CourseApplicationDO" useGeneratedKeys="true" keyProperty="id" >
+    insert into course_application
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      account_id,
+      biz_type,
+      biz_id,
+      course_id,
+      biz_value_type,
+      biz_value,
+      `state`,
+      remark,
+      create_time,
+      update_time,
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{accountId,jdbcType=BIGINT},
+      #{bizType,jdbcType=VARCHAR},
+      #{bizId,jdbcType=BIGINT},
+      #{courseId,jdbcType=BIGINT},
+      #{bizValueType,jdbcType=VARCHAR},
+      #{bizValue,jdbcType=VARCHAR},
+      #{state,jdbcType=VARCHAR},
+      #{remark,jdbcType=VARCHAR},
+      CURRENT_TIMESTAMP,
+      CURRENT_TIMESTAMP,
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="tiger.common.dal.persistence.course.CourseApplicationDO" >
+    update course_application
+    <set >
+      <if test="accountId != null" >
+        account_id = #{accountId,jdbcType=BIGINT},
+      </if>
+      <if test="bizType != null" >
+        biz_type = #{bizType,jdbcType=VARCHAR},
+      </if>
+      <if test="bizId != null" >
+        biz_id = #{bizId,jdbcType=BIGINT},
+      </if>
+      <if test="courseId != null" >
+        course_id = #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="bizValueType != null" >
+        biz_value_type = #{bizValueType,jdbcType=VARCHAR},
+      </if>
+      <if test="bizValue != null" >
+        biz_value = #{bizValue,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        `state` = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = CURRENT_TIMESTAMP,
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="tiger.common.dal.persistence.course.CourseApplicationDO" >
+    update course_application
+    set account_id = #{accountId,jdbcType=BIGINT},
+      biz_type = #{bizType,jdbcType=VARCHAR},
+      biz_id = #{bizId,jdbcType=BIGINT},
+      course_id = #{courseId,jdbcType=BIGINT},
+      biz_value_type = #{bizValueType,jdbcType=VARCHAR},
+      biz_value = #{bizValue,jdbcType=VARCHAR},
+      `state` = #{state,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = CURRENT_TIMESTAMP
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <sql id="queryApplicationsCondition">
+    <where>
+      <if test="query.states != null and query.states.size() > 0">
+        state in
+        <foreach collection="query.states" item="state" open="(" separator="," close=")">
+          #{state}
+        </foreach>
+      </if>
+      <if test="query.courseId != null">
+        AND course_id = #{query.courseId}
+      </if>
+      <choose>
+        <when test="null != query.startDate and null != query.endDate">
+          AND create_time BETWEEN #{query.startDate} AND #{query.endDate}
+        </when>
+        <when test="null != query.startDate">
+          AND create_time &gt;= #{query.startDate}
+        </when>
+        <when test="null != query.endDate">
+          AND create_time &lt;= #{query.endDate}
+        </when>
+        <otherwise>
+        </otherwise>
+      </choose>
+    </where>
+  </sql>
+  <select id="countCourseApplications" resultType="java.lang.Integer">
+    select count(1)
+    from course_application
+    <include refid="queryApplicationsCondition"/>
+  </select>
+  <select id="queryCourseApplications" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from course_application
+    <include refid="queryApplicationsCondition"/>
+    order by create_time desc, id desc
+    limit #{offset}, #{limit}
+  </select>
+</mapper>

@@ -1,0 +1,91 @@
+#%RAML 0.8
+title: Gambition
+baseUri: http://baserurl:8080/api/
+version: v0.0.2
+protocols: [ HTTP, HTTPS ]
+
+traits:
+  - secured:
+      headers:
+        X-Auth-Token:
+          description: 当前用户token，用于验证权限,从登录返回的header中获取
+          type: string
+          required: true
+          example: "IOC551fea47e4b02dd0ab568b85"
+  - paged:
+      queryParameters:
+        pages:
+          description: The number of pages to return
+          type: number
+  - time_span:
+      queryParameters:
+        startTime:
+          type: date
+        endTime:
+          type: date
+  - loginSecured:
+      headers:
+        X-Username:
+          description: 登录用户名
+          type: string
+          required: true
+        X-Password:
+          description: 登录密码
+          type: string
+          required: true
+  - workspaceId:
+      headers:
+        X-Workspace-Id:
+          description: 工作空间id
+          type: integer
+          required: true
+  - captcha:
+      headers:
+        Captcha-Token:
+          type: string
+          required: true
+        Captcha:
+          type: string
+          required: true
+
+/account: !include src/account.raml
+/social: !include src/social.raml
+/message: !include src/message.raml
+/system: !include src/system.raml
+/attach: !include src/attach.raml
+/feedback: !include src/feedback.raml
+/workspace: !include src/workspace.raml
+/workspaces: 
+  get:
+    is: [secured]
+    description: 获取所有的团队空间信息
+    queryParameters:
+      pageSize:
+        type: integer
+        description: 每页显示几条信息
+      pageNum:
+        type: integer
+        description: 页码
+    responses:
+      200:
+        description: 成功，返回所有的团队空间信息
+        body:
+          application/json:
+            schema: |
+              {
+                "code": "200",
+                "message": "操作成功",
+                "data":
+                  {
+                    "startDate": "2016-04-20",
+                    "duration": "持续时间",
+                    "description": "这个是描述",
+                    "ownerId": 1012,
+                    "price":1000,
+                    "owner": null,
+                    "IconId":"null",
+                    "studentNumber":100,
+                    "onlineDate":"2016-04-20"
+                  },
+                "success": true
+              }

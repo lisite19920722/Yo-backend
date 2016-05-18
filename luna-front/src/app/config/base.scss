@@ -1,0 +1,24 @@
+$standardFontSize: 14px;
+$standardWhite: #fff;
+
+$lcBlue: #2C97E8;
+$lcGreen: #20AF74;
+$lcYellow: #F39D1C;
+$lcOrange: #F95E1A;
+$lcRed: #E82C4B;
+
+//文字颜色
+$text-color: #58666e;
+$text-muted: lighten($text-color, 25%);
+
+html {
+  font-family: 'Lantinghei SC', 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: $standardFontSize;
+}
+
+body {
+  width: 100%;
+  min-width: $minWidth;
+  position: relative;
+  color: $wordBlack;
+}

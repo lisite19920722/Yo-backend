@@ -1,0 +1,113 @@
+.common-header-module {
+  position: fixed;
+  width: 100%;
+  min-width: $minWidth;
+  height: 79px;
+  border-bottom: 1px solid #E3E3E3;
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0.9);
+
+  .common-header-line{
+    height: 5px;
+    width: 100%;
+    background-color: $puckGreen;
+  }
+
+  .common-header-content{
+    max-width: $content-width;
+    margin: 0 auto;
+    // logo section
+    .logo-section {
+      float: left;
+      padding-top: 8px;
+      .logo-en {
+        font-family: 'Arial Rounded MT Bold';
+        font-size: 40px;
+      }
+      .logo-ch {
+        font-size: 15px;
+        color:#4A4A4A;
+        margin-left: 5px;
+      }
+    }
+
+    // link section
+    .menu-section {
+      float: right;
+      line-height: 0px;
+      >ul {
+        list-style: none;
+        margin-bottom: 0;
+        padding-left: 0;
+        >li {
+          float: left;
+          position: relative;
+          &.active {
+            >a {
+              color: red;
+            }
+          }
+          >a {
+            display: block;
+            color: #383838;
+            font-size: 16px;
+            line-height: 70px;
+            padding: 0 20px;
+            cursor: pointer;
+            &:hover {
+              color: red;
+            }
+            i {
+              margin-left: 5px;
+            }
+            &.user {
+              img {
+                width: 32px;
+                height: 32px;
+              }
+              & + ul {
+                left: 20px;
+              }
+            }
+          }
+          >ul {
+            position: absolute;
+            z-index: 9999;
+            list-style: none;
+            margin-bottom: 0;
+            padding-left: 0;
+            border-radius: 0 0 4px 4px;
+            background-color: #FFF;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+            &.dropdown-menu {
+              margin: 0;
+              min-width: 120px;
+            }
+
+            >li {
+              >a {
+                display: block;
+                font-size: 16px;
+                color: #6E6E6E;
+                line-height: 44px;
+                padding: 0 26px 0 26px;
+                &:hover {
+                  background-color: #E9E9E9;
+                }
+              }
+              &:last-child {
+                a {
+                  border-radius: 0 0 4px 4px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    // button section
+    .button-section {
+      padding: 20px 30px;
+    }
+  }
+};

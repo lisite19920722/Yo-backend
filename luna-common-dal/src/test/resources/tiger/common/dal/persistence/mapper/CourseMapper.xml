@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="tiger.common.dal.persistence.mapper.CourseMapper" >
+  <resultMap id="BaseResultMap" type="tiger.common.dal.persistence.course.CourseDO" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="workspace_id" property="workspaceId" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="is_verified" property="isVerified" jdbcType="BIT" />
+    <result column="course_type" property="courseType" jdbcType="VARCHAR" />
+    <result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="daily_money" property="dailyMoney" jdbcType="DOUBLE" />
+    <result column="base_cost" property="baseCost" jdbcType="DOUBLE" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="tiger.common.dal.persistence.course.CourseDO" extends="BaseResultMap" >
+    <result column="information" property="information" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, workspace_id, title, create_time, update_time, description, is_verified, course_type, 
+    start_date, end_date, daily_money, base_cost
+  </sql>
+  <sql id="Blob_Column_List" >
+    information
+  </sql>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="tiger.common.dal.persistence.course.example.CourseExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from course
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="tiger.common.dal.persistence.course.example.CourseExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from course
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExampleWithBLOBsAndPage" resultMap="ResultMapWithBLOBs" parameterType="tiger.common.dal.persistence.course.example.CourseExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from course
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExampleAndPage" resultMap="BaseResultMap" parameterType="tiger.common.dal.persistence.course.example.CourseExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from course
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="tiger.common.dal.persistence.course.example.CourseExample" >
+    delete from course
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <select id="countByExample" parameterType="tiger.common.dal.persistence.course.example.CourseExample" resultType="java.lang.Integer" >
+    select count(*) from course
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update course
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.workspaceId != null" >
+        workspace_id = #{record.workspaceId,jdbcType=BIGINT},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = CURRENT_TIMESTAMP,
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isVerified != null" >
+        is_verified = #{record.isVerified,jdbcType=BIT},
+      </if>
+      <if test="record.courseType != null" >
+        course_type = #{record.courseType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startDate != null" >
+        start_date = #{record.startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.endDate != null" >
+        end_date = #{record.endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.dailyMoney != null" >
+        daily_money = #{record.dailyMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.baseCost != null" >
+        base_cost = #{record.baseCost,jdbcType=DOUBLE},
+      </if>
+      <if test="record.information != null" >
+        information = #{record.information,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update course
+    set id = #{record.id,jdbcType=BIGINT},
+      workspace_id = #{record.workspaceId,jdbcType=BIGINT},
+      title = #{record.title,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = CURRENT_TIMESTAMP,
+      description = #{record.description,jdbcType=VARCHAR},
+      is_verified = #{record.isVerified,jdbcType=BIT},
+      course_type = #{record.courseType,jdbcType=VARCHAR},
+      start_date = #{record.startDate,jdbcType=TIMESTAMP},
+      end_date = #{record.endDate,jdbcType=TIMESTAMP},
+      daily_money = #{record.dailyMoney,jdbcType=DOUBLE},
+      base_cost = #{record.baseCost,jdbcType=DOUBLE},
+      information = #{record.information,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update course
+    set id = #{record.id,jdbcType=BIGINT},
+      workspace_id = #{record.workspaceId,jdbcType=BIGINT},
+      title = #{record.title,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = CURRENT_TIMESTAMP,
+      description = #{record.description,jdbcType=VARCHAR},
+      is_verified = #{record.isVerified,jdbcType=BIT},
+      course_type = #{record.courseType,jdbcType=VARCHAR},
+      start_date = #{record.startDate,jdbcType=TIMESTAMP},
+      end_date = #{record.endDate,jdbcType=TIMESTAMP},
+      daily_money = #{record.dailyMoney,jdbcType=DOUBLE},
+      base_cost = #{record.baseCost,jdbcType=DOUBLE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from course
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from course
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="tiger.common.dal.persistence.course.CourseDO" useGeneratedKeys="true" keyProperty="id" >
+    insert into course (workspace_id, title, create_time, 
+      update_time, description, is_verified, 
+      course_type, start_date, end_date, 
+      daily_money, base_cost, information
+      )
+    values (#{workspaceId,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR},CURRENT_TIMESTAMP,
+      CURRENT_TIMESTAMP, #{description,jdbcType=VARCHAR}, #{isVerified,jdbcType=BIT},
+      #{courseType,jdbcType=VARCHAR}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, 
+      #{dailyMoney,jdbcType=DOUBLE}, #{baseCost,jdbcType=DOUBLE}, #{information,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="tiger.common.dal.persistence.course.CourseDO" useGeneratedKeys="true" keyProperty="id" >
+    insert into course
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      workspace_id,
+      title,
+      create_time,
+      update_time,
+      description,
+      is_verified,
+      course_type,
+      start_date,
+      end_date,
+      daily_money,
+      base_cost,
+      information,
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{workspaceId,jdbcType=BIGINT},
+      #{title,jdbcType=VARCHAR},
+      CURRENT_TIMESTAMP,
+      CURRENT_TIMESTAMP,
+      #{description,jdbcType=VARCHAR},
+      #{isVerified,jdbcType=BIT},
+      #{courseType,jdbcType=VARCHAR},
+      #{startDate,jdbcType=TIMESTAMP},
+      #{endDate,jdbcType=TIMESTAMP},
+      #{dailyMoney,jdbcType=DOUBLE},
+      #{baseCost,jdbcType=DOUBLE},
+      #{information,jdbcType=LONGVARCHAR},
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="tiger.common.dal.persistence.course.CourseDO" >
+    update course
+    <set >
+      <if test="workspaceId != null" >
+        workspace_id = #{workspaceId,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = CURRENT_TIMESTAMP,
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="isVerified != null" >
+        is_verified = #{isVerified,jdbcType=BIT},
+      </if>
+      <if test="courseType != null" >
+        course_type = #{courseType,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dailyMoney != null" >
+        daily_money = #{dailyMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="baseCost != null" >
+        base_cost = #{baseCost,jdbcType=DOUBLE},
+      </if>
+      <if test="information != null" >
+        information = #{information,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="tiger.common.dal.persistence.course.CourseDO" >
+    update course
+    set workspace_id = #{workspaceId,jdbcType=BIGINT},
+      title = #{title,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = CURRENT_TIMESTAMP,
+      description = #{description,jdbcType=VARCHAR},
+      is_verified = #{isVerified,jdbcType=BIT},
+      course_type = #{courseType,jdbcType=VARCHAR},
+      start_date = #{startDate,jdbcType=TIMESTAMP},
+      end_date = #{endDate,jdbcType=TIMESTAMP},
+      daily_money = #{dailyMoney,jdbcType=DOUBLE},
+      base_cost = #{baseCost,jdbcType=DOUBLE},
+      information = #{information,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="tiger.common.dal.persistence.course.CourseDO" >
+    update course
+    set workspace_id = #{workspaceId,jdbcType=BIGINT},
+      title = #{title,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = CURRENT_TIMESTAMP,
+      description = #{description,jdbcType=VARCHAR},
+      is_verified = #{isVerified,jdbcType=BIT},
+      course_type = #{courseType,jdbcType=VARCHAR},
+      start_date = #{startDate,jdbcType=TIMESTAMP},
+      end_date = #{endDate,jdbcType=TIMESTAMP},
+      daily_money = #{dailyMoney,jdbcType=DOUBLE},
+      base_cost = #{baseCost,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

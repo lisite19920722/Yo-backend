@@ -1,0 +1,17 @@
+<div class="clearfix">
+    <div ng-if="!isHidePageInfo" class="pull-left m-t-sm">
+        <span>页数:&nbsp;{{paginator.page}}&nbsp;/&nbsp;{{paginator.pages}}</span>
+        <span>共&nbsp;{{paginator.items}}&nbsp;项</span>
+    </div>
+    <div class="pull-right">
+        <uib-pagination
+            items-per-page="paginator.itemsPerPage"
+            max-size="5"
+            previous-text="上一页"
+            next-text="下一页"
+            total-items="paginator.items"
+            ng-model="paginator.page"
+            ng-change="pageChanged()">
+        </uib-pagination>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<puck-header></puck-header>
+
+<div class="puck-index-content">
+  <!-- slide -->
+  <div id="puckIndexContent"></div>
+  <div class="banner-section">
+      <div class="intro-info">
+          <div class="title">Gamble Your Ambition</div>
+          <button class="btn btn-default btn-lg font-ch" ng-click="popupContact()">成为教师</button>
+      </div>
+      <uib-carousel interval="5000" active="0" no-wrap="false">
+          <uib-slide ng-repeat="slide in pageData.bannerSlides" style="background-image: url('{{slide.url}}')"
+           index="slide.id">
+              <div class="item-text">{{slide.title}}</div>
+          </uib-slide>
+      </uib-carousel>
+  </div>
+  <div class="clear"></div>
+  <!-- end of slide -->
+
+  <!-- -->
+  <div class="main-intro-info">
+    <div class="intro-slogan text-center ">帮助你完成看起来很难的事</div>
+    <div class="row m-t-xl">
+      <div class="col-md-4 col-sm-4 main-intro-item">
+        <img src="./assets/images/portal/index/calendar-icon.png" alt="">
+        <p class="text-center m-t">打卡监督</p>
+      </div>
+      <div class="col-md-4 col-sm-4 main-intro-item">
+        <img src="./assets/images/portal/index/chat-icon.png" alt="">
+        <p class="text-center m-t">交流学习</p>
+      </div>
+      <div class="col-md-4 col-sm-4 main-intro-item">
+        <img src="./assets/images/portal/index/group-icon.png" alt="">
+        <p class="text-center m-t">协同共进</p>
+      </div>
+    </div>
+  </div>
+  <!-- -->
+
+  <div class="main-intro-example">
+    <div class="main-intro-example-content">
+      <div class="intro-slogan text-center ">帮助你完成看起来很难的事</div>
+      <div class="row m-t-xl">
+        <div class="col-md-4 col-sm-4 main-intro-item">
+          <img src="./assets/images/portal/index/intro-1.png" alt="">
+        </div>
+        <div class="col-md-4 col-sm-4 main-intro-item">
+          <img src="./assets/images/portal/index/intro-2.png" alt="">
+        </div>
+        <div class="col-md-4 col-sm-4 main-intro-item">
+          <img src="./assets/images/portal/index/intro-3.png" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<puck-footer></puck-footer>

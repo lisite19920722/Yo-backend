@@ -1,0 +1,100 @@
+LOCK TABLES `account` WRITE;
+/*!40000 ALTER TABLE `account` DISABLE KEYS */;
+
+INSERT INTO `account` (`id`, `create_time`, `update_time`, `user_name`, `password`, `gender`, `birthday`, `icon_id`, `ext_params`, `mobile`, `self_introduction`, `account`, `email`, `is_verify`, `alipay`, `nickname`, `wechat`, `timezone`)
+VALUES
+	(1,'2016-03-28 10:57:11','2016-03-28 10:57:11','锅老板','7ff2af0c05b01ec2456c6b143d48181a','MALE',NULL,NULL,'{}','18516171260',NULL,NULL,'327272993@qq.com',0,NULL,'',NULL,NULL);
+
+/*!40000 ALTER TABLE `account` ENABLE KEYS */;
+UNLOCK TABLES;
+
+LOCK TABLES `account_login_log` WRITE;
+/*!40000 ALTER TABLE `account_login_log` DISABLE KEYS */;
+
+INSERT INTO `account_login_log` (`id`, `ip`, `plat`, `token`, `create_time`, `expire_time`, `account_id`)
+VALUES
+	(1,'127.0.0.1','Paw/2.3.2 (Macintosh; OS X/10.11.4) GCDHTTPRequest','360c5a78c2b14e85a6518d950016e7e5','2016-04-15 21:17:12','2016-04-16 21:17:12',1),
+	(2,'127.0.0.1','Paw/2.3.2 (Macintosh; OS X/10.11.4) GCDHTTPRequest','b4ac289f098648fb8c277eacb7fb2c2e','2016-04-15 21:49:57','2016-04-16 21:49:58',1),
+	(3,'127.0.0.1','Paw/2.3.2 (Macintosh; OS X/10.11.4) GCDHTTPRequest','84d0dcc0f7d4443eaca5e8c111a89e07','2016-04-15 21:50:29','2016-04-16 21:50:30',1);
+
+/*!40000 ALTER TABLE `account_login_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+LOCK TABLES `role` WRITE;
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+
+INSERT INTO `role` (`id`, `name`, `remark`, `create_time`, `update_time`)
+VALUES
+	(1,'ADMIN','test','2015-09-12 21:54:37','2015-09-12 21:54:37'),
+	(2,'CUSTOMER','喔喔','2015-09-12 21:54:37','2015-09-12 21:54:37'),
+	(3,'OWNER','test','2015-09-12 21:54:37','2015-09-12 21:54:37');
+
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+LOCK TABLES `schema_version` WRITE;
+/*!40000 ALTER TABLE `schema_version` DISABLE KEYS */;
+
+INSERT INTO `schema_version` (`version_rank`, `installed_rank`, `version`, `description`, `type`, `script`, `checksum`, `installed_by`, `installed_on`, `execution_time`, `success`)
+VALUES
+	(1,1,'1.0','Create Tiger','SQL','V1_0__Create_Tiger.sql',351418084,'root','2016-04-14 18:33:12',518,1),
+	(2,2,'1.1','InsertConfigData','SQL','V1_1__InsertConfigData.sql',-153938625,'root','2016-04-14 18:39:00',129,1);
+
+/*!40000 ALTER TABLE `schema_version` ENABLE KEYS */;
+UNLOCK TABLES;
+
+LOCK TABLES `system_params` WRITE;
+/*!40000 ALTER TABLE `system_params` DISABLE KEYS */;
+
+INSERT INTO `system_params` (`id`, `param_name`, `param_value`, `create_time`, `update_time`, `is_active`, `param_type`)
+VALUES
+	(6,'ACCESS_KEY','uULnZMm1uQxxxxxxtDmM0Jwadx','2015-10-06 21:19:26','2015-10-06 21:19:26',1,'QINIU_PUBLIC_PARAM'),
+	(7,'SECRET_KEY','DzMei8hxxxxxxcZSCDeyTgIudZ','2015-10-06 21:19:26','2015-10-06 21:19:26',1,'QINIU_PUBLIC_PARAM'),
+	(8,'QINIU_DOMAIN_URL','http://7xnjli.com1.z0.glb.clouddn.com/','2015-10-06 21:19:26','2015-10-06 21:19:26',1,'QINIU_PUBLIC_PARAM'),
+	(9,'BUCKET','avatar','2015-10-06 21:19:26','2015-10-06 21:19:26',1,'QINIU_PUBLIC_PARAM'),
+	(10,'CALLBACK_URL','http://wtest.daiguanwang.com/api/qiniuattach','2015-10-06 21:19:26','2015-10-06 21:19:26',1,'QINIU_PUBLIC_PARAM'),
+	(11,'ACCESS_KEY','CXh2YKSbxxxxxRHc-kmOA','2015-10-06 21:19:26','2015-10-06 21:19:26',1,'QINIU_SECRET_PARAM'),
+	(12,'SECRET_KEY','mi2HEVqxxxxx7p4bSp','2015-10-06 21:19:26','2015-10-06 21:19:26',1,'QINIU_SECRET_PARAM'),
+	(13,'QINIU_DOMAIN_URL','http://7xijbo.com1.z0.glb.clouddn.com/','2015-10-06 21:19:26','2015-10-06 21:19:26',1,'QINIU_SECRET_PARAM'),
+	(14,'BUCKET','cityanimal','2015-10-06 21:19:26','2015-10-06 21:19:26',1,'QINIU_SECRET_PARAM'),
+	(15,'CALLBACK_URL','http://wtest.daiguanwang.com/api/qiniuattach','2015-10-06 21:19:26','2015-10-06 21:19:26',1,'QINIU_SECRET_PARAM'),
+	(16,'INVITATION_CONSTANT','false','2015-10-06 21:19:26','2015-10-06 21:19:26',1,'SYSTEM_CONFIG'),
+	(17,'REGISTER_INVITATION_NUMBER','5','2015-11-01 00:02:40','2015-11-03 19:41:16',1,'SYSTEM_CONFIG'),
+	(18,'BAD_LOAN_DAY','90','2015-11-01 00:02:40','2015-11-01 00:02:40',1,'LOAN_CONFIG'),
+	(19,'OVER_DUE_DAY','30','2015-11-01 00:02:40','2015-11-01 00:02:40',1,'LOAN_CONFIG'),
+	(20,'GLOBAL_NOTIFICATION_TEXT','sssss','2015-11-01 00:02:40','2015-11-01 00:02:40',1,'SYSTEM_CONFIG'),
+	(21,'GLOBAL_NOTIFICATION_OPTION','false','2015-11-01 00:02:40','2015-11-01 00:02:40',1,'SYSTEM_CONFIG'),
+	(23,'LOAN_SMS_OPTION','true','2015-11-17 12:50:58','2015-11-17 12:50:58',1,'LOAN_SMS_OPTION'),
+	(24,'LOAN_SMS_TEMPLATE','xxxx','2015-11-17 12:50:58','2015-11-17 12:50:58',1,'LOAN_SMS_OPTION'),
+	(27,'WECHAT','beaxxxxxe6xx5b','2015-11-01 00:02:40','2015-11-01 00:02:40',1,'SOCIAL_ACCOUNT_SECRET'),
+	(28,'WECHAT','wx3904xxxxx24f7','2015-11-01 00:02:40','2015-11-01 00:02:40',1,'SOCIAL_ACCOUNT_APP_ID'),
+	(30,'LOAN_SMS_OPTION','false','2015-11-17 12:50:58','2015-11-17 12:50:58',1,'LOAN_SMS_OPTION'),
+	(31,'WECHAT','http://www.daiguanwang.com/api/social_auth','2015-11-17 12:50:58','2015-11-17 12:50:58',1,'SOCIAL_ACCOUNT_AUTH_URL'),
+	(32,'QQ','xxxxxxx','2015-11-01 00:02:40','2015-11-01 00:02:40',1,'SOCIAL_ACCOUNT_SECRET'),
+	(33,'QQ','101295466','2015-11-01 00:02:40','2015-11-01 00:02:40',1,'SOCIAL_ACCOUNT_APP_ID'),
+	(34,'QQ','http://www.daiguanwang.com/api/social_auth','2015-11-17 12:50:58','2015-11-17 12:50:58',1,'SOCIAL_ACCOUNT_AUTH_URL'),
+	(35,'SOCIAL_AUTH_URL','http://www.daiguanwang.com/#/social_auth','2015-11-17 12:50:58','2015-11-17 12:50:58',1,'SOCIAL_CONFIG'),
+	(36,'SMS_REGISTER_LIMIT','5','2016-03-09 00:02:40','2016-03-09 00:02:40',1,'ACCOUNT_SMS_OPTION'),
+	(37,'SMS_REGISTER_OPTION','true','2016-03-09 00:02:40','2016-03-09 00:02:40',1,'ACCOUNT_SMS_OPTION'),
+	(38,'SMS_RESET_PASSWORD_LIMIT','5','2016-03-09 00:02:40','2016-03-09 00:02:40',1,'ACCOUNT_SMS_OPTION'),
+	(39,'SMS_RESET_PASSWORD_OPTION','true','2016-03-09 00:02:40','2016-03-09 00:02:40',1,'ACCOUNT_SMS_OPTION'),
+	(40,'SMS_RESET_MOBILE_LIMIT','5','2016-03-09 00:02:40','2016-03-09 00:02:40',1,'ACCOUNT_SMS_OPTION'),
+	(41,'SMS_RESET_MOBILE_OPTION','true','2016-03-09 00:02:40','2016-03-09 00:02:40',1,'ACCOUNT_SMS_OPTION'),
+	(42,'WECHATMOBILE','xxxxx','2015-11-01 00:02:40','2015-11-01 00:02:40',1,'SOCIAL_ACCOUNT_SECRET'),
+	(43,'WECHATMOBILE','xxxxxx','2015-11-01 00:02:40','2015-11-01 00:02:40',1,'SOCIAL_ACCOUNT_APP_ID'),
+	(44,'WECHATMOBILE','http://www.daiguanwang.com/api/social_auth','2015-11-17 12:50:58','2015-11-17 12:50:58',1,'SOCIAL_ACCOUNT_AUTH_URL'),
+	(45,'DEFAULT','5','2015-11-17 12:50:58','2015-11-17 12:50:58',1,'WORKSPACE_OWNER_MAXIMUM'),
+	(46,'invitationUrl','http://wtest.daiguanwang.com/#/invitation','2015-11-17 12:50:58','2015-11-17 12:50:58',1,'DEFAULT'),
+	(47,'QQMOBILE','iIXxxx7AWv50d','2015-11-01 00:02:40','2015-11-01 00:02:40',1,'SOCIAL_ACCOUNT_SECRET'),
+	(48,'QQMOBILE','xxxxxx','2015-11-01 00:02:40','2015-11-01 00:02:40',1,'SOCIAL_ACCOUNT_APP_ID'),
+	(49,'QQMOBILE','http://www.daiguanwang.com/api/social_auth','2015-11-17 12:50:58','2015-11-17 12:50:58',1,'SOCIAL_ACCOUNT_AUTH_URL');
+
+/*!40000 ALTER TABLE `system_params` ENABLE KEYS */;
+UNLOCK TABLES;
+
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
