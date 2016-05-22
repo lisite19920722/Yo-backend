@@ -11,12 +11,6 @@
 * Mysql 5.5.0+ （本地安装mysql）
 * IDEA
 
-
-## 数据库准备
-
-安装好 Mysql 在本地过后，建立数据库puck，utf-8编码，导入目录 puck-web/doc/puck.sql 文件。该数据库库为基础库，可以方便把环境跑起来。
-
-
 ## 开发环境配置
 
 ### 1. 导入 gradle 项目到IDEA
