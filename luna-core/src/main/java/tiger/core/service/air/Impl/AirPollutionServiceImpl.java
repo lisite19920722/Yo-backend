@@ -1,6 +1,8 @@
 package tiger.core.service.air.Impl;
 
 import org.springframework.stereotype.Service;
+import tiger.common.dal.persistence.air.AirPollutionDO;
+import tiger.common.dal.persistence.mapper.AirPollutionMapper;
 import tiger.common.dal.persistence.message.MessageDO;
 import tiger.core.domain.air.AirPollutionDomain;
 import tiger.core.domain.message.convert.MessageConvert;
@@ -16,8 +18,8 @@ public class AirPollutionServiceImpl implements AirPollutionService{
     @Override
     public AirPollutionDomain getAirPollutionById(Long id) {
         AirPollutionDO airPollutionDO = AirPollutionMapper.selectByPrimaryKey(id);
-        if (null != AirPollutionDO) {
-            return AirPollutionConvert.convertDOToDomain(AirPollutionDO);
+        if (null != airPollutionDO) {
+            return AirPollutionConvert.convertDOToDomain(airPollutionDO);
         }
         return null;
     }
