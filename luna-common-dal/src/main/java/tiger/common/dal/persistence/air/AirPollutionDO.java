@@ -21,15 +21,7 @@ public class AirPollutionDO extends BaseDO{
 
     private double so2;
 
-    private Long air_pollution_source;
-
-    public Long getAir_pollution_source() {
-        return air_pollution_source;
-    }
-
-    public void setAir_pollution_source(Long air_pollution_source) {
-        this.air_pollution_source = air_pollution_source;
-    }
+    private Long airPollutionSource;
 
     public Date getDate1() {
         return date1;
@@ -71,4 +63,11 @@ public class AirPollutionDO extends BaseDO{
         this.so2 = so2;
     }
 
+    public Long getAirPollutionSource() {
+        return airPollutionSource;
+    }
+
+    public void setAirPollutionSource(Long airPollutionSource) {
+        this.airPollutionSource = airPollutionSource;
+    }
 }

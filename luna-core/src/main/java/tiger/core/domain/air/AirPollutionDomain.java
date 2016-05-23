@@ -21,15 +21,7 @@ public class AirPollutionDomain extends BaseDomain{
 
     private double so2;
 
-    private Long air_pollution_source;
-
-    public Long getAir_pollution_source() {
-        return air_pollution_source;
-    }
-
-    public void setAir_pollution_source(Long air_pollution_source) {
-        this.air_pollution_source = air_pollution_source;
-    }
+    private Long airPollutionSource;
 
     public Date getDate1() {
         return date1;
@@ -71,13 +63,23 @@ public class AirPollutionDomain extends BaseDomain{
         this.so2 = so2;
     }
 
-    public AirPollutionDomain(Date date1, double discharge, double smoke, double no, double so2, Long air_pollution_source) {
+    public Long getAirPollutionSource() {
+        return airPollutionSource;
+    }
+
+    public void setAirPollutionSource(Long airPollutionSource) {
+        this.airPollutionSource = airPollutionSource;
+    }
+
+    public AirPollutionDomain() {
+    }
+
+    public AirPollutionDomain(Long airPollutionSource, Date date1, double discharge, double smoke, double no, double so2) {
+        this.airPollutionSource = airPollutionSource;
         this.date1 = date1;
         this.discharge = discharge;
         this.smoke = smoke;
         this.no = no;
         this.so2 = so2;
-        this.air_pollution_source = air_pollution_source;
     }
-
 }
