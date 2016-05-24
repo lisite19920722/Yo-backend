@@ -46,4 +46,16 @@ public class AirPollutionManagerImpl implements AirPollutionManager {
         return new BaseResult<>(airPollutionService.deleteAirPollutionByID(id));
     }
 
+    /**
+     * @see AirPollutionManager#update(AirPollutionDomain)
+     */
+    @Override
+    public BaseResult<Boolean> update(AirPollutionDomain airPollution) {
+        if (airPollution == null || airPollution.getId() == null) {
+            throw new TigerException(ErrorCodeEnum.ILLEGAL_PARAMETER);
+        }
+
+        return new BaseResult<>(airPollutionService.updateAirPollution(airPollution));
+    }
+
 }

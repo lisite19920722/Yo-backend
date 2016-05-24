@@ -41,6 +41,20 @@ public class AirPollutionServiceImpl implements AirPollutionService{
     }
 
     /**
+     * Update message.
+     *
+     * @param airPollutionDomain the airPollution domain
+     * @return the int
+     * @see AirPollutionService#updateAirPollution(AirPollutionDomain)
+     */
+    @Override
+    public boolean updateAirPollution(AirPollutionDomain airPollutionDomain) {
+        AirPollutionDO airPollutionDO = AirPollutionConvert.convertDomainToDO(airPollutionDomain);
+        int updateResult = airPollutionMapper.updateByPrimaryKeySelective(airPollutionDO);
+        return checkReturnCode(updateResult);
+    }
+
+    /**
      * Check return code.
      *
      * @param rc the rc

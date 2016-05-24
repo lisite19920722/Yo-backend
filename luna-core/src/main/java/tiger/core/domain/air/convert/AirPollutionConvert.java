@@ -13,6 +13,22 @@ import tiger.core.domain.air.AirPollutionDomain;
  */
 public class AirPollutionConvert {
 
+    /**
+     * Convert Domain to DO.
+     *
+     * @param airPollutionDomain the message Domain
+     * @return the message DO
+     */
+    public static AirPollutionDO convertDomainToDO(AirPollutionDomain airPollutionDomain) {
+        if (null == airPollutionDomain) {
+            return null;
+        }
+        AirPollutionDO airPollutionDO = new AirPollutionDO();
+        BeanUtil.copyPropertiesWithIgnores(airPollutionDomain, airPollutionDO);
+
+        return airPollutionDO;
+    }
+
 
     /**
      * Convert DO to Domain.

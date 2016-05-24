@@ -11,4 +11,6 @@ public interface AirPollutionMapper {
 
     int deleteByPrimaryKey(Long id);
 
+    int updateByPrimaryKeySelective(AirPollutionDO record);
+
 }

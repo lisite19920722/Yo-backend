@@ -24,4 +24,12 @@ public interface AirPollutionManager {
      */
     BaseResult<Boolean> delete(Long id);
 
+    /**
+     * 更新一条消息
+     *
+     * @param airPollution
+     * @return
+     */
+    BaseResult<Boolean> update(AirPollutionDomain airPollution);
+
 }
