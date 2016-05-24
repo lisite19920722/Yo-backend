@@ -20,6 +20,9 @@ public class AirPollutionManagerImpl implements AirPollutionManager {
     @Autowired
     private AirPollutionService airPollutionService;
 
+    /**
+     * @see AirPollutionManager#read(Long)
+     */
     @Override
     public BaseResult<AirPollutionDomain> read(Long id) {
         AirPollutionDomain airPollution = airPollutionService.getAirPollutionById(id);
@@ -28,6 +31,19 @@ public class AirPollutionManagerImpl implements AirPollutionManager {
             throw new TigerException(ErrorCodeEnum.NOT_FOUND, "不存在的空气污染记录");
         }
 
-        return new BaseResult<AirPollutionDomain>(airPollution);
+        return new BaseResult<>(airPollution);
     }
+
+    /**
+     * @see AirPollutionManager#delete(Long)
+     */
+    @Override
+    public BaseResult<Boolean> delete(Long id) {
+        if (id == null) {
+            throw new TigerException(ErrorCodeEnum.ILLEGAL_PARAMETER);
+        }
+
+        return new BaseResult<>(airPollutionService.deleteAirPollutionByID(id));
+    }
+
 }

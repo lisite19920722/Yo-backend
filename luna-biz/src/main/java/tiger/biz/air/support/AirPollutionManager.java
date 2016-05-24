@@ -10,8 +10,18 @@ import tiger.core.domain.air.AirPollutionDomain;
 public interface AirPollutionManager {
     /**
      * 获取一条空气污染记录
+     *
      * @param id
      * @return
      */
     BaseResult<AirPollutionDomain> read(Long id);
+
+    /**
+     * 删除一条空气污染记录
+     *
+     * @param id
+     * @return
+     */
+    BaseResult<Boolean> delete(Long id);
+
 }

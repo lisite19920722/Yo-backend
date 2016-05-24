@@ -27,4 +27,27 @@ public class AirPollutionServiceImpl implements AirPollutionService{
         return null;
     }
 
+    /**
+     * Delete message by id.
+     *
+     * @param id
+     * @return boolean
+     * @see AirPollutionService#deleteAirPollutionByID(Long)
+     */
+    @Override
+    public boolean deleteAirPollutionByID(Long id) {
+        int deleteResult = airPollutionMapper.deleteByPrimaryKey(id);
+        return checkReturnCode(deleteResult);
+    }
+
+    /**
+     * Check return code.
+     *
+     * @param rc the rc
+     * @return true, if successful
+     */
+    private boolean checkReturnCode(int rc) {
+        return rc > 0;
+    }
+
 }

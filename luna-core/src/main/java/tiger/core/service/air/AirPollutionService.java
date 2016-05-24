@@ -9,4 +9,6 @@ public interface AirPollutionService {
 
     AirPollutionDomain getAirPollutionById(Long id);
 
+    boolean deleteAirPollutionByID(Long id);
+
 }

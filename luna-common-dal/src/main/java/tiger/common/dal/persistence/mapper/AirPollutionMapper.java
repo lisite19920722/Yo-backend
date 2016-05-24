@@ -9,4 +9,6 @@ public interface AirPollutionMapper {
 
     AirPollutionDO selectByPrimaryKey(Long id);
 
+    int deleteByPrimaryKey(Long id);
+
 }

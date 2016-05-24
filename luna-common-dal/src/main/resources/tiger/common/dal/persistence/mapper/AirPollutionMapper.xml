@@ -4,6 +4,9 @@
     <resultMap id="BaseResultMap" type="tiger.common.dal.persistence.air.AirPollutionDO">
         <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="date" property="date1" jdbcType="DATE"/>
+        <result column="day" property="day" jdbcType="INTEGER"/>
+        <result column="month" property="month" jdbcType="INTEGER"/>
+        <result column="year" property="year" jdbcType="INTEGER"/>
         <result column="discharge" property="discharge" jdbcType="DOUBLE"/>
         <result column="no" property="no" jdbcType="DOUBLE"/>
         <result column="smoke" property="smoke" jdbcType="DOUBLE"/>
@@ -11,7 +14,7 @@
         <result column="air_pollution_source" property="airPollutionSource" jdbcType="BIGINT"/>
     </resultMap>
     <sql id="Base_Column_List">
-        id, date, discharge, no, smoke, so2, air_pollution_source
+        id, date, day, month, year, discharge, no, smoke, so2, air_pollution_source
     </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
         select
@@ -19,4 +22,8 @@
         from air_pollution_data
         where id = #{id,jdbcType=BIGINT}
     </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from air_pollution_data
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
 </mapper>

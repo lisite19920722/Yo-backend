@@ -13,6 +13,12 @@ public class AirPollutionDomain extends BaseDomain{
 
     private Date date1;
 
+    private int day;
+
+    private int month;
+
+    private int year;
+
     private double discharge;
 
     private double smoke;
@@ -29,6 +35,30 @@ public class AirPollutionDomain extends BaseDomain{
 
     public void setDate1(Date date1) {
         this.date1 = date1;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 
     public double getDischarge() {
@@ -74,12 +104,15 @@ public class AirPollutionDomain extends BaseDomain{
     public AirPollutionDomain() {
     }
 
-    public AirPollutionDomain(Long airPollutionSource, Date date1, double discharge, double smoke, double no, double so2) {
-        this.airPollutionSource = airPollutionSource;
+    public AirPollutionDomain(Date date1, int day, int month, int year, double discharge, double smoke, double no, double so2, Long airPollutionSource) {
         this.date1 = date1;
+        this.day = day;
+        this.month = month;
+        this.year = year;
         this.discharge = discharge;
         this.smoke = smoke;
         this.no = no;
         this.so2 = so2;
+        this.airPollutionSource = airPollutionSource;
     }
 }

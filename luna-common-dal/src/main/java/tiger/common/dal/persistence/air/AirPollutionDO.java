@@ -13,6 +13,12 @@ public class AirPollutionDO extends BaseDO{
 
     private Date date1;
 
+    private int day;
+
+    private int month;
+
+    private int year;
+
     private double discharge;
 
     private double smoke;
@@ -29,6 +35,30 @@ public class AirPollutionDO extends BaseDO{
 
     public void setDate1(Date date1) {
         this.date1 = date1;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
     }
 
     public double getDischarge() {
@@ -70,4 +100,5 @@ public class AirPollutionDO extends BaseDO{
     public void setAirPollutionSource(Long airPollutionSource) {
         this.airPollutionSource = airPollutionSource;
     }
+
 }
