@@ -64,7 +64,6 @@ public class AirPollutionController {
      */
     @RequestMapping(value = "air_pollution/{id}", method = RequestMethod.PUT)
     @ResponseBody
-    @LoginRequired
     public BaseResult<Boolean> updateAirPollutionById(@RequestBody @Valid AirPollutionUpdateForm airPollutionForm,
                                                        BindingResult bindingResult,
                                                        @PathVariable("id") long id) {
