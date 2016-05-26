@@ -13,8 +13,8 @@ public class AirQualityConvert {
     /**
      * Convert Domain to DO.
      *
-     * @param airQualityDomain the message Domain
-     * @return the message DO
+     * @param airQualityDomain the airQuality Domain
+     * @return the airQuality DO
      */
     public static AirQualityDO convertDomainToDO(AirQualityDomain airQualityDomain) {
         if (null == airQualityDomain) {

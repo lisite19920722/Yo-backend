@@ -16,8 +16,8 @@ public class AirPollutionConvert {
     /**
      * Convert Domain to DO.
      *
-     * @param airPollutionDomain the message Domain
-     * @return the message DO
+     * @param airPollutionDomain the airPollution Domain
+     * @return the airPollution DO
      */
     public static AirPollutionDO convertDomainToDO(AirPollutionDomain airPollutionDomain) {
         if (null == airPollutionDomain) {

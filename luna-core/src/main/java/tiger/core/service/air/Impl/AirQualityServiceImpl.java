@@ -1,4 +1,4 @@
-package tiger.core.service.air.Impl;
+package tiger.core.service.air.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
