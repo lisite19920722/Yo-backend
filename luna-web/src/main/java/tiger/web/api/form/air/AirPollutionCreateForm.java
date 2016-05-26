@@ -5,12 +5,10 @@ import tiger.core.domain.air.AirPollutionDomain;
 import tiger.web.api.form.BaseForm;
 import tiger.web.api.form.FormInterface;
 
-import java.util.List;
-
 /**
- * Created by lisite on 16/5/24.
+ * Created by lisite on 16/5/25.
  */
-public class AirPollutionUpdateForm extends BaseForm implements FormInterface {
+public class AirPollutionCreateForm extends BaseForm implements FormInterface {
 
     private int day;
 
@@ -49,5 +47,6 @@ public class AirPollutionUpdateForm extends BaseForm implements FormInterface {
 
         return target;
     }
+
 
 }

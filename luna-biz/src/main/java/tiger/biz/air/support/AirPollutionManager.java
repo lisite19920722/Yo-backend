@@ -32,4 +32,12 @@ public interface AirPollutionManager {
      */
     BaseResult<Boolean> update(AirPollutionDomain airPollution);
 
+    /**
+     * 更新一条消息
+     *
+     * @param airPollutionDomain
+     * @return
+     */
+    BaseResult<AirPollutionDomain> create(AirPollutionDomain airPollutionDomain);
+
 }

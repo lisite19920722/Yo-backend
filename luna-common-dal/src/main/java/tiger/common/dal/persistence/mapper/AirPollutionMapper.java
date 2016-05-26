@@ -13,4 +13,6 @@ public interface AirPollutionMapper {
 
     int updateByPrimaryKeySelective(AirPollutionDO record);
 
+    int insertSelective(AirPollutionDO record);
+
 }

@@ -29,4 +29,11 @@ public interface AirPollutionService {
      */
     boolean updateAirPollution(AirPollutionDomain airPollutionDomain);
 
+    /**
+     * 创建一个airPollutionDomain
+     * @param airPollutionDomain
+     * @return
+     */
+    AirPollutionDomain createAirPollution(AirPollutionDomain airPollutionDomain);
+
 }

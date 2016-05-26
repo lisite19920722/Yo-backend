@@ -18,6 +18,13 @@ public class AirPollutionServiceImpl implements AirPollutionService{
     @Autowired
     private AirPollutionMapper airPollutionMapper;
 
+    /**
+     * Update airPollution
+     *
+     * @param id
+     * @return the AirPollutionDO
+     * @see AirPollutionService#getAirPollutionById(Long)
+     */
     @Override
     public AirPollutionDomain getAirPollutionById(Long id) {
         AirPollutionDO airPollutionDO = airPollutionMapper.selectByPrimaryKey(id);
@@ -28,7 +35,7 @@ public class AirPollutionServiceImpl implements AirPollutionService{
     }
 
     /**
-     * Delete message by id.
+     * Delete airPollution by id.
      *
      * @param id
      * @return boolean
@@ -41,10 +48,10 @@ public class AirPollutionServiceImpl implements AirPollutionService{
     }
 
     /**
-     * Update message.
+     * Update airPollution
      *
      * @param airPollutionDomain the airPollution domain
-     * @return the int
+     * @return the boolean
      * @see AirPollutionService#updateAirPollution(AirPollutionDomain)
      */
     @Override
@@ -52,6 +59,28 @@ public class AirPollutionServiceImpl implements AirPollutionService{
         AirPollutionDO airPollutionDO = AirPollutionConvert.convertDomainToDO(airPollutionDomain);
         int updateResult = airPollutionMapper.updateByPrimaryKeySelective(airPollutionDO);
         return checkReturnCode(updateResult);
+    }
+
+    /**
+     * Create airPollution
+     *
+     * @param airPollutionDomain
+     * @return
+     * @see AirPollutionService#createAirPollution(AirPollutionDomain)
+     */
+    @Override
+    public AirPollutionDomain createAirPollution(AirPollutionDomain airPollutionDomain) {
+        if (airPollutionDomain == null) {
+            return null;
+        }
+
+        AirPollutionDO airPollutionDO = AirPollutionConvert.convertDomainToDO(airPollutionDomain);
+
+        if (airPollutionMapper.insertSelective(airPollutionDO) > 0) {
+            return AirPollutionConvert.convertDOToDomain(airPollutionDO);
+        }
+
+        return null;
     }
 
     /**

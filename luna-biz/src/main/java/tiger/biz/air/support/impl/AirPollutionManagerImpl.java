@@ -58,4 +58,14 @@ public class AirPollutionManagerImpl implements AirPollutionManager {
         return new BaseResult<>(airPollutionService.updateAirPollution(airPollution));
     }
 
+    /**
+     * @see AirPollutionManager#create(AirPollutionDomain)
+     */
+    @Override
+    public BaseResult<AirPollutionDomain> create(AirPollutionDomain airPollutionDomain){
+        AirPollutionDomain resultDomain = airPollutionService.createAirPollution(airPollutionDomain);
+
+        return new BaseResult<>(resultDomain);
+    }
+
 }

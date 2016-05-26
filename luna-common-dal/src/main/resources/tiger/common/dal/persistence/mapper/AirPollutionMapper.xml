@@ -59,4 +59,17 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
+    <insert id="insertSelective" parameterType="tiger.common.dal.persistence.air.AirPollutionDO" useGeneratedKeys="true" keyProperty="id" >
+        insert into air_pollution_data
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            day,
+            month,
+            year,
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            #{day,jdbcType=INTEGER},
+            #{month,jdbcType=INTEGER},
+            #{year,jdbcType=INTEGER},
+        </trim>
+    </insert>
 </mapper>

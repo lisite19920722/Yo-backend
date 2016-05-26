@@ -4,14 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import tiger.biz.air.support.AirPollutionManager;
-import tiger.common.dal.annotation.LoginRequired;
 import tiger.core.basic.BaseResult;
 import tiger.core.domain.air.AirPollutionDomain;
-import tiger.core.domain.message.MessageDomain;
 import tiger.web.api.constants.APIConstants;
+import tiger.web.api.form.air.AirPollutionCreateForm;
 import tiger.web.api.form.air.AirPollutionUpdateForm;
-import tiger.web.api.form.message.MessageUpdateForm;
-
 import javax.validation.Valid;
 
 
@@ -71,6 +68,22 @@ public class AirPollutionController {
         airPollutionDomain.setId(id);
 
         return airPollutionManager.update(airPollutionDomain);
+    }
+
+    /**
+     * 创建AirPollutionDomain
+     *
+     * @param airPollutionForm    the id
+     * @param bindingResult the binding result
+     * @return the base result
+     */
+    @RequestMapping(value = "/air_pollution", method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResult<AirPollutionDomain> createAirPollution(@RequestBody @Valid AirPollutionCreateForm airPollutionForm,
+                                           BindingResult bindingResult) {
+        AirPollutionDomain airPollutionDomain = airPollutionForm.convert2Domain();
+
+        return airPollutionManager.create(airPollutionDomain);
     }
 
 }
