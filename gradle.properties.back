@@ -1,0 +1,3 @@
+flyway.user=puck
+flyway.password=12345
+flyway.url=jdbc:mysql://localhost:3306/puck
