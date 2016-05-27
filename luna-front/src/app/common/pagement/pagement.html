@@ -1,7 +1,0 @@
-<div class="page-management-section">
-	<div class="pagement btn-group" ng-show="conf.totalItems > 0">
-		<button class="btn btn-sm page-left-button" ng-class="{disabled:conf.currentPage == 1}" ng-click="prePage()"><span>上一页</span></button>
-		<button class="btn btn-sm item-button" ng-repeat="page in pageList track by $index" ng-class="{isChoose: page == conf.currentPage, separate: page == '...'}" ng-click="changePage(page)">{{page}}</button>
-		<button class="btn btn-sm page-right-btn" ng-class="{disabled: conf.currentPage == conf.totalPage}" ng-click="nextPage()"><span>下一页</span></button>
-	</div>
-</div>
