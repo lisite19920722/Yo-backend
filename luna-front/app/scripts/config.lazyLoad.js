@@ -40,10 +40,6 @@ angular.module('luna')
             '../bower_components/ng-img-crop/compile/minified/ng-img-crop.css'
           ]
         },
-        {
-          name:'ui.calendar',
-          files: ['../bower_components/angular-ui-calendar/src/calendar.js']
-        }
       ]
     });
   }]);
