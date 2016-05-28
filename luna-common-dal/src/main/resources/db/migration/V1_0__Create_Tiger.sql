@@ -31,6 +31,7 @@ CREATE TABLE `account` (
 
 
 
+
 DROP TABLE IF EXISTS `account_bind`;
 
 CREATE TABLE `account_bind` (
