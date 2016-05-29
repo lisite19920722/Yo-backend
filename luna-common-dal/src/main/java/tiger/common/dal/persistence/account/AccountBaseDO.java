@@ -36,3 +36,6 @@ public class AccountBaseDO extends BaseDO {
         this.userName = userName;
     }
 }
+/**
+ * 测试推送
+ * */
