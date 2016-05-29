@@ -28,10 +28,6 @@ CREATE TABLE `account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-
-
-
-
 DROP TABLE IF EXISTS `account_bind`;
 
 CREATE TABLE `account_bind` (
