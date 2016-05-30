@@ -2,7 +2,7 @@
     <div class="subview3_title">空气质量预测BI</div>
 </div>
 <div class="container" style="width:1300px">
-    <!--开始-->
+    <!--盒子1-->
     <div class="col-md-12" style="margin-top:2em;margin-bottom:2em;">
         <div class="panel panel-primary" style="margin-bottom:0">
             <div class="panel-heading">
@@ -11,11 +11,10 @@
             </div>
             <div class="panel-body" style="padding:0">
                 <div class="row">
-                    <!--未来七天天气状况echart-->
+                    <!--未来七天天气状况highchart-->
                     <div class="col-md-8 chart-panel" style="padding:1em 1em 1em 3em">
                         <highchart  id="temperature"  config="temperature"  style="width:95%;height:500px"></highchart>
                     </div>
-
                     <!--未来七天天气状况 右侧面板-->
                     <div class="col-md-4" style="padding:1.2em 1em 1em 1em">
                         <div class="col-md-12" style="padding-left:0">
@@ -30,7 +29,8 @@
                                         <span class="fc-font-title" style="font-weight:normal;font-size:100%">明日天气</span> 
                                         <i class="fa text-success pull-right text-xs m-t-sm"></i>
                                       </div>
-                                      <small class="text-muted">2016年{{date[7]}}</small>
+                                      <!-- <small class="text-muted">2016年{{date[7]}}</small> -->
+                                      <small class="text-muted">2016年6月1日</small>
                                     </div>
                                   </div>
                                 </div>
@@ -40,7 +40,7 @@
                                     <i class="fa fa-pagelines fa-fw " style="color:#88cb26"></i> 
                                     天气状况
                                   </a>
-                                    <a class="list-group-item" href="">
+                                  <a class="list-group-item" href="">
                                     <span class="badge bg-success" style="width: 15%; background-color:#fbc003; color:#ffffff">24°C</span>
                                     <i class="icon ion-thermometer " style="color: #eb2026;margin-left:5px;"></i> 
                                     &nbsp;&nbsp;最高气温
@@ -52,7 +52,7 @@
                                   </a>
                                   <a class="list-group-item" href="">
                                     <span class="badge bg-light">东南风2~3级</span>
-                                    <i class="icon ion-cloud" style="color: #24a8dd"></i> 
+                                    <i class="icon ion-cloud" style="color: #24a8dd;margin-left:5px;"></i> 
                                     &nbsp;风向风级
                                   </a>
                                 </div>
@@ -66,7 +66,7 @@
                         </div>
                         <h3 class="col-md-10" style="margin-top:0.5em;padding-left:0">&nbsp;一句话解读</h3>
                         <div class="col-md-12" style="margin-bottom:1em">
-                            <span class="fc-font-content" style="font-size:105%;font-weight:500;margin-left:2em;">太仓市明日天气多云转阴，温差适中。未来七天气温相对稳定。</span>
+                          <span class="fc-font-content" style="font-size:105%;font-weight:500;margin-left:2em;">太仓市明日天气多云转阴，温差适中。未来七天气温相对稳定。</span>
                         </div>
                         <br>
                         <button ng-click="showTotalTable()" class="btn m-b-xs btn-primary pull-left" style="margin-left:0;font-weight:bold">详细数据列表</button>
@@ -77,29 +77,30 @@
         <!--未来七天天气状况  数据详情-->
         <div class="bg-white fc-datatable" ng-if="totalshow">
             <div class="panel panel-default paddingmargin0em">
-                <div class="panel-heading"><center>数据详情</center></div>  
-                <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
-                      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
-                        <td ng-repeat="year in totaldata.tabledata" style="text-align: center;">{{year.yearvalue}}</td>
-                      </tr>
-                      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
-                        <td ng-repeat="weather in totaldata.tabledata" style="text-align: center;">{{weather.weather}}</td>
-                      </tr>
-                      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
-                        <td ng-repeat="Htemperature in totaldata.tabledata" style="text-align: center;">{{Htemperature.Htemperature}}</td>
-                      </tr>
-                      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
-                        <td ng-repeat="Ltemperature in totaldata.tabledata" style="text-align: center;">{{Ltemperature.Ltemperature}}</td>
-                      </tr>
-                      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
-                        <td ng-repeat="wind in totaldata.tabledata" style="text-align: center;">{{wind.wind}}</td>
-                      </tr>
-                </table>
+              <div class="panel-heading"><center>数据详情</center></div>  
+              <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
+                  <tr class="ng-scope ng-isolate-scope">
+                    <td ng-repeat="year in totaldata.tabledata" style="text-align: center;">{{year.yearvalue}}</td>
+                  </tr>
+                  <tr class="ng-scope ng-isolate-scope">
+                    <td ng-repeat="weather in totaldata.tabledata" style="text-align: center;">{{weather.weather}}</td>
+                  </tr>
+                  <tr class="ng-scope ng-isolate-scope">
+                    <td ng-repeat="Htemperature in totaldata.tabledata" style="text-align: center;">{{Htemperature.Htemperature}}</td>
+                  </tr>
+                  <tr class="ng-scope ng-isolate-scope">
+                    <td ng-repeat="Ltemperature in totaldata.tabledata" style="text-align: center;">{{Ltemperature.Ltemperature}}</td>
+                  </tr>
+                  <tr class="ng-scope ng-isolate-scope">
+                    <td ng-repeat="wind in totaldata.tabledata" style="text-align: center;">{{wind.wind}}</td>
+                  </tr>
+              </table>
             </div>
         </div>
     </div>
+    <!--盒子1结束-->
 
-    <!--第二图-->
+    <!--盒子2-->
     <div class="col-md-12">
         <div class="panel panel-primary" style="margin-top: 2em;margin-bottom:2em;">
             <!--标题栏-->
@@ -234,10 +235,10 @@
             </div>
         </div>
     </div>
-    <!--第二图结束-->
+    <!--盒子2结束-->
 
 
-    <!--第三个框内容-->
+    <!--盒子3-->
     <div class="col-md-12 " >
         <div class="panel panel-primary" style="margin-top: 20px;">
             <!--最上标题栏-->
@@ -387,8 +388,7 @@
                         </button>
                         <br />
                         <span class="glyphicon  glyphicon-stats m-r-xs" ng-if="istownwasteair">
-                            <span class="fc-button-font">监测到废气排放均达标</span>                        
-
+                            <span class="fc-button-font">监测到废气排放均达标</span>
                         </span>
                     </div>
                     <div class="col-md-12">
@@ -478,8 +478,9 @@
             </div>
         </div>
     </div>
+    <!--盒子3结束-->
 
-    <!--第四个框内容-->
+    <!--盒子4-->
     <div class="col-md-12 " style="margin-bottom:20px">
         <div class="panel panel-primary" style="margin-top: 20px;">
             <div class="panel-heading">
@@ -702,6 +703,7 @@
             </div>
         </div>
     </div>
+    <!--盒子4结束-->
 </div>
 
 

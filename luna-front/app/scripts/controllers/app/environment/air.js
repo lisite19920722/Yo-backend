@@ -3,6 +3,246 @@
 
 app.controller('AirCtrl', ['$scope','$stateParams','$timeout','qService','rawFactory','rawFactory_weather',function($scope,$stateParams,$timeout,qService,rawFactory,rawFactory_weather) {
 
+  //--------------------------盒子1----------------------------
+  $scope.temperature={
+    options:{
+      chart: {
+        renderTo: 'container',
+        type: 'spline',
+        
+      },
+      legend: {
+        itemStyle:{
+          fontWeight:'normal'
+        }
+      }
+    },
+    title: {
+        text: '未来七天最高最低气温',
+        style: {
+          fontWeight:'bold',
+        },
+        x:20
+    },
+    credits: {
+        enabled:false
+    },
+    xAxis: {
+        // categories: $scope.date2
+        categories: ['4月20日', '4月21日', '4月22日', '4月23日', '4月24日', '4月25日','4月26日']
+    },
+    yAxis: {
+        title: {
+            text: '温度 (°C)'
+        },
+        plotLines: [{
+            value: 0,
+            width: 1,
+            color: '#808080'
+        }]
+    },
+    tooltip: {
+        valueSuffix: '°C'
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle',
+        borderWidth: 0,
+    },
+    series: [{
+      name: "最高气温",
+        data: [24, 22, 14, 17, 19, 19, 15]
+    },  {
+        name: '最低气温',
+        data: [14, 9, 1, 9, 12, 12, 5]
+    }]
+  };
+
+  //盒子1中展开表格的数据
+  $scope.totaldata = {
+    tabledata:
+    [
+      {yearvalue:'日期',weather:'天气状况' ,Htemperature:'最高气温(°C)',Ltemperature:'最低气温(°C)',wind:'风向风级'},
+      // {yearvalue:$scope.date2[0],weather:'多云转阴',Htemperature:'24',Ltemperature:'14',wind:'东南风2~3级'},
+      // {yearvalue:$scope.date2[1],weather:'大雨转中雨', Htemperature:'20',Ltemperature:'9',wind:'南风3~4级'},
+      // {yearvalue:$scope.date2[2], weather:'阴转多云',Htemperature:'16',Ltemperature:'7',wind:'北风4~5级'},
+      // {yearvalue:$scope.date2[3], weather:'多云转阴',Htemperature:'14',Ltemperature:'8',wind:'南风3~4级'},
+      // {yearvalue:$scope.date2[4], weather:'雨转阴',Htemperature:'19',Ltemperature:'11',wind:'东北风3~4级'},
+      // {yearvalue:$scope.date2[5], weather:'雨转阴',Htemperature:'17',Ltemperature:'11',wind:'东风3~4级'},
+      {yearvalue:'6月1日',weather:'多云转阴',Htemperature:'24',Ltemperature:'14',wind:'东南风2~3级'},
+      {yearvalue:'6月2日',weather:'大雨转中雨', Htemperature:'20',Ltemperature:'9',wind:'南风3~4级'},
+      {yearvalue:'6月3日', weather:'阴转多云',Htemperature:'16',Ltemperature:'7',wind:'北风4~5级'},
+      {yearvalue:'6月4日', weather:'多云转阴',Htemperature:'14',Ltemperature:'8',wind:'南风3~4级'},
+      {yearvalue:'6月5日', weather:'雨转阴',Htemperature:'19',Ltemperature:'11',wind:'东北风3~4级'},
+      {yearvalue:'6月6日', weather:'雨转阴',Htemperature:'17',Ltemperature:'11',wind:'东风3~4级'},
+      {yearvalue:'6月7日', weather:'阴',Htemperature:'17',Ltemperature:'6',wind:'东北风3~4级'}
+    ]
+  };
+  //--------------------------盒子1结束----------------------------
+
+  //--------------------------盒子2开始----------------------------
+  $scope.aqilinechart={
+      options:{
+        title: {
+              text: '过去七天空气质量AQI',
+              style: {
+                fontWeight:'bold',
+              },
+              x:20
+          },
+          credits: {
+              enabled:false
+          },
+          xAxis: {
+              // categories: $scope.date
+              categories: ['6月1日', '6月2日', '6月3日', '6月4日', '6月5日','6月6日','6月7日']
+          },
+          yAxis: {
+              title: {
+                  text: '空气质量指数(AQI)值'
+              }
+          },
+          legend: {
+          itemStyle:{
+                  fontWeight:'normal'
+              }
+          }
+        },
+        series: [{
+            type: 'column',
+            name: '实际AQI',
+            color:"#95ceff",
+            // data: $scope.aqi
+            data: [50, 49, 65, 70, 43, 56, 41]
+        },  {
+            type: 'spline',
+            name: '预测AQI',
+            color:"#1F1F1F",
+            // data: $scope.predictaqi
+            data: [45, 57, 64, 78, 49, 52, 48]
+        }]
+  };
+  //--------------------------盒子2结束----------------------------
+
+  //盒子2中的过去七天AQI的Highcharts图, 与盒子3左边的空气质量地图
+  var promise = qService.tokenHttpGet(rawFactory.query,{tableName:'airQualityData'});
+  promise.then(function(rc) {
+    $scope.aqi=rc.data[0];
+    $scope.predictaqi=rc.data[1];
+    $scope.date=rc.data[2];
+    $scope.firstElement=rc.data[3];
+    $scope.pm25=rc.data[4];
+    $scope.pm10=rc.data[5];
+    $scope.so2=rc.data[6];
+    $scope.no2=rc.data[7];
+    $scope.co=rc.data[8];
+    $scope.o3=rc.data[9];
+    $scope.date2=rc.data[10];
+    $scope.airQualityLevel=rc.data[11];
+    $scope.healthEffect=rc.data[12];
+    $scope.proposedMeasure=rc.data[13];
+
+    //盒子3左边的空气质量地图
+    $timeout(function(){
+      var marker1 = new AMap.Marker({
+        position: [121.11414, 31.45605],//太仓监测站
+        map:map,
+        icon: new AMap.Icon({            
+          size: new AMap.Size(40, 50),  
+          image: "/images/marker_sprite.png",
+        })
+      });
+
+      var marker2 = new AMap.Marker({
+        position: [121.124353, 31.444371],//科教新城监测站
+        map:map,
+        icon: new AMap.Icon({            
+          size: new AMap.Size(40, 50),  
+          image: "/images/marker_sprite.png",
+        })
+      });
+    
+      // 设置marker的label标签
+      var infow=[];
+      infow.push("<div style='background-color:#FFFFFF;border:2px solid #66cc66;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#66cc66;font-size:18px'>太仓市监测站</div>")
+      marker1.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
+        offset: new AMap.Pixel(23, 5),//修改label相对于marker的位置
+        content: infow.join('')
+      });
+    
+      infow=[];
+      infow.push("<div style='background-color:#FFFFFF;border:2px solid #66cc66;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#66cc66;font-size:18px'>科教新城监测站</div>")
+      marker2.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
+        offset: new AMap.Pixel(23, 5),//修改label相对于marker的位置
+        content: infow.join('')
+      });
+
+      //显示信息窗体(可单击位置显示隐藏的信息窗体)
+      var info1=[];
+      info1.push("<h4><strong>太仓监测站(明日空气质量)</strong></h4>");
+      info1.push("<table class='table table-bordered table-striped'>");
+      info1.push("<tr><td class='maptable' style='line-height:35px;'>AQI</td><td><div class='map-table-right' style='background-Color:#f0ad4e;margin-left:2.5px;margin-top:4px;'>58</div></td></tr>");      
+      info1.push("<tr><td class='maptable' style='line-height:35px;'>主要污染物</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>PM2.5</div></td></tr>");
+      info1.push("<tr><td class='maptable' style='line-height:35px;'>PM2.5</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>45</div></td></tr>");
+      info1.push("<tr><td class='maptable' style='line-height:35px;'>二氧化硫浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>12</div></td></tr>");
+      info1.push("<tr><td class='maptable' style='line-height:35px;'>空气质量状况</td><td><div class='map-table-right' style='background-Color:#f0ad4e;margin-left:2.5px;margin-top:4px;'>良</div></td></tr>");
+      info1.push("</table>");
+      var infowindow1 = new AMap.InfoWindow({
+        content: info1.join(''),
+        offset: new AMap.Pixel(0, -30),
+        size:new AMap.Size(300,0)
+      })
+      var clickHandle1 = AMap.event.addListener(marker1, 'click', function() {
+        infowindow1.open(map, marker1.getPosition())
+      })
+
+      var info2=[];
+      info2.push("<h4><strong>科教新城监测站(明日空气质量)</strong></h4>");
+      info2.push("<table class='table table-bordered table-striped'>");
+      info2.push("<tr><td class='maptable' style='line-height:35px;'>AQI</td><td><div class='map-table-right' style='background-Color:#f0ad4e;margin-left:2.5px;margin-top:4px;'>59</div></td></tr>");     
+      info2.push("<tr><td class='maptable' style='line-height:35px;'>主要污染物</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>PM2.5</div></td></tr>");
+      info2.push("<tr><td class='maptable' style='line-height:35px;'>PM2.5</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>37</div></td></tr>");
+      info2.push("<tr><td class='maptable' style='line-height:35px;'>二氧化硫浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>18</div></td></tr>");
+      info2.push("<tr><td class='maptable' style='line-height:35px;'>空气质量状况</td><td><div class='map-table-right' style='background-Color:#f0ad4e;margin-left:2.5px;margin-top:4px;'>良</div></td></tr>");
+      //土黄色#f0ad4e
+      info2.push("</table>");
+      var infowindow2 = new AMap.InfoWindow({
+        content:  info2.join(''),
+        //offset: new AMap.Pixel(0,0),
+        size:new AMap.Size(300,0)
+      })
+      //infowindow2.open(map, marker2.getPosition());
+      var clickHandle2 = AMap.event.addListener(marker2, 'click', function() {
+        infowindow2.open(map, marker2.getPosition())
+      })
+
+      // 添加工具条和比例尺
+      AMap.plugin(['AMap.ToolBar','AMap.Scale'],function(){
+        //TODO  创建控件并添加
+        var toolBar = new AMap.ToolBar();
+        var scale = new AMap.Scale();
+        map.addControl(toolBar);
+        map.addControl(scale);
+      })
+    }, 0);
+
+  });
+  
+  //盒子3右边工业废气排放
+  var promise1 = qService.tokenHttpGet(rawFactory.query,{tableName:'airPollutionData'});
+  promise1.then(function(rc1) {
+
+    // $scope.data = null;
+    // console.log(rc1.data);
+    // alert(rc1.data);
+    $scope.smoke=rc1.data[0];
+    $scope.pollution_so2=rc1.data[1];
+    $scope.pollution_no=rc1.data[2];
+    $scope.discharge=rc1.data[3];
+
+  });
+
   var promise3 = qService.tokenHttpGet(rawFactory_weather.query);
   promise3.then(function(rc3) {
 
@@ -622,244 +862,6 @@ app.controller('AirCtrl', ['$scope','$stateParams','$timeout','qService','rawFac
   var map = new AMap.Map('map_canvas',{
     zoom: 12,
     center: [121.130619,31.461029]
-  });
-
-
-  
-
-
-  //盒子2中的过去七天AQI的Highcharts图, 与盒子3左边的空气质量地图
-  var promise = qService.tokenHttpGet(rawFactory.query,{tableName:'airQualityData'});
-  promise.then(function(rc) {
-    $scope.aqi=rc.data[0];
-    $scope.predictaqi=rc.data[1];
-    $scope.date=rc.data[2];
-    $scope.firstElement=rc.data[3];
-    $scope.pm25=rc.data[4];
-    $scope.pm10=rc.data[5];
-    $scope.so2=rc.data[6];
-    $scope.no2=rc.data[7];
-    $scope.co=rc.data[8];
-    $scope.o3=rc.data[9];
-    $scope.date2=rc.data[10];
-    $scope.airQualityLevel=rc.data[11];
-    $scope.healthEffect=rc.data[12];
-    $scope.proposedMeasure=rc.data[13];   
-
-
-    //盒子1
-    $scope.temperature={
-      options:{
-        chart: {
-          renderTo: 'container',
-          type: 'spline',
-          
-        },
-        legend: {
-          itemStyle:{
-            fontWeight:'normal'
-          }
-        }
-      },
-      title: {
-          text: '未来七天最高最低气温',
-          style: {
-            fontWeight:'bold',
-          },
-          x:20
-      },
-      credits: {
-          enabled:false
-      },
-      xAxis: {
-          categories: $scope.date2
-          // categories: ['4月20日', '4月21日', '4月22日', '4月23日', '4月24日', '4月25日','4月26日']
-      },
-      yAxis: {
-          title: {
-              text: '温度 (°C)'
-          },
-          plotLines: [{
-              value: 0,
-              width: 1,
-              color: '#808080'
-          }]
-      },
-      tooltip: {
-          valueSuffix: '°C'
-      },
-      legend: {
-          layout: 'vertical',
-          align: 'right',
-          verticalAlign: 'middle',
-          borderWidth: 0,
-      },
-      series: [{
-        name: "最高气温",
-          data: [24, 22, 14, 17, 19, 19, 15]
-      },  {
-          name: '最低气温',
-          data: [14, 9, 1, 9, 12, 12, 5]
-      }]
-    };
-
-    //盒子1中展开表格的数据
-    $scope.totaldata = {
-      tabledata:
-      [
-        {yearvalue:'日期',weather:'天气状况' ,Htemperature:'最高气温(°C)',Ltemperature:'最低气温(°C)',wind:'风向风级'},
-        {yearvalue:$scope.date2[0],weather:'多云转阴',Htemperature:'24',Ltemperature:'14',wind:'东南风2~3级'},
-        {yearvalue:$scope.date2[1],weather:'大雨转中雨', Htemperature:'20',Ltemperature:'9',wind:'南风3~4级'},
-        {yearvalue:$scope.date2[2], weather:'阴转多云',Htemperature:'16',Ltemperature:'7',wind:'北风4~5级'},
-        {yearvalue:$scope.date2[3], weather:'多云转阴',Htemperature:'14',Ltemperature:'8',wind:'南风3~4级'},
-        {yearvalue:$scope.date2[4], weather:'雨转阴',Htemperature:'19',Ltemperature:'11',wind:'东北风3~4级'},
-        {yearvalue:$scope.date2[5], weather:'雨转阴',Htemperature:'17',Ltemperature:'11',wind:'东风3~4级'},
-        {yearvalue:$scope.date2[6], weather:'阴',Htemperature:'17',Ltemperature:'6',wind:'东北风3~4级'}
-      ]
-    };
-
-    //盒子2中的过去七天AQI的Highcharts图
-    $scope.aqilinechart={
-        options:{
-          title: {
-                text: '过去七天空气质量AQI',
-                style: {
-                  fontWeight:'bold',
-                },
-                x:20
-            },
-            credits: {
-                enabled:false
-            },
-            xAxis: {
-                categories: $scope.date
-                // categories: ['4月12日', '4月13日', '4月14日', '4月15日', '4月16日','4月17日','4月18日']
-            },
-            yAxis: {
-                title: {
-                    text: '空气质量指数(AQI)值'
-                }
-            },
-            legend: {
-            itemStyle:{
-              fontWeight:'normal'
-                }
-            }
-          },
-          series: [{
-              type: 'column',
-              name: '实际AQI',
-              color:"#95ceff",
-              data: $scope.aqi
-          },  {
-              type: 'spline',
-              name: '预测AQI',
-              color:"#1F1F1F",
-              data: $scope.predictaqi
-          }]
-    };
-
-
-    //盒子3左边的空气质量地图
-    $timeout(function(){
-      var marker1 = new AMap.Marker({
-        position: [121.11414, 31.45605],//太仓监测站
-        map:map,
-        icon: new AMap.Icon({            
-          size: new AMap.Size(40, 50),  
-          image: "/images/marker_sprite.png",
-        })
-      });
-
-      var marker2 = new AMap.Marker({
-        position: [121.124353, 31.444371],//科教新城监测站
-        map:map,
-        icon: new AMap.Icon({            
-          size: new AMap.Size(40, 50),  
-          image: "/images/marker_sprite.png",
-        })
-      });
-    
-      // 设置marker的label标签
-      var infow=[];
-      infow.push("<div style='background-color:#FFFFFF;border:2px solid #66cc66;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#66cc66;font-size:18px'>太仓市监测站</div>")
-      marker1.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
-        offset: new AMap.Pixel(23, 5),//修改label相对于marker的位置
-        content: infow.join('')
-      });
-    
-      infow=[];
-      infow.push("<div style='background-color:#FFFFFF;border:2px solid #66cc66;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#66cc66;font-size:18px'>科教新城监测站</div>")
-      marker2.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
-        offset: new AMap.Pixel(23, 5),//修改label相对于marker的位置
-        content: infow.join('')
-      });
-
-      //显示信息窗体(可单击位置显示隐藏的信息窗体)
-      var info1=[];
-      info1.push("<h4><strong>太仓监测站(明日空气质量)</strong></h4>");
-      info1.push("<table class='table table-bordered table-striped'>");
-      info1.push("<tr><td class='maptable' style='line-height:35px;'>AQI</td><td><div class='map-table-right' style='background-Color:#f0ad4e;margin-left:2.5px;margin-top:4px;'>58</div></td></tr>");      
-      info1.push("<tr><td class='maptable' style='line-height:35px;'>主要污染物</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>PM2.5</div></td></tr>");
-      info1.push("<tr><td class='maptable' style='line-height:35px;'>PM2.5</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>45</div></td></tr>");
-      info1.push("<tr><td class='maptable' style='line-height:35px;'>二氧化硫浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>12</div></td></tr>");
-      info1.push("<tr><td class='maptable' style='line-height:35px;'>空气质量状况</td><td><div class='map-table-right' style='background-Color:#f0ad4e;margin-left:2.5px;margin-top:4px;'>良</div></td></tr>");
-      info1.push("</table>");
-      var infowindow1 = new AMap.InfoWindow({
-        content: info1.join(''),
-        offset: new AMap.Pixel(0, -30),
-        size:new AMap.Size(300,0)
-      })
-      var clickHandle1 = AMap.event.addListener(marker1, 'click', function() {
-        infowindow1.open(map, marker1.getPosition())
-      })
-
-      var info2=[];
-      info2.push("<h4><strong>科教新城监测站(明日空气质量)</strong></h4>");
-      info2.push("<table class='table table-bordered table-striped'>");
-      info2.push("<tr><td class='maptable' style='line-height:35px;'>AQI</td><td><div class='map-table-right' style='background-Color:#f0ad4e;margin-left:2.5px;margin-top:4px;'>59</div></td></tr>");     
-      info2.push("<tr><td class='maptable' style='line-height:35px;'>主要污染物</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>PM2.5</div></td></tr>");
-      info2.push("<tr><td class='maptable' style='line-height:35px;'>PM2.5</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>37</div></td></tr>");
-      info2.push("<tr><td class='maptable' style='line-height:35px;'>二氧化硫浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>18</div></td></tr>");
-      info2.push("<tr><td class='maptable' style='line-height:35px;'>空气质量状况</td><td><div class='map-table-right' style='background-Color:#f0ad4e;margin-left:2.5px;margin-top:4px;'>良</div></td></tr>");
-      //土黄色#f0ad4e
-      info2.push("</table>");
-      var infowindow2 = new AMap.InfoWindow({
-        content:  info2.join(''),
-        //offset: new AMap.Pixel(0,0),
-        size:new AMap.Size(300,0)
-      })
-      //infowindow2.open(map, marker2.getPosition());
-      var clickHandle2 = AMap.event.addListener(marker2, 'click', function() {
-        infowindow2.open(map, marker2.getPosition())
-      })
-
-      // 添加工具条和比例尺
-      AMap.plugin(['AMap.ToolBar','AMap.Scale'],function(){
-        //TODO  创建控件并添加
-        var toolBar = new AMap.ToolBar();
-        var scale = new AMap.Scale();
-        map.addControl(toolBar);
-        map.addControl(scale);
-      })
-    }, 0);
-
-
-  });
-
-
-  //盒子3右边工业废气排放
-  var promise1 = qService.tokenHttpGet(rawFactory.query,{tableName:'airPollutionData'});
-  promise1.then(function(rc1) {
-
-    // $scope.data = null;
-    // console.log(rc1.data);
-    // alert(rc1.data);
-    $scope.smoke=rc1.data[0];
-    $scope.pollution_so2=rc1.data[1];
-    $scope.pollution_no=rc1.data[2];
-    $scope.discharge=rc1.data[3];
-
   });
 
 
@@ -2228,7 +2230,6 @@ app.controller('AirCtrl', ['$scope','$stateParams','$timeout','qService','rawFac
       };
 
   });
-
    
 }]);
 
