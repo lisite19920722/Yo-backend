@@ -4,7 +4,7 @@
  * @name iocUiApp.controller:AboutCtrl
  * @description # AboutCtrl Controller of the iocUiApp
  */
-app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qService','rawFactory' ,function($scope, $timeout,$http,qService,rawFactory) {
+app.controller('WaterCtrl', ['$scope', '$timeout','$http', 'qService','rawFactory' ,function($scope, $timeout,$http,qService,rawFactory) {
     $scope.data = null;
     var promise = qService.tokenHttpGet(rawFactory.query,{tableName:'waterConditionData'});
     promise.then(function(rc1) {

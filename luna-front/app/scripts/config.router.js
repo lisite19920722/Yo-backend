@@ -174,33 +174,31 @@ angular.module('luna')
                 return $ocLazyLoad.load([
                   'scripts/controllers/app/environment/air.js',
                   'scripts/controllers/app/environment/angular-scroll.js'
-               ]);
+                ]);
               }]
             }
           })
-          .state('app.emenu.waterEnvironmentBI', {
-          url: '^/app/environment/emenu/waterEnvironmentBI',
-          templateUrl: 'tpl/app/environment/waterEnvironmentBI.html',
-          controller: 'WaterEnvironmentBICtrl',
+          .state('app.emenu.air', {
+            url: '^/app/emenu/air',
+            templateUrl: 'tpl/app/environment/air.html',
+            controller: 'AirCtrl',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/environment/air.js',
+                ]);
+              }]
+            }
+          })
+          .state('app.emenu.water', {
+          url: '^/app/emenu/water',
+          templateUrl: 'tpl/app/environment/water.html',
+          controller: 'WaterCtrl',
           resolve: {
           controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                    'scripts/controllers/app/environment/waterenvironmentbi-controller.js',
-                    'scripts/controllers/app/environment/echarts-plain.js'
-                 ]);
-              }]
-            }
-          })
-          .state('app.emenu.airtitle', {
-            url: '^/app/environment/emenu/airtitle',
-            templateUrl: 'tpl/app/environment/airtitle.html',
-            controller: 'AirCtrl',
-            resolve: {
-            controller: ['$ocLazyLoad', function($ocLazyLoad) {
-            return $ocLazyLoad.load([
-            'scripts/controllers/app/environment/air.js',
-            'scripts/controllers/app/environment/echarts.js',
-              ]);
+                    'scripts/controllers/app/environment/water.js',
+                ]);
               }]
             }
           })
