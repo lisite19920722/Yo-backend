@@ -1,132 +1,23 @@
 'use strict';
-/**
- * @ngdoc function
- * @name iocUiApp.controller:AboutCtrl
- * @description # AboutCtrl Controller of the iocUiApp
- */
-app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qService','rawFactory' ,function($scope, $timeout,$http,qService,rawFactory) {
-    $scope.data = null;
-    var promise = qService.tokenHttpGet(rawFactory.query,{tableName:'waterConditionData'});
+      
+app.controller('WaterCtrl', ['$scope', '$timeout','$http', 'qService','rawFactory' ,function($scope, $timeout,$http,qService,rawFactory) {
+    var promise = qService.tokenHttpGet(rawFactory.query,{tableName:'waterQualityData'});
     promise.then(function(rc1) {
 
-       
-
     });
 
-    var promise3 = qService.tokenHttpGet(rawFactory.query,{tableName:'waterQualityData'});
-    promise3.then(function(rc4) {
-
-        
-
-    });
-
-    
-     //第一个框highchart
     var promise1 = qService.tokenHttpGet(rawFactory.query,{tableName:'waterIndustryData'});
     promise1.then(function(rc2) {
-
-        
         $scope.list11=rc2.data[0];
         $scope.list12=rc2.data[1];
         $scope.list13=rc2.data[2];
         $scope.list14=rc2.data[3];
         $scope.list15=rc2.data[4];
         $scope.date_industry=rc2.data[5];
- 
-    $scope.factory={
-        options:{
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: '工厂废水排放'
-            },
-            subtitle: {
-                text: '来源：太仓市环保局'
-            },
-            credits: {
-                enabled:false
-            },
-            xAxis: {
-                // categories: [
-                //     '4月12日',
-                //     '4月13日',
-                //     '4月14日',
-                //     '4月15日',
-                //     '4月16日',
-                //     '4月17日',
-                //     '4月18日',
-                // ]
-                categories: $scope.date_industry
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: '吨'
-                }
-            },
-            tooltip: {
-                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} 吨</b></td></tr>',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true
-            },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0
-                }
-            }},
-            series: [{
-                name: '太仓市佳煌针织印染有限公司',
-                data: $scope.list11
-
-            }, {
-                name: '洛克伍德染料有限公司',
-                data: $scope.list12
-
-            }, {
-                name: '太仓虹盛印染厂',
-                data: $scope.list13
-
-            }, {
-                name: '太仓市金佳漂染厂',
-                data: $scope.list14
-
-            }, {
-                name: '江苏长乐纤维科技有限公司',
-                data: $scope.list15
-
-            }]
-        };            
-
-        //列表展示
-        $scope.showindustry= function(){
-        $scope.industryshow= !$scope.industryshow;
-        };
-        $scope.totaldata = { 
-        tabledata:
-        [
-          {yearvalue:'日期',JLfactory:'太仓市佳煌针织印染有限公司（吨）' ,Afactory:'洛克伍德燃料有限公司（吨）',Bfactory:'太仓虹盛印染厂（吨）',Cfactory:'太仓市金佳漂染厂（吨）',Dfactory:'江苏长乐纤维科技有限公司（吨）'},
-          
-          {yearvalue:$scope.date_industry[0],JLfactory:$scope.list11[0],Afactory:$scope.list12[0],Bfactory:$scope.list13[0],Cfactory:$scope.list14[0],Dfactory:$scope.list15[0]},
-          {yearvalue:$scope.date_industry[1],JLfactory:$scope.list11[1], Afactory:$scope.list12[1],Bfactory:$scope.list13[1],Cfactory:$scope.list14[1],Dfactory:$scope.list15[1]},
-          {yearvalue:$scope.date_industry[2], JLfactory:$scope.list11[2],Afactory:$scope.list12[2],Bfactory:$scope.list13[2],Cfactory:$scope.list14[2],Dfactory:$scope.list15[2]},
-          {yearvalue:$scope.date_industry[3], JLfactory:$scope.list11[3],Afactory:$scope.list12[3],Bfactory:$scope.list13[3],Cfactory:$scope.list14[3],Dfactory:$scope.list15[3]},
-          {yearvalue:$scope.date_industry[4], JLfactory:$scope.list11[4],Afactory:$scope.list12[4],Bfactory:$scope.list13[4],Cfactory:$scope.list14[4],Dfactory:$scope.list15[4]},
-          {yearvalue:$scope.date_industry[5], JLfactory:$scope.list11[5],Afactory:$scope.list12[5],Bfactory:$scope.list13[5],Cfactory:$scope.list14[5],Dfactory:$scope.list15[5]},
-          {yearvalue:$scope.date_industry[6], JLfactory:$scope.list11[6],Afactory:$scope.list12[6],Bfactory:$scope.list13[6],Cfactory:$scope.list14[6],Dfactory:$scope.list15[6]}
-        ]
-      };
     });
 
-
-    //第二个框highcharts废水排放分析部分
     var promise2 = qService.tokenHttpGet(rawFactory.query,{tableName:'waterPollutionData'});
     promise2.then(function(rc3) {
-
       $scope.JiuLONGDischarge=rc3.data[0];
       $scope.TCCityzoneDischarge=rc3.data[1];
       $scope.LiuHeDischarge=rc3.data[2];
@@ -148,11 +39,121 @@ app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qServic
       $scope.GangChengP=rc3.data[18];
       $scope.TCRivertownP=rc3.data[19];
       $scope.date1=rc3.data[20];
+    });
+    
+    //--------------------------盒子1-----------------------------
+    $scope.factory={
+        options:{
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: '工厂废水排放'
+            },
+            subtitle: {
+                text: '来源：太仓市环保局'
+            },
+            credits: {
+                enabled:false
+            },
+            xAxis: {
+                // categories: $scope.date_industry
+                categories: [
+                    '6月1日',
+                    '6月2日',
+                    '6月3日',
+                    '6月4日',
+                    '6月5日',
+                    '6月6日',
+                    '6月7日',
+                ]
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '吨'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} 吨</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            }
+        },
+        series: [
+            {
+                name: '太仓市佳煌针织印染有限公司',
+                // data: $scope.list11
+                data: [500, 400, 300, 400, 600, 800, 750]
 
+            }, {
+                name: '洛克伍德染料有限公司',
+                // data: $scope.list12
+                data: [500, 400, 300, 400, 600, 800, 750]
 
-      $scope.changePollutionType1 = !$scope.changePollutionType1
-      //堆积柱状图第一层膜
-      $scope.discharge={
+            }, {
+                name: '太仓虹盛印染厂',
+                // data: $scope.list13
+                data: [500, 400, 300, 400, 600, 800, 750]
+
+            }, {
+                name: '太仓市金佳漂染厂',
+                // data: $scope.list14
+                data: [500, 400, 300, 400, 600, 800, 750]
+
+            }, {
+                name: '江苏长乐纤维科技有限公司',
+                // data: $scope.list15
+                data: [500, 400, 300, 400, 600, 800, 750]
+
+            }
+        ]
+    };       
+
+    $scope.showindustry= function(){
+        $scope.industryshow= !$scope.industryshow;
+    };
+
+    // $scope.totaldata = { 
+    //     tabledata:
+    //     [
+    //         {yearvalue:'日期',JLfactory:'太仓市佳煌针织印染有限公司（吨）' ,Afactory:'洛克伍德燃料有限公司（吨）',Bfactory:'太仓虹盛印染厂（吨）',Cfactory:'太仓市金佳漂染厂（吨）',Dfactory:'江苏长乐纤维科技有限公司（吨）'},
+    //         {yearvalue:$scope.date_industry[0],JLfactory:$scope.list11[0],Afactory:$scope.list12[0],Bfactory:$scope.list13[0],Cfactory:$scope.list14[0],Dfactory:$scope.list15[0]},
+    //         {yearvalue:$scope.date_industry[1],JLfactory:$scope.list11[1], Afactory:$scope.list12[1],Bfactory:$scope.list13[1],Cfactory:$scope.list14[1],Dfactory:$scope.list15[1]},
+    //         {yearvalue:$scope.date_industry[2], JLfactory:$scope.list11[2],Afactory:$scope.list12[2],Bfactory:$scope.list13[2],Cfactory:$scope.list14[2],Dfactory:$scope.list15[2]},
+    //         {yearvalue:$scope.date_industry[3], JLfactory:$scope.list11[3],Afactory:$scope.list12[3],Bfactory:$scope.list13[3],Cfactory:$scope.list14[3],Dfactory:$scope.list15[3]},
+    //         {yearvalue:$scope.date_industry[4], JLfactory:$scope.list11[4],Afactory:$scope.list12[4],Bfactory:$scope.list13[4],Cfactory:$scope.list14[4],Dfactory:$scope.list15[4]},
+    //         {yearvalue:$scope.date_industry[5], JLfactory:$scope.list11[5],Afactory:$scope.list12[5],Bfactory:$scope.list13[5],Cfactory:$scope.list14[5],Dfactory:$scope.list15[5]},
+    //     {yearvalue:$scope.date_industry[6], JLfactory:$scope.list11[6],Afactory:$scope.list12[6],Bfactory:$scope.list13[6],Cfactory:$scope.list14[6],Dfactory:$scope.list15[6]}
+    //     ]
+    // };
+    $scope.totaldata = { 
+        tabledata:
+        [
+            {yearvalue:'日期',JLfactory:'太仓市佳煌针织印染有限公司（吨）' ,Afactory:'洛克伍德燃料有限公司（吨）',Bfactory:'太仓虹盛印染厂（吨）',Cfactory:'太仓市金佳漂染厂（吨）',Dfactory:'江苏长乐纤维科技有限公司（吨）'},
+            {yearvalue:'6月1日', JLfactory:500,Afactory:500,Bfactory:500,Cfactory:500,Dfactory:500},
+            {yearvalue:'6月2日', JLfactory:400,Afactory:400,Bfactory:400,Cfactory:400,Dfactory:400},
+            {yearvalue:'6月3日', JLfactory:300,Afactory:300,Bfactory:300,Cfactory:300,Dfactory:300},
+            {yearvalue:'6月4日', JLfactory:400,Afactory:400,Bfactory:400,Cfactory:400,Dfactory:400},
+            {yearvalue:'6月5日', JLfactory:600,Afactory:600,Bfactory:600,Cfactory:600,Dfactory:600},
+            {yearvalue:'6月6日', JLfactory:800,Afactory:800,Bfactory:800,Cfactory:800,Dfactory:800},
+            {yearvalue:'6月7日', JLfactory:700,Afactory:700,Bfactory:700,Cfactory:700,Dfactory:700}
+        ]
+    };
+    //--------------------------盒子1结束--------------------------
+
+    //--------------------------盒子2-----------------------------
+    //堆积柱状图第一层膜
+    $scope.discharge={
         options:{
             chart: {
                 type: 'column'
@@ -164,8 +165,8 @@ app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qServic
                 enabled:false
             },
             xAxis: {
-                categories: $scope.date1
-                // categories: ['4月13日','4月14日','4月15日','4月16日','4月17日','4月18日']
+                // categories: $scope.date1
+                categories: ['6月1日','6月2日','6月3日','6月4日','6月5日','6月6日']
             },
             yAxis: {
                 min: 0,
@@ -208,117 +209,132 @@ app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qServic
                         }
                     }
                 }
-            }},
-            series: [{
+            }
+        },
+        series: [
+            {
                 name: '太仓市城区污水处理厂',
                 color:'#69afcd',
-                data: $scope.TCCityzoneDischarge
+                // data: $scope.TCCityzoneDischarge
+                data: [500, 400, 300, 400, 600, 800]
             }, {
                 name: '太仓江城城市污水处理有限公司',
                 color:'#57d160',
-                data: $scope.TCRivertownDischarge
+                // data: $scope.TCRivertownDischarge
+                data: [500, 400, 300, 400, 600, 800]
             }, {
                 name: '浏河镇污水处理厂',
                 color:'#c7e74f',
-                data: $scope.LiuHeDischarge
+                // data: $scope.LiuHeDischarge
+                data: [500, 400, 300, 400, 600, 800]
             }, {
                 name: '港城组团污水处理厂',
                 color:'#f8d940',
-                data: $scope.GangChengDischarge
+                // data: $scope.GangChengDischarge
+                data: [500, 400, 300, 400, 600, 800]
             }, {
                 name: '玖龙纸业有限公司',
                 color:'#ffb143',
-                data: $scope.JiuLONGDischarge
-            }]
-        };
+                // data: $scope.JiuLONGDischarge
+                data: [500, 400, 300, 400, 600, 800]
+            }
+        ]
+    };
     //堆积柱状图第二层膜
-    $scope.changePollutionType1=function(){
-        //区域图  
-        $scope.discharge={
-        options:{
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: '太仓市主要污水处理厂废水排放分析'
-            },
-            credits: {
-                enabled:false
-            },
-            xAxis: {
-                categories: $scope.date1
-                // categories: ['4月13日','4月14日','4月15日','4月16日','4月17日','4月18日']
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: '吨'
-                },
-                stackLabels: {
-                    enabled: true,
-                    style: {
-                        fontWeight: 'bold',
-                        color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
-                    }
-                }
-            },
-            legend: {
-                align: 'center',
-                x: 33,
-                verticalAlign: 'bottom',
-                y: 0,
-                backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
-                borderColor: '#CCC',
-                borderWidth: 1,
-                shadow: true
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.x + '</b><br/>' +
-                        this.series.name + ': ' + this.y + '<br/>' +
-                        'Total: ' + this.point.stackTotal;
-                }
-            },
-            plotOptions: {
-                column: {
-                    stacking: 'normal',
-                    dataLabels: {
-                        enabled: false,
-                        color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
-                        style: {
-                            textShadow: '0 0 3px black'
-                        }
-                    }
-                }
-            }},
-            series: [{
-                name: '太仓市城区污水处理厂',
-                color:'#69afcd',
-                data: $scope.TCCityzoneDischarge
-            }, {
-                name: '太仓江城城市污水处理有限公司',
-                color:'#57d160',
-                data: $scope.TCRivertownDischarge
-            }, {
-                name: '浏河镇污水处理厂',
-                color:'#c7e74f',
-                data: $scope.LiuHeDischarge
-            }, {
-                name: '港城组团污水处理厂',
-                color:'#f8d940',
-                data: $scope.GangChengDischarge
-            }, {
-                name: '玖龙纸业有限公司',
-                color:'#ffb143',
-                data: $scope.JiuLONGDischarge
-            }]
-        };
-        };
-      //溶解氧浓度
-        $scope.changePollutionType2=function(){
+    $scope.changePollutionType1=function(){ 
         $scope.discharge={
             options:{
-            chart: {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: '太仓市主要污水处理厂废水排放分析'
+                },
+                credits: {
+                    enabled:false
+                },
+                xAxis: {
+                    categories: $scope.date1
+                    // categories: ['4月13日','4月14日','4月15日','4月16日','4月17日','4月18日']
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '吨'
+                    },
+                    stackLabels: {
+                        enabled: true,
+                        style: {
+                            fontWeight: 'bold',
+                            color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                        }
+                    }
+                },
+                legend: {
+                    align: 'center',
+                    x: 33,
+                    verticalAlign: 'bottom',
+                    y: 0,
+                    backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+                    borderColor: '#CCC',
+                    borderWidth: 1,
+                    shadow: true
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.x + '</b><br/>' +
+                            this.series.name + ': ' + this.y + '<br/>' +
+                            'Total: ' + this.point.stackTotal;
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        stacking: 'normal',
+                        dataLabels: {
+                            enabled: false,
+                            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                            style: {
+                                textShadow: '0 0 3px black'
+                            }
+                        }
+                    }
+                }
+            },
+            series: [
+                {
+                    name: '太仓市城区污水处理厂',
+                    color:'#69afcd',
+                    // data: $scope.TCCityzoneDischarge
+                    data: [400, 600, 800, 600, 400, 700]
+                }, {
+                    name: '太仓江城城市污水处理有限公司',
+                    color:'#57d160',
+                    // data: $scope.TCRivertownDischarge
+                    data: [400, 600, 800, 600, 400, 700]
+                }, {
+                    name: '浏河镇污水处理厂',
+                    color:'#c7e74f',
+                    // data: $scope.LiuHeDischarge
+                    data: [400, 600, 800, 600, 400, 700]
+                }, {
+                    name: '港城组团污水处理厂',
+                    color:'#f8d940',
+                    // data: $scope.GangChengDischarge
+                    data: [400, 600, 800, 600, 400, 700]
+                }, {
+                    name: '玖龙纸业有限公司',
+                    color:'#ffb143',
+                    // data: $scope.JiuLONGDischarge
+                    data: [400, 600, 800, 600, 400, 700]
+                }
+            ]
+        };
+    };
+    //溶解氧浓度
+    $scope.changePollutionType2=function(){
+        $scope.discharge={
+            options:{
+                chart: {
                     type: 'column'
                 },
                 legend: {
@@ -336,8 +352,8 @@ app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qServic
                     }
                 },
                 subtitle: {
-                    // text: $scope.date[0],
-                    text: $scope.date1[5]+'9时',
+                    // text: $scope.date1[5]+'9时',
+                    text: '6月1日9时',
                     style: {
                         fontWeight: 'normal',
                         fontSize: 'larger',
@@ -360,7 +376,6 @@ app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qServic
                         text: 'mg/L'
                     }
                 },
-                
                 tooltip: {
                     headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                     pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
@@ -375,26 +390,26 @@ app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qServic
                         borderWidth: 0
                     }
                 }
-                },
-                series: [{
-                    name: '溶解氧浓度',
-                    color: "#7cb5ec",
-                    data: [$scope.TCCityzoneCod[0], $scope.TCRivertownCod[0], $scope.LiuHeCod[0], $scope.GangChengCod[0], $scope.JiuLONGCod[0]]
-
-                }]
+            },
+            series: [{
+                name: '溶解氧浓度',
+                color: "#7cb5ec",
+                // data: [$scope.TCCityzoneCod[0], $scope.TCRivertownCod[0], $scope.LiuHeCod[0], $scope.GangChengCod[0], $scope.JiuLONGCod[0]]
+                data: [100, 200, 150, 120, 220]
+            }]
         };
-      };
-      //氨氮浓度
-        $scope.changePollutionType3=function(){
+    };
+    //氨氮浓度
+    $scope.changePollutionType3=function(){
         $scope.discharge={
             options:{
-            chart: {
-                    type: 'column'
-                },
-            legend: {
-                    itemStyle:{
-                    fontWeight:'normal'
-                    }
+                chart: {
+                        type: 'column'
+                    },
+                legend: {
+                        itemStyle:{
+                        fontWeight:'normal'
+                        }
                 },
                 credits: {
                     enabled:false
@@ -406,8 +421,8 @@ app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qServic
                     }
                 },
                 subtitle: {
-                    // text: $scope.date[0],
-                    text: $scope.date1[5]+'9时',
+                    // text: $scope.date1[5]+'9时',
+                    text: '6月1日9时',
                     style: {
                         fontWeight: 'normal',
                         fontSize: 'larger',
@@ -443,26 +458,26 @@ app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qServic
                         borderWidth: 0
                     }
                 }
-                },
-                series: [{
-                    name: '氨氮浓度',
-                    color: "#7cb5ec",
-                    data:  [$scope.TCCityzoneNh4n[0], $scope.TCRivertownNh4n[0], $scope.LiuHeNh4n[0], $scope.GangChengNh4n[0], $scope.JiuLONGNh4n[0]]
-
-                }]
+            },
+            series: [{
+                name: '氨氮浓度',
+                color: "#7cb5ec",
+                // data:  [$scope.TCCityzoneNh4n[0], $scope.TCRivertownNh4n[0], $scope.LiuHeNh4n[0], $scope.GangChengNh4n[0], $scope.JiuLONGNh4n[0]]
+                data:  [200, 100, 150, 150, 250]
+            }]
         };
-      };
-      //总磷浓度
-        $scope.changePollutionType4=function(){
+    };
+    //总磷浓度
+    $scope.changePollutionType4=function(){
         $scope.discharge={
             options:{
-            chart: {
-                    type: 'column'
-                },
-            legend: {
-                    itemStyle:{
-                    fontWeight:'normal'
-                    }
+                chart: {
+                        type: 'column'
+                    },
+                legend: {
+                        itemStyle:{
+                        fontWeight:'normal'
+                        }
                 },
                 credits: {
                     enabled:false
@@ -474,8 +489,8 @@ app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qServic
                     }
                 },
                 subtitle: {
-                    // text: $scope.date[0],
-                    text: $scope.date1[5]+'9时',
+                    // text: $scope.date1[5]+'9时',
+                    text: '6月1日9时',
                     style: {
                         fontWeight: 'normal',
                         fontSize: 'larger',
@@ -511,30 +526,30 @@ app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qServic
                         pointPadding: 0.2,
                         borderWidth: 0
                     }
-                }},
-                series: [{
-                    name: '总磷浓度',
-                    color: "#7cb5ec",
-                    // data: [$scope.TCCityzoneP[0], $scope.TCRivertownP[0], $scope.LiuHeP[0], $scope.GangChengP[0], $scope.JiuLONGP[0]]
-                    data: [0.07,0.06,0.12,0.08,0.11]
-                }]
+                }
+            },
+            series: [{
+                name: '总磷浓度',
+                color: "#7cb5ec",
+                // data: [$scope.TCCityzoneP[0], $scope.TCRivertownP[0], $scope.LiuHeP[0], $scope.GangChengP[0], $scope.JiuLONGP[0]]
+                data: [0.07,0.06,0.12,0.08,0.11]
+            }]
         };
-      };
-
-        //高锰酸钾浓度
-        $scope.changePollutionType5=function(){
+    };
+    //高锰酸钾浓度
+    $scope.changePollutionType5=function(){
         $scope.discharge={
-                options:{
-                    chart: {
-                        type: 'column'
-                    },
-                    credits: {
-                        enabled:false
-                    },
-                    legend: {
-                    itemStyle:{
-                        fontWeight:'normal'
-                       }
+            options:{
+                chart: {
+                    type: 'column'
+                },
+                credits: {
+                    enabled:false
+                },
+                legend: {
+                itemStyle:{
+                    fontWeight:'normal'
+                   }
                 }
                 ,
                 title: {
@@ -544,8 +559,8 @@ app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qServic
                     }
                 },
                 subtitle: {
-                    // text: $scope.date[0],
-                    text: $scope.date1[5]+'9时',
+                    // text: $scope.date1[5]+'9时',
+                    text: '6月1日9时',
                     style: {
                         fontWeight: 'normal',
                         fontSize: 'larger',
@@ -581,36 +596,42 @@ app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qServic
                         borderWidth: 0
                     }
                 }
-                },
-                series: [{
+            },
+            series: [
+                {
                     name: '高锰酸钾浓度',
                     color: "#7cb5ec",
                     data: [3.05, 1.25, 1.01, 2.02, 2.12]
 
-                }]
-            };
-        }; 
-    
-    });
-     
-    
+                }
+            ]
+        };
+    }; 
+    //--------------------------盒子2结束--------------------------
 
-    // 牛哥代码
-    // app.controller('WaterEnvironmentBICtrl', function($scope, $http, $timeout) {
-    $scope.colorpicker = {
-        options: {
-            orientation: 'horizontal',
-            min: 0,
-            max: 100,
-            range: 'min'
-        }
-    };
+    //--------------------------盒子3-----------------------------
+    $http({method: 'GET', url: '/waterQuality.json'}).
+        success(function(data, status, headers, config) {
+          // console.log(data);
+        waterQualityCurrentSuccess(data);
+        initMap();
+        }).
+        error(function(data, status, headers, config) {
+          console.log(data);
+        });
+
+    $http({method: 'GET', url: '/wasteWater.json'}).
+        success(function(data, status, headers, config) {
+          // console.log(data);
+          wasteWaterCurrentSuccess(data);
+        }).
+        error(function(data, status, headers, config) {
+          console.log(data);
+        });
     /**
      * 变量区
      *
      */
-    //水质监测点和废水排放点关系图(暂时写死)
-    // var waterQualityPredict = [4004,4003,4034];
     var waterQualityPredict = [4003,4004,4005,4032,4033,4034,4044];
     var relationMonitorId = [{
         waterQuality: 4003,
@@ -634,8 +655,6 @@ app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qServic
         waterQuality: 4044,
         wasteWaterList: [4013]
     }];
-    //关系echart
-    var relationChart;
     //变色范围
     var waterQualityO2Scan = {
         scan: [3, 2],
@@ -743,7 +762,6 @@ app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qServic
             })(i);
         }
     };
-
     function addMarkerOne(markerInfoOne, imgSrc, type) {
         var p0 = markerInfoOne.point.split("|")[0];
         var p1 = markerInfoOne.point.split("|")[1];
@@ -868,7 +886,6 @@ app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qServic
         })(marker);
         marker.setMap(mapObj); // 在地图上添加点
     };
-
     function removeMarker() {
         mapObj.clearMap();
     };
@@ -1007,8 +1024,6 @@ app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qServic
         }
         return false;
     };
-
-
     //废水排放 http请求后处理过程（即http.success(function(data))中的function)
     var wasteWaterCurrentSuccess = function(data) {
         if (data.data.length == 0) return null;
@@ -1178,34 +1193,6 @@ app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qServic
         addMarker(waterQualityMarkerArr, '/images/environment/marker_sprite.png', 'waterQuality');
         mapObj.setFitView();
     };
-    $scope.btn_waterPredictionZone = function() {
-        $scope.tableStatus = {
-            allWaterQualityArr: false,
-            allWaterQualityFailArr: false,
-            allWaterQualityFailArrNav: true,
-            allWaterQualityElementsArr: true,
-            predictionZone: true
-        };
-        echartInit();
-        // $.isLoading();
-        // $timeout(function() {
-        //     $.isLoading('hide');
-            
-        //     window.scrollTo(0, 950);
-        // }, 1000);
-    };
-    //预测数据格式预处理
-    function transferWaterQuality(waterQualityAnalysisMarker) {
-        return {
-            dictid: waterQualityAnalysisMarker.dictid,
-            monitor: waterQualityAnalysisMarker.monitor,
-            index_o2: waterQualityAnalysisMarker.index_o2,
-            index_kmno4: waterQualityAnalysisMarker.index_kmno4,
-            index_nh4n: waterQualityAnalysisMarker.index_nh4n,
-            index_p: waterQualityAnalysisMarker.index_p,
-        }
-    };
-
     function transferWaterPollutions(wasteWaterAnalysisModelArr) {
         var result = [];
         for (var i = 0; i < wasteWaterAnalysisModelArr.length; i++) {
@@ -1219,640 +1206,6 @@ app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qServic
             });
         }
         return result;
-    };
-    //关系echarts图表初始化
-    function echartInit() {
-        relationChart = echarts.init(relation_chart);
-        var relationOption = {
-            title: {},
-            tooltip: {
-                trigger: 'item',
-                formatter: '{a} : {b}'
-            },
-            legend: {
-                x: 'left',
-                data: ['水质', '废水排放源头']
-            },
-            series: [{
-                type: 'force',
-                name: "水质影响关系",
-                categories: [{
-                    name: '水质',
-                    itemStyle: {
-                        normal: {
-                            color: '#66FF66'
-                        }
-                    }
-                }, {
-                    name: '废水排放源头',
-                    itemStyle: {
-                        normal: {
-                            color: '#fc8686'
-                        }
-                    }
-                }],
-                itemStyle: {
-                    normal: {
-                        label: {
-                            show: true,
-                            textStyle: {
-                                color: '#333'
-                            }
-                        },
-                        nodeStyle: {
-                            brushType: 'both',
-                            strokeColor: 'rgba(255,215,0,0.4)',
-                            lineWidth: 1
-                        }
-                    },
-                    emphasis: {
-                        label: {
-                            show: false
-                                // textStyle: null // 默认使用全局文本样式，详见TEXTSTYLE
-                        },
-                        nodeStyle: {
-                            // r: 30
-                        },
-                        linkStyle: {}
-                    }
-                },
-                useWorker: false,
-                minRadius: 15,
-                maxRadius: 25,
-                gravity: 1.1,
-                scaling: 1.1,
-                linkSymbol: 'arrow',
-                nodes: getNodes(),
-                links: getLinks()
-            }]
-        };
-        relationChart.setOption(relationOption);
-    };
-    //echarts node构造
-    function getNodes() {
-        var node = {
-            category: 0,
-            name: $scope.waterQualityAnalysisMarker.monitor,
-            value: 15,
-            label: $scope.waterQualityAnalysisMarker.monitor
-        };
-        var result = [];
-        result.push(node);
-        for (var i = 0; i < $scope.wasteWaterAnalysisMarker.length; i++) {
-            result.push({
-                category: 1,
-                name: $scope.wasteWaterAnalysisMarker[i].monitor,
-                value: 12,
-                label: $scope.wasteWaterAnalysisMarker[i].monitor
-            });
-        }
-        return result;
-    };
-    //echarts link构造
-    function getLinks() {
-        var result = [];
-        for (var i = 0; i < $scope.wasteWaterAnalysisMarker.length; i++) {
-            result.push({
-                source: $scope.wasteWaterAnalysisMarker[i].monitor,
-                target: $scope.waterQualityAnalysisMarker.monitor,
-                weight: 2,
-                name: '影响水质'
-            });
-        }
-        return result;
-    };
-    //废水预测模型列表的生成
-    function getWasteModelList(wasteWaterAnalysisMarker) {
-        var result = [];
-        for (var i = 0; i < wasteWaterAnalysisMarker.length; i++) {
-            result.push({
-                dictid: wasteWaterAnalysisMarker[i].dictid,
-                monitor: wasteWaterAnalysisMarker[i].monitor,
-                title: wasteWaterAnalysisMarker[i].monitor,
-                dischargeChange: 100,
-                dischargeValue: parseFloat(wasteWaterAnalysisMarker[i].index_discharge[1].toFixed(2)),
-                codChange: 100,
-                codValue: parseFloat(wasteWaterAnalysisMarker[i].index_cod.toFixed(2)),
-                nh4nChange: 100,
-                nh4nValue: parseFloat(wasteWaterAnalysisMarker[i].index_nh4n.toFixed(2)),
-                pChange: 100,
-                pValue: parseFloat(wasteWaterAnalysisMarker[i].index_p.toFixed(2))
-            });
-        }
-        return result;
-    };
-    $scope.button_reset = function() {
-        for (var i = 0; i < $scope.wasteModelList.length; i++) {
-            $scope.wasteModelList[i].dischargeChange = 100;
-            $scope.wasteModelList[i].codChange = 100;
-            $scope.wasteModelList[i].nh4nChange = 100;
-            $scope.wasteModelList[i].pChange = 100;
-        }
-    };
-    $scope.button_recommend = function() {
-        var dataTemp = {
-          waterQuality: transferWaterQuality($scope.waterQualityAnalysisMarker),
-          waterPollutions: transferWaterPollutions($scope.wasteModelList)
-        };
-    
-        $.isLoading();
-        $timeout(function() {
-          $.isLoading('hide');
-          for (var i = 0; i < $scope.wasteModelList.length; i++) {
-              $scope.wasteModelList[i].dischargeChange = parseInt(80 + Math.random()*15);
-              $scope.wasteModelList[i].codChange = parseInt(70 + Math.random()*30);
-              $scope.wasteModelList[i].nh4nChange = parseInt(50 + Math.random()*50);
-              $scope.wasteModelList[i].pChange = parseInt(90 + Math.random()*10);
-            }
-          
-
-         
-        }, 1000);
-    };
-    $scope.source_predict = function() {
-        $.isLoading();
-        $timeout(function() {
-            $.isLoading('hide');
-            var dataTemp = {
-                waterQuality: transferWaterQuality($scope.waterQualityAnalysisMarker),
-                waterPollutions: transferWaterPollutions($scope.wasteModelList)
-            };
-            $scope.predict_waterquality = {};
-
-
-   //          var promiseWaterBI = qService.tokenHttpPost(biFactory.waterBiPredict, null,dataTemp);
-            // promiseWaterBI.then(function(data) {
-            //   $scope.predict_waterquality = data.data;
-                $scope.predict_waterquality = predictProcess(dataTemp.waterQuality);
-                console.log($scope.predict_waterquality);
-                var chartWaterQualityo2 = new Highcharts.Chart({
-                    chart: {
-                        type: 'gauge',
-                        plotBackgroundColor: null,
-                        plotBackgroundImage: null,
-                        plotBorderWidth: 0,
-                        plotShadow: false,
-                        renderTo: 'chart_WaterQualityo2'
-                    },
-                    title: {
-                        text: '溶解氧',
-                        margin: 0,
-                        style: {
-                            fontSize: "14px"
-                        }
-                    },
-                    pane: {
-                        startAngle: -150,
-                        endAngle: 150,
-                        background: [{
-                            backgroundColor: {
-                                linearGradient: {
-                                    x1: 0,
-                                    y1: 0,
-                                    x2: 0,
-                                    y2: 1
-                                },
-                                stops: [
-                                    [0, '#FFF'],
-                                    [1, '#333']
-                                ]
-                            },
-                            borderWidth: 0,
-                            outerRadius: '109%'
-                        }, {
-                            backgroundColor: {
-                                linearGradient: {
-                                    x1: 0,
-                                    y1: 0,
-                                    x2: 0,
-                                    y2: 1
-                                },
-                                stops: [
-                                    [0, '#333'],
-                                    [1, '#FFF']
-                                ]
-                            },
-                            borderWidth: 1,
-                            outerRadius: '107%'
-                        }, {
-                            // default background
-                        }, {
-                            backgroundColor: '#DDD',
-                            borderWidth: 0,
-                            outerRadius: '105%',
-                            innerRadius: '103%'
-                        }]
-                    },
-                    // the value axis
-                    yAxis: {
-                        min: 0,
-                        max: 15,
-                        minorTickInterval: 'auto',
-                        minorTickWidth: 1,
-                        minorTickLength: 10,
-                        minorTickPosition: 'inside',
-                        minorTickColor: '#666',
-                        tickPixelInterval: 30,
-                        tickWidth: 2,
-                        tickPosition: 'inside',
-                        tickLength: 10,
-                        tickColor: '#666',
-                        labels: {
-                            step: 2,
-                            rotation: 'auto'
-                        },
-                        title: {
-                            text: ''
-                        },
-                        plotBands: [{
-                            from: waterQualityO2Scan.scan[0],
-                            to: 15,
-                            color: '#55BF3B' // green
-                        }, {
-                            from: waterQualityO2Scan.scan[1],
-                            to: waterQualityO2Scan.scan[0],
-                            color: '#DDDF0D' // yellow
-                        }, {
-                            from: 0,
-                            to: waterQualityO2Scan.scan[1],
-                            color: '#DF5353' // red
-                        }]
-                    },
-                    series: [{
-                        name: '溶解氧',
-                        data: [parseFloat($scope.predict_waterquality.index_o2)],
-                        tooltip: {
-                            valueSuffix: ' '
-                        }
-                    }],
-                    credits: {
-                        enabled: false
-                    }
-                });
-                var chartWaterQualitykmno4 = new Highcharts.Chart({
-                    chart: {
-                        type: 'gauge',
-                        plotBackgroundColor: null,
-                        plotBackgroundImage: null,
-                        plotBorderWidth: 0,
-                        plotShadow: false,
-                        renderTo: 'chart_WaterQualitykmno4'
-                    },
-                    title: {
-                        text: '高锰酸钾',
-                        margin: 0,
-                        style: {
-                            fontSize: "14px"
-                        }
-                    },
-                    pane: {
-                        startAngle: -150,
-                        endAngle: 150,
-                        background: [{
-                            backgroundColor: {
-                                linearGradient: {
-                                    x1: 0,
-                                    y1: 0,
-                                    x2: 0,
-                                    y2: 1
-                                },
-                                stops: [
-                                    [0, '#FFF'],
-                                    [1, '#333']
-                                ]
-                            },
-                            borderWidth: 0,
-                            outerRadius: '109%'
-                        }, {
-                            backgroundColor: {
-                                linearGradient: {
-                                    x1: 0,
-                                    y1: 0,
-                                    x2: 0,
-                                    y2: 1
-                                },
-                                stops: [
-                                    [0, '#333'],
-                                    [1, '#FFF']
-                                ]
-                            },
-                            borderWidth: 1,
-                            outerRadius: '107%'
-                        }, {
-                            // default background
-                        }, {
-                            backgroundColor: '#DDD',
-                            borderWidth: 0,
-                            outerRadius: '105%',
-                            innerRadius: '103%'
-                        }]
-                    },
-                    // the value axis
-                    yAxis: {
-                        min: 0,
-                        max: 30,
-                        minorTickInterval: 'auto',
-                        minorTickWidth: 1,
-                        minorTickLength: 10,
-                        minorTickPosition: 'inside',
-                        minorTickColor: '#666',
-                        tickPixelInterval: 30,
-                        tickWidth: 2,
-                        tickPosition: 'inside',
-                        tickLength: 10,
-                        tickColor: '#666',
-                        labels: {
-                            step: 2,
-                            rotation: 'auto'
-                        },
-                        title: {
-                            text: ''
-                        },
-                        plotBands: [{
-                            from: 0,
-                            to: waterQualityKmno4Scan.scan[0],
-                            color: '#55BF3B' // green
-                        }, {
-                            from: waterQualityKmno4Scan.scan[0],
-                            to: waterQualityKmno4Scan.scan[1],
-                            color: '#DDDF0D' // yellow
-                        }, {
-                            from: waterQualityKmno4Scan.scan[1],
-                            to: 30,
-                            color: '#DF5353' // red
-                        }]
-                    },
-                    series: [{
-                        name: '高锰酸钾',
-                        data: [parseFloat($scope.predict_waterquality.index_kmno4)],
-                        tooltip: {
-                            valueSuffix: 'mg/L'
-                        }
-                    }],
-                    credits: {
-                        enabled: false
-                    }
-                });
-                var chartWaterQualitynh4n = new Highcharts.Chart({
-                    chart: {
-                        type: 'gauge',
-                        plotBackgroundColor: null,
-                        plotBackgroundImage: null,
-                        plotBorderWidth: 0,
-                        plotShadow: false,
-                        renderTo: 'chart_WaterQualitynh4n'
-                    },
-                    title: {
-                        text: '氨氮',
-                        margin: 0,
-                        style: {
-                            fontSize: "14px"
-                        }
-                    },
-                    pane: {
-                        startAngle: -150,
-                        endAngle: 150,
-                        background: [{
-                            backgroundColor: {
-                                linearGradient: {
-                                    x1: 0,
-                                    y1: 0,
-                                    x2: 0,
-                                    y2: 1
-                                },
-                                stops: [
-                                    [0, '#FFF'],
-                                    [1, '#333']
-                                ]
-                            },
-                            borderWidth: 0,
-                            outerRadius: '109%'
-                        }, {
-                            backgroundColor: {
-                                linearGradient: {
-                                    x1: 0,
-                                    y1: 0,
-                                    x2: 0,
-                                    y2: 1
-                                },
-                                stops: [
-                                    [0, '#333'],
-                                    [1, '#FFF']
-                                ]
-                            },
-                            borderWidth: 1,
-                            outerRadius: '107%'
-                        }, {
-                            // default background
-                        }, {
-                            backgroundColor: '#DDD',
-                            borderWidth: 0,
-                            outerRadius: '105%',
-                            innerRadius: '103%'
-                        }]
-                    },
-                    // the value axis
-                    yAxis: {
-                        min: 0,
-                        max: 5,
-                        minorTickInterval: 'auto',
-                        minorTickWidth: 1,
-                        minorTickLength: 10,
-                        minorTickPosition: 'inside',
-                        minorTickColor: '#666',
-                        tickPixelInterval: 30,
-                        tickWidth: 2,
-                        tickPosition: 'inside',
-                        tickLength: 10,
-                        tickColor: '#666',
-                        labels: {
-                            step: 2,
-                            rotation: 'auto'
-                        },
-                        title: {
-                            text: ''
-                        },
-                        plotBands: [{
-                            from: 0,
-                            to: waterQualityNh4nScan.scan[0],
-                            color: '#55BF3B' // green
-                        }, {
-                            from: waterQualityNh4nScan.scan[0],
-                            to: waterQualityNh4nScan.scan[1],
-                            color: '#DDDF0D' // yellow
-                        }, {
-                            from: waterQualityNh4nScan.scan[1],
-                            to: 5.0,
-                            color: '#DF5353' // red
-                        }]
-                    },
-                    series: [{
-                        name: '氨氮',
-                        data: [parseFloat($scope.predict_waterquality.index_nh4n)],
-                        tooltip: {
-                            valueSuffix: 'mg/L'
-                        }
-                    }],
-                    credits: {
-                        enabled: false
-                    }
-                });
-                var chartWaterQualityp = new Highcharts.Chart({
-                    chart: {
-                        type: 'gauge',
-                        plotBackgroundColor: null,
-                        plotBackgroundImage: null,
-                        plotBorderWidth: 0,
-                        plotShadow: false,
-                        renderTo: 'chart_WaterQualityp'
-                    },
-                    title: {
-                        text: '总磷',
-                        margin: 0,
-                        style: {
-                            fontSize: "14px"
-                        }
-                    },
-                    pane: {
-                        startAngle: -150,
-                        endAngle: 150,
-                        background: [{
-                            backgroundColor: {
-                                linearGradient: {
-                                    x1: 0,
-                                    y1: 0,
-                                    x2: 0,
-                                    y2: 1
-                                },
-                                stops: [
-                                    [0, '#FFF'],
-                                    [1, '#333']
-                                ]
-                            },
-                            borderWidth: 0,
-                            outerRadius: '109%'
-                        }, {
-                            backgroundColor: {
-                                linearGradient: {
-                                    x1: 0,
-                                    y1: 0,
-                                    x2: 0,
-                                    y2: 1
-                                },
-                                stops: [
-                                    [0, '#333'],
-                                    [1, '#FFF']
-                                ]
-                            },
-                            borderWidth: 1,
-                            outerRadius: '107%'
-                        }, {
-                            // default background
-                        }, {
-                            backgroundColor: '#DDD',
-                            borderWidth: 0,
-                            outerRadius: '105%',
-                            innerRadius: '103%'
-                        }]
-                    },
-                    // the value axis
-                    yAxis: {
-                        min: 0,
-                        max: 0.6,
-                        minorTickInterval: 'auto',
-                        minorTickWidth: 1,
-                        minorTickLength: 10,
-                        minorTickPosition: 'inside',
-                        minorTickColor: '#666',
-                        tickPixelInterval: 30,
-                        tickWidth: 2,
-                        tickPosition: 'inside',
-                        tickLength: 10,
-                        tickColor: '#666',
-                        labels: {
-                            step: 2,
-                            rotation: 'auto'
-                        },
-                        title: {
-                            text: ''
-                        },
-                        plotBands: [{
-                            from: 0,
-                            to: waterQualityPScan.scan[0],
-                            color: '#55BF3B' // green
-                        }, {
-                            from: waterQualityPScan.scan[0],
-                            to: waterQualityPScan.scan[1],
-                            color: '#DDDF0D' // yellow
-                        }, {
-                            from: waterQualityPScan.scan[1],
-                            to: 0.6,
-                            color: '#DF5353' // red
-                        }]
-                    },
-                    series: [{
-                        name: '总磷',
-                        data: [parseFloat($scope.predict_waterquality.index_p)],
-                        tooltip: {
-                            valueSuffix: 'mg/L'
-                        }
-                    }],
-                    credits: {
-                        enabled: false
-                    }
-                });
-                $('#Modal_Predict').modal();
-            // });
-
-
-            // $http.post("/waterEnvironmentAnalysis/predict", dataTemp).success(function(data) {
-               
-            // });
-        }, 1000);
-    };
-
-    var waterQualityO2Scan = {
-        scan: [3, 2],
-        type: 'desc'
-    };
-    $scope.waterQualityO2Scan = waterQualityO2Scan;
-    var waterQualityKmno4Scan = {
-        scan: [10, 15],
-        type: 'asc'
-    };
-    $scope.waterQualityKmno4Scan = waterQualityKmno4Scan;
-    var waterQualityNh4nScan = {
-        scan: [1.5, 2.0],
-        type: 'asc'
-    };
-    $scope.waterQualityNh4nScan = waterQualityNh4nScan;
-    var waterQualityPScan = {
-        scan: [0.3, 0.4],
-        type: 'asc'
-    };
-    $scope.waterQualityPScan = waterQualityPScan;
-    var waterQualityTnScan = {
-        scan: [1.5, 2.0],
-        type: 'asc'
-    };
-
-    var predictProcess = function(data){
-        var data = {
-            dictid: data.dictid,
-            monitor: data.monitor,
-            index_o2: (100/$scope.wasteModelList[0].dischargeChange*data.index_o2*2).toFixed(2),
-            index_kmno4: ($scope.wasteModelList[0].dischargeChange/100*data.index_kmno4*0.6).toFixed(2),
-            index_nh4n: ($scope.wasteModelList[0].dischargeChange/100*data.index_nh4n*0.4).toFixed(2),
-            index_p: ($scope.wasteModelList[0].dischargeChange/100*data.index_p*0.6).toFixed(2),
-        }
-        return data;
-    };
-    //button状态改变标签
-    $scope.getButtonStatus = function(status) {
-        if (status == 'accept') return "btn-success";
-        else if (status == 'caution') return "btn-warning";
-        else if (status == 'take_action') return "btn-danger"
-        else if (status == 'invalid') return "";
     };
     //获取颜色
     function getStatusColor(status) {
@@ -2005,72 +1358,5 @@ app.controller('WaterEnvironmentBICtrl', ['$scope', '$timeout','$http', 'qServic
             return '无数据';
         }
     };
-    //比较两个值相等
-    $scope.equals = function(val1, val2) {
-        if (val1 == val2) return true;
-        else return false;
-    };
-
-
-    var getSubstractDate = function(date, hours) {
-        return moment(date).subtract(hours, 'hours').toDate().getTime();
-    };
-
-    $scope.feed_calculate = function(){
-        var result = 0;
-        for(var i=0;i<$scope.wasteModelList.length;i++){
-            result = result + 2.29 * ($scope.wasteModelList[i].dischargeChange*$scope.wasteModelList[i].dischargeValue/100)
-        }
-        $scope.feed_sum = result.toFixed(0);
-        return $scope.feed_sum;
-    };
-
-        var waterQualityLastDate = {
-            year: 2015,
-            month: 5,
-            day: 3,
-            hour: 9
-        };
-
-        $scope.waterQualityCurrentDateTime = waterQualityLastDate;
-
-        var promise3 = qService.tokenHttpGet(rawFactory.query,{tableName:'waterQualityData'});
-        promise3.then(function(rc4,status,headers,config) {
-
- 
-
-    });
-        $http({method: 'GET', url: '/waterQuality.json'}).
-            success(function(data, status, headers, config) {
-              // console.log(data);
-            waterQualityCurrentSuccess(data);
-            initMap();
-            }).
-            error(function(data, status, headers, config) {
-              console.log(data);
-            });
-        
-
-
-        var waterQualityLastDate = {
-            year: 2015,
-            month: 5,
-            day: 3,
-            hour: 9
-        };
-        $scope.wasteWaterCurrentDateTime = waterQualityLastDate;
-        $http({method: 'GET', url: '/wasteWater.json'}).
-            success(function(data, status, headers, config) {
-              // console.log(data);
-              wasteWaterCurrentSuccess(data);
-            }).
-            error(function(data, status, headers, config) {
-              console.log(data);
-            });
-        // wasteWaterCurrentSuccess(wasteWaterData);
-
-
-    // });
-    
-
+    //--------------------------盒子3结束--------------------------
 }]);
