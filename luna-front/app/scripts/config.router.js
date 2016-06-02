@@ -191,11 +191,11 @@ angular.module('luna')
             }
           })
           .state('app.emenu.water', {
-          url: '^/app/emenu/water',
-          templateUrl: 'tpl/app/environment/water.html',
-          controller: 'WaterCtrl',
-          resolve: {
-          controller: ['$ocLazyLoad', function($ocLazyLoad) {
+            url: '^/app/emenu/water',
+            templateUrl: 'tpl/app/environment/water.html',
+            controller: 'WaterCtrl',
+            resolve: {
+            controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
                     'scripts/controllers/app/environment/water.js',
                 ]);
