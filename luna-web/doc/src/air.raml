@@ -1,0 +1,399 @@
+description: |
+  代码相关接口
+
+# air_quality
+/air_quality:
+  post:
+    is: [ secured ]
+    description: 添加空气质量状况
+    queryParameters:
+      data:
+        description: "以json形式传输用户信息，用于创建用户"
+        example: |
+          {
+            "create_time": "2016-1-27 08:00:00",
+            "modify_time": "2016-1-27 10:00:00",
+            "airQualityLevel": 3,
+            "aqi": 106,
+            "co": 1,
+            "date": "2016-1-28 10:00:00",
+            "day": 28,
+            "firstElement": "PM2.5",
+            "hour": 10,
+            "month": 1,
+            "no2": 56,
+            "o3": 21,
+            "pm10": 144,
+            "pm25": 112,
+            "so2": 100,
+            "year": 2016,
+            "air_monitor": 4001
+          }
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "errorCode": "NO_ERROR",
+                "data": {
+                    "id": "1",
+                    "create_time": "2016-1-27 08:00:00",
+                    "modify_time": "2016-1-27 10:00:00",
+                    "airQualityLevel": 3,
+                    "aqi": 106,
+                    "co": 1,
+                    "date": "2016-1-28 10:00:00",
+                    "day": 28,
+                    "firstElement": "PM2.5",
+                    "hour": 10,
+                    "month": 1,
+                    "no2": 56,
+                    "o3": 21,
+                    "pm10": 144,
+                    "pm25": 112,
+                    "so2": 100,
+                    "year": 2016,
+                    "air_monitor": 4001
+                },
+                "numPerPage": 0,
+                "curPageNum": 0,
+                "totalItemNum": 0,
+                "totalPageNum": 0
+              }
+      400:
+        body:
+          application/json:
+            schema: |
+              {
+                "errorCode": "WRONG_PARAM",
+                "data": "Parameters don't meet restrictions.",
+                "numPerPage": 0,
+                "curPageNum": 0,
+                "totalItemNum": 0,
+                "totalPageNum": 0
+              }
+      507:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": 507,
+                "message": "添加记录失败，请联系管理员"
+              }
+      500:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": 500,
+                "message": "对不起，你没有该权限，请与系统管理员联系"
+              }
+/air_quality/{id}:
+  is: [ secured ]
+  get:
+    description: |
+      通过id获取一个air_quality模块
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "code":"200",
+                "message":"成功",
+                "data":{
+                    "id": "1",
+                    "create_time": "2016-1-27 08:00:00",
+                    "modify_time": "2016-1-27 10:00:00",
+                    "airQualityLevel": 3,
+                    "aqi": 106,
+                    "co": 1,
+                    "date": "2016-1-28 10:00:00",
+                    "day": 28,
+                    "firstElement": "PM2.5",
+                    "hour": 10,
+                    "month": 1,
+                    "no2": 56,
+                    "o3": 21,
+                    "pm10": 144,
+                    "pm25": 112,
+                    "so2": 100,
+                    "year": 2016,
+                    "air_monitor": 4001
+                }
+              }
+      404:
+          body:
+            application/json:
+              schema: |
+                {
+                  "code": 404,
+                  "message": "找不到对象"
+                }
+      500:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": 500,
+                "message": "对不起，你没有该权限，请与系统管理员联系"
+              }
+  put:
+    description: |
+      更新一个air_quality模块
+    body:
+      application/json:
+        example: |
+          {
+            "create_time": "2016-2-27 08:00:00",
+            "modify_time": "2016-2-27 10:00:00",
+            "airQualityLevel": 4
+          }
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                  "id": "1",
+                  "create_time": "2016-2-27 08:00:00",
+                  "modify_time": "2016-2-27 10:00:00",
+                  "airQualityLevel": 4,
+                  "aqi": 106,
+                  "co": 1,
+                  "date": "2016-1-28 10:00:00",
+                  "day": 28,
+                  "firstElement": "PM2.5",
+                  "hour": 10,
+                  "month": 1,
+                  "no2": 56,
+                  "o3": 21,
+                  "pm10": 144,
+                  "pm25": 112,
+                  "so2": 100,
+                  "year": 2016,
+                  "air_monitor": 4001
+              }
+  delete:
+    description: |
+      删除一个air_quality模块
+    responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "errorCode": "NO_ERROR",
+                  "data": null,
+                  "numPerPage": 0,
+                  "curPageNum": 0,
+                  "totalItemNum": 0,
+                  "totalPageNum": 0
+                }
+        404:
+          body:
+            application/json:
+              schema: |
+                {
+                  "code": 404,
+                  "message": "找不到对象"
+                }
+        500:
+          body:
+            application/json:
+              schema: |
+                {
+                  "code": 500,
+                  "message": "对不起，你没有该权限，请与系统管理员联系"
+                }
+
+# air_pollution
+/air_pollution:
+  post:
+    is: [ secured ]
+    description: 添加工业废气污染
+    queryParameters:
+      data:
+        description: "以json形式传输用户信息，用于创建用户"
+        example: |
+          {
+            "create_time": "2016-1-27 08:00:00",
+            "modify_time": "2016-1-27 10:00:00",
+            "date": 2016-1-28 08:00:00,
+            "day": 28,
+            "discharge": 72547909632,
+            "month": 1,
+            "no": 28.15,
+            "smoke": "PM2.5",
+            "so2": 29.31,
+            "year": 2016,
+            "air_pollution_source": 4022
+          }
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "errorCode": "NO_ERROR",
+                "data": {
+                    "id": "1",
+                    "create_time": "2016-1-27 08:00:00",
+                    "modify_time": "2016-1-27 10:00:00",
+                    "date": 2016-1-28 08:00:00,
+                    "day": 28,
+                    "discharge": 72547909632,
+                    "month": 1,
+                    "no": 28.15,
+                    "smoke": "PM2.5",
+                    "so2": 29.31,
+                    "year": 2016,
+                    "air_pollution_source": 4022
+                },
+                "numPerPage": 0,
+                "curPageNum": 0,
+                "totalItemNum": 0,
+                "totalPageNum": 0
+              }
+      400:
+        body:
+          application/json:
+            schema: |
+              {
+                "errorCode": "WRONG_PARAM",
+                "data": "Parameters don't meet restrictions.",
+                "numPerPage": 0,
+                "curPageNum": 0,
+                "totalItemNum": 0,
+                "totalPageNum": 0
+              }
+      507:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": 507,
+                "message": "添加记录失败，请联系管理员"
+              }
+      500:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": 500,
+                "message": "对不起，你没有该权限，请与系统管理员联系"
+              }
+/air_pollution/{id}:
+  is: [ secured ]
+  get:
+    description: |
+      通过id获取一个air_pollution模块
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "code":"200",
+                "message":"成功",
+                "data":{
+                    "id": "1",
+                    "create_time": "2016-1-27 08:00:00",
+                    "modify_time": "2016-1-27 10:00:00",
+                    "date": 2016-1-28 08:00:00,
+                    "day": 28,
+                    "discharge": 72547909632,
+                    "month": 1,
+                    "no": 28.15,
+                    "smoke": "PM2.5",
+                    "so2": 29.31,
+                    "year": 2016,
+                    "air_pollution_source": 4022
+                }
+              }
+      404:
+          body:
+            application/json:
+              schema: |
+                {
+                  "code": 404,
+                  "message": "找不到对象"
+                }
+      500:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": 500,
+                "message": "对不起，你没有该权限，请与系统管理员联系"
+              }
+  put:
+    description: |
+      更新一个air_pollution模块
+    body:
+      application/json:
+        example: |
+          {
+            "create_time": "2016-2-27 08:00:00",
+            "modify_time": "2016-2-27 10:00:00",
+            "airQualityLevel": 4
+          }
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                  "id": "1",
+                  "create_time": "2016-2-27 08:00:00",
+                  "modify_time": "2016-2-27 10:00:00",
+                  "airQualityLevel": 4,
+                  "aqi": 106,
+                  "co": 1,
+                  "date": "2016-1-28 10:00:00",
+                  "day": 28,
+                  "firstElement": "PM2.5",
+                  "hour": 10,
+                  "month": 1,
+                  "no2": 56,
+                  "o3": 21,
+                  "pm10": 144,
+                  "pm25": 112,
+                  "so2": 100,
+                  "year": 2016,
+                  "air_monitor": 4001
+              }
+  delete:
+    description: |
+      删除一个air_pollution模块
+    responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "errorCode": "NO_ERROR",
+                  "data": null,
+                  "numPerPage": 0,
+                  "curPageNum": 0,
+                  "totalItemNum": 0,
+                  "totalPageNum": 0
+                }
+        404:
+          body:
+            application/json:
+              schema: |
+                {
+                  "code": 404,
+                  "message": "找不到对象"
+                }
+        500:
+          body:
+            application/json:
+              schema: |
+                {
+                  "code": 500,
+                  "message": "对不起，你没有该权限，请与系统管理员联系"
+                }
+

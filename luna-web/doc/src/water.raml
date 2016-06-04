@@ -1,0 +1,377 @@
+description: |
+  代码相关接口
+# water_quality
+/water_quality:
+  post:
+    is: [ secured ]
+    description: 添加水质状况
+    queryParameters:
+      data:
+        description: "以json形式传输用户信息，用于创建用户"
+        example: |
+          {
+            "create_time": "2016-1-27 08:00:00",
+            "modify_time": "2016-1-27 10:00:00",
+            "date": "2016-1-28 16:00:00",
+            "hour": 16,
+            "day": 28,
+            "month": 1,
+            "year": 2016,
+            "kmno4": "1.65",
+            "nh4n": 0.12,
+            "o2": 8.8,
+            "p": 0.03,
+            "tn": 1.17,
+            "water_monitor": 4005
+          }
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "errorCode": "NO_ERROR",
+                "data": {
+                    "id": 1,
+                    "create_time": "2016-1-27 08:00:00",
+                    "modify_time": "2016-1-27 10:00:00",
+                    "date": "2016-1-28 16:00:00",
+                    "hour": 16,
+                    "day": 28,
+                    "month": 1,
+                    "year": 2016,
+                    "kmno4": "1.65",
+                    "nh4n": 0.12,
+                    "o2": 8.8,
+                    "p": 0.03,
+                    "tn": 1.17,
+                    "water_monitor": 4005
+                },
+                "numPerPage": 0,
+                "curPageNum": 0,
+                "totalItemNum": 0,
+                "totalPageNum": 0
+              }
+      400:
+        body:
+          application/json:
+            schema: |
+              {
+                "errorCode": "WRONG_PARAM",
+                "data": "Parameters don't meet restrictions.",
+                "numPerPage": 0,
+                "curPageNum": 0,
+                "totalItemNum": 0,
+                "totalPageNum": 0
+              }
+      507:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": 507,
+                "message": "添加记录失败，请联系管理员"
+              }
+      500:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": 500,
+                "message": "对不起，你没有该权限，请与系统管理员联系"
+              }
+/water_quality/{id}:
+  is: [ secured ]
+  get:
+    description: |
+      通过id获取一个water_quality模块
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "code":"200",
+                "message":"成功",
+                "data":{
+                    "id": 1,
+                    "create_time": "2016-1-27 08:00:00",
+                    "modify_time": "2016-1-27 10:00:00",
+                    "date": "2016-1-28 16:00:00",
+                    "hour": 16,
+                    "day": 28,
+                    "month": 1,
+                    "year": 2016,
+                    "kmno4": "1.65",
+                    "nh4n": 0.12,
+                    "o2": 8.8,
+                    "p": 0.03,
+                    "tn": 1.17,
+                    "water_monitor": 4005
+                }
+              }
+      404:
+          body:
+            application/json:
+              schema: |
+                {
+                  "code": 404,
+                  "message": "找不到对象"
+                }
+      500:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": 500,
+                "message": "对不起，你没有该权限，请与系统管理员联系"
+              }
+  put:
+    description: |
+      更新一个water_quality模块
+    body:
+      application/json:
+        example: |
+          {
+            "create_time": "2016-2-27 08:00:00",
+            "modify_time": "2016-2-27 10:00:00",
+            "date": "2016-2-28"
+          }
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                  "id": 1,
+                  "create_time": "2016-2-27 08:00:00",
+                  "modify_time": "2016-2-27 10:00:00",
+                  "date": "2016-2-28 16:00:00",
+                  "hour": 16,
+                  "day": 28,
+                  "month": 1,
+                  "year": 2016,
+                  "kmno4": "1.65",
+                  "nh4n": 0.12,
+                  "o2": 8.8,
+                  "p": 0.03,
+                  "tn": 1.17,
+                  "water_monitor": 4005
+              }
+  delete:
+    description: |
+      删除一个water_quality模块
+    responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "errorCode": "NO_ERROR",
+                  "data": null,
+                  "numPerPage": 0,
+                  "curPageNum": 0,
+                  "totalItemNum": 0,
+                  "totalPageNum": 0
+                }
+        404:
+          body:
+            application/json:
+              schema: |
+                {
+                  "code": 404,
+                  "message": "找不到对象"
+                }
+        500:
+          body:
+            application/json:
+              schema: |
+                {
+                  "code": 500,
+                  "message": "对不起，你没有该权限，请与系统管理员联系"
+                }
+
+
+/water_pollution:
+  post:
+    is: [ secured ]
+    description: 添加水质污染
+    queryParameters:
+      data:
+        description: "以json形式传输用户信息，用于创建用户"
+        example: |
+          {
+            "create_time": "2016-1-27 08:00:00",
+            "modify_time": "2016-1-27 10:00:00",
+            "cod": 95747,
+            "date": "2016-1-28 16:00:00",
+            "day": 28,
+            "discharge": 41316379,
+            "month": 1,
+            "year": 2016,
+            "nh4n": 0.65,
+            "p": 0.03,
+            "water_pollution_source": 4012
+          }
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "errorCode": "NO_ERROR",
+                "data": {
+                    "id": 1,
+                    "create_time": "2016-1-27 08:00:00",
+                    "modify_time": "2016-1-27 10:00:00",
+                    "cod": 95747,
+                    "date": "2016-1-28 16:00:00",
+                    "day": 28,
+                    "discharge": 41316379,
+                    "month": 1,
+                    "year": 2016,
+                    "nh4n": 0.65,
+                    "p": 0.03,
+                    "water_pollution_source": 4012
+                },
+                "numPerPage": 0,
+                "curPageNum": 0,
+                "totalItemNum": 0,
+                "totalPageNum": 0
+              }
+      400:
+        body:
+          application/json:
+            schema: |
+              {
+                "errorCode": "WRONG_PARAM",
+                "data": "Parameters don't meet restrictions.",
+                "numPerPage": 0,
+                "curPageNum": 0,
+                "totalItemNum": 0,
+                "totalPageNum": 0
+              }
+      507:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": 507,
+                "message": "添加记录失败，请联系管理员"
+              }
+      500:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": 500,
+                "message": "对不起，你没有该权限，请与系统管理员联系"
+              }
+/water_pollution/{id}:
+  is: [ secured ]
+  get:
+    description: |
+      通过id获取一个water_pollution模块
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "code":"200",
+                "message":"成功",
+                "data":{
+                    "id": 1,
+                    "create_time": "2016-1-27 08:00:00",
+                    "modify_time": "2016-1-27 10:00:00",
+                    "cod": 95747,
+                    "date": "2016-1-28 16:00:00",
+                    "day": 28,
+                    "discharge": 41316379,
+                    "month": 1,
+                    "year": 2016,
+                    "nh4n": 0.65,
+                    "p": 0.03,
+                    "water_pollution_source": 4012
+                }
+              }
+      404:
+          body:
+            application/json:
+              schema: |
+                {
+                  "code": 404,
+                  "message": "找不到对象"
+                }
+      500:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": 500,
+                "message": "对不起，你没有该权限，请与系统管理员联系"
+              }
+  put:
+    description: |
+      更新一个water_pollution模块
+    body:
+      application/json:
+        example: |
+          {
+            "create_time": "2016-2-27 08:00:00",
+            "modify_time": "2016-2-27 10:00:00",
+            "cod": 90000
+          }
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                  "id": 1,
+                  "create_time": "2016-2-27 08:00:00",
+                  "modify_time": "2016-2-27 10:00:00",
+                  "cod": 90000,
+                  "date": "2016-2-28 16:00:00",
+                  "day": 28,
+                  "discharge": 41316379,
+                  "month": 2,
+                  "year": 2016,
+                  "nh4n": 0.65,
+                  "p": 0.03,
+                  "water_pollution_source": 4012
+              }
+  delete:
+    description: |
+      删除一个water_pollution模块
+    responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "errorCode": "NO_ERROR",
+                  "data": null,
+                  "numPerPage": 0,
+                  "curPageNum": 0,
+                  "totalItemNum": 0,
+                  "totalPageNum": 0
+                }
+        404:
+          body:
+            application/json:
+              schema: |
+                {
+                  "code": 404,
+                  "message": "找不到对象"
+                }
+        500:
+          body:
+            application/json:
+              schema: |
+                {
+                  "code": 500,
+                  "message": "对不起，你没有该权限，请与系统管理员联系"
+                }
+
+
