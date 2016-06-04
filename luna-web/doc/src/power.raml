@@ -1,0 +1,112 @@
+/total:
+  get:
+    is: [secured]
+    description: |
+      获取工业用电量与GDP增长率关联分析数据
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": "200",
+                "message": "操作成功",
+                "data": {
+
+                },
+                "success": true
+              }
+/industry/total/{year}:
+  get:
+    is: [secured]
+    description: |
+      获取行业用电量与行业产值增长率关联分析数据 对比分析按年份
+    queryParameters:
+      year:
+        type: string
+        description: |
+          数据年份
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": "200",
+                "message": "操作成功",
+                "data": {
+                  
+                },
+                "success": true
+              }
+/industry/{industryId}/{year}:
+  get:
+    is: [secured]
+    description: |
+      获取行业用电量与行业产值增长率关联分析数据 按行业按年度
+    queryParameters:
+      industryId:
+        type: string
+        description: |
+          行业id
+      year:
+        type: string
+        description: |
+          数据年份
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": "200",
+                "message": "操作成功",
+                "data": {
+                  
+                },
+                "success": true
+              }
+/enterprise/average:
+  get:
+    is: [secured]
+    description: |
+      获取企业用电量与企业产值增长率关联分析数据 平均值
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": "200",
+                "message": "操作成功",
+                "data": {
+                  
+                },
+                "success": true
+              }
+/enterprise/{enterpriseId}/{year}:
+  get:
+    is: [secured]
+    description: |
+      获取企业用电量与企业产值增长率关联分析数据 按企业按年份
+      industryId:
+        type: string
+        description: |
+          企业id
+      year:
+        type: string
+        description: |
+          数据年份
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": "200",
+                "message": "操作成功",
+                "data": {
+                  
+                },
+                "success": true
+              }
