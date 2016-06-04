@@ -1,0 +1,81 @@
+/revenue_year:
+  get:
+    is: [ secured ]
+    description: |
+      获取未来三年税收数据以及过去几年税收历史数据
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+               "code":"200",
+               "data":[{
+                 "year":"2016",
+                 "revenue":"1024亿元",
+                 "forecastRevenue":"978亿元",
+                 "deviation":"2.3%"
+               },
+               {
+                 "year":"2013",
+                 "revenue":"968亿元",
+                 "forecastRevenue":"978亿元",
+                 "deviation":"2.3%"
+               },
+               {
+                 "year":"2012",
+                 "revenue":"968亿元",
+                 "forecastRevenue":"978亿元",
+                 "deviation":"2.3%"
+               }],
+               "success":true
+              }
+      402:
+        body:
+          application/json:
+            schema: |
+              {
+               "code": "402",
+               "message": "无法提供所所请求数据",
+               "success": false
+              }
+
+
+/revenue_year/{year}:
+  is: [ secured ]
+  get:
+    description: |
+      通过year参数去获取某年的具体数据
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+                "code":"200",
+                "message":"成功",
+                "data":[{
+                "month":"11月",
+                "realRevenue":"234亿元",
+                "forecastRevenue":"243亿元",
+                "devication":"2.5%"
+              },
+              {
+                "month":"12月",
+                "realRevenue":"234亿元",
+                "forecastRevenue":"243亿元",
+                "devication":"2.5%"
+              }],
+              "success":true
+              }
+      402:
+        body:
+         application/json:
+           schema: |
+             {
+              "code": "402",
+              "message": "无法提供所所请求数据",
+              "success": false
+             }
+
+
