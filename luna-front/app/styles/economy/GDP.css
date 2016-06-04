@@ -3,3 +3,27 @@
     }
   .ui-slider-range { background: #729fcf; }
   .ui-slider-handle { border-color: #729fcf; }
+.yearGdpIntro{
+  background-color:rgba(55,148,188,1);
+  width:99%;
+  height: auto;
+  margin:auto;
+  border-radius: 1em;
+}
+.yearGdpIntroI{
+  float: left;
+  padding: 1.5em;
+  color:white;
+}
+.yearGdpIntroText{
+  padding-top:0.7em;
+  color:white;
+}
+dd{
+  text-shadow: 1px 2px 3px #000000;
+  font-size: 2em;
+  text-align: center;
+}
+dl{
+  margin-bottom: -20px;
+}
