@@ -1,0 +1,124 @@
+
+# 年度GDP预测分析
+
+/gdp_year:
+  get:
+    is: [ secured ]
+    description: |
+      获取往年GDP数据以及未来三年GDP的经济预测值
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+               "code":"200",
+               "data":[{
+                 "year":"2016",
+                 "GDP":"1024亿元",
+                 "forecastGDP":"978亿元",
+                 "deviation":"2.3%"
+               },
+               {
+                 "year":"2012",
+                 "realGDP":"968亿元",
+                 "forecastGDP":"978亿元",
+                 "deviation":"2.3%"
+               },
+               {
+                 "year":"2012",
+                 "realGDP":"968亿元",
+                 "forecastGDP":"978亿元",
+                 "deviation":"2.3%"
+               }],
+               "success":true
+              }
+      402:
+        body:
+          application/json:
+            schema: |
+              {
+               "code": "402",
+               "message": "无法提供所所请求数据",
+               "success": false
+              }
+
+
+/gdp_year/{year}:
+  is: [ secured ]
+  get:
+    description: |
+      通过year参数去获取某年的具体数据
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+                "code":"200",
+                "message":"成功",
+                "data":[{
+                "month":"11月",
+                "realGDP":"234亿元",
+                "forecastGDP":"243亿元",
+                "devication":"2.5%"
+              },
+              {
+                "month":"12月",
+                "realGDP":"234亿元",
+                "forecastGDP":"243亿元",
+                "devication":"2.5%"
+              }],
+              "success":true
+              }
+      402:
+        body:
+         application/json:
+           schema: |
+             {
+              "code": "402",
+              "message": "无法提供所所请求数据",
+              "success": false
+             }
+
+
+/gdp_year/industry/{year}:
+  is: [ secured ]
+  get:
+    description: |
+      通过year参数去获取某年三大产业的具体数值
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+                "code":"200",
+                "message":"成功",
+                "data":[{
+                "industry":"第一产业",
+                "season":"第一季度",
+                "realGDP":"234亿元",
+                "forecastGDP":"243亿元",
+                "devication":"2.5%"
+              },
+              {
+                "industry":"第二产业",
+                "season":"第一季度",
+                "realGDP":"234亿元",
+                "forecastGDP":"243亿元",
+                "devication":"2.5%"
+              }],
+              "success":true
+              }
+      402:
+        body:
+         application/json:
+           schema: |
+             {
+              "code": "402",
+              "message": "无法提供所所请求数据",
+              "success": false
+             }
+  
+
