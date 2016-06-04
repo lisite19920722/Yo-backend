@@ -1,7 +1,7 @@
 #%RAML 0.8
-title: Gambition
+title: 太仓市智慧城市运营中心IOC-BI系统
 baseUri: http://baserurl:8080/api/
-version: v0.0.2
+version: v0.1.2
 protocols: [ HTTP, HTTPS ]
 
 traits:
@@ -49,6 +49,8 @@ traits:
           required: true
 
 /account: !include src/account.raml
+/environment/air: !include src/air.raml
+/environment/water: !include src/water.raml
 /social: !include src/social.raml
 /message: !include src/message.raml
 /system: !include src/system.raml
