@@ -4,47 +4,24 @@
    		<div class="subview3_title">GDP分析预测</div>
 </div>
 
-
-
-
-
-
-<div class="wrapper container" style="padding:0px;margin-top:1em;margin-bottom:2em" >
-  <div class="panel panel-primary">
-      <div class="panel-heading">
-          <div class="panel-title">
+<div class ="wrapper container wrapcontainer">
+  <div class ="panel panel-primary">
+      <div class ="panel-heading">
+          <div class ="panel-title">
             年度GDP预测分析
           </div>
       </div>
-  <div class="row">
-      <div class="col-md-8" style="border-right:1px solid;padding-top:10px;padding-bottom:10px">
-        <highchart   id="chart1" config="yearGDPChart"  style="margin-left:15px"></highchart>
+  <div class ="row">
+      <div class ="col-md-8" style = "border-right:1px solid;padding-top:10px;padding-bottom:10px">
+        <highchart   id ="chart1" config ="yearGDPChart"  style = "margin-left:15px"></highchart>
       </div>
-    <div class="col-md-4" style="padding:10px 30px 15px 15px">
-      <!-- <div class="r  dker item hbox no-border" style="background-color:rgba(55,148,188,1);border-radius:10px">
-                <div class="col w-xs v-middle hidden-md">
-                  <div ng-init="d3_3=[60,40]" ui-jq="sparkline" ui-options="[60,40], {type:'pie', height:40, sliceColors:['#fad733','#fff']}" class="sparkline inline">
-                     <i class="fa fa-area-chart fa-4x" style="color:white;margin-left:8%">
-                     
-                   </i>
-                  </div>
-                </div>
-
-                  <div class="col dk padder-v r-r yearGdpIntro" style="box-shadow: 2px 2px 2px black;">
-                    <span class="text-xs"style="color:white">本年度GDP预测值:</span>
-                    <div class="text-primary-dk font-thin h2"><span style="margin-left:15%;color:white;text-shadow:1px 2px 3px #000000">1218.9亿元</span></div>
-                    <span class="text-xs"style="margin-left:45%;color:white">预测误差范围<span class="text-primary"style="color:white">3%</span></span>
-                  </div>
-
-
-                 
-              </div>  -->
-
-                <div class="yearGdpIntro"> 
-                    <div ng-init="d3_3=[60,40]" ui-jq="sparkline" ui-options="[60,40], {type:'pie', height:40, sliceColors:['#fad733','#fff']}" class="sparkline inline yearGdpIntroI">
-                     <i class="fa fa-area-chart fa-4x"></i>
+    <div class = "col-md-4 wrapleft" >
+<!--－－－－－－－－－－－－－－－－－－－－－－－－－－－－年度gdp关键数据展示面板－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
+                <div class = "yearGdpIntro"> 
+                    <div ng-init = "d3_3 = [60,40]" ui-jq = "sparkline" ui-options = "[60,40], {type:'pie', height:40, sliceColors:['#fad733','#fff']}" class = "sparkline inline yearGdpIntroI">
+                     <i class = "fa fa-area-chart fa-4x"></i>
                     </div>
-                    <div class="yearGdpIntroText">
+                    <div class = "yearGdpIntroText">
                       <dl>
                         <dt>本年度GDP预测值:</dt>
                         <dd>1218.9亿元</dd>
@@ -53,300 +30,263 @@
                       </dl>
                     </div>
                 </div>
+<!-- －－－－－－－－－－－－－－－－－－－－－－－－－－－－一句话解读－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
 
-
-
-
-              <article class="media cgq_contentwidth">
-                  <div class="pull-left">
-                    <span class="fa-stack fa-lg">
-                      <i class="fa fa-circle fa-stack-2x text-info"></i>
-                      <i class="icon-bulb fa-stack-1x text-white fa-spin"></i>
+            <article class = "media cgq_contentwidth">
+                  <div class = "pull-left">
+                    <span class = "fa-stack fa-lg">
+                      <i class = "fa fa-circle fa-stack-2x text-info"></i>
+                      <i class = "icon-bulb fa-stack-1x text-white fa-spin"></i>
                     </span>
-                    <span class="h4">一句话解读</span>
+                    <span class = "h4">一句话解读</span>
                   </div>
-                  <div class="media-body clear">                    
-                    <small class="block m-t-xs">{{totaldata.oneword}}</small>
-                  </div>
-                </article>
-      <!--改成了div-->
-        <span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="margin-left:5px">
-          年度GDP预测采用的是基于时间序列的自回归积分滑动平均模型，通过该模型分析预测得出：本年GDP增速较往年有所放缓。
-          
-        </span>
-     
-
-      <div class="btn-group-vertical" role="group" aria-label="Left Align ">
-      <div class="btn-group" style="margin-top:10%">
-         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           切换图表视图 <span class="caret"></span>
-         </button>
-          <ul class="dropdown-menu">
-             <li><a ng-click="exchange('spline')">曲线图</a></li>
-             <li><a ng-click="exchange('column')">直方图</a></li>
-             <li><a ng-click="exchange('line')">折线图</a></li>
-             <li><a ng-click="exchange('area')">区域图</a></li>
-          </ul>
-     </div>
-      <button class="btn btn-info btn-rounded" style="margin-top:10%" ng-click="checkdeviation()">查看预测误差记录</button>
-      <button class="btn btn-info" style="margin-top:10%" ng-click="checkforecast()">查看预测详情</button>
-      </div>
+                  <span class = "glyphicon glyphicon-list-alt year_gdp_oneword" aria-hidden = "true">
+                       年度GDP预测采用的是基于时间序列的自回归积分滑动平均模型，通过该模型分析预测得出：本年GDP增速较往年有所放缓。
+                  </span>                  
+            </article>
+<!-- －－－－－－－－－－－－－－－－－－－－－－－－－－－－－调节button组－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
+          <div class = "btn-group-vertical" role = "group" aria-label="Left Align ">
+              <div class = "btn-group" style = "margin-top: 10%">
+                 <button type = "button" class = "btn btn-success dropdown-toggle" data-toggle = "dropdown" aria-haspopup = "true" aria-expanded = "false">
+                   切换图表视图 <span class="caret"></span>
+                 </button>
+                  <ul class = "dropdown-menu">
+                     <li><a class = "economy_a" ng-click = "exchange('spline')">曲线图</a></li>
+                     <li><a class = "economy_a" ng-click = "exchange('column')">直方图</a></li>
+                     <li><a class = "economy_a" ng-click = "exchange('line')">折线图</a></li>
+                     <li><a class = "economy_a" ng-click = "exchange('area')">区域图</a></li>
+                  </ul>
+             </div>
+              <button class = "btn btn-info btn-rounded" style = "margin-top: 10%" ng-click = "checkdeviation()">查看预测误差记录</button>
+              <button class = "btn btn-info" style = "margin-top: 10%" ng-click = "checkforecast()">查看预测详情</button>
+          </div>
+<!-- －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
     </div>
-     <div class="col-md-12" style="margin-top:10px" ng-if="deviation">
-    <table class="table table-bordered table-responsive" >
-        <tr>
-          <th class="active" style="text-align:center;">年份</th>
-          
-          <th class="active" style="text-align:center;">2007</th>
-          <th class="active" style="text-align:center;">2008</th>
-          <th class="active" style="text-align:center;">2009</th>
-          <th class="active" style="text-align:center;">2010</th>
-          <th class="active" style="text-align:center;">2011</th>
-          <th class="active" style="text-align:center;">2012</th>
-          <th class="active" style="text-align:center;">2013</th>
-          <th class="active" style="text-align:center;">2014</th>
-          <th class="active" style="text-align:center;">2015</th>
-          <th class="active" style="text-align:center;">2016</th>
-          <th class="active" style="text-align:center;">2017</th>
-          <th class="active" style="text-align:center;">2018</th>
-        </tr>
-        <tr>
-          <td class="info" style="text-align:center;">GDP预测误差(%)</td>
-          <td class="info" style="text-align:center;">{{errorvalue[0]}}</td>
-          <td class="info" style="text-align:center;">{{errorvalue[1]}}</td>
-          <td class="info" style="text-align:center;">{{errorvalue[2]}}</td>
-          <td class="info" style="text-align:center;">{{errorvalue[3]}}</td>
-          <td class="info" style="text-align:center;">{{errorvalue[4]}}</td>
-          <td class="info" style="text-align:center;">{{errorvalue[5]}}</td>
-          <td class="info" style="text-align:center;">{{errorvalue[6]}}</td>
-          <td class="info" style="text-align:center;">{{errorvalue[7]}}</td>
-          <td class="info" style="text-align:center;">{{errorvalue[8]}}</td>
-          <td class="info" style="text-align:center;">--</td>
-          <td class="info" style="text-align:center;">--</td>
-          <td class="info" style="text-align:center;">--</td>
-        </tr>
+     <div class="col-md-12" style = "margin-top:10px" ng-if="deviation">
+          <table class="table table-bordered table-responsive" >
+              <tr>
+                <th class = "active">年份</th>
+                <th class = "active">2007</th>
+                <th class = "active">2008</th>
+                <th class = "active">2009</th>
+                <th class = "active">2010</th>
+                <th class = "active">2011</th>
+                <th class = "active">2012</th>
+                <th class = "active">2013</th>
+                <th class = "active">2014</th>
+                <th class = "active">2015</th>
+                <th class = "active">2016</th>
+                <th class = "active">2017</th>
+                <th class = "active">2018</th>
+              </tr>
+              <tr>
+                <td class = "info">GDP预测误差(%)</td>
+                <td class = "info">{{errorvalue[0]}}</td>
+                <td class = "info">{{errorvalue[1]}}</td>
+                <td class = "info">{{errorvalue[2]}}</td>
+                <td class = "info">{{errorvalue[3]}}</td>
+                <td class = "info">{{errorvalue[4]}}</td>
+                <td class = "info">{{errorvalue[5]}}</td>
+                <td class = "info">{{errorvalue[6]}}</td>
+                <td class = "info">{{errorvalue[7]}}</td>
+                <td class = "info">{{errorvalue[8]}}</td>
+                <td class = "info">--</td>
+                <td class = "info">--</td>
+                <td class = "info">--</td>
+              </tr>
 
-      </table>
+          </table>
       
     </div>
-    <div class="col-md-12 table-responsive" style="margin-top:10px;"  ng-if="forecast">
-    <table class="table table-bordered" >
-        <tr>
-          <th class="active" style="text-align:center;">年份</th>
-          
-          <th class="active" style="text-align:center;">2007</th>
-          <th class="active" style="text-align:center;">2008</th>
-          <th class="active" style="text-align:center;">2009</th>
-          <th class="active" style="text-align:center;">2010</th>
-          <th class="active" style="text-align:center;">2011</th>
-          <th class="active" style="text-align:center;">2012</th>
-          <th class="active" style="text-align:center;">2013</th>
-          <th class="active" style="text-align:center;">2014</th>
-          <th class="active" style="text-align:center;">2015</th>
-          <th class="active" style="text-align:center;">2016</th>
-          <th class="active" style="text-align:center;">2017</th>
-          <th class="active" style="text-align:center;">2018</th>
-        </tr>
-        <tr>
-          <td class="info" style="text-align:center;">GDP真实值(亿元)</td>
-          <td class="info" style="text-align:center;">{{gdprealvalue[0]}}</td>
-          <td class="info" style="text-align:center;">{{gdprealvalue[1]}}</td>
-          <td class="info" style="text-align:center;">{{gdprealvalue[2]}}</td>
-          <td class="info" style="text-align:center;">{{gdprealvalue[3]}}</td>
-          <td class="info" style="text-align:center;">{{gdprealvalue[4]}}</td>
-          <td class="info" style="text-align:center;">{{gdprealvalue[5]}}</td>
-          <td class="info" style="text-align:center;">{{gdprealvalue[6]}}</td>
-          <td class="info" style="text-align:center;">{{gdprealvalue[7]}}</td>
-          <td class="info" style="text-align:center;">{{gdprealvalue[8]}}</td>
-          <td class="info" style="text-align:center;">--</td>
-          <td class="info" style="text-align:center;">--</td>
-          <td class="info" style="text-align:center;">--</td>
-         
-        </tr>
-         <tr>
-          <td class="info" style="text-align:center;">GDP预测值(亿元)</td>
-          <td class="info" style="text-align:center;">{{gdpforecastvalue[0]}}</td>
-          <td class="info" style="text-align:center;">{{gdpforecastvalue[1]}}</td>
-          <td class="info" style="text-align:center;">{{gdpforecastvalue[2]}}</td>
-          <td class="info" style="text-align:center;">{{gdpforecastvalue[3]}}</td>
-          <td class="info" style="text-align:center;">{{gdpforecastvalue[4]}}</td>
-          <td class="info" style="text-align:center;">{{gdpforecastvalue[5]}}</td>
-          <td class="info" style="text-align:center;">{{gdpforecastvalue[6]}}</td>
-          <td class="info" style="text-align:center;">{{gdpforecastvalue[7]}}</td>
-          <td class="info" style="text-align:center;">{{gdpforecastvalue[8]}}</td>
-         <td class="info" style="text-align:center;">{{gdpforecastvalue[9]}}</td>
-         <td class="info" style="text-align:center;">{{gdpforecastvalue[10]}}</td>
-         <td class="info" style="text-align:center;">{{gdpforecastvalue[11]}}</td>
-        </tr>
-      </table>
-      
+    <div class = "col-md-12 table-responsive" style = "margin-top:10px;"  ng-if = "forecast">
+        <table class = "table table-bordered" >
+            <tr>
+              <th class = "active">年份</th>
+              <th class = "active">2007</th>
+              <th class = "active">2008</th>
+              <th class = "active">2009</th>
+              <th class = "active">2010</th>
+              <th class = "active">2011</th>
+              <th class = "active">2012</th>
+              <th class = "active">2013</th>
+              <th class = "active">2014</th>
+              <th class = "active">2015</th>
+              <th class = "active">2016</th>
+              <th class = "active">2017</th>
+              <th class = "active">2018</th>
+            </tr>
+            <tr>
+              <td class = "info">GDP真实值(亿元)</td>
+              <td class = "info">{{gdprealvalue[0]}}</td>
+              <td class = "info">{{gdprealvalue[1]}}</td>
+              <td class = "info">{{gdprealvalue[2]}}</td>
+              <td class = "info">{{gdprealvalue[3]}}</td>
+              <td class = "info">{{gdprealvalue[4]}}</td>
+              <td class = "info">{{gdprealvalue[5]}}</td>
+              <td class = "info">{{gdprealvalue[6]}}</td>
+              <td class = "info">{{gdprealvalue[7]}}</td>
+              <td class = "info">{{gdprealvalue[8]}}</td>
+              <td class = "info">--</td>
+              <td class = "info">--</td>
+              <td class = "info">--</td>
+             
+            </tr>
+            <tr>
+              <td class = "info">GDP预测值(亿元)</td>
+              <td class = "info">{{gdpforecastvalue[0]}}</td>
+              <td class = "info">{{gdpforecastvalue[1]}}</td>
+              <td class = "info">{{gdpforecastvalue[2]}}</td>
+              <td class = "info">{{gdpforecastvalue[3]}}</td>
+              <td class = "info">{{gdpforecastvalue[4]}}</td>
+              <td class = "info">{{gdpforecastvalue[5]}}</td>
+              <td class = "info">{{gdpforecastvalue[6]}}</td>
+              <td class = "info">{{gdpforecastvalue[7]}}</td>
+              <td class = "info">{{gdpforecastvalue[8]}}</td>
+             <td class = "info">{{gdpforecastvalue[9]}}</td>
+             <td class = "info">{{gdpforecastvalue[10]}}</td>
+             <td class = "info">{{gdpforecastvalue[11]}}</td>
+            </tr>
+        </table> 
     </div>
   </div>
  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
- <div class="panel panel-primary" style="margin-top:30px">
-    <div class="panel-heading">
-        <div class="panel-title">
+<!-- －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－某一年gdp具体数据面板－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
+ <div class = "panel panel-primary wraptop">
+    <div class = "panel-heading">
+        <div class = "panel-title">
           {{yearchoose}}年各季度GDP预测分析
         </div>
-      
     </div>
-  <div class="row">
-    <div class="col-md-8" style="border-right:1px solid;padding-top:10px;padding-bottom:10px">
-      <highchart   id="chart1" config="monthGDPChart" style="margin-left:15px"></highchart>
+
+  <div class = "row">
+    <div class = "col-md-8" style = "border-right:1px solid;padding-top:10px;padding-bottom:10px">
+      <highchart   id = "chart1" config = "monthGDPChart" style = "margin-left:15px"></highchart>
     </div>
-    <div class="col-md-4" style="padding:10px 30px 15px 15px">
-      <div class="r  dker item hbox no-border" style="background-color:rgba(55,148,188,1);border-top-left-radius:10px;border-top-right-radius:10px">
-
-                <div class="col w-xs v-middle hidden-md">
-                  <div ng-init="d3_3=[60,40]" ui-jq="sparkline" ui-options="[60,40], {type:'pie', height:40, sliceColors:['#fad733','#fff']}" class="sparkline inline">
-                   <i class="fa fa-line-chart fa-4x" style="color:white;margin-left:8%">
-                     
-                   </i>
-                  </div>
-                </div>
-                <div class="col dk padder-v r-r">
-                 <span class="text-xs"style="color:white">本年度GDP预测值:</span>
-                  <div class="text-primary-dk font-thin h2"><span style="margin-left:15%;color:white;color:white;text-shadow:1px 2px 3px #000000">{{forecastvalue}}亿元</span></div>
-                  <span class="text-xs"style="margin-left:45%;color:white">预测误差范围<span class="text-primary" style="color:white">3%</span></span>
-
-                </div>
-              </div>
-               <div class="r  dker item hbox no-border" style="background-color:rgba(55,148,188,1);border-bottom-left-radius:10px;border-bottom-right-radius:10px">
-
-                
-                <div class="col dk padder-v r-r" ng-if="expression">
-                 <span class="text-xs" style="margin-left:10%;color:white" >至第四季度结束,实际GDP为<span class="text font-thin h3"style="color:white;color:white;text-shadow:1px 2px 3px #000000">1100.8</span>亿元</span>
-                  <div class="text font-thin h5" style="margin-left:10%"><span style="color:white">已完成年度GDP目标<!-- <span class="text font-thin h3"style="color:white;text-shadow:1px 2px 3px #000000">329.25</span>亿元 --></span></div>
-                 </span></span>
-                </div>
-              </div>
-                <article class="media cgq_contentwidth">
-                  <div class="pull-left">
-                    <span class="fa-stack fa-lg">
-                      <i class="fa fa-circle fa-stack-2x text-info"></i>
-                      <i class="icon-bulb fa-stack-1x text-white fa-spin"></i>
+    <div class = "col-md-4" style = "padding:10px 30px 15px 15px">
+<!-- －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－季度gdp关键数据展示面板 －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
+    <div class = "yearGdpIntro"> 
+       <div ng-init = "d3_3 = [60,40]" ui-jq = "sparkline" ui-options = "[60,40], {type:'pie', height:40, sliceColors:['#fad733','#fff']}" class = "sparkline inline yearGdpIntroI">
+        <i class = "fa fa-line-chart fa-4x"></i>
+       </div>
+       <div class = "yearGdpIntroText">
+         <dl>
+           <dt>本年度GDP预测值:</dt>
+           <dd>1218.9亿元</dd>
+           <dt>预测误差范围:3%</dt>
+         </dl>
+       </div>
+       <div class = "seasonGdpIntoText">
+         <dl>
+           <dt>至第四季度结束，实际GDP为</dt>
+           <dd>1100.8亿元</dd>
+           <dt>已完成年度GDP目标</dt>
+         </dl>
+       </div>
+    </div>
+<!-- －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－一句话解读－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
+                 <article class = "media cgq_contentwidth">
+                  <div class = "pull-left">
+                    <span class = "fa-stack fa-lg">
+                      <i class = "fa fa-circle fa-stack-2x text-info"></i>
+                      <i class = "icon-bulb fa-stack-1x text-white fa-spin"></i>
                     </span>
-                    <span class="h4">一句话解读</span>
+                    <span class = "h4">一句话解读</span>
                   </div>
-                  <div class="media-body clear">                    
-                    <small class="block m-t-xs">{{totaldata.oneword}}</small>
-                  </div>
-                </article>
-      <!--button不可以自动换行-->
-      <div style="margin-top:10px;width:100%;font-size:18px">
-        <span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="margin-left:5px">
-          {{txtexpression}}
-        </span>
-      </div>
+                  <span class = "glyphicon glyphicon-list-alt year_gdp_oneword" aria-hidden = "true">
+                       {{txtexpression}}
+                  </span>                  
+            </article>
+ <!-- －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
+    <div class="btn-group-vertical" role="group" aria-label="Left Align ">
+         <div class="btn-group " style = "margin-top:5px">
+             <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               切换图表视图 <span class="caret"></span>
+             </button>
+              <ul class="dropdown-menu">
+                 <li><a class="economy_a" ng-click="monthexchange('spline')">曲线图</a></li>
+                 <li><a class="economy_a" ng-click="monthexchange('column')">直方图</a></li>
+                 <li><a class="economy_a" ng-click="monthexchange('line')">折线图</a></li>
+                 <li><a class="economy_a" ng-click="monthexchange('area')">区域图</a></li>
+              </ul>
+         </div>
 
-    
-      <div class="btn-group-vertical" role="group" aria-label="Left Align ">
-     <div class="btn-group " style="margin-top:5px">
-         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           切换图表视图 <span class="caret"></span>
-         </button>
-          <ul class="dropdown-menu">
-             <li><a ng-click="monthexchange('spline')">曲线图</a></li>
-             <li><a ng-click="monthexchange('column')">直方图</a></li>
-             <li><a ng-click="monthexchange('line')">折线图</a></li>
-             <li><a ng-click="monthexchange('area')">区域图</a></li>
-          </ul>
-     </div>
-
-     <div class="btn-group " style="margin-top:5px">
-         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           选择年份 <span class="caret"></span>
-         </button>
-          <ul class="dropdown-menu">
-             <li><a ng-click="changeyear('2015')">2015</a></li>
-             <li><a ng-click="changeyear('2016')">2016</a></li>
-          </ul>
-     </div>
-      <button class="btn btn-info" style="margin-top:5px" ng-click="monthcheckdeviation()">查看预测误差记录</button>
-      <button class="btn btn-info" style="margin-top:5px" ng-click="monthcheckforecast()">查看预测详情</button>
-      </div>
+         <div class="btn-group " style = "margin-top:5px">
+             <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               选择年份 <span class="caret"></span>
+             </button>
+              <ul class="dropdown-menu">
+                 <li><a ng-click="changeyear('2015')">2015</a></li>
+                 <li><a ng-click="changeyear('2016')">2016</a></li>
+              </ul>
+         </div>
+         <button class="btn btn-info" style = "margin-top:5px" ng-click="monthcheckdeviation()">查看预测误差记录</button>
+         <button class="btn btn-info" style = "margin-top:5px" ng-click="monthcheckforecast()">查看预测详情</button>
+    </div>
     </div>
     
-  
-
-
-
-
-    <div class="col-md-12" style="margin-top:10px" ng-if="monthforecast">
+<!-- －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－season table－－－－－－－－－－－－－－－－－－－－－－－－ -->  
+<div class="col-md-12" style = "margin-top:10px" ng-if="monthforecast">
       <table class="table table-bordered" >
         <tr>
-          <th class="active" style="text-align:center;">季度</th>
-          <th class="active" style="text-align:center;">第一季度</th>
-          <th class="active" style="text-align:center;">第二季度</th>
-          <th class="active" style="text-align:center;">第三季度</th>
-          <th class="active" style="text-align:center;">第四季度</th>
+          <th class="active">季度</th>
+          <th class="active">第一季度</th>
+          <th class="active">第二季度</th>
+          <th class="active">第三季度</th>
+          <th class="active">第四季度</th>
         </tr>
         <tr>
-          <td class="info" style="text-align:center;">GDP真实值(亿)</td>
-          <td class="info" style="text-align:center;">{{gdpquarterrealvalue[0]}}</td>
-          <td class="info" style="text-align:center;">{{gdpquarterrealvalue[1]}}</td>
-          <td class="info" style="text-align:center;">{{gdpquarterrealvalue[2]}}</td>
-          <td class="info" style="text-align:center;">{{gdpquarterrealvalue[3]}}</td>
+          <td class="info">GDP真实值(亿)</td>
+          <td class="info">{{gdpquarterrealvalue[0]}}</td>
+          <td class="info">{{gdpquarterrealvalue[1]}}</td>
+          <td class="info">{{gdpquarterrealvalue[2]}}</td>
+          <td class="info">{{gdpquarterrealvalue[3]}}</td>
         </tr>
         <tr>
-          <td class="info" style="text-align:center;">GDP预测值(亿)</td>
-          <td class="info" style="text-align:center;">{{gdpquarterforcastvalue[0]}}</td>
-          <td class="info" style="text-align:center;">{{gdpquarterforcastvalue[1]}}</td>
-          <td class="info" style="text-align:center;">{{gdpquarterforcastvalue[2]}}</td>
-          <td class="info" style="text-align:center;">{{gdpquarterforcastvalue[3]}}</td>
+          <td class="info">GDP预测值(亿)</td>
+          <td class="info">{{gdpquarterforcastvalue[0]}}</td>
+          <td class="info">{{gdpquarterforcastvalue[1]}}</td>
+          <td class="info">{{gdpquarterforcastvalue[2]}}</td>
+          <td class="info">{{gdpquarterforcastvalue[3]}}</td>
         </tr>
 
       </table>
     </div>
-    <div class="col-md-12" style="margin-top:10px" ng-if="monthdeviation">
+    <div class="col-md-12" style = "margin-top:10px" ng-if="monthdeviation">
     <table class="table table-bordered" >
         <tr>
-          <th class="active" style="text-align:center;">季度</th>
-          <th class="active" style="text-align:center;">第一季度</th>
-          <th class="active" style="text-align:center;">第二季度</th>
-          <th class="active" style="text-align:center;">第三季度</th>
-          <th class="active" style="text-align:center;">第四季度</th>
+          <th class="active">季度</th>
+          <th class="active">第一季度</th>
+          <th class="active">第二季度</th>
+          <th class="active">第三季度</th>
+          <th class="active">第四季度</th>
         </tr>
         <tr>
-          <td class="info" style="text-align:center;">误差</td>
-          <td class="info" style="text-align:center;">3.5%</td>
-          <td class="info" style="text-align:center;">2.7%</td>
-          <td class="info" style="text-align:center;">3.3%</td>
-          <td class="info" style="text-align:center;">3.0%</td>
+          <td class="info">误差</td>
+          <td class="info">3.5%</td>
+          <td class="info">2.7%</td>
+          <td class="info">3.3%</td>
+          <td class="info">3.0%</td>
         </tr>
 
       </table>
       
     </div>
-    <div class="col-md-12" style="margin-top:10px" ng-if="vicemonthdeviation">
+    <div class="col-md-12" style = "margin-top:10px" ng-if="vicemonthdeviation">
     <table class="table table-bordered" >
         <tr>
-          <th class="active" style="text-align:center;">季度</th>
-          <th class="active" style="text-align:center;">第一季度</th>
-          <th class="active" style="text-align:center;">第二季度</th>
-          <th class="active" style="text-align:center;">第三季度</th>
-          <th class="active" style="text-align:center;">第四季度</th>
+          <th class="active">季度</th>
+          <th class="active">第一季度</th>
+          <th class="active">第二季度</th>
+          <th class="active">第三季度</th>
+          <th class="active">第四季度</th>
         </tr>
         <tr>
-          <td class="info" style="text-align:center;">误差</td>
-          <td class="info" style="text-align:center;">0%</td>
-          <td class="info" style="text-align:center;">0%</td>
-          <td class="info" style="text-align:center;">0%</td>
-          <td class="info" style="text-align:center;">0%</td>
+          <td class="info">误差</td>
+          <td class="info">0%</td>
+          <td class="info">0%</td>
+          <td class="info">0%</td>
+          <td class="info">0%</td>
         </tr>
 
       </table>
@@ -354,6 +294,13 @@
     </div>
   </div>
  </div>
+
+
+
+
+
+
+
  <div class="panel panel-primary" style="margin-top:30px">
     <div class="panel-heading">
         <div class="panel-title">
