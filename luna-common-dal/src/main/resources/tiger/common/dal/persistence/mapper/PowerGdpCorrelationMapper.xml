@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="tiger.common.dal.persistence.mapper.PowerGdpCorrelationMapper" >
+    <resultMap id="BaseResultMap" type="tiger.common.dal.persistence.power.PowerGdpCorrelationDO" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+        <result column="modify_time" property="modify_time" jdbcType="TIMESTAMP" />
+        <result column="year" property="year" jdbcType="BIGINT" />
+        <result column="real_gdp_value" property="realGdpValue" jdbcType="DOUBLE" />
+        <result column="forcast_gdp_value" property="forcastGdpValue" jdbcType="DOUBLE" />
+        <result column="real_power_value" property="realPowerValue" jdbcType="DOUBLE" />
+        <result column="forcast_power_value" property="forcastPowerValue" jdbcType="DOUBLE" />
+    </resultMap>
+    <sql id="Real_Column_List" >
+        id, create_time, update_time, year, real_gdp_value, real_power_value
+    </sql>
+    <sql id="Forcast_Column_List">
+        id, create_time, update_time, year, forcast_gdp_value,forcast_power_value
+    </sql>
+    <select id="getPowerGdpCorrelationDOList" resultMap="BaseResultMap">
+        select * from power_total_forcast
+    </select>
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="tiger.common.dal.persistence.mapper.PowerGdpCorrelationEnterpriseSoloMapper" >
+    <resultMap id="BaseResultMap" type="tiger.common.dal.persistence.power.PowerGdpCorrelationEnterpriseSoloDO" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+        <result column="modify_time" property="modify_time" jdbcType="TIMESTAMP" />
+        <result column="year" property="year" jdbcType="BIGINT" />
+        <result column="season" property="season" jdbcType="BIGINT" />
+        <result column="enterprise_id" property="enterpriseId" jdbcType="BIGINT" />
+        <result column="real_enterprise_power" property="realEnterprisePower" jdbcType="VARCHAR" />
+        <result column="forcast_enterprise_power" property="forcastEnterprisePower" jdbcType="VARCHAR" />
+        <result column="real_enterprise_gdp" property="realEnterpriseGdp" jdbcType="VARCHAR" />
+        <result column="forcast_enterprise_gdp" property="forcastEnterpriseGdp" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="getPowerGdpCorrelationEnterpriseSoloDOList" resultMap="BaseResultMap">
+        select * from enterprise_data_forcast
+    </select>
+</mapper>
