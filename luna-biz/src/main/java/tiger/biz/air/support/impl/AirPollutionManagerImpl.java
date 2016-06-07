@@ -26,11 +26,10 @@ public class AirPollutionManagerImpl implements AirPollutionManager {
     @Override
     public BaseResult<AirPollutionDomain> read(Long id) {
         AirPollutionDomain airPollution = airPollutionService.getAirPollutionById(id);
-
         if (airPollution == null) {
             throw new TigerException(ErrorCodeEnum.NOT_FOUND, "不存在的空气污染记录");
         }
-
+        System.out.println(airPollution + "Manager");
         return new BaseResult<>(airPollution);
     }
 

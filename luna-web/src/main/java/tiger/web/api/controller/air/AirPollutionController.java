@@ -34,8 +34,6 @@ public class AirPollutionController {
     @RequestMapping(value = "/air_pollution/{id}", method = RequestMethod.GET)
     @ResponseBody
     public BaseResult<AirPollutionDomain> getAirPollutionById(@PathVariable("id") Long id){
-        AirPollutionDomain a=airPollutionManager.read(id).getData();
-        System.out.println(a + "123");
         return  airPollutionManager.read(id);
     }
 
@@ -66,7 +64,6 @@ public class AirPollutionController {
                                                        @PathVariable("id") long id) {
         AirPollutionDomain airPollutionDomain = airPollutionForm.convert2Domain();
         airPollutionDomain.setId(id);
-
         return airPollutionManager.update(airPollutionDomain);
     }
 
@@ -82,7 +79,6 @@ public class AirPollutionController {
     public BaseResult<AirPollutionDomain> createAirPollution(@RequestBody @Valid AirPollutionCreateForm airPollutionForm,
                                            BindingResult bindingResult) {
         AirPollutionDomain airPollutionDomain = airPollutionForm.convert2Domain();
-
         return airPollutionManager.create(airPollutionDomain);
     }
 
