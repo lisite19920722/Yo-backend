@@ -3,8 +3,8 @@
 <mapper namespace="tiger.common.dal.persistence.mapper.PowerGdpCorrelationEnterpriseSoloMapper" >
     <resultMap id="BaseResultMap" type="tiger.common.dal.persistence.power.PowerGdpCorrelationEnterpriseSoloDO" >
         <id column="id" property="id" jdbcType="BIGINT" />
-        <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
-        <result column="modify_time" property="modify_time" jdbcType="TIMESTAMP" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="modify_time" property="updateTime" jdbcType="TIMESTAMP" />
         <result column="year" property="year" jdbcType="BIGINT" />
         <result column="season" property="season" jdbcType="BIGINT" />
         <result column="enterprise_id" property="enterpriseId" jdbcType="BIGINT" />

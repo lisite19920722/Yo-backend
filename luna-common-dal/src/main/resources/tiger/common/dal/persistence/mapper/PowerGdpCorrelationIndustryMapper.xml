@@ -3,8 +3,8 @@
 <mapper namespace="tiger.common.dal.persistence.mapper.PowerGdpCorrelationIndustryMapper" >
     <resultMap id="BaseResultMap" type="tiger.common.dal.persistence.power.PowerGdpCorrelationIndustryDO" >
         <id column="id" property="id" jdbcType="BIGINT" />
-        <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
-        <result column="modify_time" property="modify_time" jdbcType="TIMESTAMP" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="modify_time" property="updateTime" jdbcType="TIMESTAMP" />
         <result column="year" property="year" jdbcType="BIGINT" />
         <result column="season" property="season" jdbcType="BIGINT" />
         <result column="industry_id" property="industryId" jdbcType="BIGINT" />
@@ -16,9 +16,15 @@
     <select id="getPowerGdpCorrelationIndustryDOList" resultMap="BaseResultMap">
         select * from industry_data_forcast
         where
-        season = 4
+        season = #{season,jdbcType=VARCHAR} and year = #{year,jdbcType=VARCHAR}
     </select>
     <select id="getPowerGdpCorrelationIndustrySoloDOList" resultMap="BaseResultMap">
         select * from industry_data_forcast
+        <where>
+            industry_id = #{industryId, jdbcType=VARCHAR} and year &gt;= #{startYear, jdbcType=VARCHAR} and year &lt;= #{endYear, jdbcType=VARCHAR}
+            <if test="season != null" >
+                AND season = #{season, jdbcType=VARCHAR}
+            </if>
+        </where>
     </select>
 </mapper>

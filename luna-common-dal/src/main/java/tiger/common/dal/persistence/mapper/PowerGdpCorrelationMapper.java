@@ -4,6 +4,7 @@
  */
 package tiger.common.dal.persistence.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import tiger.common.dal.persistence.power.PowerGdpCorrelationDO;
 
 import java.util.List;
@@ -17,5 +18,5 @@ public interface PowerGdpCorrelationMapper {
      * @return List<PowerGdpCorrelationDO>
      *     返回数据库power_total_forcast中所有数据
      * */
-    List<PowerGdpCorrelationDO> getPowerGdpCorrelationDOList();
+    List<PowerGdpCorrelationDO> getPowerGdpCorrelationDOList(@Param("startYear")String startYear, @Param("endYear")String endYear);
 }

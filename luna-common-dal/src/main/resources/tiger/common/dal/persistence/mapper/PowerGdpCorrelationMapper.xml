@@ -3,8 +3,8 @@
 <mapper namespace="tiger.common.dal.persistence.mapper.PowerGdpCorrelationMapper" >
     <resultMap id="BaseResultMap" type="tiger.common.dal.persistence.power.PowerGdpCorrelationDO" >
         <id column="id" property="id" jdbcType="BIGINT" />
-        <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
-        <result column="modify_time" property="modify_time" jdbcType="TIMESTAMP" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="modify_time" property="updateTime" jdbcType="TIMESTAMP" />
         <result column="year" property="year" jdbcType="BIGINT" />
         <result column="real_gdp_value" property="realGdpValue" jdbcType="DOUBLE" />
         <result column="forcast_gdp_value" property="forcastGdpValue" jdbcType="DOUBLE" />
@@ -19,5 +19,7 @@
     </sql>
     <select id="getPowerGdpCorrelationDOList" resultMap="BaseResultMap">
         select * from power_total_forcast
+        where
+        year &gt;= #{startYear, jdbcType=VARCHAR} and year &lt;= #{endYear, jdbcType=VARCHAR}
     </select>
 </mapper>

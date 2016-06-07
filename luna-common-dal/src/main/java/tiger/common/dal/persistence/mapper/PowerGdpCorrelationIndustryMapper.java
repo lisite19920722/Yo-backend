@@ -4,6 +4,7 @@
  */
 package tiger.common.dal.persistence.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import tiger.common.dal.persistence.power.PowerGdpCorrelationIndustryDO;
 
 import java.util.List;
@@ -13,7 +14,23 @@ import java.util.List;
  */
 public interface PowerGdpCorrelationIndustryMapper {
 
-    List<PowerGdpCorrelationIndustryDO> getPowerGdpCorrelationIndustryDOList();
-    List<PowerGdpCorrelationIndustryDO> getPowerGdpCorrelationIndustrySoloDOList();
+    /**
+     * 根据年份和季度获取八大行业年数据
+     *
+     * @param year
+     * @param season
+     * @return
+     */
+    List<PowerGdpCorrelationIndustryDO> getPowerGdpCorrelationIndustryDOList(@Param("year")String year, @Param("season")String season);
+
+    /**
+     * 根据
+     *
+     * @param industryId
+     * @param startYear
+     * @param endYear
+     * @return
+     */
+    List<PowerGdpCorrelationIndustryDO> getPowerGdpCorrelationIndustrySoloDOList(@Param("industryId")String industryId, @Param("startYear")String startYear, @Param("endYear")String endYear, @Param("season")String season);
 
 }
