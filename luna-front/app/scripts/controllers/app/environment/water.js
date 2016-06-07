@@ -1,45 +1,43 @@
 'use strict';
       
-app.controller('WaterCtrl', ['$scope', '$timeout','$http', 'qService','rawFactory' ,function($scope, $timeout,$http,qService,rawFactory) {
-    var promise = qService.tokenHttpGet(rawFactory.query,{tableName:'waterQualityData'});
-    promise.then(function(rc1) {
+app.controller('WaterCtrl', ['$scope','$http',function($scope, $http) {
+    // var promise = qService.tokenHttpGet(rawFactory.query,{tableName:'waterQualityData'});
+    // promise.then(function(rc1) {
 
-    });
-
-    var promise1 = qService.tokenHttpGet(rawFactory.query,{tableName:'waterIndustryData'});
-    promise1.then(function(rc2) {
-        $scope.list11=rc2.data[0];
-        $scope.list12=rc2.data[1];
-        $scope.list13=rc2.data[2];
-        $scope.list14=rc2.data[3];
-        $scope.list15=rc2.data[4];
-        $scope.date_industry=rc2.data[5];
-    });
-
-    var promise2 = qService.tokenHttpGet(rawFactory.query,{tableName:'waterPollutionData'});
-    promise2.then(function(rc3) {
-      $scope.JiuLONGDischarge=rc3.data[0];
-      $scope.TCCityzoneDischarge=rc3.data[1];
-      $scope.LiuHeDischarge=rc3.data[2];
-      $scope.GangChengDischarge=rc3.data[3];
-      $scope.TCRivertownDischarge=rc3.data[4];
-      $scope.JiuLONGCod=rc3.data[5];
-      $scope.TCCityzoneCod=rc3.data[6];
-      $scope.LiuHeCod=rc3.data[7];
-      $scope.GangChengCod=rc3.data[8];
-      $scope.TCRivertownCod=rc3.data[9];
-      $scope.JiuLONGNh4n=rc3.data[10];
-      $scope.TCCityzoneNh4n=rc3.data[11];
-      $scope.LiuHeNh4n=rc3.data[12];
-      $scope.GangChengNh4n=rc3.data[13];
-      $scope.TCRivertownNh4n=rc3.data[14];
-      $scope.JiuLONGP=rc3.data[15];
-      $scope.TCCityzoneP=rc3.data[16];
-      $scope.LiuHeP=rc3.data[17];
-      $scope.GangChengP=rc3.data[18];
-      $scope.TCRivertownP=rc3.data[19];
-      $scope.date1=rc3.data[20];
-    });
+    // });
+    // var promise1 = qService.tokenHttpGet(rawFactory.query,{tableName:'waterIndustryData'});
+    // promise1.then(function(rc2) {
+    //     $scope.list11=rc2.data[0];
+    //     $scope.list12=rc2.data[1];
+    //     $scope.list13=rc2.data[2];
+    //     $scope.list14=rc2.data[3];
+    //     $scope.list15=rc2.data[4];
+    //     $scope.date_industry=rc2.data[5];
+    // });
+    // var promise2 = qService.tokenHttpGet(rawFactory.query,{tableName:'waterPollutionData'});
+    // promise2.then(function(rc3) {
+    //   $scope.JiuLONGDischarge=rc3.data[0];
+    //   $scope.TCCityzoneDischarge=rc3.data[1];
+    //   $scope.LiuHeDischarge=rc3.data[2];
+    //   $scope.GangChengDischarge=rc3.data[3];
+    //   $scope.TCRivertownDischarge=rc3.data[4];
+    //   $scope.JiuLONGCod=rc3.data[5];
+    //   $scope.TCCityzoneCod=rc3.data[6];
+    //   $scope.LiuHeCod=rc3.data[7];
+    //   $scope.GangChengCod=rc3.data[8];
+    //   $scope.TCRivertownCod=rc3.data[9];
+    //   $scope.JiuLONGNh4n=rc3.data[10];
+    //   $scope.TCCityzoneNh4n=rc3.data[11];
+    //   $scope.LiuHeNh4n=rc3.data[12];
+    //   $scope.GangChengNh4n=rc3.data[13];
+    //   $scope.TCRivertownNh4n=rc3.data[14];
+    //   $scope.JiuLONGP=rc3.data[15];
+    //   $scope.TCCityzoneP=rc3.data[16];
+    //   $scope.LiuHeP=rc3.data[17];
+    //   $scope.GangChengP=rc3.data[18];
+    //   $scope.TCRivertownP=rc3.data[19];
+    //   $scope.date1=rc3.data[20];
+    // });
     
     //--------------------------盒子1-----------------------------
     $scope.factory={
@@ -610,7 +608,7 @@ app.controller('WaterCtrl', ['$scope', '$timeout','$http', 'qService','rawFactor
     //--------------------------盒子2结束--------------------------
 
     //--------------------------盒子3-----------------------------
-    $http({method: 'GET', url: '/waterQuality.json'}).
+    $http({method: 'GET', url: '/scripts/controllers/app/environment/waterQuality.json'}).
         success(function(data, status, headers, config) {
           // console.log(data);
         waterQualityCurrentSuccess(data);
@@ -620,7 +618,7 @@ app.controller('WaterCtrl', ['$scope', '$timeout','$http', 'qService','rawFactor
           console.log(data);
         });
 
-    $http({method: 'GET', url: '/wasteWater.json'}).
+    $http({method: 'GET', url: '/scripts/controllers/app/environment/wasteWater.json'}).
         success(function(data, status, headers, config) {
           // console.log(data);
           wasteWaterCurrentSuccess(data);
@@ -719,8 +717,6 @@ app.controller('WaterCtrl', ['$scope', '$timeout','$http', 'qService','rawFactor
     $scope.waterQualityAnalysisMarkerResult = {};
     //当前被分析的废水排放点
     $scope.wasteWaterAnalysisMarker = [];
-    //当前被分析的废水拖动条模型列表
-    $scope.wasteModelList = [];
     //最近六天废水排放点集
     var wasteWaterMarkerCurrentAllArr;
     //最近一天废水排放点集
@@ -1173,7 +1169,6 @@ app.controller('WaterCtrl', ['$scope', '$timeout','$http', 'qService','rawFactor
         removeMarker();
         $scope.waterQualityAnalysisMarker = waterQualityMarkerArrOne;
         $scope.wasteWaterAnalysisMarker = getRelatedWasteWaterList(waterQualityMarkerArrOne, wasteWaterMarkerArrAll);
-        $scope.wasteModelList = getWasteModelList($scope.wasteWaterAnalysisMarker);
         addMarker($scope.wasteWaterAnalysisMarker, '/images/environment/factory.png', 'waterPollution');
         addMarkerOneAnalysis(waterQualityMarkerArrOne, '/images/environment/marker_sprite.png', 'waterQuality');
         mapObj.setFitView();

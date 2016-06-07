@@ -168,11 +168,9 @@ angular.module('luna')
             abstract: true,
             url: '^/app/emenu',
             templateUrl: 'tpl/app/environment/emenu.html',
-            controller: 'AirCtrl',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/environment/air.js',
                   'scripts/controllers/app/environment/angular-scroll.js',
                 ]);
               }]
