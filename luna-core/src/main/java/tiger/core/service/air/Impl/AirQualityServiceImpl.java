@@ -8,6 +8,10 @@ import tiger.core.domain.air.AirQualityDomain;
 import tiger.core.domain.air.convert.AirQualityConvert;
 import tiger.core.service.air.AirQualityService;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 /**
  * Created by lisite on 16/5/22.
  */
@@ -21,15 +25,22 @@ public class AirQualityServiceImpl implements AirQualityService{
     /**
      * Update airQuality
      *
-     * @param id
      * @return the AirQualityDO
-     * @see AirQualityService#getAirQualityById(Long)
+     * @see AirQualityService#getAirQuality()
      */
     @Override
-    public AirQualityDomain getAirQualityById(Long id) {
-        AirQualityDO airQualityDO = airQualityMapper.selectByPrimaryKey(id);
-        if (null != airQualityDO) {
-            return AirQualityConvert.convertDOToDomain(airQualityDO);
+    public List<AirQualityDomain> getAirQuality() {
+        List<AirQualityDO> airQualityDOList = airQualityMapper.select();
+        List<AirQualityDomain> airQualityDomainList=new ArrayList<>();
+        Iterator<AirQualityDO> e = airQualityDOList.iterator();
+        AirQualityDO temp = e.next();
+        airQualityDomainList.add(AirQualityConvert.convertDOToDomain(temp));
+        while(e.hasNext()){
+            temp = e.next();
+            airQualityDomainList.add(AirQualityConvert.convertDOToDomain(temp));
+        }
+        if (airQualityDomainList != null) {
+            return airQualityDomainList;
         }
         return null;
     }

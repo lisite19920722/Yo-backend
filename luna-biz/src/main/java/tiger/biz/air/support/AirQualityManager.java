@@ -11,10 +11,9 @@ public interface AirQualityManager {
     /**
      * 获取一条空气污染记录
      *
-     * @param id
      * @return
      */
-    BaseResult read(Long id);
+    BaseResult read();
 
     /**
      * 删除一条空气污染记录
