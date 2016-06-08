@@ -1,4 +1,4 @@
-package tiger.common.dal.persistence.mapper.EconomyGDP;
+package tiger.common.dal.persistence.EconomyGDP;
 
 import tiger.common.dal.persistence.BaseDO;
 
@@ -21,6 +21,26 @@ public class GdpDetailDO extends BaseDO {
     private int quarter;
 
     private Long industryType_id;
+
+    public void setCreate_time(String create_time) {
+        this.create_time = create_time;
+    }
+
+    public void setModify_time(String modify_time) {
+        this.modify_time = modify_time;
+    }
+
+    private String create_time;
+
+    public String getCreate_time() {
+        return create_time;
+    }
+
+    public String getModify_time() {
+        return modify_time;
+    }
+
+    private String modify_time;
 
     public double getGdpRealValue() {
         return gdpRealValue;

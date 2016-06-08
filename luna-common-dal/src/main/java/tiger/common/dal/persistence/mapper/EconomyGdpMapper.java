@@ -1,7 +1,7 @@
 package tiger.common.dal.persistence.mapper;
 
 
-import tiger.common.dal.persistence.mapper.EconomyGDP.GdpDetailDO;
+import tiger.common.dal.persistence.EconomyGDP.GdpDetailDO;
 import java.util.List;
 
 /**

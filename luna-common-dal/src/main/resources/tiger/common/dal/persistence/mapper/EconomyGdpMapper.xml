@@ -15,7 +15,7 @@
         <result column="industryType_id" property="industryType_id" jdbcType="BIGINT" />
     </resultMap>
     <sql id="Base_Column_List">
-        id, company_id, create_time, modify_time,gdpRealValue,gdpForecastValue,gdpGrowthRate,errorValue,gdpYearTarget,year,quarter,industryType_id
+        id,create_time, modify_time,gdpRealValue,gdpForecastValue,gdpGrowthRate,errorValue,gdpYearTarget,year,quarter,industryType_id
     </sql>
     <select id="getGdpDetail" resultMap="BaseResultMap" parameterType="java.lang.Long">
         select

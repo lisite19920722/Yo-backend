@@ -5,8 +5,10 @@ import org.springframework.stereotype.Service;
 import tiger.biz.Economy.support.EconomyGdpManger;
 import tiger.core.basic.BaseResult;
 import tiger.core.service.economyGdp.EconomyGdpService;
-import tiger.common.dal.persistence.mapper.EconomyGDP.GdpDetailDO;
-import java.util.List;
+import tiger.common.dal.persistence.EconomyGDP.GdpDetailDO;
+
+import java.util.*;
+
 /**
  * Created by xy86 on 16/6/9.
  */
@@ -17,9 +19,29 @@ public class EconomyGdpMangerimpl implements EconomyGdpManger{
     private EconomyGdpService economyGdpService;
 
     @Override
-    public List<GdpDetailDO> getGdpDetail(Long year)
+    public Map<String, double[]> getGdpDetail(Long year)
     {
 
-        return economyGdpService.getGdpDetail(year);
+       List<GdpDetailDO> gdpDetailDOList = economyGdpService.getGdpDetail(year);
+        List<double[]> arrays=new ArrayList<>();
+        double RealGdpQuarterDetail[] = new double[4],
+               forecastGdpQuarterDetail[] = new double[4],
+               quarterErroRate[] = new double[4];
+        Map<String,double[]> map = new HashMap<>();
+        Iterator<GdpDetailDO> e = gdpDetailDOList.iterator();
+
+        while(e.hasNext()){
+            GdpDetailDO temp = e.next();
+            if (temp.getIndustryType_id() == 11){
+                RealGdpQuarterDetail[temp.getQuarter()-1] = temp.getGdpRealValue();
+                forecastGdpQuarterDetail[temp.getQuarter()-1] = temp.getGdpForecastValue();
+                quarterErroRate[temp.getQuarter()-1]=Math.abs((temp.getGdpRealValue()-temp.getGdpForecastValue())/temp.getGdpForecastValue());
+            }
+
+        }
+        map.put("realGdpQuarterDetail",RealGdpQuarterDetail);
+        map.put("forecastGdpQuterDetail",forecastGdpQuarterDetail);
+        map.put("quarterError",quarterErroRate);
+        return map;
     }
 }

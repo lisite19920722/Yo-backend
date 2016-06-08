@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tiger.core.service.economyGdp.EconomyGdpService;
 import tiger.common.dal.persistence.mapper.EconomyGdpMapper;
-import tiger.common.dal.persistence.mapper.EconomyGDP.GdpDetailDO;
+import tiger.common.dal.persistence.EconomyGDP.GdpDetailDO;
 import java.util.List;
 /**
  * Created by xy86 on 16/6/9.
