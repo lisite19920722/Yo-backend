@@ -301,49 +301,49 @@
 
 
 
- <div class="panel panel-primary" style="margin-top:30px">
+ <div class="panel panel-primary" style = "margin-top:30px">
     <div class="panel-heading">
         <div class="panel-title">
           分产业GDP预测分析
         </div>
-      
     </div>
-  <div class="row">
-    <div class="col-md-8" style="border-right:1px solid;padding-top:10px;padding-bottom:10px">
-      <highchart   id="chart1" config="industryyearGDPChart" style="margin-left:15px"></highchart>
+<div class="row">
+    <div class="col-md-8" style = "border-right:1px solid;padding-top:10px;padding-bottom:10px">
+      <highchart   id="chart1" config="industryyearGDPChart" style = "margin-left:15px"></highchart>
     </div>
-     <div class="col-md-4" style="padding:10px 30px 15px 15px">
-      <div class="r  dker item hbox no-border" style="background-color:rgba(55,148,188,1);border-radius:10px">
-                <div class="col w-xs v-middle hidden-md">
-                  <div ng-init="d3_3=[60,40]" ui-jq="sparkline" ui-options="[60,40], {type:'pie', height:40, sliceColors:['#fad733','#fff']}" class="sparkline inline">
-                     <i class="fa fa-bar-chart-o fa-4x" style="color:white;margin-left:5%">
-                     
-                     </i>
-                  </div>
-                </div>
-                <div class="col dk padder-v r-r">
-                  <span class="text-xs" style="color:white">本年全行业预测值:</span>
-                  <div class="text-primary-dk font-thin h2"><span style="margin-left:15%;color:white;color:white;text-shadow:1px 2px 3px #000000">{{forecastvalue}}亿元</span></div>
-                  <span class="text-xs"style="margin-left:45%;color:white">预测误差范围<span class="text-primary"style="color:white">3%</span></span>
-                </div>
-              </div>
-                <article class="media cgq_contentwidth">
-                  <div class="pull-left">
-                    <span class="fa-stack fa-lg">
-                      <i class="fa fa-circle fa-stack-2x text-info"></i>
-                      <i class="icon-bulb fa-stack-1x text-white fa-spin"></i>
-                    </span>
-                    <span class="h4">一句话解读</span>
-                  </div>
-                  <div class="media-body clear">                    
-                    <small class="block m-t-xs">{{totaldata.oneword}}</small>
-                  </div>
-                </article>
-        <span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="margin-top:10px;margin-left:5px" >
+
+     <div class="col-md-4" style = "padding:10px 30px 15px 15px"> 
+     <!-- －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－全行业gdp关键数据展示面板－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
+        <div class = "yearGdpIntro"> 
+          <div ng-init = "d3_3 = [60,40]" ui-jq = "sparkline" ui-options = "[60,40], {type:'pie', height:40, sliceColors:['#fad733','#fff']}" class = " sparkline inline yearGdpIntroI">
+              <i class = "fa fa-bar-chart-o fa-4x"></i>
+          </div>
+          <div class = "yearGdpIntroText">
+            <dl>
+              <dt>本年全行业预测值:</dt>
+               <dd>{{forecastvalue}}亿元</dd>
+              <dt>预测误差范围:</dt>
+                <dd>3%</dd>
+            </dl>
+          </div>
+        </div>
+        <!-- －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－一句话解读－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
+        <article class="media cgq_contentwidth">
+            <div class="pull-left">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x text-info"></i>
+                <i class="icon-bulb fa-stack-1x text-white fa-spin"></i>
+              </span>
+              <span class="h4">一句话解读</span>
+            </div>
+            <div class="media-body clear">                    
+              <small class="block m-t-xs">{{totaldata.oneword}}</small>
+            </div>
+        </article>
+        <span class="glyphicon glyphicon-list-alt" aria-hidden="true" style = "margin-top:10px;margin-left:5px" >
           分产业GDP预测采用的是基于时间序列的自回归积分滑动平均模型，通过该模型分析预测得出：全行业经济增速较往年有所放缓。
         </span>
- 
-      <div class="btn-group-vertical" role="group" aria-label="Left Align " style="margin-top:40px">
+      <div class="btn-group-vertical" role="group" aria-label="Left Align " style = "margin-top:40px">
       <div class="btn-group">
          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            切换图表视图 <span class="caret"></span>
@@ -355,10 +355,9 @@
              <li><a ng-click="industryexchange('area')">区域图</a></li>
           </ul>
      </div>
-      <button class="btn btn-info" style="margin-top:20px" ng-click="industrycheckdetail()">查看本年度各产业详细分析</button>
-     
+      <button class="btn btn-info" style = "margin-top:20px" ng-click="industrycheckdetail()">查看本年度各产业详细分析</button>
     </div>
-    <div class="col-md-12" style="margin-top:8px" ng-if="industryforecast">
+    <div class="col-md-12" style = "margin-top:8px" ng-if="industryforecast">
       <table class="table table-condensed" >
         <tr>
           <th class="active">季度</th>
@@ -377,7 +376,7 @@
 
       </table>
     </div>
-    <div class="col-md-12" style="margin-top:10px" ng-if="industrydeviation">
+    <div class="col-md-12" style = "margin-top:10px" ng-if="industrydeviation">
     <table class="table table-condensed" >
         <tr>
           <th class="active">季度</th>
@@ -400,7 +399,7 @@
   </div>
  </div> 
  </div>
- <div class="panel panel-primary" style="margin-top:30px" ng-if="industrydetail">
+ <div class="panel panel-primary" style = "margin-top:30px" ng-if="industrydetail">
    <div class="panel-heading">
    <div class="row">
         <div class="panel-title col-md-3">
@@ -408,7 +407,7 @@
         </div>
          <div class="btn-group col-md-1">
          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           选择年份 <span class="caret"></span>
+           <span class="caret">选择年份</span>
          </button>
           <ul class="dropdown-menu">
              <li><a ng-click="industrychangeyear('2015')">2015</a></li>
@@ -418,10 +417,10 @@
     </div>
     </div>
     <div class="row">
-      <div class="col-md-4" style="border-right:1px solid">
+      <div class="col-md-4" style = "border-right:1px solid">
          <highchart    config="primaryGDPChart" ></highchart>
       </div>
-      <div class="col-md-4" style="border-right:1px solid">
+      <div class="col-md-4" style = "border-right:1px solid">
          <highchart    config="secondGDPChart" ></highchart>
       </div>
       <div class="col-md-4">
