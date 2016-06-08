@@ -4,13 +4,13 @@
  */
 package tiger.biz.power.support;
 
-import tiger.core.domain.power.PowerGdpCorrelationIndustrySoloDomain;
-
-import java.util.List;
 import java.util.Map;
 
 /**
  * Created by Bongo on 16/3/1.
+ * Refactored by Bongo on 16/6/9
+ *
+ * 用电量部分全部Manager
  */
 public interface PowerGdpCorrelationManager {
 
@@ -42,4 +42,28 @@ public interface PowerGdpCorrelationManager {
      * @return
      */
     Map<String,double[]> getPowerGdpCorrelationIndustrySoloDomainMapTotal(String industryId, String season);
+
+    /**
+     * 获取 企业用电量与企业产值关联分析 平均增长率 数据
+     *
+     * @return
+     */
+    Map<String, double[]> getEnterpriseAverageArray();
+
+    /**
+     * 根据企业id和年份 获取某企业某年各季度数据
+     *
+     * @param industryId
+     * @param year
+     * @return
+     */
+    Map<String,double[]> getPowerGdpCorrelationEnterpriseSoloDomainMap(String industryId, String year, String season);
+
+    /**
+     * 根据企业id 获取某企业年度数据
+     *
+     * @param industryId
+     * @return
+     */
+    Map<String,double[]> getPowerGdpCorrelationEnterpriseSoloDomainMapTotal(String industryId, String season);
 }

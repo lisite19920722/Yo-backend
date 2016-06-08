@@ -15,5 +15,11 @@
     </resultMap>
     <select id="getPowerGdpCorrelationEnterpriseSoloDOList" resultMap="BaseResultMap">
         select * from enterprise_data_forcast
+        <where>
+            enterprise_id = #{enterpriseId, jdbcType=VARCHAR} and year &gt;= #{startYear, jdbcType=VARCHAR} and year &lt;= #{endYear, jdbcType=VARCHAR}
+            <if test="season != null" >
+                AND season = #{season, jdbcType=VARCHAR}
+            </if>
+        </where>
     </select>
 </mapper>

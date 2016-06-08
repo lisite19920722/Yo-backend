@@ -13,5 +13,7 @@
     </resultMap>
     <select id="getPowerGdpCorrelationEnterpriseAverageDOList" resultMap="BaseResultMap">
         select * from enterprise_average_forcast
+        where
+        year &gt;= #{startYear, jdbcType=VARCHAR} and year &lt;= #{endYear, jdbcType=VARCHAR}
     </select>
 </mapper>

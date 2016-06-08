@@ -4,6 +4,7 @@
  */
 package tiger.common.dal.persistence.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import tiger.common.dal.persistence.power.PowerGdpCorrelationEnterpriseSoloDO;
 import java.util.List;
 
@@ -12,6 +13,15 @@ import java.util.List;
  */
 public interface PowerGdpCorrelationEnterpriseSoloMapper {
 
-    List<PowerGdpCorrelationEnterpriseSoloDO> getPowerGdpCorrelationEnterpriseSoloDOList();
+    /**
+     * 根据企业id 起止年份 季度获取企业数据
+     *
+     * @param enterpriseId
+     * @param startYear
+     * @param endYear
+     * @param season
+     * @return
+     */
+    List<PowerGdpCorrelationEnterpriseSoloDO> getPowerGdpCorrelationEnterpriseSoloDOList(@Param("enterpriseId")String enterpriseId, @Param("startYear")String startYear, @Param("endYear")String endYear, @Param("season")String season);
 
 }

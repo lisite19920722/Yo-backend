@@ -24,7 +24,7 @@ public interface PowerGdpCorrelationIndustryMapper {
     List<PowerGdpCorrelationIndustryDO> getPowerGdpCorrelationIndustryDOList(@Param("year")String year, @Param("season")String season);
 
     /**
-     * 根据
+     * 根据行业id 起止年份 季度获取数据
      *
      * @param industryId
      * @param startYear

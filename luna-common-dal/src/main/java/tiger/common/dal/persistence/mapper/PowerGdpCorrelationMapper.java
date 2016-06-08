@@ -15,8 +15,11 @@ import java.util.List;
 public interface PowerGdpCorrelationMapper {
 
     /**
-     * @return List<PowerGdpCorrelationDO>
-     *     返回数据库power_total_forcast中所有数据
-     * */
+     * 根据起止年份获取总表数据
+     *
+     * @param startYear
+     * @param endYear
+     * @return
+     */
     List<PowerGdpCorrelationDO> getPowerGdpCorrelationDOList(@Param("startYear")String startYear, @Param("endYear")String endYear);
 }
