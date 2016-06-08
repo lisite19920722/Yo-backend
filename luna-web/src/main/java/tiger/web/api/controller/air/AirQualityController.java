@@ -29,13 +29,12 @@ public class AirQualityController {
     /**
      * 根据id获取AirQualityDomain
      *
-     * @param id
      * @return
      */
-    @RequestMapping(value = "/air_quality/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/air_quality", method = RequestMethod.GET)
     @ResponseBody
-    public BaseResult getAirQualityById(@PathVariable("id") Long id){
-        return  airQualityManager.read(id);
+    public BaseResult getAirQuality(){
+        return  airQualityManager.read();
     }
 
     /**

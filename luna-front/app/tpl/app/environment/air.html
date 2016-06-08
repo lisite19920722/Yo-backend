@@ -123,16 +123,16 @@
                           <span style="font-size:65%">采样时间:{{box2Today}}8时</span>
                           <!-- <span style="font-size:65%">采样时间:5月31日8时</span> -->
                           <h2 class="m-t-none">
-                            <!-- <span class="text-2x text-lt">{{aqi[6]}}</span> -->
-                            <span class="text-2x text-lt">65</span>
-                            <!-- <span class="text-xs" > {{airQualityLevel[6]}}</span> -->
-                            <span class="text-xs" >良</span>
+                            <span class="text-2x text-lt">{{box24Index.aqi}}</span>
+                            <!-- <span class="text-2x text-lt">65</span> -->
+                            <span class="text-xs" >{{airQualityLevel}}</span>
+                            <!-- <span class="text-xs>优</span> -->
                           </h2>
                         </div>
                         <ul class="list-group">
                           <li class="list-group-item">
-                            <!-- <span class="badge bg-danger">{{firstElement[6]}}</span> -->
-                            <span class="badge bg-danger">PM2.5</span>
+                            <span class="badge bg-danger">{{box24Index.firstElement}}</span>
+                            <!-- <span class="badge bg-danger">PM2.5</span> -->
                             <span class="badge bg-danger"></span>
                             <i class="glyphicon glyphicon-certificate" style="color:#88cb26"></i> 首要污染物
                           </li>
@@ -142,8 +142,8 @@
                           </li>
                           <li class="list-group-item" ng-if="ishealthopen">
                             <i class="text-success"></i>
-                            <!-- <span class="fc-list-content">&nbsp;&nbsp;{{healthEffect[6]}}</span> -->
-                            <span style="margin-left: 1em">空气质量可接受，但某些污染物可能对极少数异常敏感人群健康有较弱影响</span>
+                            <span class="fc-list-content">&nbsp;&nbsp;{{healthEffect}}</span>
+                            <!-- <span style="margin-left: 1em">空气质量可接受，但某些污染物可能对极少数异常敏感人群健康有较弱影响</span> -->
                           </li>
                           <li class="list-group-item" ng-click = "openSuggestionList()">
                             <span class="badge bg-fail" style="cursor:pointer">{{openorclose1}}</span>
@@ -151,8 +151,8 @@
                           </li>
                           <li class="list-group-item" ng-if="issuggestionopen">
                             <i class="text-success"></i>
-                            <!-- <span class="fc-list-content">{{proposedMeasure[6]}}</span> -->
-                            <span style="margin-left: 1em">极少数异常敏感人群应减少户外运动</span>
+                            <span class="fc-list-content">{{proposedMeasure}}</span>
+                            <!-- <span style="margin-left: 1em">极少数异常敏感人群应减少户外运动</span> -->
                           </li>
                         </ul>
                       </div>
@@ -170,8 +170,8 @@
                               <thead>
                                 <tr>
                                   <th style="width:30%;">时段</th>
-                                  <th style="width:40%;">空气质量</th>                    
-                                  <th style="width:30%;">首要污染物</th>
+                                  <th style="width:35%;">空气质量</th>      
+                                  <th style="width:35%;">首要污染物</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -179,41 +179,40 @@
                                   <td>
                                     <div class="sparkline inline">今日夜间</div>
                                   </td>
-                                  <!-- <td>{{airQualityLevel[5]}}({{predictaqi[5]}})</td>
+                                  <td>&nbsp;&nbsp;&nbsp;{{box2AQI[0].aqi}}</td>
                                   <td style="color:#f05050">
-                                    <i></i> {{firstElement[5]}}
-                                  </td> -->
-                                  <td>优(45)</td>
-                                  <td style="color:#f05050">
-                                    <i></i>SO2
+                                    <i></i>&nbsp;{{box2AQI[0].firstElement}}
                                   </td>
+                                  <!-- <td>&nbsp;&nbsp;&nbsp;45</td>
+                                  <td style="color:#f05050">
+                                    <i></i>&nbsp;SO2
+                                  </td> -->
                                 </tr>
                                 <tr>
                                   <td>
                                     <div class="sparkline inline">明日上午</div>
                                   </td>
-                                  <!-- <td>{{airQualityLevel[4]}}({{predictaqi[4]}})</td>
+                                  <td>&nbsp;&nbsp;&nbsp;{{box2AQI[1].aqi}}</td>
                                   <td style="color:#f05050">
-                                    <i></i> {{firstElement[4]}}
-                                  </td> -->
-                                  <td>优(49)</td>
-                                  <td style="color:#f05050">
-                                    <i></i>O3
+                                    <i></i>&nbsp;{{box2AQI[1].firstElement}}
                                   </td>
+                                  <!-- <td>&nbsp;&nbsp;&nbsp;49</td>
+                                  <td style="color:#f05050">
+                                    <i></i>&nbsp;O3
+                                  </td> -->
                                 </tr>
-
                                 <tr>                    
                                   <td>
                                     <div class="sparkline inline">明日下午</div>
                                   </td>
-                                  <!-- <td>{{airQualityLevel[3]}}({{predictaqi[3]}})</td>
+                                  <td>&nbsp;&nbsp;&nbsp;{{box2AQI[2].aqi}}</td>
                                   <td style="color:#f05050">
-                                    <i></i> {{firstElement[3]}}
-                                  </td> -->
-                                  <td>良(60)</td>
-                                  <td style="color:#f05050">
-                                    <i></i>CO
+                                    <i></i>&nbsp;{{box2AQI[2].firstElement}}
                                   </td>
+                                  <!-- <td>&nbsp;&nbsp;&nbsp;60</td>
+                                  <td style="color:#f05050">
+                                    <i></i>&nbsp;CO
+                                  </td> -->
                                 </tr>
                               </tbody>
                             </table>
@@ -577,16 +576,16 @@
                           <div class="list-group panel panel-primary" style="border-top:solid white">
                                 <a href="" class="list-group-item">
                                   <i class="fa fa-calendar fa-fw "style="color: #009f95"></i> 日期
-                                  <span class="badge fc-nobg" style=" width:40%">2016年6月1日</span>
-                                   <!-- <span class="badge fc-nobg" style=" width:40%">2016年{{date[7]}}</span> -->
+                                  <!-- <span class="badge fc-nobg" style=" width:40%">2016年6月1日</span> -->
+                                   <span class="badge fc-nobg" style=" width:40%">{{box4Today}}</span>
                                 </a>
                                 <a href="" class="list-group-item" ng-click = "openAQI1List()">
                                   <span class="badge">
                                       <i class="fa fa-chevron-up" ng-if="updown11"></i>
                                       <i class="fa fa-chevron-down" ng-if="updown12"></i>
                                   </span>
-                                    <!-- <span class="badge fc-nobg ">{{aqi[6]}}</span>       -->
-                                    <span class="badge fc-nobg ">65</span>      
+                                    <span class="badge fc-nobg ">{{box24Index.aqi}}</span>      
+                                    <!-- <span class="badge fc-nobg ">65</span> -->      
                                     <i class="glyphicon  glyphicon-leaf " style="color: #3eae1d"></i> 空气质量(AQI)
                                 </a>
                                 <li class="list-group-item" ng-if="isAQI1open">
@@ -599,8 +598,8 @@
                                     <i class="fa fa-chevron-up" ng-if="updown21"></i>
                                     <i class="fa fa-chevron-down" ng-if="updown22"></i>
                                 </span>
-                                  <!-- <div class="badge fc-nobg">{{firstElement[6]}}</div> -->
-                                  <div class="badge fc-nobg">PM2.5</div>
+                                  <div class="badge fc-nobg">{{box24Index.firstElement}}</div>
+                                  <!-- <div class="badge fc-nobg">PM2.5</div> -->
                                   <i class="ic icon-bell fa-fw " style="color: #e10602"></i> 首要污染物
                                 </a>
                                 <li class="list-group-item" ng-if="ismainpollution1open">
@@ -612,8 +611,8 @@
                                     <i class="fa fa-chevron-up"  ng-if="updown31"></i>
                                     <i class="fa fa-chevron-down" ng-if="updown32"></i>
                                   </span>
-                                  <!-- <span class="badge fc-nobg" >{{pm25[6]}}</span> -->
-                                  <span class="badge fc-nobg" >45</span>
+                                  <span class="badge fc-nobg" >{{box24Index.pm25}}</span>
+                                  <!-- <span class="badge fc-nobg" >45</span> -->
                                   <i class="fa  fa-warning  fa-fw " style="color: #f7b500"></i> PM2.5
                                 </a>
                                 <li class="list-group-item" ng-if="isPM251open">
@@ -625,8 +624,8 @@
                                     <i class="fa fa-chevron-up" ng-if="updown41"></i>
                                     <i class="fa fa-chevron-down" ng-if="updown42"></i>
                                   </span>
-                                  <!-- <span class="badge fc-nobg" >{{pm10[6]}}</span> -->
-                                  <span class="badge fc-nobg" >54</span>
+                                  <span class="badge fc-nobg" >{{box24Index.pm10}}</span>
+                                  <!-- <span class="badge fc-nobg" >54</span> -->
                                   <i class="fa  fa-warning  fa-fw " style="color: #f7b500"></i> PM10
                                 </a>
                                 <li class="list-group-item" ng-if="isPM101open">
@@ -638,8 +637,8 @@
                                     <i class="fa fa-chevron-up" ng-if="updown51"></i>
                                     <i class="fa fa-chevron-down" ng-if="updown52"></i>
                                   </span>
-                                  <!-- <span class="badge fc-nobg">{{so2[6]}}</span> -->
-                                  <span class="badge fc-nobg">68</span>
+                                  <span class="badge fc-nobg">{{box24Index.so2}}</span>
+                                  <!-- <span class="badge fc-nobg">68</span> -->
                                   <i class="fa  fa-warning  fa-fw " style="color: #f7b500"></i> 二氧化硫
                                 </a>
                                 <li class="list-group-item" ng-if="isSO21open">
@@ -651,8 +650,8 @@
                                     <i class="fa fa-chevron-up" ng-if="updown61"></i>
                                     <i class="fa fa-chevron-down" ng-if="updown62"></i>
                                   </span>
-                                  <!-- <span class="badge fc-nobg">{{no2[6]}}</span> -->
-                                  <span class="badge fc-nobg">47</span>
+                                  <span class="badge fc-nobg">{{box24Index.no2}}</span>
+                                  <!-- <span class="badge fc-nobg">47</span> -->
                                   <i class="fa  fa-warning  fa-fw " style="color: #f7b500"></i> 二氧化氮
                                 </a>
                                 <li class="list-group-item" ng-if="isNO21open">
@@ -664,8 +663,8 @@
                                     <i class="fa fa-chevron-up" ng-if="updown71"></i>
                                     <i class="fa fa-chevron-down" ng-if="updown72"></i>
                                   </span>
-                                  <!-- <span class="badge fc-nobg">{{co[6]}}</span> -->
-                                  <span class="badge fc-nobg">63</span>
+                                  <span class="badge fc-nobg">{{box24Index.co}}</span>
+                                  <!-- <span class="badge fc-nobg">63</span> -->
                                   <i class="fa  fa-warning  fa-fw " style="color: #f7b500"></i> 一氧化碳
                                 </a>
                                 <li class="list-group-item" ng-if="isCO1open">
@@ -677,8 +676,8 @@
                                     <i class="fa fa-chevron-up" ng-if="updown81"></i>
                                     <i class="fa fa-chevron-down" ng-if="updown82"></i>
                                   </span>
-                                  <!-- <span class="badge fc-nobg">{{o3[6]}}</span> -->
-                                  <span class="badge fc-nobg">74</span>
+                                  <span class="badge fc-nobg">{{box24Index.o3}}</span>
+                                  <!-- <span class="badge fc-nobg">74</span> -->
                                   <i class="fa  fa-warning  fa-fw " style="color: #f7b500"></i> 臭氧
                                 </a>
                                 <li class="list-group-item" ng-if="isO31open">
