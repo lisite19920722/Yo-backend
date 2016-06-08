@@ -10,6 +10,10 @@ import tiger.core.domain.air.AirPollutionDomain;
 import tiger.core.domain.message.MessageDomain;
 import tiger.core.service.air.AirPollutionService;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by lisite on 16/5/22.
  */
@@ -24,13 +28,15 @@ public class AirPollutionManagerImpl implements AirPollutionManager {
      * @see AirPollutionManager#read(Long)
      */
     @Override
-    public BaseResult<AirPollutionDomain> read(Long id) {
+    public BaseResult read(Long id) {
         AirPollutionDomain airPollution = airPollutionService.getAirPollutionById(id);
         if (airPollution == null) {
             throw new TigerException(ErrorCodeEnum.NOT_FOUND, "不存在的空气污染记录");
         }
-        System.out.println(airPollution + "Manager");
-        return new BaseResult<>(airPollution);
+        List arrays=new ArrayList();
+        int[] a={10,20,30};
+        arrays.add(a);
+        return new BaseResult(arrays);
     }
 
     /**
