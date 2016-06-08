@@ -1,0 +1,14 @@
+package tiger.common.dal.persistence.mapper;
+
+
+import tiger.common.dal.persistence.mapper.EconomyGDP.GdpDetailDO;
+import java.util.List;
+
+/**
+ * Created by xy86 on 16/6/9.
+ */
+public interface EconomyGdpMapper {
+
+    List<GdpDetailDO> getGdpDetail(Long year);
+
+}

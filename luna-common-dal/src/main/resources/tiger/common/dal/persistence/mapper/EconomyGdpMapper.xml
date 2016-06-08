@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="tiger.common.dal.persistence.mapper.EconomyGdpMapper">
+    <resultMap id="BaseResultMap" type="tiger.common.dal.persistence.EconomyGDP.GdpDetailDO">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+        <result column="modify_time" property="modify_time" jdbcType="TIMESTAMP" />
+        <result column="gdpRealValue" property="gdpRealValue" jdbcType="FLOAT" />
+        <result column="gdpForecastValue" property="gdpForecastValue" jdbcType="FLOAT" />
+        <result column="gdpGrowthRate" property="gdpGrowthRate" jdbcType="FLOAT" />
+        <result column="errorValue" property="errorValue" jdbcType="FLOAT" />
+        <result column="gdpYearTarget" property="gdpYearTarget" jdbcType="FLOAT" />
+        <result column="year" property="year" jdbcType="BIGINT" />
+        <result column="quarter" property="quarter" jdbcType="BIGINT" />
+        <result column="industryType_id" property="industryType_id" jdbcType="BIGINT" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, company_id, create_time, modify_time,gdpRealValue,gdpForecastValue,gdpGrowthRate,errorValue,gdpYearTarget,year,quarter,industryType_id
+    </sql>
+    <select id="getGdpDetail" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from gdp_forecast_data
+        where year = #{year,jdbcType=BIGINT}
+    </select>
+</mapper>
