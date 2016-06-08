@@ -34,9 +34,7 @@ public class AirQualityController {
      */
     @RequestMapping(value = "/air_quality/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public BaseResult<AirQualityDomain> getAirQualityById(@PathVariable("id") Long id){
-        AirQualityDomain a=airQualityManager.read(id).getData();
-        System.out.println(a + "123");
+    public BaseResult getAirQualityById(@PathVariable("id") Long id){
         return  airQualityManager.read(id);
     }
 
@@ -46,7 +44,7 @@ public class AirQualityController {
      * @param id the id
      * @return the base result
      */
-    @RequestMapping(value = "air_quality/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/air_quality/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public BaseResult<Boolean> deleteAirQualityById(@PathVariable("id") Long id) {
         return airQualityManager.delete(id);
@@ -60,7 +58,7 @@ public class AirQualityController {
      * @param id            the id
      * @return the base result
      */
-    @RequestMapping(value = "air_quality/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/air_quality/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public BaseResult<Boolean> updateAirQualityById(@RequestBody @Valid AirQualityUpdateForm airQualityForm,
                                                        BindingResult bindingResult,

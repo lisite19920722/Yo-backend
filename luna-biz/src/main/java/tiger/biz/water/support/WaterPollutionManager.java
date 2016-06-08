@@ -14,7 +14,7 @@ public interface WaterPollutionManager {
      * @param id
      * @return
      */
-    BaseResult<WaterPollutionDomain> read(Long id);
+    BaseResult read(Long id);
 
     /**
      * 删除一条空气污染记录

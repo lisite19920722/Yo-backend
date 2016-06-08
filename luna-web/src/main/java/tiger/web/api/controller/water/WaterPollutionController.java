@@ -34,9 +34,7 @@ public class WaterPollutionController {
      */
     @RequestMapping(value = "/water_pollution/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public BaseResult<WaterPollutionDomain> getWaterPollutionById(@PathVariable("id") Long id){
-        WaterPollutionDomain a=waterPollutionManager.read(id).getData();
-        System.out.println(a + "123");
+    public BaseResult getWaterPollutionById(@PathVariable("id") Long id){
         return  waterPollutionManager.read(id);
     }
 
@@ -46,7 +44,7 @@ public class WaterPollutionController {
      * @param id the id
      * @return the base result
      */
-    @RequestMapping(value = "water_pollution/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/water_pollution/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public BaseResult<Boolean> deleteWaterPollutionById(@PathVariable("id") Long id) {
         return waterPollutionManager.delete(id);
@@ -60,7 +58,7 @@ public class WaterPollutionController {
      * @param id            the id
      * @return the base result
      */
-    @RequestMapping(value = "water_pollution/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/water_pollution/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public BaseResult<Boolean> updateWaterPollutionById(@RequestBody @Valid WaterPollutionUpdateForm waterPollutionForm,
                                                        BindingResult bindingResult,

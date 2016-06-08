@@ -9,6 +9,9 @@ import tiger.core.basic.exception.TigerException;
 import tiger.core.domain.water.WaterPollutionDomain;
 import tiger.core.service.water.WaterPollutionService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by lisite on 16/5/22.
  */
@@ -23,14 +26,15 @@ public class WaterPollutionManagerImpl implements WaterPollutionManager {
      * @see WaterPollutionManager#read(Long)
      */
     @Override
-    public BaseResult<WaterPollutionDomain> read(Long id) {
+    public BaseResult read(Long id) {
         WaterPollutionDomain waterPollution = waterPollutionService.getWaterPollutionById(id);
-
         if (waterPollution == null) {
             throw new TigerException(ErrorCodeEnum.NOT_FOUND, "不存在的空气污染记录");
         }
-
-        return new BaseResult<>(waterPollution);
+        List arrays=new ArrayList();
+        int[] a={10,20,30};
+        arrays.add(a);
+        return new BaseResult(arrays);
     }
 
     /**

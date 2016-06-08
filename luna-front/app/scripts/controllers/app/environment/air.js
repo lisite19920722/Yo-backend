@@ -2,16 +2,21 @@
 
 
 app.controller('AirCtrl', ['$scope','ResTool','EnvironmentRes','$timeout',function($scope,ResTool,EnvironmentRes,$timeout) { 
-  var airPollutionGetParams = {
+  //--------------------------airQualityGetPromise----------------------------
+  var airQualityGetParams = {
     'id':1,
   };
-  var airPollutionGetHeaders = {
+  var airQualityGetHeaders = {
 
   };
-  var airPollutionGetPromise = ResTool.httpGet(EnvironmentRes.getAirPollution, airPollutionGetParams, airPollutionGetHeaders);
-  airPollutionGetPromise.then(function(data){
+  var airQualityGetPromise = ResTool.httpGet(EnvironmentRes.getAirQuality, airQualityGetParams, airQualityGetHeaders);
+  airQualityGetPromise.then(function(data){
     console.log(data.data);
-    //--------------------------盒子2开始----------------------------
+    //盒子2的Highcharts图表的日期
+    $scope.box2Date=data.data[0];
+    //盒子2的右侧的日期
+    $scope.box2Today=data.data[1];
+    //盒子2的Highcharts图表
     $scope.aqilinechart={
       options:{
         title: {
@@ -25,8 +30,8 @@ app.controller('AirCtrl', ['$scope','ResTool','EnvironmentRes','$timeout',functi
               enabled:false
           },
           xAxis: {
-              // categories: $scope.date
-              categories: ['6月1日', '6月2日', '6月3日', '6月4日', '6月5日','6月6日','6月7日']
+              categories: $scope.box2Date
+              // categories: ['6月1日', '6月2日', '6月3日', '6月4日', '6月5日','6月6日','6月7日']
           },
           yAxis: {
               title: {
@@ -79,16 +84,15 @@ app.controller('AirCtrl', ['$scope','ResTool','EnvironmentRes','$timeout',functi
       }       
       $scope.ishealthopen = false; 
     };
-    //--------------------------盒子2结束----------------------------
   }, function(error){
     console.log('发送失败');
   });
+  //-------------------------airQualityGetPromise结束--------------------------
   //盒子2中的过去七天AQI的Highcharts图, 与盒子3左边的空气质量地图
   // var promise = qService.tokenHttpGet(rawFactory.query,{tableName:'airQualityData'});
   // promise.then(function(rc) {
   //   $scope.aqi=rc.data[0];
   //   $scope.predictaqi=rc.data[1];
-  //   $scope.date=rc.data[2];
   //   $scope.firstElement=rc.data[3];
   //   $scope.pm25=rc.data[4];
   //   $scope.pm10=rc.data[5];
@@ -125,6 +129,7 @@ app.controller('AirCtrl', ['$scope','ResTool','EnvironmentRes','$timeout',functi
   //   $scope.line_o3=rc2.data[6];
   //   $scope.gauge=rc2.data[7];    
   // });
+  
   //--------------------------盒子1----------------------------
   $scope.temperature={
     options:{
@@ -180,12 +185,10 @@ app.controller('AirCtrl', ['$scope','ResTool','EnvironmentRes','$timeout',functi
         data: [14, 9, 1, 9, 12, 12, 5]
     }]
   };
-
   //点击展开盒子1的详细信息
   $scope.showTotalTable = function(){
     $scope.totalshow= !$scope.totalshow;
   };
-
   //盒子1中展开表格的数据
   $scope.totaldata = {
     tabledata:
@@ -207,7 +210,6 @@ app.controller('AirCtrl', ['$scope','ResTool','EnvironmentRes','$timeout',functi
     ]
   };
   //--------------------------盒子1结束----------------------------
-
   //--------------------------盒子3开始----------------------------
   //设置城区空气质量预测模块下marker的锚点，marker的label，显示信息窗体
   $timeout(function(){
