@@ -20,8 +20,9 @@
         select
         <include refid="Base_Column_List"/>
         from water_pollution_data
+        where water_pollution_source=4011 OR water_pollution_source=4012 OR water_pollution_source=4016 OR water_pollution_source=4017 OR water_pollution_source=4019
         order by id desc
-        limit 0,150
+        limit 0,1000
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from water_pollution_data

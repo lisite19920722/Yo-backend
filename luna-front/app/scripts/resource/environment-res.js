@@ -22,7 +22,17 @@ angular.module('luna')
 		},
 	  });
 	},
-	getAirWaterPollution: function (headers){
+	getWaterQuality: function (headers){
+	  return $resource('http://localhost:8080/api/environment/water/water_quality', {
+		
+	  }, {
+		get: {
+			method: 'GET',
+			headers: headers
+		},
+	  });
+	}, 
+	getWaterPollution: function (headers){
 	  return $resource('http://localhost:8080/api/environment/water/water_pollution', {
 		
 	  }, {
