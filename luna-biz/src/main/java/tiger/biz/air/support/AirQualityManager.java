@@ -9,14 +9,14 @@ import tiger.core.domain.air.AirQualityDomain;
  */
 public interface AirQualityManager {
     /**
-     * 获取一条空气污染记录
+     * 获取一条空气质量记录
      *
      * @return
      */
     BaseResult read();
 
     /**
-     * 删除一条空气污染记录
+     * 删除一条空气质量记录
      *
      * @param id
      * @return
@@ -24,7 +24,7 @@ public interface AirQualityManager {
     BaseResult<Boolean> delete(Long id);
 
     /**
-     * 更新一条消息
+     * 更新一条记录
      *
      * @param airQuality
      * @return
@@ -32,7 +32,7 @@ public interface AirQualityManager {
     BaseResult<Boolean> update(AirQualityDomain airQuality);
 
     /**
-     * 更新一条消息
+     * 增加一条记录
      *
      * @param airQualityDomain
      * @return

@@ -1,9 +1,18 @@
 'use strict';
       
-app.controller('WaterCtrl', ['$scope','$http',function($scope, $http) {
-    // var promise = qService.tokenHttpGet(rawFactory.query,{tableName:'waterQualityData'});
-    // promise.then(function(rc1) {
+app.controller('WaterCtrl', ['$scope','ResTool','EnvironmentRes','$http',function($scope,ResTool,EnvironmentRes,$http) {
+    //--------------------------airQualityGetPromise----------------------------
+    var waterPollutionGetParams = {
+        // 'id':1,
+    };
+    var waterPollutionGetHeaders = {
 
+    };
+    // var waterPollutionGetPromise = ResTool.httpGet(EnvironmentRes.getWaterPollution, waterPollutionGetParams, waterPollutionGetHeaders);
+    // waterPollutionGetPromise.then(function(data){
+    //     console.log(data.data);
+    // }, function(error){
+    //     console.log('发送失败');
     // });
     // var promise1 = qService.tokenHttpGet(rawFactory.query,{tableName:'waterIndustryData'});
     // promise1.then(function(rc2) {

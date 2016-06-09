@@ -16,11 +16,13 @@
     <sql id="Base_Column_List">
         id, date, day, month, year, discharge, no, smoke, so2, air_pollution_source
     </sql>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    <select id="select" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from air_pollution_data
-        where id = #{id,jdbcType=BIGINT}
+        where air_pollution_source=4022 OR air_pollution_source=4023 OR air_pollution_source=4024
+        order by id desc
+        limit 0,100
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from air_pollution_data

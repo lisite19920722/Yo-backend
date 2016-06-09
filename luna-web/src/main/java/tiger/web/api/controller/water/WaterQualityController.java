@@ -27,15 +27,14 @@ public class WaterQualityController {
     private WaterQualityManager waterQualityManager;
 
     /**
-     * 根据id获取WaterQualityDomain
+     * 获取WaterQualityDomain
      *
-     * @param id
      * @return
      */
-    @RequestMapping(value = "/water_quality/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/water_quality", method = RequestMethod.GET)
     @ResponseBody
-    public BaseResult getWaterQualityById(@PathVariable("id") Long id){
-        return  waterQualityManager.read(id);
+    public BaseResult getWaterQuality(){
+        return  waterQualityManager.read();
     }
 
     /**

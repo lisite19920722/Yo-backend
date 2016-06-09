@@ -3,10 +3,18 @@ package tiger.core.service.air.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tiger.common.dal.persistence.air.AirPollutionDO;
+import tiger.common.dal.persistence.air.AirPollutionDO;
 import tiger.common.dal.persistence.mapper.AirPollutionMapper;
 import tiger.core.domain.air.AirPollutionDomain;
+import tiger.core.domain.air.AirPollutionDomain;
+import tiger.core.domain.air.convert.AirPollutionConvert;
 import tiger.core.domain.air.convert.AirPollutionConvert;
 import tiger.core.service.air.AirPollutionService;
+import tiger.core.service.air.AirQualityService;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by lisite on 16/5/22.
@@ -19,17 +27,24 @@ public class AirPollutionServiceImpl implements AirPollutionService{
     private AirPollutionMapper airPollutionMapper;
 
     /**
-     * Update airPollution
+     * Get airPollution
      *
-     * @param id
      * @return the AirPollutionDO
-     * @see AirPollutionService#getAirPollutionById(Long)
+     * @see AirPollutionService#getAirPollution()
      */
     @Override
-    public AirPollutionDomain getAirPollutionById(Long id) {
-        AirPollutionDO airPollutionDO = airPollutionMapper.selectByPrimaryKey(id);
-        if (null != airPollutionDO) {
-            return AirPollutionConvert.convertDOToDomain(airPollutionDO);
+    public List<AirPollutionDomain> getAirPollution() {
+        List<AirPollutionDO> airPollutionDOList = airPollutionMapper.select();
+        List<AirPollutionDomain> airPollutionDomainList=new ArrayList<>();
+        Iterator<AirPollutionDO> e = airPollutionDOList.iterator();
+        AirPollutionDO temp = e.next();
+        airPollutionDomainList.add(AirPollutionConvert.convertDOToDomain(temp));
+        while(e.hasNext()){
+            temp = e.next();
+            airPollutionDomainList.add(AirPollutionConvert.convertDOToDomain(temp));
+        }
+        if (airPollutionDomainList != null) {
+            return airPollutionDomainList;
         }
         return null;
     }

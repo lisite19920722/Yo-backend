@@ -26,15 +26,14 @@ public class AirPollutionController {
     private AirPollutionManager airPollutionManager;
 
     /**
-     * 根据id获取AirPollutionDomain
+     * 获取AirPollutionDomain
      *
-     * @param id
      * @return
      */
-    @RequestMapping(value = "/air_pollution/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/air_pollution", method = RequestMethod.GET)
     @ResponseBody
-    public BaseResult getAirPollutionById(@PathVariable("id") Long id){
-        return  airPollutionManager.read(id);
+    public BaseResult getAirPollution(){
+        return  airPollutionManager.read();
     }
 
     /**

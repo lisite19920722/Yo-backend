@@ -27,15 +27,14 @@ public class WaterPollutionController {
     private WaterPollutionManager waterPollutionManager;
 
     /**
-     * 根据id获取WaterPollutionDomain
+     * 获取WaterPollutionDomain
      *
-     * @param id
      * @return
      */
-    @RequestMapping(value = "/water_pollution/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/water_pollution", method = RequestMethod.GET)
     @ResponseBody
-    public BaseResult getWaterPollutionById(@PathVariable("id") Long id){
-        return  waterPollutionManager.read(id);
+    public BaseResult getWaterPollution(){
+        return  waterPollutionManager.read();
     }
 
     /**
