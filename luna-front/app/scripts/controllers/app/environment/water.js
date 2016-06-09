@@ -1,254 +1,140 @@
 'use strict';
       
 app.controller('WaterCtrl', ['$scope','ResTool','EnvironmentRes','$http',function($scope,ResTool,EnvironmentRes,$http) {
-    //--------------------------airQualityGetPromise----------------------------
+    //--------------------------waterPollutionGetPromise----------------------------
     var waterPollutionGetParams = {
         // 'id':1,
     };
     var waterPollutionGetHeaders = {
 
     };
-    // var waterPollutionGetPromise = ResTool.httpGet(EnvironmentRes.getWaterPollution, waterPollutionGetParams, waterPollutionGetHeaders);
-    // waterPollutionGetPromise.then(function(data){
-    //     console.log(data.data);
-    // }, function(error){
-    //     console.log('发送失败');
-    // });
-    // var promise1 = qService.tokenHttpGet(rawFactory.query,{tableName:'waterIndustryData'});
-    // promise1.then(function(rc2) {
-    //     $scope.list11=rc2.data[0];
-    //     $scope.list12=rc2.data[1];
-    //     $scope.list13=rc2.data[2];
-    //     $scope.list14=rc2.data[3];
-    //     $scope.list15=rc2.data[4];
-    //     $scope.date_industry=rc2.data[5];
-    // });
-    // var promise2 = qService.tokenHttpGet(rawFactory.query,{tableName:'waterPollutionData'});
-    // promise2.then(function(rc3) {
-    //   $scope.JiuLONGDischarge=rc3.data[0];
-    //   $scope.TCCityzoneDischarge=rc3.data[1];
-    //   $scope.LiuHeDischarge=rc3.data[2];
-    //   $scope.GangChengDischarge=rc3.data[3];
-    //   $scope.TCRivertownDischarge=rc3.data[4];
-    //   $scope.JiuLONGCod=rc3.data[5];
-    //   $scope.TCCityzoneCod=rc3.data[6];
-    //   $scope.LiuHeCod=rc3.data[7];
-    //   $scope.GangChengCod=rc3.data[8];
-    //   $scope.TCRivertownCod=rc3.data[9];
-    //   $scope.JiuLONGNh4n=rc3.data[10];
-    //   $scope.TCCityzoneNh4n=rc3.data[11];
-    //   $scope.LiuHeNh4n=rc3.data[12];
-    //   $scope.GangChengNh4n=rc3.data[13];
-    //   $scope.TCRivertownNh4n=rc3.data[14];
-    //   $scope.JiuLONGP=rc3.data[15];
-    //   $scope.TCCityzoneP=rc3.data[16];
-    //   $scope.LiuHeP=rc3.data[17];
-    //   $scope.GangChengP=rc3.data[18];
-    //   $scope.TCRivertownP=rc3.data[19];
-    //   $scope.date1=rc3.data[20];
-    // });
-    
-    //--------------------------盒子1-----------------------------
-    $scope.factory={
-        options:{
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: '工厂废水排放'
-            },
-            subtitle: {
-                text: '来源：太仓市环保局'
-            },
-            credits: {
-                enabled:false
-            },
-            xAxis: {
-                // categories: $scope.date_industry
-                categories: [
-                    '6月1日',
-                    '6月2日',
-                    '6月3日',
-                    '6月4日',
-                    '6月5日',
-                    '6月6日',
-                    '6月7日',
-                ]
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: '吨'
-                }
-            },
-            tooltip: {
-                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} 吨</b></td></tr>',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true
-            },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0
-                }
-            }
-        },
-        series: [
-            {
-                name: '太仓市佳煌针织印染有限公司',
-                // data: $scope.list11
-                data: [500, 400, 300, 400, 600, 800, 750]
-
-            }, {
-                name: '洛克伍德染料有限公司',
-                // data: $scope.list12
-                data: [500, 400, 300, 400, 600, 800, 750]
-
-            }, {
-                name: '太仓虹盛印染厂',
-                // data: $scope.list13
-                data: [500, 400, 300, 400, 600, 800, 750]
-
-            }, {
-                name: '太仓市金佳漂染厂',
-                // data: $scope.list14
-                data: [500, 400, 300, 400, 600, 800, 750]
-
-            }, {
-                name: '江苏长乐纤维科技有限公司',
-                // data: $scope.list15
-                data: [500, 400, 300, 400, 600, 800, 750]
-
-            }
-        ]
-    };       
-
-    $scope.showindustry= function(){
-        $scope.industryshow= !$scope.industryshow;
-    };
-
-    // $scope.totaldata = { 
-    //     tabledata:
-    //     [
-    //         {yearvalue:'日期',JLfactory:'太仓市佳煌针织印染有限公司（吨）' ,Afactory:'洛克伍德燃料有限公司（吨）',Bfactory:'太仓虹盛印染厂（吨）',Cfactory:'太仓市金佳漂染厂（吨）',Dfactory:'江苏长乐纤维科技有限公司（吨）'},
-    //         {yearvalue:$scope.date_industry[0],JLfactory:$scope.list11[0],Afactory:$scope.list12[0],Bfactory:$scope.list13[0],Cfactory:$scope.list14[0],Dfactory:$scope.list15[0]},
-    //         {yearvalue:$scope.date_industry[1],JLfactory:$scope.list11[1], Afactory:$scope.list12[1],Bfactory:$scope.list13[1],Cfactory:$scope.list14[1],Dfactory:$scope.list15[1]},
-    //         {yearvalue:$scope.date_industry[2], JLfactory:$scope.list11[2],Afactory:$scope.list12[2],Bfactory:$scope.list13[2],Cfactory:$scope.list14[2],Dfactory:$scope.list15[2]},
-    //         {yearvalue:$scope.date_industry[3], JLfactory:$scope.list11[3],Afactory:$scope.list12[3],Bfactory:$scope.list13[3],Cfactory:$scope.list14[3],Dfactory:$scope.list15[3]},
-    //         {yearvalue:$scope.date_industry[4], JLfactory:$scope.list11[4],Afactory:$scope.list12[4],Bfactory:$scope.list13[4],Cfactory:$scope.list14[4],Dfactory:$scope.list15[4]},
-    //         {yearvalue:$scope.date_industry[5], JLfactory:$scope.list11[5],Afactory:$scope.list12[5],Bfactory:$scope.list13[5],Cfactory:$scope.list14[5],Dfactory:$scope.list15[5]},
-    //     {yearvalue:$scope.date_industry[6], JLfactory:$scope.list11[6],Afactory:$scope.list12[6],Bfactory:$scope.list13[6],Cfactory:$scope.list14[6],Dfactory:$scope.list15[6]}
-    //     ]
-    // };
-    $scope.totaldata = { 
-        tabledata:
-        [
-            {yearvalue:'日期',JLfactory:'太仓市佳煌针织印染有限公司（吨）' ,Afactory:'洛克伍德燃料有限公司（吨）',Bfactory:'太仓虹盛印染厂（吨）',Cfactory:'太仓市金佳漂染厂（吨）',Dfactory:'江苏长乐纤维科技有限公司（吨）'},
-            {yearvalue:'6月1日', JLfactory:500,Afactory:500,Bfactory:500,Cfactory:500,Dfactory:500},
-            {yearvalue:'6月2日', JLfactory:400,Afactory:400,Bfactory:400,Cfactory:400,Dfactory:400},
-            {yearvalue:'6月3日', JLfactory:300,Afactory:300,Bfactory:300,Cfactory:300,Dfactory:300},
-            {yearvalue:'6月4日', JLfactory:400,Afactory:400,Bfactory:400,Cfactory:400,Dfactory:400},
-            {yearvalue:'6月5日', JLfactory:600,Afactory:600,Bfactory:600,Cfactory:600,Dfactory:600},
-            {yearvalue:'6月6日', JLfactory:800,Afactory:800,Bfactory:800,Cfactory:800,Dfactory:800},
-            {yearvalue:'6月7日', JLfactory:700,Afactory:700,Bfactory:700,Cfactory:700,Dfactory:700}
-        ]
-    };
-    //--------------------------盒子1结束--------------------------
-
-    //--------------------------盒子2-----------------------------
-    //堆积柱状图第一层膜
-    $scope.discharge={
-        options:{
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: '太仓市主要污水处理厂废水排放分析'
-            },
-            credits: {
-                enabled:false
-            },
-            xAxis: {
-                // categories: $scope.date1
-                categories: ['6月1日','6月2日','6月3日','6月4日','6月5日','6月6日']
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: '吨'
+    var waterPollutionGetPromise = ResTool.httpGet(EnvironmentRes.getWaterPollution, waterPollutionGetParams, waterPollutionGetHeaders);
+    waterPollutionGetPromise.then(function(data){
+        console.log(data.data);
+        $scope.box1Date=data.data[0];
+        $scope.box2Date=data.data[1];
+        //盒子2中五个工厂各自最近6天的废水排放量(右上角)
+        $scope.discharge1=data.data[2];
+        $scope.discharge2=data.data[3];
+        $scope.discharge3=data.data[4];
+        $scope.discharge4=data.data[5];
+        $scope.discharge5=data.data[6];
+        //盒子2所排放的废水中污染物细分指标（右下角）
+        $scope.pollutionCod=data.data[7];
+        $scope.pollutionNh4n=data.data[8];
+        $scope.pollutionP=data.data[9];
+        //--------------------------盒子1-----------------------------
+        $scope.factory={
+            options:{
+                chart: {
+                    type: 'column'
                 },
-                stackLabels: {
-                    enabled: true,
-                    style: {
-                        fontWeight: 'bold',
-                        color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                title: {
+                    text: '工厂废水排放'
+                },
+                subtitle: {
+                    text: '来源：太仓市环保局'
+                },
+                credits: {
+                    enabled:false
+                },
+                xAxis: {
+                    categories: $scope.box1Date
+                    // categories: [
+                    //     '6月1日',
+                    //     '6月2日',
+                    //     '6月3日',
+                    //     '6月4日',
+                    //     '6月5日',
+                    //     '6月6日',
+                    //     '6月7日',
+                    // ]
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '吨'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.1f} 吨</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
                     }
                 }
             },
-            legend: {
-                align: 'center',
-                x: 33,
-                verticalAlign: 'bottom',
-                y: 0,
-                backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
-                borderColor: '#CCC',
-                borderWidth: 1,
-                shadow: true
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.x + '</b><br/>' +
-                        this.series.name + ': ' + this.y + '<br/>' +
-                        'Total: ' + this.point.stackTotal;
+            series: [
+                {
+                    name: '太仓市佳煌针织印染有限公司',
+                    // data: $scope.list11
+                    data: [5122, 2919, 4323, 1767, 2310, 4559, 1929]
+
+                }, {
+                    name: '洛克伍德染料有限公司',
+                    // data: $scope.list12
+                    data: [1595, 1200, 1914, 1444, 1568, 1862, 1717]
+
+                }, {
+                    name: '太仓虹盛印染厂',
+                    // data: $scope.list13
+                    data: [1016, 830, 902, 1134, 616, 349, 508]
+
+                }, {
+                    name: '太仓市金佳漂染厂',
+                    // data: $scope.list14
+                    data: [649, 966, 1078, 902, 2037, 1813, 1489]
+
+                }, {
+                    name: '江苏长乐纤维科技有限公司',
+                    // data: $scope.list15
+                    data: [1654, 1556, 1865, 2567, 2015, 1892, 1568]
+
                 }
-            },
-            plotOptions: {
-                column: {
-                    stacking: 'normal',
-                    dataLabels: {
-                        enabled: false,
-                        color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
-                        style: {
-                            textShadow: '0 0 3px black'
-                        }
-                    }
-                }
-            }
-        },
-        series: [
-            {
-                name: '太仓市城区污水处理厂',
-                color:'#69afcd',
-                // data: $scope.TCCityzoneDischarge
-                data: [500, 400, 300, 400, 600, 800]
-            }, {
-                name: '太仓江城城市污水处理有限公司',
-                color:'#57d160',
-                // data: $scope.TCRivertownDischarge
-                data: [500, 400, 300, 400, 600, 800]
-            }, {
-                name: '浏河镇污水处理厂',
-                color:'#c7e74f',
-                // data: $scope.LiuHeDischarge
-                data: [500, 400, 300, 400, 600, 800]
-            }, {
-                name: '港城组团污水处理厂',
-                color:'#f8d940',
-                // data: $scope.GangChengDischarge
-                data: [500, 400, 300, 400, 600, 800]
-            }, {
-                name: '玖龙纸业有限公司',
-                color:'#ffb143',
-                // data: $scope.JiuLONGDischarge
-                data: [500, 400, 300, 400, 600, 800]
-            }
-        ]
-    };
-    //堆积柱状图第二层膜
-    $scope.changePollutionType1=function(){ 
+            ]
+        };       
+
+        $scope.showindustry= function(){
+            $scope.industryshow= !$scope.industryshow;
+        };
+
+        $scope.totaldata = { 
+            tabledata:
+            [
+                {yearvalue:'日期',JLfactory:'太仓市佳煌针织印染有限公司（吨）' ,Afactory:'洛克伍德燃料有限公司（吨）',Bfactory:'太仓虹盛印染厂（吨）',Cfactory:'太仓市金佳漂染厂（吨）',Dfactory:'江苏长乐纤维科技有限公司（吨）'},
+                {yearvalue:$scope.box1Date[0], JLfactory:5122,Afactory:1595,Bfactory:1016,Cfactory:649,Dfactory:1654},
+                {yearvalue:$scope.box1Date[1], JLfactory:2919,Afactory:1200,Bfactory:830,Cfactory:966,Dfactory:1556},
+                {yearvalue:$scope.box1Date[2], JLfactory:4323,Afactory:1914,Bfactory:902,Cfactory:1078,Dfactory:1865},
+                {yearvalue:$scope.box1Date[3], JLfactory:1767,Afactory:1444,Bfactory:1134,Cfactory:902,Dfactory:2567},
+                {yearvalue:$scope.box1Date[4], JLfactory:2310,Afactory:1568,Bfactory:616,Cfactory:2037,Dfactory:2015},
+                {yearvalue:$scope.box1Date[5], JLfactory:4559,Afactory:1862,Bfactory:349,Cfactory:1813,Dfactory:1892},
+                {yearvalue:$scope.box1Date[6], JLfactory:1929,Afactory:1717,Bfactory:508,Cfactory:1489,Dfactory:1568}
+            ]
+        };
+        // $scope.totaldata = { 
+        //     tabledata:
+        //     [
+        //         {yearvalue:'日期',JLfactory:'太仓市佳煌针织印染有限公司（吨）' ,Afactory:'洛克伍德燃料有限公司（吨）',Bfactory:'太仓虹盛印染厂（吨）',Cfactory:'太仓市金佳漂染厂（吨）',Dfactory:'江苏长乐纤维科技有限公司（吨）'},
+        //         {yearvalue:'6月1日', JLfactory:500,Afactory:500,Bfactory:500,Cfactory:500,Dfactory:500},
+        //         {yearvalue:'6月2日', JLfactory:400,Afactory:400,Bfactory:400,Cfactory:400,Dfactory:400},
+        //         {yearvalue:'6月3日', JLfactory:300,Afactory:300,Bfactory:300,Cfactory:300,Dfactory:300},
+        //         {yearvalue:'6月4日', JLfactory:400,Afactory:400,Bfactory:400,Cfactory:400,Dfactory:400},
+        //         {yearvalue:'6月5日', JLfactory:600,Afactory:600,Bfactory:600,Cfactory:600,Dfactory:600},
+        //         {yearvalue:'6月6日', JLfactory:800,Afactory:800,Bfactory:800,Cfactory:800,Dfactory:800},
+        //         {yearvalue:'6月7日', JLfactory:700,Afactory:700,Bfactory:700,Cfactory:700,Dfactory:700}
+        //     ]
+        // };
+        //--------------------------盒子1结束--------------------------
+
+        //--------------------------盒子2-----------------------------
+        //堆积柱状图第一层膜
         $scope.discharge={
             options:{
                 chart: {
@@ -261,8 +147,8 @@ app.controller('WaterCtrl', ['$scope','ResTool','EnvironmentRes','$http',functio
                     enabled:false
                 },
                 xAxis: {
-                    categories: $scope.date1
-                    // categories: ['4月13日','4月14日','4月15日','4月16日','4月17日','4月18日']
+                    categories: $scope.box2Date
+                    // categories: ['6月1日','6月2日','6月3日','6月4日','6月5日','6月6日']
                 },
                 yAxis: {
                     min: 0,
@@ -309,312 +195,454 @@ app.controller('WaterCtrl', ['$scope','ResTool','EnvironmentRes','$http',functio
             },
             series: [
                 {
-                    name: '太仓市城区污水处理厂',
-                    color:'#69afcd',
-                    // data: $scope.TCCityzoneDischarge
-                    data: [400, 600, 800, 600, 400, 700]
-                }, {
-                    name: '太仓江城城市污水处理有限公司',
+                    name: '玖龙纸业有限公司',
                     color:'#57d160',
-                    // data: $scope.TCRivertownDischarge
-                    data: [400, 600, 800, 600, 400, 700]
+                    data: $scope.discharge1
+                    // data: [500, 400, 300, 400, 600, 800]
+                }, {
+                    name: '太仓市城区污水处理厂',
+                    color:'#ffb143',
+                    data: $scope.discharge2
+                    // data: [500, 400, 300, 400, 600, 800]
                 }, {
                     name: '浏河镇污水处理厂',
                     color:'#c7e74f',
-                    // data: $scope.LiuHeDischarge
-                    data: [400, 600, 800, 600, 400, 700]
+                    data: $scope.discharge3
+                    // data: [500, 400, 300, 400, 600, 800]
                 }, {
                     name: '港城组团污水处理厂',
                     color:'#f8d940',
-                    // data: $scope.GangChengDischarge
-                    data: [400, 600, 800, 600, 400, 700]
+                    data: $scope.discharge4
+                    // data: [500, 400, 300, 400, 600, 800]
                 }, {
-                    name: '玖龙纸业有限公司',
-                    color:'#ffb143',
-                    // data: $scope.JiuLONGDischarge
-                    data: [400, 600, 800, 600, 400, 700]
+                    name: '太仓江城城市污水处理有限公司',
+                    color:'#69afcd',
+                    data: $scope.discharge5
+                    // data: [500, 400, 300, 400, 600, 800]
                 }
             ]
         };
-    };
-    //溶解氧浓度
-    $scope.changePollutionType2=function(){
-        $scope.discharge={
-            options:{
-                chart: {
-                    type: 'column'
-                },
-                legend: {
-                    itemStyle:{
-                    fontWeight:'normal'
-                       }
-                },
-                credits: {
-                    enabled:false
-                },
-                title: {
-                    text: '溶解氧排放浓度',
-                    style: {
-                        fontWeight:'bold',
-                    }
-                },
-                subtitle: {
-                    // text: $scope.date1[5]+'9时',
-                    text: '6月1日9时',
-                    style: {
-                        fontWeight: 'normal',
-                        fontSize: 'larger',
-                        fontStyle: '宋体'
-                    }
-                },
-                xAxis: {
-                    categories: [
-                        '太仓市城区污水处理厂',
-                        '太仓江城城市污水处理有限公司',
-                        '浏河镇污水处理厂',
-                        '港城组团污水处理厂',
-                        '玖龙纸业有限公司'
-                    ]
-                    
-                },
-                yAxis: {
-                    min: 0,
-                    title: {
-                        text: 'mg/L'
-                    }
-                },
-                tooltip: {
-                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                        '<td style="padding:0"><b>{point.y:.1f} mg/L</b></td></tr>',
-                    footerFormat: '</table>',
-                    shared: true,
-                    useHTML: true
-                },
-                plotOptions: {
-                    column: {
-                        pointPadding: 0.2,
-                        borderWidth: 0
-                    }
-                }
-            },
-            series: [{
-                name: '溶解氧浓度',
-                color: "#7cb5ec",
-                // data: [$scope.TCCityzoneCod[0], $scope.TCRivertownCod[0], $scope.LiuHeCod[0], $scope.GangChengCod[0], $scope.JiuLONGCod[0]]
-                data: [100, 200, 150, 120, 220]
-            }]
-        };
-    };
-    //氨氮浓度
-    $scope.changePollutionType3=function(){
-        $scope.discharge={
-            options:{
-                chart: {
+        //堆积柱状图第二层膜
+        $scope.changePollutionType1=function(){ 
+            $scope.discharge={
+                options:{
+                    chart: {
                         type: 'column'
                     },
-                legend: {
-                        itemStyle:{
-                        fontWeight:'normal'
-                        }
-                },
-                credits: {
-                    enabled:false
-                },
-                title: {
-                    text: '氨氮排放浓度',
-                    style: {
-                        fontWeight:'bold',
-                    }
-                },
-                subtitle: {
-                    // text: $scope.date1[5]+'9时',
-                    text: '6月1日9时',
-                    style: {
-                        fontWeight: 'normal',
-                        fontSize: 'larger',
-                        fontStyle: '宋体'
-                    }
-                },
-                xAxis: {
-                    categories: [
-                        '太仓市城区污水处理厂',
-                        '太仓江城城市污水处理有限公司',
-                        '浏河镇污水处理厂',
-                        '港城组团污水处理厂',
-                        '玖龙纸业有限公司'
-                    ]
-                },
-                yAxis: {
-                    min: 0,
                     title: {
-                        text: 'mg/L'
+                        text: '太仓市主要污水处理厂废水排放分析'
+                    },
+                    credits: {
+                        enabled:false
+                    },
+                    xAxis: {
+                        categories: $scope.box2Date
+                        // categories: ['4月13日','4月14日','4月15日','4月16日','4月17日','4月18日']
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '吨'
+                        },
+                        stackLabels: {
+                            enabled: true,
+                            style: {
+                                fontWeight: 'bold',
+                                color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                            }
+                        }
+                    },
+                    legend: {
+                        align: 'center',
+                        x: 33,
+                        verticalAlign: 'bottom',
+                        y: 0,
+                        backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+                        borderColor: '#CCC',
+                        borderWidth: 1,
+                        shadow: true
+                    },
+                    tooltip: {
+                        formatter: function () {
+                            return '<b>' + this.x + '</b><br/>' +
+                                this.series.name + ': ' + this.y + '<br/>' +
+                                'Total: ' + this.point.stackTotal;
+                        }
+                    },
+                    plotOptions: {
+                        column: {
+                            stacking: 'normal',
+                            dataLabels: {
+                                enabled: false,
+                                color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                                style: {
+                                    textShadow: '0 0 3px black'
+                                }
+                            }
+                        }
                     }
                 },
-                tooltip: {
-                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                        '<td style="padding:0"><b>{point.y:.1f} mg/L</b></td></tr>',
-                    footerFormat: '</table>',
-                    shared: true,
-                    useHTML: true
-                },
-                plotOptions: {
-                    column: {
-                        pointPadding: 0.2,
-                        borderWidth: 0
+                series: [
+                    {
+                        name: '玖龙纸业有限公司',
+                        color:'#69afcd',
+                        // data: $scope.JiuLONGDischarge
+                        data: [500, 400, 300, 400, 600, 800]
+                    }, {
+                        name: '太仓市城区污水处理厂',
+                        color:'#ffb143',
+                        // data: $scope.TCCityzoneDischarge
+                        data: [500, 400, 300, 400, 600, 800]
+                    }, {
+                        name: '浏河镇污水处理厂',
+                        color:'#c7e74f',
+                        // data: $scope.LiuHeDischarge
+                        data: [500, 400, 300, 400, 600, 800]
+                    }, {
+                        name: '港城组团污水处理厂',
+                        color:'#f8d940',
+                        // data: $scope.GangChengDischarge
+                        data: [500, 400, 300, 400, 600, 800]
+                    }, {
+                        name: '太仓江城城市污水处理有限公司',
+                        color:'#57d160',
+                        // data: $scope.TCRivertownDischarge
+                        data: [500, 400, 300, 400, 600, 800]
                     }
-                }
-            },
-            series: [{
-                name: '氨氮浓度',
-                color: "#7cb5ec",
-                // data:  [$scope.TCCityzoneNh4n[0], $scope.TCRivertownNh4n[0], $scope.LiuHeNh4n[0], $scope.GangChengNh4n[0], $scope.JiuLONGNh4n[0]]
-                data:  [200, 100, 150, 150, 250]
-            }]
+                ]
+            };
         };
-    };
-    //总磷浓度
-    $scope.changePollutionType4=function(){
-        $scope.discharge={
-            options:{
-                chart: {
+        //溶解氧浓度
+        $scope.changePollutionType2=function(){
+            $scope.discharge={
+                options:{
+                    chart: {
                         type: 'column'
                     },
-                legend: {
+                    legend: {
                         itemStyle:{
                         fontWeight:'normal'
+                           }
+                    },
+                    credits: {
+                        enabled:false
+                    },
+                    title: {
+                        text: '溶解氧排放浓度',
+                        style: {
+                            fontWeight:'bold',
                         }
-                },
-                credits: {
-                    enabled:false
-                },
-                title: {
-                    text: '总磷排放浓度',
-                    style: {
-                        fontWeight:'bold',
+                    },
+                    subtitle: {
+                        text: $scope.box2Date[5]+'9时',
+                        // text: '6月1日9时',
+                        style: {
+                            fontWeight: 'normal',
+                            fontSize: 'larger',
+                            fontStyle: '宋体'
+                        }
+                    },
+                    xAxis: {
+                        categories: [
+                            '太仓市城区污水处理厂',
+                            '太仓江城城市污水处理有限公司',
+                            '浏河镇污水处理厂',
+                            '港城组团污水处理厂',
+                            '玖龙纸业有限公司'
+                        ]
+                        
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'mg/L'
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:.1f} mg/L</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0
+                        }
                     }
                 },
-                subtitle: {
-                    // text: $scope.date1[5]+'9时',
-                    text: '6月1日9时',
-                    style: {
-                        fontWeight: 'normal',
-                        fontSize: 'larger',
-                        fontStyle: '宋体'
-                    }
-                },
-                xAxis: {
-                    categories: [
-                        '太仓市城区污水处理厂',
-                        '太仓江城城市污水处理有限公司',
-                        '浏河镇污水处理厂',
-                        '港城组团污水处理厂',
-                        '玖龙纸业有限公司'
-                    ]
-                   
-                },
-                yAxis: {
-                    min: 0,
-                    title: {
-                        text: 'mg/L'
-                    }
-                },
-                tooltip: {
-                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                        '<td style="padding:0"><b>{point.y:.1f} mg/L</b></td></tr>',
-                    footerFormat: '</table>',
-                    shared: true,
-                    useHTML: true
-                },
-                plotOptions: {
-                    column: {
-                        pointPadding: 0.2,
-                        borderWidth: 0
-                    }
-                }
-            },
-            series: [{
-                name: '总磷浓度',
-                color: "#7cb5ec",
-                // data: [$scope.TCCityzoneP[0], $scope.TCRivertownP[0], $scope.LiuHeP[0], $scope.GangChengP[0], $scope.JiuLONGP[0]]
-                data: [0.07,0.06,0.12,0.08,0.11]
-            }]
-        };
-    };
-    //高锰酸钾浓度
-    $scope.changePollutionType5=function(){
-        $scope.discharge={
-            options:{
-                chart: {
-                    type: 'column'
-                },
-                credits: {
-                    enabled:false
-                },
-                legend: {
-                itemStyle:{
-                    fontWeight:'normal'
-                   }
-                }
-                ,
-                title: {
-                    text: '高锰酸钾排放浓度',
-                    style: {
-                        fontWeight:'bold',
-                    }
-                },
-                subtitle: {
-                    // text: $scope.date1[5]+'9时',
-                    text: '6月1日9时',
-                    style: {
-                        fontWeight: 'normal',
-                        fontSize: 'larger',
-                        fontStyle: '宋体'
-                    }
-                },
-                xAxis: {
-                    categories: [
-                        '太仓市城区污水处理厂',
-                        '太仓江城城市污水处理有限公司',
-                        '浏河镇污水处理厂',
-                        '港城组团污水处理厂',
-                        '玖龙纸业有限公司'
-                    ]
-                },
-                yAxis: {
-                    min: 0,
-                    title: {
-                        text: 'mg/L'
-                    }
-                },
-                tooltip: {
-                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                        '<td style="padding:0"><b>{point.y:.1f} mg/L</b></td></tr>',
-                    footerFormat: '</table>',
-                    shared: true,
-                    useHTML: true
-                },
-                plotOptions: {
-                    column: {
-                        pointPadding: 0.2,
-                        borderWidth: 0
-                    }
-                }
-            },
-            series: [
-                {
-                    name: '高锰酸钾浓度',
+                series: [{
+                    name: '溶解氧浓度',
                     color: "#7cb5ec",
-                    data: [3.05, 1.25, 1.01, 2.02, 2.12]
-
-                }
-            ]
+                    data: $scope.pollutionCod
+                    // data: [100, 200, 150, 120, 220]
+                }]
+            };
         };
-    }; 
-    //--------------------------盒子2结束--------------------------
+        //氨氮浓度
+        $scope.changePollutionType3=function(){
+            $scope.discharge={
+                options:{
+                    chart: {
+                            type: 'column'
+                        },
+                    legend: {
+                            itemStyle:{
+                            fontWeight:'normal'
+                            }
+                    },
+                    credits: {
+                        enabled:false
+                    },
+                    title: {
+                        text: '氨氮排放浓度',
+                        style: {
+                            fontWeight:'bold',
+                        }
+                    },
+                    subtitle: {
+                        text: $scope.box2Date[5]+'9时',
+                        // text: '6月1日9时',
+                        style: {
+                            fontWeight: 'normal',
+                            fontSize: 'larger',
+                            fontStyle: '宋体'
+                        }
+                    },
+                    xAxis: {
+                        categories: [
+                            '太仓市城区污水处理厂',
+                            '太仓江城城市污水处理有限公司',
+                            '浏河镇污水处理厂',
+                            '港城组团污水处理厂',
+                            '玖龙纸业有限公司'
+                        ]
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'mg/L'
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:.1f} mg/L</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0
+                        }
+                    }
+                },
+                series: [{
+                    name: '氨氮浓度',
+                    color: "#7cb5ec",
+                    data:  $scope.pollutionNh4n
+                    // data:  [200, 100, 150, 150, 250]
+                }]
+            };
+        };
+        //总磷浓度
+        $scope.changePollutionType4=function(){
+            $scope.discharge={
+                options:{
+                    chart: {
+                            type: 'column'
+                        },
+                    legend: {
+                            itemStyle:{
+                            fontWeight:'normal'
+                            }
+                    },
+                    credits: {
+                        enabled:false
+                    },
+                    title: {
+                        text: '总磷排放浓度',
+                        style: {
+                            fontWeight:'bold',
+                        }
+                    },
+                    subtitle: {
+                        text: $scope.box2Date[5]+'9时',
+                        // text: '6月1日9时',
+                        style: {
+                            fontWeight: 'normal',
+                            fontSize: 'larger',
+                            fontStyle: '宋体'
+                        }
+                    },
+                    xAxis: {
+                        categories: [
+                            '太仓市城区污水处理厂',
+                            '太仓江城城市污水处理有限公司',
+                            '浏河镇污水处理厂',
+                            '港城组团污水处理厂',
+                            '玖龙纸业有限公司'
+                        ]
+                       
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'mg/L'
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:.1f} mg/L</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0
+                        }
+                    }
+                },
+                series: [{
+                    name: '总磷浓度',
+                    color: "#7cb5ec",
+                    data: $scope.pollutionP
+                    // data: [0.07,0.06,0.12,0.08,0.11]
+                }]
+            };
+        };
+        //高锰酸钾浓度
+        $scope.changePollutionType5=function(){
+            $scope.discharge={
+                options:{
+                    chart: {
+                        type: 'column'
+                    },
+                    credits: {
+                        enabled:false
+                    },
+                    legend: {
+                    itemStyle:{
+                        fontWeight:'normal'
+                       }
+                    }
+                    ,
+                    title: {
+                        text: '高锰酸钾排放浓度',
+                        style: {
+                            fontWeight:'bold',
+                        }
+                    },
+                    subtitle: {
+                        text: $scope.box2Date[5]+'9时',
+                        // text: '6月1日9时',
+                        style: {
+                            fontWeight: 'normal',
+                            fontSize: 'larger',
+                            fontStyle: '宋体'
+                        }
+                    },
+                    xAxis: {
+                        categories: [
+                            '太仓市城区污水处理厂',
+                            '太仓江城城市污水处理有限公司',
+                            '浏河镇污水处理厂',
+                            '港城组团污水处理厂',
+                            '玖龙纸业有限公司'
+                        ]
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'mg/L'
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:.1f} mg/L</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0
+                        }
+                    }
+                },
+                series: [
+                    {
+                        name: '高锰酸钾浓度',
+                        color: "#7cb5ec",
+                        data: [1.65, 1.25, 1.78, 2.02, 1.81]
+
+                    }
+                ]
+            };
+        }; 
+        //--------------------------盒子2结束--------------------------
+    }, function(error){
+        console.log('发送失败');
+    });
+    //-------------------------waterPollutionGetPromise结束--------------------------
+    
+    //--------------------------waterQualityGetPromise----------------------------
+    var waterQualityGetParams = {
+        // 'id':1,
+    };
+    var waterQualityGetHeaders = {
+
+    };
+    var waterQualityGetPromise = ResTool.httpGet(EnvironmentRes.getWaterQuality, waterQualityGetParams, waterQualityGetHeaders);
+    waterQualityGetPromise.then(function(data){
+        // console.log(data.data);
+    }, function(error){
+        console.log('发送失败');
+    });
+    //-------------------------waterQualityGetPromise结束--------------------------
+    
+    // var promise1 = qService.tokenHttpGet(rawFactory.query,{tableName:'waterIndustryData'});
+    // promise1.then(function(rc2) {
+    //     $scope.list11=rc2.data[0];
+    //     $scope.list12=rc2.data[1];
+    //     $scope.list13=rc2.data[2];
+    //     $scope.list14=rc2.data[3];
+    //     $scope.list15=rc2.data[4];
+    //     $scope.date_industry=rc2.data[5];
+    // });
+    // var promise2 = qService.tokenHttpGet(rawFactory.query,{tableName:'waterPollutionData'});
+    // promise2.then(function(rc3) {
+    //   $scope.JiuLONGDischarge=rc3.data[0];
+    //   $scope.TCCityzoneDischarge=rc3.data[1];
+    //   $scope.LiuHeDischarge=rc3.data[2];
+    //   $scope.GangChengDischarge=rc3.data[3];
+    //   $scope.TCRivertownDischarge=rc3.data[4];
+    //   $scope.JiuLONGCod=rc3.data[5];
+    //   $scope.TCCityzoneCod=rc3.data[6];
+    //   $scope.LiuHeCod=rc3.data[7];
+    //   $scope.GangChengCod=rc3.data[8];
+    //   $scope.TCRivertownCod=rc3.data[9];
+    //   $scope.JiuLONGNh4n=rc3.data[10];
+    //   $scope.TCCityzoneNh4n=rc3.data[11];
+    //   $scope.LiuHeNh4n=rc3.data[12];
+    //   $scope.GangChengNh4n=rc3.data[13];
+    //   $scope.TCRivertownNh4n=rc3.data[14];
+    //   $scope.JiuLONGP=rc3.data[15];
+    //   $scope.TCCityzoneP=rc3.data[16];
+    //   $scope.LiuHeP=rc3.data[17];
+    //   $scope.GangChengP=rc3.data[18];
+    //   $scope.TCRivertownP=rc3.data[19];
+    //   $scope.date1=rc3.data[20];
+    // });
 
     //--------------------------盒子3-----------------------------
     $http({method: 'GET', url: '/scripts/controllers/app/environment/waterQuality.json'}).

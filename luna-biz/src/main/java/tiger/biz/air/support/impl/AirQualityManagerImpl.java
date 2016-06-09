@@ -47,11 +47,11 @@ public class AirQualityManagerImpl implements AirQualityManager {
             date[i]=(now.get(Calendar.MONTH) + 1) + "月" + now.get(Calendar.DAY_OF_MONTH) +"日";
         }
         date1[0]=date[6];date1[1]=date[5];date1[2]=date[4];date1[3]=date[3];date1[4]=date[2];date1[5]=date[1];date1[6]=date[0];
-        now.add(Calendar.DATE, 7);
-        for (int i = 7; i < 15; i++) {
-            date1[i]=(now.get(Calendar.MONTH) + 1) + "月" + now.get(Calendar.DAY_OF_MONTH) +"日";
-            now.add(Calendar.DATE, 1);
-        }
+//        now.add(Calendar.DATE, 7);
+//        for (int i = 7; i < 15; i++) {
+//            date1[i]=(now.get(Calendar.MONTH) + 1) + "月" + now.get(Calendar.DAY_OF_MONTH) +"日";
+//            now.add(Calendar.DATE, 1);
+//        }
         for (int i = 0; i < 7; i++) {
             date2[i]=date1[i];
         }

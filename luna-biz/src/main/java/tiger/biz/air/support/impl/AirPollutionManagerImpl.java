@@ -80,7 +80,7 @@ public class AirPollutionManagerImpl implements AirPollutionManager {
         }
         for (int i = 0; i < 3; i++) {
             if(airPollutionSource[i]==4022) {
-                discharge1[0]=Math.round(discharge[i]/100)/100.0 + "";//除以100.00代表保留两位小数
+                discharge1[0]=Math.round(discharge[i]/100)/100.0 + "";//除以100代表保留两位小数
                 smoke1[0]=Math.round(smoke[i]*100)/100.0+"";
                 so21[0]=Math.round(so2[i]*100)/100.0+"";
                 no1[0]=Math.round(no[i]*100)/100.0+"";
