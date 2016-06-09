@@ -6,6 +6,7 @@ import tiger.biz.water.support.WaterQualityManager;
 import tiger.core.basic.BaseResult;
 import tiger.core.basic.enums.ErrorCodeEnum;
 import tiger.core.basic.exception.TigerException;
+import tiger.core.domain.water.WaterPollutionDomain;
 import tiger.core.domain.water.WaterQualityDomain;
 import tiger.core.service.water.WaterQualityService;
 
@@ -23,17 +24,16 @@ public class WaterQualityManagerImpl implements WaterQualityManager {
     private WaterQualityService waterQualityService;
 
     /**
-     * @see WaterQualityManager#read(Long)
+     * @see WaterQualityManager#read()
      */
     @Override
-    public BaseResult read(Long id) {
-        WaterQualityDomain waterQuality = waterQualityService.getWaterQualityById(id);
-        if (waterQuality == null) {
+    public BaseResult read() {
+        List arrays=new ArrayList();
+        List<WaterQualityDomain> waterQualityDomainList = waterQualityService.getWaterQuality();
+        if (waterQualityDomainList == null) {
             throw new TigerException(ErrorCodeEnum.NOT_FOUND, "不存在的空气污染记录");
         }
-        List arrays=new ArrayList();
-        int[] a={10,20,30};
-        arrays.add(a);
+        arrays.add(waterQualityDomainList);
         return new BaseResult(arrays);
     }
 

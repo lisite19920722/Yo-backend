@@ -11,10 +11,9 @@ public interface AirPollutionManager {
     /**
      * 获取一条空气污染记录
      *
-     * @param id
      * @return
      */
-    BaseResult read(Long id);
+    BaseResult read();
 
     /**
      * 删除一条空气污染记录
@@ -25,7 +24,7 @@ public interface AirPollutionManager {
     BaseResult<Boolean> delete(Long id);
 
     /**
-     * 更新一条消息
+     * 更新一条记录
      *
      * @param airPollution
      * @return
@@ -33,7 +32,7 @@ public interface AirPollutionManager {
     BaseResult<Boolean> update(AirPollutionDomain airPollution);
 
     /**
-     * 更新一条消息
+     * 增加一条记录
      *
      * @param airPollutionDomain
      * @return

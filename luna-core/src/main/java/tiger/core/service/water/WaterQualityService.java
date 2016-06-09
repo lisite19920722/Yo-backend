@@ -1,6 +1,10 @@
 package tiger.core.service.water;
 
+import tiger.core.domain.air.AirPollutionDomain;
+import tiger.core.domain.water.WaterPollutionDomain;
 import tiger.core.domain.water.WaterQualityDomain;
+
+import java.util.List;
 
 /**
  * Created by lisite on 16/5/22.
@@ -8,12 +12,11 @@ import tiger.core.domain.water.WaterQualityDomain;
 public interface WaterQualityService {
 
     /**
-     * 根据id获取站内消息.
+     * 获取waterQuality
      *
-     * @param id the id
-     * @return the waterQuality by id
+     * @return the waterQuality
      */
-    WaterQualityDomain getWaterQualityById(Long id);
+    List<WaterQualityDomain> getWaterQuality();
     /**
      * 删除waterQuality
      *

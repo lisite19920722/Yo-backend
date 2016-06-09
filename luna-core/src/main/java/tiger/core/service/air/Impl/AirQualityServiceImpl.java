@@ -23,7 +23,7 @@ public class AirQualityServiceImpl implements AirQualityService{
     private AirQualityMapper airQualityMapper;
 
     /**
-     * Update airQuality
+     * Get airQuality
      *
      * @return the AirQualityDO
      * @see AirQualityService#getAirQuality()

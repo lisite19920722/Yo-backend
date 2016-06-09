@@ -9,15 +9,14 @@ import tiger.core.domain.water.WaterQualityDomain;
  */
 public interface WaterQualityManager {
     /**
-     * 获取一条空气污染记录
+     * 获取一条水质量记录
      *
-     * @param id
      * @return
      */
-    BaseResult read(Long id);
+    BaseResult read();
 
     /**
-     * 删除一条空气污染记录
+     * 删除一条水质量记录
      *
      * @param id
      * @return
@@ -25,7 +24,7 @@ public interface WaterQualityManager {
     BaseResult<Boolean> delete(Long id);
 
     /**
-     * 更新一条消息
+     * 更新一条记录
      *
      * @param waterQuality
      * @return
@@ -33,7 +32,7 @@ public interface WaterQualityManager {
     BaseResult<Boolean> update(WaterQualityDomain waterQuality);
 
     /**
-     * 更新一条消息
+     * 增加一条记录
      *
      * @param waterQualityDomain
      * @return

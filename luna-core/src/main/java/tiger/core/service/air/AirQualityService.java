@@ -10,9 +10,9 @@ import java.util.List;
 public interface AirQualityService {
 
     /**
-     * 根据id获取站内消息.
+     * 获取airQuality
      *
-     * @return the airQuality by id
+     * @return the airQuality
      */
     List<AirQualityDomain> getAirQuality();
     /**

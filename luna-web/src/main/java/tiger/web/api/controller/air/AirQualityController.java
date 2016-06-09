@@ -27,7 +27,7 @@ public class AirQualityController {
     private AirQualityManager airQualityManager;
 
     /**
-     * 根据id获取AirQualityDomain
+     * 获取AirQualityDomain
      *
      * @return
      */
