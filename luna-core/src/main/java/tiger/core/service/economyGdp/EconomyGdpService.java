@@ -8,4 +8,8 @@ public interface EconomyGdpService {
 
     List<GdpDetailDO> getGdpDetail(Long year);
 
+    List<GdpDetailDO> getYearGdp();
+
+    List<GdpDetailDO> getIndustryDetail();
+
 }

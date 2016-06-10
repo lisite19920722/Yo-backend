@@ -11,4 +11,8 @@ import java.util.Map;
 public interface EconomyGdpManger {
 
     Map<String,double[]> getGdpDetail(Long year);
+
+    Map<String,double[]> getYearGdp();
+
+    Map<String,double[]> getIndustryDetail();
 }

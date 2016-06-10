@@ -23,4 +23,14 @@
         from gdp_forecast_data
         where year = #{year,jdbcType=BIGINT}
     </select>
+    <select id="getYearGdp" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from gdp_forecast_data
+    </select>
+    <select id="getIndustryDetail" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from gdp_forecast_data
+    </select>
 </mapper>
