@@ -139,11 +139,15 @@ angular.module('luna')
           .state('app.index.economy.powerconsumption', {
             url: '^/app/index/economy/powerconsumption/:title',
             templateUrl: 'tpl/app/economy/economy-powerconsumption.html',
-            controller: 'EconomyPowerConsumptionCtrl',
+            controller: 'PowerCtrl',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/economy/economy-powerconsumption.js',
+                  'scripts/controllers/app/economy/power/power.js',
+                  'scripts/controllers/app/economy/power/power-total.js',
+                  'scripts/controllers/app/economy/power/power-industry.js',
+                  'scripts/controllers/app/economy/power/power-industry-solo.js',
+                  'scripts/controllers/app/economy/power/power-enterprise-average.js',
                 ]);
               }]
             }
