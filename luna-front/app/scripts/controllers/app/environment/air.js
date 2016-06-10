@@ -31,13 +31,14 @@ app.controller('AirCtrl', ['$scope','ResTool','EnvironmentRes','$timeout',functi
 	};
 	var airConditionGetPromise = ResTool.httpGet(EnvironmentRes.getAirCondition, airConditionGetParams, airConditionGetHeaders);
 	airConditionGetPromise.then(function(data){
+	 	//--------------------------盒子1----------------------------
 	 	//盒子1中右上方日期$scope.airConditionTomorrow
 	 	var dependedVal=data.retData.forecast[0].date;
 	    var regEx = new RegExp("-","");
 	    dependedVal=dependedVal.replace(regEx,"年");
 	    dependedVal=dependedVal.replace(regEx,"月");
 	    dependedVal+="日";
-	    $scope.airConditionToday=dependedVal;
+	    $scope.airConditionTomorrow=dependedVal;
 	    //盒子1中Highcharts中日期$scope.airConditionDate(也是展开表格中的日期)
 	    var dependedVal1=new Array();
 	    for (var i=0;i<3;i++){
@@ -126,7 +127,6 @@ app.controller('AirCtrl', ['$scope','ResTool','EnvironmentRes','$timeout',functi
 			$scope.flag4=1;
 		else
 			$scope.flag5=1;
-		//--------------------------盒子1----------------------------
 		$scope.temperature={
 			options:{
 				chart: {
@@ -209,6 +209,54 @@ app.controller('AirCtrl', ['$scope','ResTool','EnvironmentRes','$timeout',functi
 			]
 		};
 		//--------------------------盒子1结束----------------------------
+		//------------------------盒子3天气模块地图------------------------
+		//天气预测Button点击事件
+		$scope.airConditionBtn = function() {
+			$scope.istownaircondition = true;
+			$scope.istownairquality=false;
+			$scope.istownwasteair=false;
+			$scope.mapTableStatus = {
+					airQuality: false,
+					airCondition: true,
+					wasteAir: false
+			};
+			map.setZoomAndCenter(15, [121.109247,31.469887]);
+			marker3.setMap(map);
+			var infow=[];
+			infow.push("<div style='background-color:#FFFFFF;border:2px solid #66cc66;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#66cc66;font-size:18px'>太仓市气象局</div>")
+			marker3.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
+					offset: new AMap.Pixel(23, 5),//修改label相对于marker的位置
+					content: infow.join('')
+			});
+			var info3=[];
+			info3.push("<h4><strong>太仓市气象局(明日天气预报)</strong></h4>");
+			info3.push("<table class='table table-bordered table-striped'>");
+			weatherString1="<tr><td class='maptable' style='line-height:35px;'>明日气温</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>14℃~24℃</div></td></tr>";
+			info3.push(weatherString1);
+			weatherString2="<tr><td class='maptable' style='line-height:35px;'>相对湿度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>50%</div></td></tr>";
+			info3.push(weatherString2);
+			weatherString3="<tr><td class='maptable' style='line-height:35px;'>风级</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>3~4</div></td></tr>";
+			info3.push(weatherString3);
+			weatherString4="<tr><td class='maptable' style='line-height:35px;'>风向</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>东南风</div></td></tr>";
+			info3.push(weatherString4);
+			info3.push("</table>");
+			var infowindow3 = new AMap.InfoWindow({
+				content: info3.join(''),
+				offset: new AMap.Pixel(0, -30),
+				size:new AMap.Size(280,0)
+			})
+			var clickHandle3 = AMap.event.addListener(marker3, 'click', function() {
+				infowindow3.open(map, marker3.getPosition())
+			})
+		};
+		var marker3 = new AMap.Marker({
+			position: [121.106157,31.466373],//图标大小
+			icon: new AMap.Icon({            
+				size: new AMap.Size(40, 50),  
+				image: "/images/marker_sprite.png",
+			})//太仓市气象局
+		});
+		//-----------------------盒子3天气模块地图结束-----------------------
 	}, function(error){
 		console.log('发送失败');
 	});
@@ -1994,163 +2042,120 @@ app.controller('AirCtrl', ['$scope','ResTool','EnvironmentRes','$timeout',functi
 		$scope.pollutionSmoke=data.data[1];
 		$scope.pollutionSo2=data.data[2];
 		$scope.pollutionNo=data.data[3];
+		//-------------------------盒子3工业废气模块地图--------------------------
+		//工业废气排放Button点击事件
+		$scope.wasteAirBtn = function() {
+			$scope.istownwasteair = true;
+			$scope.istownaircondition=false;
+			$scope.istownairquality=false;
+			$scope.mapTableStatus = {
+					airQuality: false,
+					airCondition: false,
+					wasteAir: true
+			};
+			map.setZoomAndCenter(12, [121.201515,31.620498]);
+			//华能国际电力电厂
+			marker4.setMap(map);
+			var infow=[];
+			infow.push("<div style='background-color:#FFFFFF;border:2px solid #66cc66;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#66cc66;font-size:18px'>华能国际电力电厂</div>")
+			marker4.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
+				offset: new AMap.Pixel(23, 5),//修改label相对于marker的位置
+				content: infow.join('')
+			});
+			var info4=[];
+			info4.push("<h4><strong>华能国际电力股份有限公司电厂(实时数据)</strong></h4>");
+			info4.push("<table class='table table-bordered table-striped'>");
+			info4.push("<tr><td class='maptable' style='line-height:35px;'>排放量</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>0.44亿</div></td></tr>");
+			info4.push("<tr><td class='maptable' style='line-height:35px;'>烟尘浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>12.5mg/m³</div></td></tr>");
+			info4.push("<tr><td class='maptable' style='line-height:35px;'>二氧化硫浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>48.26mg/m³</div></td></tr>");
+			info4.push("<tr><td class='maptable' style='line-height:35px;'>氮氧化物浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>115.25mg/m³</div></td></tr>");
+			info4.push("<tr><td class='maptable' style='line-height:35px;'>废气排放状况</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>正常</div></td></tr>");
+			info4.push("</table>");
+			var infowindow4 = new AMap.InfoWindow({
+				content: info4.join(''),
+				offset: new AMap.Pixel(0, -30),
+				size:new AMap.Size(320,0)
+			})
+			var clickHandle4 = AMap.event.addListener(marker4, 'click', function() {
+				infowindow4.open(map, marker4.getPosition())
+			})
+			//玖龙纸业  
+			marker5.setMap(map);
+			var infow=[];
+			infow.push("<div style='background-color:#FFFFFF;border:2px solid #66cc66;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#66cc66;font-size:18px'>玖龙纸业</div>")
+			marker5.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
+				offset: new AMap.Pixel(23, 5),//修改label相对于marker的位置
+				content: infow.join('')
+			});
+			var info5=[];
+			info5.push("<h4><strong>玖龙纸业(太仓)有限公司(实时数据)</strong></h4>");
+			info5.push("<table class='table table-bordered table-striped'>");
+			info5.push("<tr><td class='maptable' style='line-height:35px;'>排放量</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>0.26亿</div></td></tr>");
+			info5.push("<tr><td class='maptable' style='line-height:35px;'>烟尘浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>8.08mg/m³</div></td></tr>");
+			info5.push("<tr><td class='maptable' style='line-height:35px;'>二氧化硫浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>16.25mg/m³</div></td></tr>");
+			info5.push("<tr><td class='maptable' style='line-height:35px;'>氮氧化物浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>69.15mg/m³</div></td></tr>");
+			info5.push("<tr><td class='maptable' style='line-height:35px;'>废气排放状况</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>正常</div></td></tr>");
+			info5.push("</table>");
+			var infowindow5 = new AMap.InfoWindow({
+				 content: info5.join(''),
+				 offset: new AMap.Pixel(0, -30),
+				 size:new AMap.Size(320,0)
+			})
+			var clickHandle5 = AMap.event.addListener(marker5, 'click', function() {
+				infowindow5.open(map, marker5.getPosition())
+			})
+			//太仓港协鑫发电
+			marker6.setMap(map);
+			var infow=[];
+			infow.push("<div style='background-color:#FFFFFF;border:2px solid #66cc66;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#66cc66;font-size:18px'>太仓港协鑫发电</div>")
+			marker6.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
+					offset: new AMap.Pixel(23, 5),//修改label相对于marker的位置
+					content: infow.join('')
+			});
+			var info6=[];
+			info6.push("<h4><strong>太仓港协鑫发电有限公司(实时数据)</strong></h4>");
+			info6.push("<table class='table table-bordered table-striped'>");
+			info6.push("<tr><td class='maptable' style='line-height:35px;'>排放量</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>0.7亿</div></td></tr>");
+			info6.push("<tr><td class='maptable' style='line-height:35px;'>烟尘浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>2.56mg/m³</div></td></tr>");
+			info6.push("<tr><td class='maptable' style='line-height:35px;'>二氧化硫浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>27.33mg/m³</div></td></tr>");
+			info6.push("<tr><td class='maptable' style='line-height:35px;'>氮氧化物浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>36.39mg/m³</div></td></tr>");
+			info6.push("<tr><td class='maptable' style='line-height:35px;'>废气排放状况</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>正常</div></td></tr>");
+			info6.push("</table>");
+			var infowindow6 = new AMap.InfoWindow({
+				content: info6.join(''),
+				offset: new AMap.Pixel(0, -30),
+				size:new AMap.Size(320,0)
+			})
+			var clickHandle6 = AMap.event.addListener(marker6, 'click', function() {
+					infowindow6.open(map, marker6.getPosition())
+			})
+		};
+		var marker4 = new AMap.Marker({
+			position: [121.180359,31.653057],//图标大小
+			icon: new AMap.Icon({            
+				size: new AMap.Size(40, 50),  
+				image: "/images/marker_sprite.png",
+			})//华能国际电力电厂
+		});
+		var marker5 = new AMap.Marker({
+			position: [121.244154,31.592104],//图标大小
+			icon: new AMap.Icon({            
+				size: new AMap.Size(40, 50),  
+				image: "/images/marker_sprite.png",
+			})//玖龙纸业
+		});
+		var marker6 = new AMap.Marker({
+			position: [121.252561,31.582579],//图标大小
+			icon: new AMap.Icon({            
+				size: new AMap.Size(40, 50),  
+				image: "/images/marker_sprite.png",
+			})//太仓港协鑫发电
+		});
+		//------------------------盒子3工业废气模块地图结束------------------------- 
 	}, function(error){
 		console.log('发送失败');
 	});
 	//-------------------------airPollutionGetPromise结束--------------------------
-	//--------------------------盒子3开始----------------------------
-	//设置另外两个模块下marker的锚点，marker的label，显示信息窗体
-	var marker3 = new AMap.Marker({
-		position: [121.106157,31.466373],//图标大小
-		icon: new AMap.Icon({            
-			size: new AMap.Size(40, 50),  
-			image: "/images/marker_sprite.png",
-		})//太仓市气象局
-	});
-	var marker4 = new AMap.Marker({
-		position: [121.180359,31.653057],//图标大小
-		icon: new AMap.Icon({            
-			size: new AMap.Size(40, 50),  
-			image: "/images/marker_sprite.png",
-		})//华能国际电力电厂
-	});
-	var marker5 = new AMap.Marker({
-		position: [121.244154,31.592104],//图标大小
-		icon: new AMap.Icon({            
-				size: new AMap.Size(40, 50),  
-				image: "/images/marker_sprite.png",
-			})//玖龙纸业
-	});
-	var marker6 = new AMap.Marker({
-		position: [121.252561,31.582579],//图标大小
-		icon: new AMap.Icon({            
-				size: new AMap.Size(40, 50),  
-				image: "/images/marker_sprite.png",
-			})//太仓港协鑫发电
-	});
-	//天气预测Button点击事件
-	$scope.airConditionBtn = function() {
-		$scope.istownaircondition = true;
-		$scope.istownairquality=false;
-		$scope.istownwasteair=false;
-		$scope.mapTableStatus = {
-				airQuality: false,
-				airCondition: true,
-				wasteAir: false
-		};
-		map.setZoomAndCenter(15, [121.109247,31.469887]);
-		marker3.setMap(map);
-		var infow=[];
-		infow.push("<div style='background-color:#FFFFFF;border:2px solid #66cc66;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#66cc66;font-size:18px'>太仓市气象局</div>")
-		marker3.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
-				offset: new AMap.Pixel(23, 5),//修改label相对于marker的位置
-				content: infow.join('')
-		});
-		var info3=[];
-		info3.push("<h4><strong>太仓市气象局(明日天气预报)</strong></h4>");
-		info3.push("<table class='table table-bordered table-striped'>");
-		info3.push("<tr><td class='maptable' style='line-height:35px;'>明日气温</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>14℃~24℃</div></td></tr>");
-		info3.push("<tr><td class='maptable' style='line-height:35px;'>相对湿度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>50%</div></td></tr>");
-		info3.push("<tr><td class='maptable' style='line-height:35px;'>风级</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>3~4</div></td></tr>");
-		info3.push("<tr><td class='maptable' style='line-height:35px;'>风向</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>东南风</div></td></tr>");
-		info3.push("</table>");
-		var infowindow3 = new AMap.InfoWindow({
-			content: info3.join(''),
-			offset: new AMap.Pixel(0, -30),
-			size:new AMap.Size(280,0)
-		})
-		var clickHandle3 = AMap.event.addListener(marker3, 'click', function() {
-			infowindow3.open(map, marker3.getPosition())
-		})
-	}; 
-	//工业废气排放Button点击事件
-	$scope.wasteAirBtn = function() {
-		$scope.istownwasteair = true;
-		$scope.istownaircondition=false;
-		$scope.istownairquality=false;
-		$scope.mapTableStatus = {
-				airQuality: false,
-				airCondition: false,
-				wasteAir: true
-		};
-		map.setZoomAndCenter(12, [121.201515,31.620498]);
-		//华能国际电力电厂
-		marker4.setMap(map);
-		var infow=[];
-		infow.push("<div style='background-color:#FFFFFF;border:2px solid #66cc66;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#66cc66;font-size:18px'>华能国际电力电厂</div>")
-		marker4.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
-			offset: new AMap.Pixel(23, 5),//修改label相对于marker的位置
-			content: infow.join('')
-		});
-		var info4=[];
-		info4.push("<h4><strong>华能国际电力股份有限公司电厂(实时数据)</strong></h4>");
-		info4.push("<table class='table table-bordered table-striped'>");
-		info4.push("<tr><td class='maptable' style='line-height:35px;'>排放量</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>0.44亿</div></td></tr>");
-		info4.push("<tr><td class='maptable' style='line-height:35px;'>烟尘浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>12.5mg/m³</div></td></tr>");
-		info4.push("<tr><td class='maptable' style='line-height:35px;'>二氧化硫浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>48.26mg/m³</div></td></tr>");
-		info4.push("<tr><td class='maptable' style='line-height:35px;'>氮氧化物浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>115.25mg/m³</div></td></tr>");
-		info4.push("<tr><td class='maptable' style='line-height:35px;'>废气排放状况</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>正常</div></td></tr>");
-		info4.push("</table>");
-		var infowindow4 = new AMap.InfoWindow({
-			content: info4.join(''),
-			offset: new AMap.Pixel(0, -30),
-			size:new AMap.Size(320,0)
-		})
-		var clickHandle4 = AMap.event.addListener(marker4, 'click', function() {
-			infowindow4.open(map, marker4.getPosition())
-		})
-		//玖龙纸业  
-		marker5.setMap(map);
-		var infow=[];
-		infow.push("<div style='background-color:#FFFFFF;border:2px solid #66cc66;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#66cc66;font-size:18px'>玖龙纸业</div>")
-		marker5.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
-			offset: new AMap.Pixel(23, 5),//修改label相对于marker的位置
-			content: infow.join('')
-		});
-		var info5=[];
-		info5.push("<h4><strong>玖龙纸业(太仓)有限公司(实时数据)</strong></h4>");
-		info5.push("<table class='table table-bordered table-striped'>");
-		info5.push("<tr><td class='maptable' style='line-height:35px;'>排放量</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>0.26亿</div></td></tr>");
-		info5.push("<tr><td class='maptable' style='line-height:35px;'>烟尘浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>8.08mg/m³</div></td></tr>");
-		info5.push("<tr><td class='maptable' style='line-height:35px;'>二氧化硫浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>16.25mg/m³</div></td></tr>");
-		info5.push("<tr><td class='maptable' style='line-height:35px;'>氮氧化物浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>69.15mg/m³</div></td></tr>");
-		info5.push("<tr><td class='maptable' style='line-height:35px;'>废气排放状况</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>正常</div></td></tr>");
-		info5.push("</table>");
-		var infowindow5 = new AMap.InfoWindow({
-			 content: info5.join(''),
-			 offset: new AMap.Pixel(0, -30),
-			 size:new AMap.Size(320,0)
-		})
-		var clickHandle5 = AMap.event.addListener(marker5, 'click', function() {
-			infowindow5.open(map, marker5.getPosition())
-		})
-		//太仓港协鑫发电
-		marker6.setMap(map);
-		var infow=[];
-		infow.push("<div style='background-color:#FFFFFF;border:2px solid #66cc66;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#66cc66;font-size:18px'>太仓港协鑫发电</div>")
-		marker6.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
-				offset: new AMap.Pixel(23, 5),//修改label相对于marker的位置
-				content: infow.join('')
-		});
-		var info6=[];
-		info6.push("<h4><strong>太仓港协鑫发电有限公司(实时数据)</strong></h4>");
-		info6.push("<table class='table table-bordered table-striped'>");
-		info6.push("<tr><td class='maptable' style='line-height:35px;'>排放量</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>0.7亿</div></td></tr>");
-		info6.push("<tr><td class='maptable' style='line-height:35px;'>烟尘浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>2.56mg/m³</div></td></tr>");
-		info6.push("<tr><td class='maptable' style='line-height:35px;'>二氧化硫浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>27.33mg/m³</div></td></tr>");
-		info6.push("<tr><td class='maptable' style='line-height:35px;'>氮氧化物浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>36.39mg/m³</div></td></tr>");
-		info6.push("<tr><td class='maptable' style='line-height:35px;'>废气排放状况</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>正常</div></td></tr>");
-		info6.push("</table>");
-		var infowindow6 = new AMap.InfoWindow({
-			content: info6.join(''),
-			offset: new AMap.Pixel(0, -30),
-			size:new AMap.Size(320,0)
-		})
-		var clickHandle6 = AMap.event.addListener(marker6, 'click', function() {
-				infowindow6.open(map, marker6.getPosition())
-		})
-	};
-	//--------------------------盒子3结束----------------------------  
 }]);
 
 
