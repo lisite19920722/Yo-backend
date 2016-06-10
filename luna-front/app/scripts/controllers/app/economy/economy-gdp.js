@@ -1,11 +1,18 @@
 //controller: 'EconomyGdpCtrl'
 // 'use strict';
-app.controller('EconomyGdpCtrl', ['$scope','$stateParams','ResTool','EconomyRes', function(){
-
-    var yearPromise = ResTool.httpGet(EconomyRes);
-    yearpromise.then(function(rc){
+app.controller('EconomyGdpCtrl', ['$scope','$stateParams','ResTool','EconomyRes', function($scope,$stateParams,ResTool,EconomyRes){
+    var yearGdpParams = {};
+    var yearGdpHeader = {};
+    var yearPromise = ResTool.httpGet(EconomyRes.getyearGdp,yearGdpParams,yearGdpHeader);
+    yearPromise.then(function(rc){
         console.log(rc.data);
+
+
     })
+    
+}])
+.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRes', function($scope,$stateParams,ResTool,EconomyRes){
+    
     
 }])
 /*app.controller('EconomyGdpCtrl', ['$scope','$stateParams','qService','forecastFactory_gdp',function($scope,$stateParams,qService,forecastFactory_gdp) {
