@@ -2,11 +2,19 @@ package tiger.core.service.water.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tiger.common.dal.persistence.air.AirPollutionDO;
 import tiger.common.dal.persistence.water.WaterPollutionDO;
 import tiger.common.dal.persistence.mapper.WaterPollutionMapper;
+import tiger.core.domain.air.AirPollutionDomain;
+import tiger.core.domain.air.convert.AirPollutionConvert;
 import tiger.core.domain.water.WaterPollutionDomain;
 import tiger.core.domain.water.convert.WaterPollutionConvert;
+import tiger.core.service.air.AirPollutionService;
 import tiger.core.service.water.WaterPollutionService;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by lisite on 16/5/22.
@@ -19,17 +27,24 @@ public class WaterPollutionServiceImpl implements WaterPollutionService{
     private WaterPollutionMapper waterPollutionMapper;
 
     /**
-     * Update waterPollution
+     * Get waterPollution
      *
-     * @param id
      * @return the WaterPollutionDO
-     * @see WaterPollutionService#getWaterPollutionById(Long)
+     * @see WaterPollutionService#getWaterPollution()
      */
     @Override
-    public WaterPollutionDomain getWaterPollutionById(Long id) {
-        WaterPollutionDO waterPollutionDO = waterPollutionMapper.selectByPrimaryKey(id);
-        if (null != waterPollutionDO) {
-            return WaterPollutionConvert.convertDOToDomain(waterPollutionDO);
+    public List<WaterPollutionDomain> getWaterPollution() {
+        List<WaterPollutionDO> waterPollutionDOList = waterPollutionMapper.select();
+        List<WaterPollutionDomain> waterPollutionDomainList=new ArrayList<>();
+        Iterator<WaterPollutionDO> e = waterPollutionDOList.iterator();
+        WaterPollutionDO temp = e.next();
+        waterPollutionDomainList.add(WaterPollutionConvert.convertDOToDomain(temp));
+        while(e.hasNext()){
+            temp = e.next();
+            waterPollutionDomainList.add(WaterPollutionConvert.convertDOToDomain(temp));
+        }
+        if (waterPollutionDomainList != null) {
+            return waterPollutionDomainList;
         }
         return null;
     }

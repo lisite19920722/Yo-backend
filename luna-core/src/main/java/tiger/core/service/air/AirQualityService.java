@@ -2,18 +2,19 @@ package tiger.core.service.air;
 
 import tiger.core.domain.air.AirQualityDomain;
 
+import java.util.List;
+
 /**
  * Created by lisite on 16/5/22.
  */
 public interface AirQualityService {
 
     /**
-     * 根据id获取站内消息.
+     * 获取airQuality
      *
-     * @param id the id
-     * @return the airQuality by id
+     * @return the airQuality
      */
-    AirQualityDomain getAirQualityById(Long id);
+    List<AirQualityDomain> getAirQuality();
     /**
      * 删除airQuality
      *

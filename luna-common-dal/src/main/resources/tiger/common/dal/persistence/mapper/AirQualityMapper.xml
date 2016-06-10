@@ -22,11 +22,13 @@
     <sql id="Base_Column_List">
         id, date, hour, day, month, year, airQualityLevel, aqi, firstElement, co, no2, o3, pm10, pm25, so2, air_monitor
     </sql>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    <select id="select" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from air_quality_data
-        where id = #{id,jdbcType=BIGINT}
+        where air_monitor=4001
+        order by id desc
+        limit 0,200
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from air_quality_data

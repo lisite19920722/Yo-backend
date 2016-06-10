@@ -1,6 +1,9 @@
 package tiger.core.service.air;
 
 import tiger.core.domain.air.AirPollutionDomain;
+import tiger.core.domain.air.AirQualityDomain;
+
+import java.util.List;
 
 /**
  * Created by lisite on 16/5/22.
@@ -8,12 +11,11 @@ import tiger.core.domain.air.AirPollutionDomain;
 public interface AirPollutionService {
 
     /**
-     * 根据id获取站内消息.
+     * 获取airPollution
      *
-     * @param id the id
-     * @return the airPollution by id
+     * @return the airPollution
      */
-    AirPollutionDomain getAirPollutionById(Long id);
+    List<AirPollutionDomain> getAirPollution();
     /**
      * 删除airPollution
      *

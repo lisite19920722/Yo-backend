@@ -2,11 +2,19 @@ package tiger.core.service.water.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tiger.common.dal.persistence.water.WaterPollutionDO;
 import tiger.common.dal.persistence.water.WaterQualityDO;
 import tiger.common.dal.persistence.mapper.WaterQualityMapper;
+import tiger.core.domain.water.WaterPollutionDomain;
 import tiger.core.domain.water.WaterQualityDomain;
+import tiger.core.domain.water.convert.WaterPollutionConvert;
 import tiger.core.domain.water.convert.WaterQualityConvert;
+import tiger.core.service.water.WaterPollutionService;
 import tiger.core.service.water.WaterQualityService;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by lisite on 16/5/22.
@@ -19,17 +27,24 @@ public class WaterQualityServiceImpl implements WaterQualityService{
     private WaterQualityMapper waterQualityMapper;
 
     /**
-     * Update waterQuality
+     * Get waterQuality
      *
-     * @param id
      * @return the WaterQualityDO
-     * @see WaterQualityService#getWaterQualityById(Long)
+     * @see WaterQualityService#getWaterQuality()
      */
     @Override
-    public WaterQualityDomain getWaterQualityById(Long id) {
-        WaterQualityDO waterQualityDO = waterQualityMapper.selectByPrimaryKey(id);
-        if (null != waterQualityDO) {
-            return WaterQualityConvert.convertDOToDomain(waterQualityDO);
+    public List<WaterQualityDomain> getWaterQuality() {
+        List<WaterQualityDO> waterQualityDOList = waterQualityMapper.select();
+        List<WaterQualityDomain> waterQualityDomainList=new ArrayList<>();
+        Iterator<WaterQualityDO> e = waterQualityDOList.iterator();
+        WaterQualityDO temp = e.next();
+        waterQualityDomainList.add(WaterQualityConvert.convertDOToDomain(temp));
+        while(e.hasNext()){
+            temp = e.next();
+            waterQualityDomainList.add(WaterQualityConvert.convertDOToDomain(temp));
+        }
+        if (waterQualityDomainList != null) {
+            return waterQualityDomainList;
         }
         return null;
     }

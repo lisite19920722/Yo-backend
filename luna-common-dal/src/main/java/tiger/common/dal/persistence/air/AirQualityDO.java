@@ -40,7 +40,7 @@ public class AirQualityDO extends BaseDO{
 
     private int so2;
 
-    private int airMonitor;
+    private Long airMonitor;
 
     public Date getDate1() {
         return date1;
@@ -154,11 +154,11 @@ public class AirQualityDO extends BaseDO{
         this.so2 = so2;
     }
 
-    public int getAirMonitor() {
+    public Long getAirMonitor() {
         return airMonitor;
     }
 
-    public void setAirMonitor(int airMonitor) {
+    public void setAirMonitor(Long airMonitor) {
         this.airMonitor = airMonitor;
     }
 }

@@ -22,7 +22,7 @@ public class RedisComponentImpl implements RedisComponent {
     public Integer saveObject(String key, String content) {
         if (!RedisConstants.IS_OPEN) {
             return -1;
-        }
+        }fsf
         int rc = redisTemplate.opsForValue().append(key, content);
         return rc;
     }
