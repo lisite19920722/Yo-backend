@@ -1,7 +1,9 @@
 //controller: 'EconomyGdpCtrl'
 // 'use strict';
-
-app.controller('EconomyGdpCtrl', ['$scope','$stateParams','qService','forecastFactory_gdp',function($scope,$stateParams,qService,forecastFactory_gdp) {
+app.controller('EconomyGdpCtrl', ['', function(){
+    
+}])
+/*app.controller('EconomyGdpCtrl', ['$scope','$stateParams','qService','forecastFactory_gdp',function($scope,$stateParams,qService,forecastFactory_gdp) {
     var year;
      $scope.expression=true;
      $scope.vicemonthdeviation=false;
@@ -1127,3 +1129,4 @@ app.controller('EconomyGdpCtrl', ['$scope','$stateParams','qService','forecastFa
    });
    
 }]);
+*/
