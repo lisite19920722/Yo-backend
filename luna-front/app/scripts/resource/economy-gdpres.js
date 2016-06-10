@@ -12,5 +12,15 @@ angular.module('luna')
         },
       });
     },
+    getYearDetail: function(headers){
+      return $resource("http://localhost:8080/api/economy/gdpDetail/:year", {
+        year:'@year'
+      }, {
+        get:{
+          method:'GET',
+          headers: headers
+        }
+      });
+    }
   };
 }])

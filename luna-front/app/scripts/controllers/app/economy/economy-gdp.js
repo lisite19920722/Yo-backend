@@ -3,16 +3,266 @@
 app.controller('EconomyGdpCtrl', ['$scope','$stateParams','ResTool','EconomyRes', function($scope,$stateParams,ResTool,EconomyRes){
     var yearGdpParams = {};
     var yearGdpHeader = {};
-    var yearPromise = ResTool.httpGet(EconomyRes.getyearGdp,yearGdpParams,yearGdpHeader);
+    var yearPromise = ResTool.httpGet(EconomyRes.getYearGdp,yearGdpParams,yearGdpHeader);
     yearPromise.then(function(rc){
-        console.log(rc.data);
+
+       $scope.gdprealvalue=rc.data.realYearGdp;
+       $scope.gdpforecastvalue=rc.data.forecastYearGdp;
+       $scope.gdpgrowratevalue=rc.data.yearGrow;
+       $scope.currentYearForecast=rc.data.forecastYearGdp[9];
+       $scope.exchange=function(param){
+       $scope.yearGDPChart.series[0].type=param;
+       $scope.yearGDPChart.series[1].type=param;
+       $scope.yearGDPChart.series[2].type='spline';
+       };
+       $scope.checkdeviation=function(){
+        $scope.deviation=!$scope.deviation;
+        $scope.errorvalue = rc.data.yearErrorRate;
+      };
+        $scope.checkforecast=function(){
+        $scope.forecast=!$scope.forecast;
+      };
 
 
+        $scope.xAxis= [
+                    
+                    '2007',
+                    '2008',
+                    '2009',
+                    '2010',
+                    '2011',
+                    '2012',
+                    '2013',
+                    '2014',
+                    '2015',
+                    '2016',
+                    '2017',
+                    '2018'
+                    
+                ];
+       $scope.yearGDPChart={
+            options: {
+              chart: {
+                type:'column'
+              },
+            },
+            credits:{
+                enabled:false,
+            },
+            title: {
+                text: '太仓市GDP数据',
+                style:{
+                    fontWeight:'bold'
+                }
+            },
+            subtitle: {
+                text: '年度GDP分析'
+            },
+            xAxis: {
+                categories:$scope.xAxis,
+                plotBands:[{
+                from: 8.5,
+                to:12.5,
+                color:'rgba(68, 170, 213, .2)',
+                label: {
+                        text: '预测区',
+                        verticalAlign: 'top',
+                        style: {
+                            fontSize: '12px',
+                            fontWeight: 600
+                        }
+                       
+                    }
+                }]
+            },
+            yAxis: [{
+                min: 0,
+                title: {
+                    text: '年度GDP总值（亿元）'
+                },
+                plotLines:[{
+                color:'red',
+                dashStyle:'DashDot',
+                value:1150,
+                width:2,
+                label:{
+                    text:'本年度GDP目标',
+                    align:'left',
+                    x:10,
+                     style: {
+                            fontSize: '8px',
+                            fontWeight: 200
+                        }
+                }
+                }]
+            },{
+                title: {
+                    text: '同比增长率'
+                },
+                labels: {
+                    format: '{value} %',
+                    style: {
+                        color: Highcharts.getOptions().colors[0]
+                    }
+            },
+            opposite:true
+            }],
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                type: 'column',
+                name: '真实数据',
+                data: $scope.gdprealvalue
 
+            }, {
+                type: 'column',
+                name: '预测数据',
+                data: $scope.gdpforecastvalue
+
+            },
+            {   
+                yAxis: 1,
+                type:'spline',
+                name: '同比增长率',
+                data: $scope.gdpgrowratevalue
+            }]
+        };
     })
     
-}])
-.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRes', function($scope,$stateParams,ResTool,EconomyRes){
+}]);
+
+app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRes', function($scope,$stateParams,ResTool,EconomyRes){
+    var now = new Date();
+    var nowyear = now.getFullYear();
+    console.log(nowyear);
+    var yearDetailPromise = ResTool.httpGet(EconomyRes.getYearDetail,{year:nowyear},{});
+    yearDetailPromise.then(function(rc){
+      $scope.gdpquarterrealvalue = rc.data.realGdpQuarterDetail;
+      $scope.gdpquarterforcastvalue = rc.data.forecastGdpQuterDetail;
+      $scope.gdpquartergrowratevalue = rc.data.growRate; 
+      $scope.monthGDPChart={
+        options: {
+          chart: {
+            type:'column'
+          },
+        },
+        credits:{
+                enabled:false,
+            },
+            title: {
+                text: '太仓市GDP数据',
+                 style:{
+                    fontWeight:'bold'
+                }
+            },
+            subtitle: {
+                text: '季度GDP分析'
+            },
+            xAxis: {
+               categories: [
+                    '第一季度',
+                    '第二季度',
+                    '第三季度',
+                    '第四季度'
+
+                ],
+                 plotBands:[{
+                from: 3.5,
+                to:3.5,
+                color:'rgba(68, 170, 213, .2)',
+                label: {
+                        text: '预测区',
+                        verticalAlign: 'top',
+                        style: {
+                            fontSize: '12px',
+                            fontWeight: 600
+                        }
+
+                    }
+                }]
+            },
+            yAxis: [{
+                min: 0,
+                title: {
+                    text: '季度GDP总值（亿元）'
+                },
+                 plotLines:[{
+                color:'red',
+                dashStyle:'DashDot',
+                value:1150,
+                width:2,
+                label:{
+                    text:'本年度GDP目标',
+                    align:'left',
+                    x:10,
+                     style: {
+                            fontSize: '8px',
+                            fontWeight: 200
+                        }
+                }
+                }]
+            },
+            {
+                title: {
+                    text: '同比增长率'
+                },
+                labels: {
+                    format: '{value} %',
+                    style: {
+                        color: Highcharts.getOptions().colors[0]
+                    }
+            },
+            opposite:true
+            }],
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                color:'#7CB5EC',
+                type: 'column',
+                name: '真实数据',
+                data: $scope.gdpquarterrealvalue
+
+            }, {
+                color:'#434348',
+                type: 'column',
+                name: '预测数据',
+                data: $scope.gdpquarterforcastvalue
+
+            },
+            {
+                yAxis: 1,
+                 color:'#90ED7D',
+                type:'spline',
+                name: '同比增长率',
+                data: $scope.gdpquartergrowratevalue
+            }]
+      };
+     
+   });
     
     
 }])
