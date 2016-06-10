@@ -1,7 +1,21 @@
 //controller: 'EconomyGdpCtrl'
 // 'use strict';
+app.controller('EconomyGdpCtrl', ['$scope','$stateParams','ResTool','EconomyRes', function($scope,$stateParams,ResTool,EconomyRes){
+    var yearGdpParams = {};
+    var yearGdpHeader = {};
+    var yearPromise = ResTool.httpGet(EconomyRes.getyearGdp,yearGdpParams,yearGdpHeader);
+    yearPromise.then(function(rc){
+        console.log(rc.data);
 
-app.controller('EconomyGdpCtrl', ['$scope','$stateParams','qService','forecastFactory_gdp',function($scope,$stateParams,qService,forecastFactory_gdp) {
+
+    })
+    
+}])
+.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRes', function($scope,$stateParams,ResTool,EconomyRes){
+    
+    
+}])
+/*app.controller('EconomyGdpCtrl', ['$scope','$stateParams','qService','forecastFactory_gdp',function($scope,$stateParams,qService,forecastFactory_gdp) {
     var year;
      $scope.expression=true;
      $scope.vicemonthdeviation=false;
@@ -1127,3 +1141,4 @@ app.controller('EconomyGdpCtrl', ['$scope','$stateParams','qService','forecastFa
    });
    
 }]);
+*/
