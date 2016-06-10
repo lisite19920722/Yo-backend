@@ -2,12 +2,14 @@ package tiger.common.dal.persistence.mapper;
 
 import tiger.common.dal.persistence.air.AirQualityDO;
 
+import java.util.List;
+
 /**
  * Created by lisite on 16/5/22.
  */
 public interface AirQualityMapper {
 
-    AirQualityDO selectByPrimaryKey(Long id);
+    List<AirQualityDO> select();
 
     int deleteByPrimaryKey(Long id);
 

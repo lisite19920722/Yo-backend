@@ -27,17 +27,14 @@ public class AirQualityController {
     private AirQualityManager airQualityManager;
 
     /**
-     * 根据id获取AirQualityDomain
+     * 获取AirQualityDomain
      *
-     * @param id
      * @return
      */
-    @RequestMapping(value = "/air_quality/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/air_quality", method = RequestMethod.GET)
     @ResponseBody
-    public BaseResult<AirQualityDomain> getAirQualityById(@PathVariable("id") Long id){
-        AirQualityDomain a=airQualityManager.read(id).getData();
-        System.out.println(a + "123");
-        return  airQualityManager.read(id);
+    public BaseResult getAirQuality(){
+        return  airQualityManager.read();
     }
 
     /**
@@ -46,7 +43,7 @@ public class AirQualityController {
      * @param id the id
      * @return the base result
      */
-    @RequestMapping(value = "air_quality/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/air_quality/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public BaseResult<Boolean> deleteAirQualityById(@PathVariable("id") Long id) {
         return airQualityManager.delete(id);
@@ -60,7 +57,7 @@ public class AirQualityController {
      * @param id            the id
      * @return the base result
      */
-    @RequestMapping(value = "air_quality/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/air_quality/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public BaseResult<Boolean> updateAirQualityById(@RequestBody @Valid AirQualityUpdateForm airQualityForm,
                                                        BindingResult bindingResult,

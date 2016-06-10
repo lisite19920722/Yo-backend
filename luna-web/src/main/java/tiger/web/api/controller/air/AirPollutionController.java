@@ -26,17 +26,14 @@ public class AirPollutionController {
     private AirPollutionManager airPollutionManager;
 
     /**
-     * 根据id获取AirPollutionDomain
+     * 获取AirPollutionDomain
      *
-     * @param id
      * @return
      */
-    @RequestMapping(value = "/air_pollution/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/air_pollution", method = RequestMethod.GET)
     @ResponseBody
-    public BaseResult<AirPollutionDomain> getAirPollutionById(@PathVariable("id") Long id){
-        AirPollutionDomain a=airPollutionManager.read(id).getData();
-        System.out.println(a + "123");
-        return  airPollutionManager.read(id);
+    public BaseResult getAirPollution(){
+        return  airPollutionManager.read();
     }
 
     /**
@@ -45,7 +42,7 @@ public class AirPollutionController {
      * @param id the id
      * @return the base result
      */
-    @RequestMapping(value = "air_pollution/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/air_pollution/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public BaseResult<Boolean> deleteAirPollutionById(@PathVariable("id") Long id) {
         return airPollutionManager.delete(id);
@@ -59,14 +56,13 @@ public class AirPollutionController {
      * @param id            the id
      * @return the base result
      */
-    @RequestMapping(value = "air_pollution/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/air_pollution/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public BaseResult<Boolean> updateAirPollutionById(@RequestBody @Valid AirPollutionUpdateForm airPollutionForm,
                                                        BindingResult bindingResult,
                                                        @PathVariable("id") long id) {
         AirPollutionDomain airPollutionDomain = airPollutionForm.convert2Domain();
         airPollutionDomain.setId(id);
-
         return airPollutionManager.update(airPollutionDomain);
     }
 
@@ -82,7 +78,6 @@ public class AirPollutionController {
     public BaseResult<AirPollutionDomain> createAirPollution(@RequestBody @Valid AirPollutionCreateForm airPollutionForm,
                                            BindingResult bindingResult) {
         AirPollutionDomain airPollutionDomain = airPollutionForm.convert2Domain();
-
         return airPollutionManager.create(airPollutionDomain);
     }
 
