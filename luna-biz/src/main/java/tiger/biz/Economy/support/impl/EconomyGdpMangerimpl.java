@@ -42,7 +42,8 @@ public class EconomyGdpMangerimpl implements EconomyGdpManger{
                 if (temp.getGdpRealValue() == 0){
 
                 }else {
-                    quarterErroRate[temp.getQuarter()-1]=Math.abs((temp.getGdpRealValue()-temp.getGdpForecastValue())/temp.getGdpForecastValue());
+                    java.text.DecimalFormat df = new java.text.DecimalFormat("#.0");
+                    quarterErroRate[temp.getQuarter()-1]=Double.parseDouble(df.format(Math.abs((temp.getGdpRealValue()-temp.getGdpForecastValue())/temp.getGdpForecastValue())*100));
                 }
 
                 quarterGrowUp[temp.getQuarter()-1]=temp.getGdpGrowthRate();
@@ -76,7 +77,8 @@ public class EconomyGdpMangerimpl implements EconomyGdpManger{
                     if (temp.getGdpRealValue()==0){
 
                     }else{
-                        yearErrorRate[i] = Math.abs((temp.getGdpRealValue()- temp.getGdpForecastValue()) / temp.getGdpForecastValue());
+                        java.text.DecimalFormat df = new java.text.DecimalFormat("#.0");
+                        yearErrorRate[i] = Double.parseDouble(df.format(Math.abs((temp.getGdpRealValue()- temp.getGdpForecastValue()) / temp.getGdpForecastValue())*100));
                     }
 
                     yearGrowUp[i] = temp.getGdpGrowthRate();
