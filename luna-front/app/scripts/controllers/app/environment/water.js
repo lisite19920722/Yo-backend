@@ -10,7 +10,7 @@ app.controller('WaterCtrl', ['$scope','ResTool','EnvironmentRes','$http',functio
     };
     var waterPollutionGetPromise = ResTool.httpGet(EnvironmentRes.getWaterPollution, waterPollutionGetParams, waterPollutionGetHeaders);
     waterPollutionGetPromise.then(function(data){
-        console.log(data.data);
+        // console.log(data.data);
         $scope.box1Date=data.data[0];
         $scope.box2Date=data.data[1];
         //盒子2中五个工厂各自最近6天的废水排放量(右上角)
