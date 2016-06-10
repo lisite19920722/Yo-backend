@@ -7,13 +7,14 @@ import java.io.Serializable;
 
 /**
  * 基本领域模型
- *
  * @author HuPeng
  * @version v 0.1 2015年10月19日 下午4:04:51 HuPeng Exp $
  */
 public class BaseDomain implements Serializable {
 
-    /**  */
+    /**
+     *
+     */
     private static final long serialVersionUID = -826213001422949328L;
 
     protected Long id;
