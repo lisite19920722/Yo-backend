@@ -1,6 +1,11 @@
 //controller: 'EconomyGdpCtrl'
 // 'use strict';
-app.controller('EconomyGdpCtrl', ['', function(){
+app.controller('EconomyGdpCtrl', ['$scope','$stateParams','ResTool','EconomyRes', function(){
+
+    var yearPromise = ResTool.httpGet(EconomyRes);
+    yearpromise.then(function(rc){
+        console.log(rc.data);
+    })
     
 }])
 /*app.controller('EconomyGdpCtrl', ['$scope','$stateParams','qService','forecastFactory_gdp',function($scope,$stateParams,qService,forecastFactory_gdp) {
