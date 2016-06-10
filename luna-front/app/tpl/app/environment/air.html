@@ -6,23 +6,35 @@
     <div class="col-md-12" style="margin-top:2em;margin-bottom:2em;">
         <div class="panel panel-primary" style="margin-bottom:0">
             <div class="panel-heading">
-                未来七天天气状况
+                未来天气状况
                 <span class="glyphicon pull-right"></span>
             </div>
             <div class="panel-body" style="padding:0">
                 <div class="row">
-                    <!--未来七天天气状况highchart-->
+                    <!--未来天气状况highchart-->
                     <div class="col-md-8 chart-panel" style="padding:1em 1em 1em 3em">
                         <highchart  id="temperature"  config="temperature"  style="width:95%;height:500px"></highchart>
                     </div>
-                    <!--未来七天天气状况 右侧面板-->
+                    <!--未来天气状况 右侧面板-->
                     <div class="col-md-4" style="padding:1.2em 1em 1em 1em">
                         <div class="col-md-12" style="padding-left:0">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                   <div class="clearfix">
-                                    <a href="" class="pull-left thumb-md avatar b-3x m-r">
-                                      <img src="images/environment/tianqi.gif" alt="where">
+                                    <a ng-if="flag1" href="" class="pull-left thumb-md avatar b-3x m-r">
+                                      <img src="images/environment/cloud.gif" alt="where">
+                                    </a>
+                                    <a ng-if="flag2" href="" class="pull-left thumb-md avatar b-3x m-r">
+                                      <img src="images/environment/shade.gif" alt="where">
+                                    </a>
+                                    <a ng-if="flag3" href="" class="pull-left thumb-md avatar b-3x m-r">
+                                      <img src="images/environment/rain.gif" alt="where">
+                                    </a>
+                                    <a ng-if="flag4" href="" class="pull-left thumb-md avatar b-3x m-r">
+                                      <img src="images/environment/snow.gif" alt="where">
+                                    </a>
+                                    <a ng-if="flag5" href="" class="pull-left thumb-md avatar b-3x m-r">
+                                      <img src="images/environment/fine.gif" alt="where">
                                     </a>
                                     <div class="">
                                       <div class="h3 m-t-xs m-b-xs">

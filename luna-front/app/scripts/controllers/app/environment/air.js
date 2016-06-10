@@ -96,6 +96,17 @@ app.controller('AirCtrl', ['$scope','ResTool','EnvironmentRes','$timeout',functi
 		$scope.airConditionLowtemp=dependedLowtemp;
 		//盒子1中的明日温差
 		$scope.airConditionTomorrowDiff=parseInt($scope.airConditionHightemp[4])-parseInt($scope.airConditionLowtemp[4]);
+		//盒子1中更换天气图标
+		if(dependedType[4].indexOf("云")!=-1)
+			$scope.flag1=1;
+		else if(dependedType[4].indexOf("阴")!=-1)
+			$scope.flag2=1;
+		else if(dependedType[4].indexOf("雨")!=-1)
+			$scope.flag3=1;
+		else if(dependedType[4].indexOf("雪")!=-1)
+			$scope.flag4=1;
+		else
+			$scope.flag5=1;
 		//--------------------------盒子1----------------------------
 		$scope.temperature={
 			options:{
