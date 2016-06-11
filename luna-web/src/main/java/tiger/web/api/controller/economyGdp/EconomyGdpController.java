@@ -43,4 +43,11 @@ public class EconomyGdpController {
         Map<String,double[]> map = economyGdpManger.getIndustryDetail();
         return new BaseResult(map);
     }
+
+    @RequestMapping(value = "/getIndustryDetail/{year}",method = RequestMethod.GET)
+    public BaseResult getYearIndustryDetail(@PathVariable("year") Long year){
+
+        Map<String,double[]> map = economyGdpManger.getYearIndustryDetail(year);
+        return new BaseResult(map);
+    }
 }

@@ -229,14 +229,14 @@
 <div class="col-md-12" style = "margin-top:10px" ng-if="monthforecast">
       <table class="table table-bordered" >
         <tr>
-          <th class="active">季度</th>
-          <th class="active">第一季度</th>
-          <th class="active">第二季度</th>
-          <th class="active">第三季度</th>
-          <th class="active">第四季度</th>
+          <th class="active" style="text-align: center;">季度</th>
+          <th class="active" style="text-align: center;">第一季度</th>
+          <th class="active" style="text-align: center;">第二季度</th>
+          <th class="active" style="text-align: center;">第三季度</th>
+          <th class="active" style="text-align: center;">第四季度</th>
         </tr>
         <tr>
-          <td class="info">GDP真实值(亿)</td>
+          <td class="info" >GDP真实值(亿)</td>
           <td class="info">{{gdpquarterrealvalue[0]}}</td>
           <td class="info">{{gdpquarterrealvalue[1]}}</td>
           <td class="info">{{gdpquarterrealvalue[2]}}</td>
@@ -255,11 +255,11 @@
     <div class="col-md-12" style = "margin-top:10px" ng-if="monthdeviation">
     <table class="table table-bordered" >
         <tr>
-          <th class="active">季度</th>
-          <th class="active">第一季度</th>
-          <th class="active">第二季度</th>
-          <th class="active">第三季度</th>
-          <th class="active">第四季度</th>
+          <th class="active" style = "text-align: center;">季度</th>
+          <th class="active" style = "text-align: center;">第一季度</th>
+          <th class="active" style = "text-align: center;">第二季度</th>
+          <th class="active" style = "text-align: center;">第三季度</th>
+          <th class="active" style = "text-align: center;">第四季度</th>
         </tr>
         <tr>
           <td class="info">误差</td>
@@ -281,8 +281,8 @@
 
 
 
-
- <div class="panel panel-primary" style = "margin-top:30px"  ng-controller="industryGdp">
+<div ng-controller="industryGdp">
+ <div class="panel panel-primary" style = "margin-top:30px"  >
     <div class="panel-heading">
         <div class="panel-title">
           分产业GDP预测分析
@@ -378,7 +378,7 @@
   </div>
  </div> 
  </div>
- <div class="panel panel-primary" style = "margin-top:30px" ng-if="industrydetail">
+ <div class="panel panel-primary" style = "margin-top:30px" ng-if="industrydetail" >
    <div class="panel-heading">
    <div class="row">
         <div class="panel-title col-md-3">
@@ -386,7 +386,7 @@
         </div>
          <div class="btn-group col-md-1">
          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <span class="caret">选择年份</span>
+           选择年份
          </button>
           <ul class="dropdown-menu">
              <li><a ng-click="industrychangeyear('2015')">2015</a></li>
@@ -406,5 +406,6 @@
          <highchart    config="thirdGDPChart" ></highchart>
       </div>
     </div>
+ </div>
 </div>
 </div>

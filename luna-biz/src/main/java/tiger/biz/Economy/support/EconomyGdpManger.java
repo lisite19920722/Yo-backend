@@ -15,4 +15,6 @@ public interface EconomyGdpManger {
     Map<String,double[]> getYearGdp();
 
     Map<String,double[]> getIndustryDetail();
+
+    Map<String,double[]> getYearIndustryDetail(Long year);
 }

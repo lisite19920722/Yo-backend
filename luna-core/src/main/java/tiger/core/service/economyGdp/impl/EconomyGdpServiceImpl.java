@@ -27,4 +27,6 @@ public class EconomyGdpServiceImpl implements EconomyGdpService {
     public List<GdpDetailDO> getIndustryDetail(){
         return economyGdpMapper.getIndustryDetail();
     }
+
+    public List<GdpDetailDO> getYearIndustryDetail(Long year){return economyGdpMapper.getYearIndustryDetail(year);}
 }

@@ -15,4 +15,6 @@ public interface EconomyGdpMapper {
 
     List<GdpDetailDO> getIndustryDetail();
 
+    List<GdpDetailDO> getYearIndustryDetail(Long year);
+
 }
