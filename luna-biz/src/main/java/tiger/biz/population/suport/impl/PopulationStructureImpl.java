@@ -7,6 +7,7 @@ import tiger.core.basic.BaseResult;
 import tiger.core.basic.enums.ErrorCodeEnum;
 import tiger.core.basic.exception.TigerException;
 import tiger.core.domain.population.PopulationStructureDomain;
+import tiger.core.service.population.PopulationStructureService;
 
 /**
  * Created by Winter on 2016/6/10.
@@ -22,7 +23,7 @@ public class PopulationStructureImpl implements PopulationStructureManager{
 
         if(populationstructure==null)
         {
-            throw new TigerException(ErrorCodeEnum.NOT_FOUND,"没有从service里面成功获得数据")
+            throw new TigerException(ErrorCodeEnum.NOT_FOUND,"没有从service里面成功获得数据");
         }
         return new BaseResult<PopulationStructureDomain>(populationstructure);
     }

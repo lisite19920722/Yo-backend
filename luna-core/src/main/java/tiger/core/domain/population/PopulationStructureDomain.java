@@ -9,53 +9,20 @@ import java.util.Date;
 public class PopulationStructureDomain extends BaseDomain {
 
 
-    private static final long serialVersionUID = 4164088481611808017L;
-
-    private Date create_time;
-    private Date modify_time;
+    private static final long serialVersionUID = 4883585406620375724L;
+    private Date createTime;
+    private Date modifyTime;
     private int year;
-    private long ageType_id;
-    private long sexType_id;
+    private long ageTypeId;
+    private long sexTypeId;
     private int residentPopulation;
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
-    }
-
-    public Date getModify_time() {
-        return modify_time;
-    }
-
-    public void setModify_time(Date modify_time) {
-        this.modify_time = modify_time;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public long getAgeType_id() {
-        return ageType_id;
-    }
-
-    public void setAgeType_id(long ageType_id) {
-        this.ageType_id = ageType_id;
-    }
-
-    public long getSexType_id() {
-        return sexType_id;
-    }
-
-    public void setSexType_id(long sexType_id) {
-        this.sexType_id = sexType_id;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public int getResidentPopulation() {
@@ -66,12 +33,50 @@ public class PopulationStructureDomain extends BaseDomain {
         this.residentPopulation = residentPopulation;
     }
 
-    public PopulationStructureDomain(int residentPopulation, long sexType_id, int year, Date modify_time, Date create_time, long ageType_id) {
-        this.residentPopulation = residentPopulation;
-        this.sexType_id = sexType_id;
+    public long getSexTypeId() {
+        return sexTypeId;
+    }
+
+    public void setSexTypeId(long sexTypeId) {
+        this.sexTypeId = sexTypeId;
+    }
+
+    public long getAgeTypeId() {
+        return ageTypeId;
+    }
+
+    public void setAgeTypeId(long ageTypeId) {
+        this.ageTypeId = ageTypeId;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
         this.year = year;
-        this.modify_time = modify_time;
-        this.create_time = create_time;
-        this.ageType_id = ageType_id;
+    }
+
+    public Date getModifyTime() {
+        return modifyTime;
+    }
+
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
+    }
+
+
+    //下面和无参数的构造函数
+    public PopulationStructureDomain() {
+    }
+
+    //下面是一个有参数的构造函数
+    public PopulationStructureDomain(Date createTime, int residentPopulation, long sexTypeId, long ageTypeId, int year, Date modifyTime) {
+        this.createTime = createTime;
+        this.residentPopulation = residentPopulation;
+        this.sexTypeId = sexTypeId;
+        this.ageTypeId = ageTypeId;
+        this.year = year;
+        this.modifyTime = modifyTime;
     }
 }

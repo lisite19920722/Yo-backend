@@ -14,5 +14,4 @@ public interface PopulationStructureManager {
      * @return
      */
     BaseResult<PopulationStructureDomain> read(Long id);
-
 }
