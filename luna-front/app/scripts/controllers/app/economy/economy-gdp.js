@@ -147,11 +147,28 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
     var now = new Date();
     var nowyear = now.getFullYear();
     console.log(nowyear);
+    $scope.txtexpression = "年度GDP预测采用的是基于时间序列的自回归积分滑动平均模型，通过该模型分析预测得出：本年GDP增速较往年有所放缓。";
+    $scope.monthexchange=function(param){
+       $scope.monthGDPChart.series[0].type=param;
+       $scope.monthGDPChart.series[1].type=param;
+       $scope.monthGDPChart.series[2].type='spline';
+       };
     var yearDetailPromise = ResTool.httpGet(EconomyRes.getYearDetail,{year:nowyear},{});
+    $scope.yearchoose = nowyear;
     yearDetailPromise.then(function(rc){
       $scope.gdpquarterrealvalue = rc.data.realGdpQuarterDetail;
       $scope.gdpquarterforcastvalue = rc.data.forecastGdpQuterDetail;
       $scope.gdpquartergrowratevalue = rc.data.growRate; 
+      $scope.nowYearForcast = rc.data.forecastGdpQuterDetail[3];
+        $scope.monthcheckdeviation=function(){
+        $scope.monthdeviation = !$scope.monthdeviation;
+        $scope.montherrorRate = rc.data.quarterError;
+    }  
+      $scope.monthcheckforecast = function(){
+            $scope.monthforecast = !$scope.monthforecast;
+            $scope.gdpquarterrealvalue = rc.data.realGdpQuarterDetail;
+            $scope.gdpquarterforcastvalue = rc.data.forecastGdpQuterDetail;
+    }
       $scope.monthGDPChart={
         options: {
           chart: {
@@ -261,10 +278,139 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
                 data: $scope.gdpquartergrowratevalue
             }]
       };
+
      
    });
-    
-    
+    $scope.changeyear=function(param){
+        var yearDetailPromise = ResTool.httpGet(EconomyRes.getYearDetail,{year:param},{});
+        yearDetailPromise.then(function(rc){
+        $scope.yearchoose = param;
+        $scope.monthGDPChart.series[0].data=rc.data.realGdpQuarterDetail;
+        $scope.monthGDPChart.series[1].data=rc.data.forecastGdpQuterDetail;
+        $scope.monthGDPChart.series[2].data=rc.data.growRate; 
+        $scope.nowYearForcast = rc.data.forecastGdpQuterDetail[3];
+        
+        $scope.monthcheckdeviation=function(){
+        $scope.monthdeviation = !$scope.monthdeviation;
+        $scope.montherrorRate = rc.data.quarterError;
+        } 
+
+        $scope.monthcheckforecast = function(){
+            $scope.monthforecast = !$scope.monthforecast;
+            $scope.gdpquarterrealvalue = rc.data.realGdpQuarterDetail;
+            $scope.gdpquarterforcastvalue = rc.data.forecastGdpQuterDetail;
+        }
+      });
+   }   
+}]);
+
+app.controller('industryGdp', ['$scope','$stateParams','ResTool','EconomyRes', function($scope,$stateParams,ResTool,EconomyRes){
+     var IndustryPromise = ResTool.httpGet(EconomyRes.getIndustryDetail,{},{});
+     $scope.industryexchange=function(param){
+       $scope.industryyearGDPChart.series[0].type=param;
+       $scope.industryyearGDPChart.series[1].type=param;
+       $scope.industryyearGDPChart.series[2].type=param;
+       };
+
+     IndustryPromise.then(function(rc){
+        for(i=0;i<12;i++){
+            if (rc.data.FirstRealYearGdp[i]==0) {
+                rc.data.FirstRealYearGdp[i] = rc.data.FirstForecastYearGdp[i];
+                rc.data.SecondRealYearGdp[i] = rc.data.SecondForecastYearGdp[i];
+                rc.data.ThirdRealYearGdp[i] = rc.data.ThirdForecastYearGdp[i];
+            }
+        }
+        $scope.firstindustryvalue = rc.data.FirstRealYearGdp;
+        $scope.secondindustryvalue = rc.data.SecondRealYearGdp;
+        $scope.thirdindustryvalue = rc.data.ThirdRealYearGdp;
+        $scope.forecastvalue = rc.data.FirstRealYearGdp[9]+rc.data.SecondRealYearGdp[9]+rc.data.ThirdRealYearGdp[9];
+         $scope.industryyearGDPChart={
+        options: {
+          chart: {
+            type:'column'
+          },
+        },
+        credits:{
+                enabled:false,
+            },
+            title: {
+                text: '太仓市GDP数据',
+                 style:{
+                    fontWeight:'bold'
+                }
+            },
+            subtitle: {
+                text: '按年度分产业GDP分析'
+            },
+            xAxis: {
+                categories: [
+                    
+                    '2007',
+                    '2008',
+                    '2009',
+                    '2010',
+                    '2011',
+                    '2012',
+                    '2013',
+                    '2014',
+                    '2015',
+                    '2016',
+                    '2017',
+                    '2018'
+                    
+                ],
+                 plotBands:[{
+                from: 8.5,
+                to:12.5,
+                color:'rgba(68, 170, 213, .2)',
+                label: {
+                        text: '预测区',
+                        verticalAlign: 'top',
+                        style: {
+                            fontSize: '12px',
+                            fontWeight: 600
+                        }
+                       
+                    }
+                }]
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '年度GDP总值（亿元）'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                color:'#929bce',
+                name: '第一产业',
+                data: $scope.firstindustryvalue
+
+            }, {
+                color:'#2E8B57',
+                name: '第二产业',
+                data: $scope.secondindustryvalue
+
+            },
+            {   color:'#465299',
+                name: '第三产业',
+                data: $scope.thirdindustryvalue
+            }]
+      };
+     })
 }])
 
 /*app.controller('EconomyGdpCtrl', ['$scope','$stateParams','qService','forecastFactory_gdp',function($scope,$stateParams,qService,forecastFactory_gdp) {

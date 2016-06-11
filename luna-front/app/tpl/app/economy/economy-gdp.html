@@ -172,7 +172,7 @@
        <div class = "yearGdpIntroText">
          <dl>
            <dt>本年度GDP预测值:</dt>
-           <dd>1218.9亿元</dd>
+           <dd>{{nowYearForcast}}亿元</dd>
            <dt>预测误差范围:3%</dt>
          </dl>
        </div>
@@ -263,35 +263,16 @@
         </tr>
         <tr>
           <td class="info">误差</td>
-          <td class="info">3.5%</td>
-          <td class="info">2.7%</td>
-          <td class="info">3.3%</td>
-          <td class="info">3.0%</td>
+          <td class="info">{{montherrorRate[0]}}</td>
+          <td class="info">{{montherrorRate[1]}}</td>
+          <td class="info">{{montherrorRate[2]}}</td>
+          <td class="info">{{montherrorRate[3]}}</td>
         </tr>
 
       </table>
       
     </div>
-    <div class="col-md-12" style = "margin-top:10px" ng-if="vicemonthdeviation">
-    <table class="table table-bordered" >
-        <tr>
-          <th class="active">季度</th>
-          <th class="active">第一季度</th>
-          <th class="active">第二季度</th>
-          <th class="active">第三季度</th>
-          <th class="active">第四季度</th>
-        </tr>
-        <tr>
-          <td class="info">误差</td>
-          <td class="info">0%</td>
-          <td class="info">0%</td>
-          <td class="info">0%</td>
-          <td class="info">0%</td>
-        </tr>
-
-      </table>
-      
-    </div>
+    
   </div>
  </div>
 
@@ -301,7 +282,7 @@
 
 
 
- <div class="panel panel-primary" style = "margin-top:30px">
+ <div class="panel panel-primary" style = "margin-top:30px"  ng-controller="industryGdp">
     <div class="panel-heading">
         <div class="panel-title">
           分产业GDP预测分析
