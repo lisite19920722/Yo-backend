@@ -2,12 +2,9 @@
 
 app.controller('PowerTotalCtrl', 
     ['$scope','ResTool','PowerRes', function($scope, ResTool, PowerRes) { //这里注入的顺序不能变
-	var getTotalParams = {
-
-	};
+	var getTotalParams = {};
 	var getTotalPromise = ResTool.httpGet(PowerRes.getTotal, getTotalParams, {});
 	getTotalPromise.then(function(data) {
-		console.log(data.data);
 		$scope.getData = data.data;
 		$scope.totaldata = {
 			year: $scope.getData.years[10],
@@ -18,20 +15,19 @@ app.controller('PowerTotalCtrl',
 			gdprate:$scope.getData.gdps,
 			powerrate:$scope.getData.powers,
 		};
-		$scope.charttype = 'spline';
 		$scope.changeTotalChart = function(param){
 			$scope.TotalPowerGDPChart.options.chart.type = param;
 		};
 		$scope.showTotalTable = function(){
 			$scope.totalshow= !$scope.totalshow;
-		}
+		};
 		$scope.TotalPowerGDPChart={
 			credits:{
 				enabled:false // 禁用版权信息
 			},
 			options:{
 				chart: {
-					type: $scope.charttype
+					type: 'spline'
 				},
 			},
 			title: {
@@ -91,9 +87,11 @@ app.controller('PowerTotalCtrl',
 			series: [{
 				name: '工业用电量同比增长率',
 				data: $scope.totaldata.powerrate,
+				color:'#23B7E5',
 				}, {
 				name: 'GDP同比增长率',
 				data: $scope.totaldata.gdprate,
+				color:'#8B8682',
 			}]
 		};
 	}, function(error) {
