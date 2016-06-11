@@ -31,6 +31,16 @@ angular.module('luna')
           headers: headers
         }
       })
+    },
+    getYearIndustryDetail: function(headers){
+      return $resource("http://localhost:8080/api/economy/getIndustryDetail/:year", {
+        year:"@year"
+      }, {
+        get:{
+          method:'GET',
+          headers:headers
+        }
+      })
     }
   };
 }])
