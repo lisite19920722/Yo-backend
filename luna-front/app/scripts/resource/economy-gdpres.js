@@ -21,6 +21,16 @@ angular.module('luna')
           headers: headers
         }
       });
+    },
+    getIndustryDetail: function(headers){
+      return $resource("http://localhost:8080/api/economy/industryDetail", {
+
+      }, {
+        get:{
+          method:'GET',
+          headers: headers
+        }
+      })
     }
   };
 }])
