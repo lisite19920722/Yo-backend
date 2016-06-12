@@ -3,7 +3,7 @@
   		  <a ui-sref="app.index.economy.powerconsumption({title:'工业用电量与经济增长关联分析模块'})" class="pull-right btn btn-sm btn-info m-t-n-xs" >返回</a>
      		<div class="subview3_title">{{title}}</div>
  	  </div>
-    <div class="wrapper container space-top" style="padding:0;border:0">
+    <div class="wrapper container space-top" style="padding:0;border:0;">
       <div class="col-md-12" style="margin:1em 0 0 0;padding:0">       
         <input type="text" class="form-control ui-select-search ng-pristine ng-valid ng-touched" data-toggle="dropdown" aria-expanded="false" placeholder="搜索企业..." ng-model="search.name" style="height:3em"> 
         <ul class="ui-select-choices ui-select-choices-content dropdown-menu ng-scope" role="menu" aria-labelledby="dLabel" ng-show="true" aria-hidden="false" style="padding:0;width:100%;opacity:0.85;">
@@ -31,7 +31,7 @@
             <h4 class="cgq_title">规模以上企业用电量与产值增长率关联分析</h4>
           </div>
           <div class="col-md-12" style="padding:0;border-bottom:1px solid #428bca;">
-            <div class="col-md-9" style="padding:2em 1em 0 1em">              
+            <div class="col-md-9" style="padding:2em 1em 0 1em;border-right:1px solid #428bca;margin-right:-1px;">              
               <highchart  id="singlechartvocationbyyear" config='SingleVocationChartByYear'></highchart>
               <div class="float-table-year" ng-if="isShowDataTable">
                 <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
@@ -158,10 +158,10 @@
               <highchart  id="singlechartvocation" config='SingleVocationChart'></highchart>
           </div>
           <div class="col-md-8" style="padding:0">
-            <div class="col-md-6 chartshow" style="padding:1em">
+            <div class="col-md-6 chartshow" style="padding:1em;border-right:1px dashed #428bca;">
                 <highchart  id="singlechartvocation1" config='IndustryGdpChartBySeasonPie'></highchart>
             </div>
-            <div class="col-md-6 chartshow" style="padding:1em;border-left:1px dashed #428bca;padding:1em">
+            <div class="col-md-6 chartshow" style="padding:1em;border-right:none">
                 <highchart  id="singlechartvocation2" config='IndustryPowerChartBySeasonPie'></highchart>
             </div>
                   <table st-table="rowCollectionBasic" class="table table-bordered table-striped float-table-season" ng-if="isShowDataTable">
