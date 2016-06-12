@@ -20,28 +20,26 @@
             年度税收收入分析预测
           </div>
       </div>
-
       <div class="row">
-
         <div class="col-md-8" style="border-right:1px solid">
           <highchart id="yearTaxChart"  config="yearTaxChart" />
         </div>
         <div class="col-md-4" style="padding:10px 30px 15px 15px">
-         <div class="r  dker item hbox no-border" style="background-color:rgba(55,148,188,1);border-radius:8px">
-                <div class="col w-xs v-middle hidden-md">
-                  <div ng-init="d3_3=[60,40]" ui-jq="sparkline" ui-options="[60,40], {type:'pie', height:40, sliceColors:['#fad733','#fff']}" class="sparkline inline">
-                    <i class="fa fa-pie-chart fa-4x" style="color:white;margin-left:8%">
-                     
-                   </i>
-                  </div>
-                </div>
-                <div class="col dk padder-v r-r">
-                  <span class="text-xs" style="color:white">本年税收预测值:</span>
-                  <div class="text-primary-dk font-thin h2"><span style="margin-left:15%;color:white;text-shadow:1px 2px 3px #000000">104.62亿元</span></div>
-                  <span class="text-xs"style="margin-left:45%;color:white">预测误差范围<span class="text-primary" style="color:white">2.7%</span></span>
-                </div>
-              </div>
-
+<!-- －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－年度税收关键数据展示面板 －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
+         <div class = "yearGdpIntro"> 
+                    <div ng-init = "d3_3 = [60,40]" ui-jq = "sparkline" ui-options = "[60,40], {type:'pie', height:40, sliceColors:['#fad733','#fff']}" class = "sparkline inline yearGdpIntroI">
+                     <i class = "fa fa-area-chart fa-4x"></i>
+                    </div>
+                    <div class = "yearGdpIntroText">
+                      <dl>
+                        <dt>本年度税收预测值:</dt>
+                        <dd>104.62亿元</dd>
+                        <dt>预测误差范围:</dt>
+                        <dd>2.7%</dd>
+                      </dl>
+                    </div>
+        </div>
+<!-- －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－一句话解读 －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－  -->
                 <article class="media cgq_contentwidth">
                   <div class="pull-left">
                     <span class="fa-stack fa-lg">
@@ -49,16 +47,13 @@
                       <i class="icon-bulb fa-stack-1x text-white fa-spin"></i>
                     </span>
                     <span class="h4">一句话解读</span>
-                  </div>
-                  <div class="media-body clear">                    
-                    <small class="block m-t-xs">{{totaldata.oneword}}</small>
-                  </div>
+                  </div>      
+                   <span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="margin-left:5px">
+                      年度税收收入预测采用的是多元回归模型，通过该模型分析预测得出：本年的税收增速较往年的增速有所放缓
+                   </span>
                 </article>
-           <div style="margin-top:10px;width:98%;font-size:18px">
-            <span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="margin-left:5px">
-              年度税收收入预测采用的是多元回归模型，通过该模型分析预测得出：本年的税收增速较往年的增速有所放缓
-            </span>
-          </div>
+<!-- －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－按钮组 －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
+           
 
           <div class="row">
             <button class="btn btn-success col-md-5" style="margin-top:20px;margin-left:10px" ng-click="changeViewsYear()">切换图表视图</button>
@@ -94,28 +89,28 @@
               <td class="info" style="text-align:center;">{{taxthisyearrealvalue[4]}}</td>
               <td class="info" style="text-align:center;">{{taxthisyearrealvalue[5]}}</td>
               <td class="info" style="text-align:center;">{{taxthisyearrealvalue[6]}}</td>
-             <td class="info" style="text-align:center;">{{taxthisyearrealvalue[7]}}</td>
+              <td class="info" style="text-align:center;">{{taxthisyearrealvalue[7]}}</td>
               <td class="info" style="text-align:center;">{{taxthisyearrealvalue[8]}}</td>
               <td class="info" style="text-align:center;">{{taxthisyearrealvalue[9]}}</td>
-              <td class="info" style="text-align:center;">--</td>
-              <td class="info" style="text-align:center;">--</td>
-              <td class="info" style="text-align:center;">--</td>
+              <td class="info" style="text-align:center;">{{taxthisyearrealvalue[10]}}</td>
+              <td class="info" style="text-align:center;">{{taxthisyearrealvalue[11]}}</td>
+              <td class="info" style="text-align:center;">{{taxthisyearrealvalue[12]}}</td>
             </tr>
             <tr>
               <td class="info" style="text-align:center;">税收预测值(亿元)</td>
-              <td class="info" style="text-align:center;">{{date[0]}}</td>
-              <td class="info" style="text-align:center;">{{date[1]}}</td>
-              <td class="info" style="text-align:center;">{{date[2]}}</td>
-              <td class="info" style="text-align:center;">{{date[3]}}</td>
-              <td class="info" style="text-align:center;">{{date[4]}}</td>
-              <td class="info" style="text-align:center;">{{date[5]}}</td>
-              <td class="info" style="text-align:center;">{{date[6]}}</td>
-              <td class="info" style="text-align:center;">{{date[7]}}</td>
-              <td class="info" style="text-align:center;">{{date[8]}}</td>
-              <td class="info" style="text-align:center;">{{date[9]}}</td>
-               <td class="info" style="text-align:center;">{{date[10]}}</td>
-               <td class="info" style="text-align:center;">{{date[11]}}</td>
-               <td class="info" style="text-align:center;">{{date[12]}}</td>            
+              <td class="info" style="text-align:center;">{{taxForecastData[0]}}</td>
+              <td class="info" style="text-align:center;">{{taxForecastData[1]}}</td>
+              <td class="info" style="text-align:center;">{{taxForecastData[2]}}</td>
+              <td class="info" style="text-align:center;">{{taxForecastData[3]}}</td>
+              <td class="info" style="text-align:center;">{{taxForecastData[4]}}</td>
+              <td class="info" style="text-align:center;">{{taxForecastData[5]}}</td>
+              <td class="info" style="text-align:center;">{{taxForecastData[6]}}</td>
+              <td class="info" style="text-align:center;">{{taxForecastData[7]}}</td>
+              <td class="info" style="text-align:center;">{{taxForecastData[8]}}</td>
+              <td class="info" style="text-align:center;">{{taxForecastData[9]}}</td>
+               <td class="info" style="text-align:center;">{{taxForecastData[10]}}</td>
+               <td class="info" style="text-align:center;">{{taxForecastData[11]}}</td>
+               <td class="info" style="text-align:center;">{{taxForecastData[12]}}</td>            
             </tr>
           </table>
         </div>
@@ -140,24 +135,27 @@
             </tr>
             <tr>
               <td class="info" style="text-align:center;">预测误差</td>
-              <td class="info" style="text-align:center;">2.8%</td>
-              <td class="info" style="text-align:center;">3.3%</td>
-              <td class="info" style="text-align:center;">3.2%</td>
-              <td class="info" style="text-align:center;">2.0%</td>
-              <td class="info" style="text-align:center;">1.7%</td>
-              <td class="info" style="text-align:center;">4.4%</td>
-              <td class="info" style="text-align:center;">3.1%</td>
-              <td class="info" style="text-align:center;">2.7%</td>
-              <td class="info" style="text-align:center;">2.6%</td>
-              <td class="info" style="text-align:center;">2.8%</td>
-              <td class="info" style="text-align:center;">--</td>
-              <td class="info" style="text-align:center;">--</td>
-              <td class="info" style="text-align:center;">--</td>
+              <td class="info" style="text-align:center">{{taxErrorRate[0]}}</td>
+              <td class="info" style="text-align:center">{{taxErrorRate[1]}}</td>
+              <td class="info" style="text-align:center">{{taxErrorRate[2]}}</td>
+              <td class="info" style="text-align:center">{{taxErrorRate[3]}}</td>
+              <td class="info" style="text-align:center">{{taxErrorRate[4]}}</td>
+              <td class="info" style="text-align:center">{{taxErrorRate[5]}}</td>
+              <td class="info" style="text-align:center">{{taxErrorRate[6]}}</td>
+              <td class="info" style="text-align:center">{{taxErrorRate[7]}}</td>
+              <td class="info" style="text-align:center">{{taxErrorRate[8]}}</td>
+              <td class="info" style="text-align:center">{{taxErrorRate[9]}}</td>
+              <td class="info" style="text-align:center">{{taxErrorRate[10]}}</td>
+              <td class="info" style="text-align:center">{{taxErrorRate[11]}}</td>
+              <td class="info" style="text-align:center">{{taxErrorRate[12]}}</td>
             </tr>
           </table>
         </div>
-        
        </div>
+
+
+
+
  <div >
           <div class="row" >
                   <div class="col-md-1" style="padding:0px 0px 0px 20px">
@@ -165,7 +163,7 @@
                   </div>
                   <div class="col-md-3">
                      <div class="progress-box">
-                       <div class="percentage-cur">
+                       <div class="percentage-cur" ng-init="selectedRange=0">
                          <span class="num">{{selectedRange}}%</span>
                        </div>
                       <div class="progress-bar progress-bar-slider" style="width:100%">
@@ -247,13 +245,16 @@
                   </div>
            </div>
   </div>
-    </div>
+   
+
+
+ </div>
 
 
 
  
 
-    <div class="panel panel-primary">
+    <div class="panel panel-primary"   ng-controller="EconomyTaxDetailCtrl">
       
       <div class="panel-heading">
           <div class="panel-title">
@@ -267,7 +268,22 @@
           <highchart id="monthTaxChart"  config="monthTaxChart" />
         </div>
         <div class="col-md-4" style="padding:10px 30px 15px 15px">
-            <div class="r  dker item hbox no-border" style="background-color:rgba(55,148,188,1);border-radius:8px">
+
+           <div class = "yearGdpIntro"> 
+                    <div ng-init = "d3_3 = [60,40]" ui-jq = "sparkline" ui-options = "[60,40], {type:'pie', height:40, sliceColors:['#fad733','#fff']}" class = "sparkline inline yearGdpIntroI">
+                     <i class = "fa fa-area-chart fa-4x"></i>
+                    </div>
+                    <div class = "yearGdpIntroText">
+                      <dl>
+                        <dt>本年度税收预测值:</dt>
+                        <dd>104.62亿元</dd>
+                        <dt>预测误差范围:</dt>
+                        <dd>2.7%</dd>
+                      </dl>
+                    </div>
+        </div>
+
+           <!--  <div class="r  dker item hbox no-border" style="background-color:rgba(55,148,188,1);border-radius:8px">
                 <div class="col w-xs v-middle hidden-md">
                   <div ng-init="d3_3=[60,40]" ui-jq="sparkline" ui-options="[60,40], {type:'pie', height:40, sliceColors:['#fad733','#fff']}" class="sparkline inline">
                      <i class="fa fa-bar-chart-o fa-4x" style="color:white;margin-left:8%">
@@ -280,7 +296,7 @@
                   <div class="text-primary-dk font-thin h2"><span style="margin-left:15%;text-shadow:1px 2px 3px #000000;color:white">{{thisyearforecastvalue}}亿元</span></div>
                   <span class="text-xs"style="margin-left:45%;color:white">预测误差范围<span class="text-primary"style="color:white">3.0%</span></span>
                 </div>
-              </div>
+              </div> -->
 
                <article class="media cgq_contentwidth">
                   <div class="pull-left">
@@ -290,19 +306,10 @@
                     </span>
                     <span class="h4" >一句话解读</span>
                   </div>
-                  <div class="media-body clear">                    
-                    <small class="block m-t-xs">{{totaldata.oneword}}</small>
-                  </div>
+                 <span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="margin-left:5px">
+                   月度税收收入预测采用的是多元回归模型，通过该模型分析预测得出：本年的税收增速较往年的增速有所放缓
+                 </span>
                 </article>
-           <div style="margin-top:10px;width:98%;font-size:18px">
-            <span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="margin-left:5px">
-              月度税收收入预测采用的是多元回归模型，通过该模型分析预测得出：本年的税收增速较往年的增速有所放缓
-            </span>
-          </div>
-  
-
-
-
 
           <div class="row">
             <button class="btn btn-success col-md-5" style="margin-top:20px;margin-left:10px" ng-click="changeViews()">切换图表视图</button>
@@ -359,17 +366,17 @@
             </tr>
             <tr>
               <td class="info" style="text-align:center;">税收预测值(亿元)</td>
-               <td class="info" style="text-align:center;">{{date2[0]}}</td>
-              <td class="info" style="text-align:center;">{{date2[1]}}</td>
-              <td class="info" style="text-align:center;">{{date2[2]}}</td>
-              <td class="info" style="text-align:center;">{{date2[3]}}</td>
-              <td class="info" style="text-align:center;">{{date2[4]}}</td>
-              <td class="info" style="text-align:center;">{{date2[5]}}</td>
-              <td class="info" style="text-align:center;">{{date2[6]}}</td>
-              <td class="info" style="text-align:center;">{{date2[7]}}</td>
-              <td class="info" style="text-align:center;">{{date2[8]}}</td>
-              <td class="info" style="text-align:center;">{{date2[9]}}</td>
-              <td class="info" style="text-align:center;">{{date2[10]}}</td>
+               <td class="info" style="text-align:center;">{{forecastMonthDetail[0]}}</td>
+              <td class="info" style="text-align:center;">{{forecastMonthDetail[1]}}</td>
+              <td class="info" style="text-align:center;">{{forecastMonthDetail[2]}}</td>
+              <td class="info" style="text-align:center;">{{forecastMonthDetail[3]}}</td>
+              <td class="info" style="text-align:center;">{{forecastMonthDetail[4]}}</td>
+              <td class="info" style="text-align:center;">{{forecastMonthDetail[5]}}</td>
+              <td class="info" style="text-align:center;">{{forecastMonthDetail[6]}}</td>
+              <td class="info" style="text-align:center;">{{forecastMonthDetail[7]}}</td>
+              <td class="info" style="text-align:center;">{{forecastMonthDetail[8]}}</td>
+              <td class="info" style="text-align:center;">{{forecastMonthDetail[9]}}</td>
+              <td class="info" style="text-align:center;">{{forecastMonthDetail[10]}}</td>
             </tr>
           </table>
         </div>
@@ -391,17 +398,17 @@
             </tr>
             <tr>
               <td class="info" style="text-align:center;">预测误差</td>
-              <td class="info" style="text-align:center;">2.8%</td>
-              <td class="info" style="text-align:center;">3.3%</td>
-              <td class="info" style="text-align:center;">3.2%</td>
-              <td class="info" style="text-align:center;">2.0%</td>
-              <td class="info" style="text-align:center;">1.7%</td>
-              <td class="info" style="text-align:center;">4.4%</td>
-              <td class="info" style="text-align:center;">3.1%</td>
-              <td class="info" style="text-align:center;">2.7%</td>
-              <td class="info" style="text-align:center;">2.6%</td>
-              <td class="info" style="text-align:center;">2.8%</td>
-              <td class="info" style="text-align:center;">3.0%</td>
+              <td class="info" style="text-align:center;">{{monthErrorRate[0]}}</td>
+              <td class="info" style="text-align:center;">{{monthErrorRate[1]}}</td>
+              <td class="info" style="text-align:center;">{{monthErrorRate[2]}}</td>
+              <td class="info" style="text-align:center;">{{monthErrorRate[3]}}</td>
+              <td class="info" style="text-align:center;">{{monthErrorRate[4]}}</td>
+              <td class="info" style="text-align:center;">{{monthErrorRate[5]}}</td>
+              <td class="info" style="text-align:center;">{{monthErrorRate[6]}}</td>
+              <td class="info" style="text-align:center;">{{monthErrorRate[7]}}</td>
+              <td class="info" style="text-align:center;">{{monthErrorRate[8]}}</td>
+              <td class="info" style="text-align:center;">{{monthErrorRate[9]}}</td>
+              <td class="info" style="text-align:center;">{{monthErrorRate[10]}}</td>
             </tr>
           </table>
         </div>
