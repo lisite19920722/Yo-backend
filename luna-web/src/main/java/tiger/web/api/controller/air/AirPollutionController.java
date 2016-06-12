@@ -9,6 +9,7 @@ import tiger.core.domain.air.AirPollutionDomain;
 import tiger.web.api.constants.APIConstants;
 import tiger.web.api.form.air.AirPollutionCreateForm;
 import tiger.web.api.form.air.AirPollutionUpdateForm;
+
 import javax.validation.Valid;
 
 
@@ -32,8 +33,8 @@ public class AirPollutionController {
      */
     @RequestMapping(value = "/air_pollution", method = RequestMethod.GET)
     @ResponseBody
-    public BaseResult getAirPollution(){
-        return  airPollutionManager.read();
+    public BaseResult getAirPollution() {
+        return airPollutionManager.read();
     }
 
     /**
@@ -51,16 +52,16 @@ public class AirPollutionController {
     /**
      * 更新AirPollutionDomain
      *
-     * @param airPollutionForm   the airPollution form
-     * @param bindingResult the binding result
-     * @param id            the id
+     * @param airPollutionForm the airPollution form
+     * @param bindingResult    the binding result
+     * @param id               the id
      * @return the base result
      */
     @RequestMapping(value = "/air_pollution/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public BaseResult<Boolean> updateAirPollutionById(@RequestBody @Valid AirPollutionUpdateForm airPollutionForm,
-                                                       BindingResult bindingResult,
-                                                       @PathVariable("id") long id) {
+                                                      BindingResult bindingResult,
+                                                      @PathVariable("id") long id) {
         AirPollutionDomain airPollutionDomain = airPollutionForm.convert2Domain();
         airPollutionDomain.setId(id);
         return airPollutionManager.update(airPollutionDomain);
@@ -69,14 +70,14 @@ public class AirPollutionController {
     /**
      * 创建AirPollutionDomain
      *
-     * @param airPollutionForm    the id
-     * @param bindingResult the binding result
+     * @param airPollutionForm the id
+     * @param bindingResult    the binding result
      * @return the base result
      */
     @RequestMapping(value = "/air_pollution", method = RequestMethod.POST)
     @ResponseBody
     public BaseResult<AirPollutionDomain> createAirPollution(@RequestBody @Valid AirPollutionCreateForm airPollutionForm,
-                                           BindingResult bindingResult) {
+                                                             BindingResult bindingResult) {
         AirPollutionDomain airPollutionDomain = airPollutionForm.convert2Domain();
         return airPollutionManager.create(airPollutionDomain);
     }

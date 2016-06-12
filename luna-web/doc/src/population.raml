@@ -1,16 +1,11 @@
 ﻿description: |
   代码相关接口
 
-/population-structure/{year}:
+/population_structure/{id}:
 get:
   is: [secured]
 	description: |
 	常住人口结构分析预测
-  queryParameters:
-    year: 
-      type: string
-      description: |
-        数据年份
 	responses:
 		200:
 		  body:
@@ -20,11 +15,15 @@ get:
               "code":"200",
               "message":"成功",
               "data":{
-                       
+              "id": "1",
+              "year": 3,
+              "age_type_id": 3,
+              "sex_type_id": 2,
+              "resident_population": 233343
               },
               "success": true
                }
-/population-total/{year}:
+/total/{year}:
 get:
   is: [secured]
   description: |
@@ -47,7 +46,7 @@ get:
               },
               "success": true
                }
-/population/increase/{townId}:
+/increase/{townId}:
   get:
     is: [secured]
     description: |
@@ -72,3 +71,5 @@ get:
               }
            
 
+
++

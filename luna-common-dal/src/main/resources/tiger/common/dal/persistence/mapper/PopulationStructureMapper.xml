@@ -3,16 +3,16 @@
 
 <mapper namespace="tiger.common.dal.persistence.mapper.PopulationStructureMapper">
 
-    <resultMap id="BaseResultMap" type="tiger.common.dal.persistence.Population.PopulationStructureDO">
+    <resultMap id="BaseResultMap" type="tiger.common.dal.persistence.population.PopulationStructureDO">
         <id column="id" property="id" jdbcType="BIGINT"/>
-        <result column="year" property="year" jdbcType="INT"/>
+        <result column="year" property="year" jdbcType="BIGINT"/>
         <result column="age_type_id" property="ageTypeId" jdbcType="BIGINT"/>
         <result column="sex_type_id" property="sexTypeId" jdbcType="BIGINT"/>
-        <result column="resident_population" property="residentPopulation" jdbcType="INT"/>
+        <result column="resident_population" property="residentPopulation" jdbcType="BIGINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,create_time,modify_time,year,age_type_id,sex_type_id,resident_population
+        id,year,age_type_id,sex_type_id,resident_population
     </sql>
 
 
