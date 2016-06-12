@@ -155,11 +155,11 @@ angular.module('luna')
           .state('app.index.economy.powerconsumptionofenterprises', {
             url: '^/app/index/economy/powerconsumption/enterprises/:title',
             templateUrl: 'tpl/app/economy/economy-powerconsumption-enterprises.html',
-            controller: 'EconomyPowerConsumptionOfEnterprisesCtrl',
+            controller: 'PowerEnterpriseSoloCtrl',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/economy/economy-powerconsumption-enterprises.js',
+                  'scripts/controllers/app/economy/power/power-enterprise-solo.js',
                 ]);
               }]
             }

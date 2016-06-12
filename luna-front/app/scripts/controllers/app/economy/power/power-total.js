@@ -1,5 +1,4 @@
 'use strict';
-
 app.controller('PowerTotalCtrl', 
     ['$scope','ResTool','PowerRes', function($scope, ResTool, PowerRes) { //这里注入的顺序不能变
 	var getTotalParams = {};

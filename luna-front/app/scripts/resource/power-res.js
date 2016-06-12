@@ -40,5 +40,34 @@ angular.module('luna')
                     },
                 });
             },
+            getEnterpriseAverage: function (headers){
+                return $resource('http://localhost:8080/api/power/enterprise/average', {}, {
+                    get: {
+                        method: 'GET',
+                        headers: headers
+                    },
+                });
+            },
+            getEnterpriseYear: function (headers){
+                return $resource('http://localhost:8080/api/power/enterprise/:enterpriseId', {
+                    enterpriseId:'@enterpriseId',
+                }, {
+                    get: {
+                        method: 'GET',
+                        headers: headers
+                    },
+                });
+            },
+            getEnterpriseSeason: function (headers){
+                return $resource('http://localhost:8080/api/power/enterprise/:enterpriseId/:year', {
+                    enterpriseId:'@enterpriseId',
+                    year:'@year',
+                }, {
+                    get: {
+                        method: 'GET',
+                        headers: headers
+                    },
+                });
+            },
         };
     }])
