@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="tiger.common.dal.persistence.mapper.EconomyTaxMapper">
+    <resultMap id="BaseResultMap" type="tiger.common.dal.persistence.EconomyTax.TaxDetailDO">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+        <result column="modify_time" property="modify_time" jdbcType="TIMESTAMP" />
+        <result column="taxRealValue" property="taxRealValue" jdbcType="FLOAT" />
+        <result column="taxForecastValue" property="taxForecastValue" jdbcType="FLOAT" />
+        <result column="taxGrowthRate" property="taxGrowthRate" jdbcType="FLOAT" />
+        <result column="errorValue" property="errorValue" jdbcType="FLOAT" />
+        <result column="taxYearTarget" property="taxYearTarget" jdbcType="FLOAT" />
+        <result column="fixedAssetsInvest" property="fixedAssetsInvest" jdbcType="FLOAT" />
+        <result column="fiscalOut" property="fiscalOut" jdbcType="FLOAT" />
+        <result column="gdpValue" property="gdpValue" jdbcType="FLOAT" />
+        <result column="foreignTrade" property="foreignTrade" jdbcType="FLOAT" />
+        <result column="year" property="year" jdbcType="BIGINT" />
+        <result column="month" property="month" jdbcType="BIGINT" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, create_time, modify_time,taxRealValue,taxForecastValue,taxGrowthRate,errorValue,taxYearTarget,fixedAssetsInvest,fiscalOut,gdpValue,foreignTrade,year,month
+    </sql>
+    <select id="getTaxDetail" resultMap="BaseResultMap">
+        select * from tax_forecast_data
+    </select>
+    <select id="getYearTaxDetail" resultMap="BaseResultMap" parameterType="java.lang.Long">
+     select * from tax_forecast_data where year = #{year,jdbcType=BIGINT}
+    </select>
+</mapper>
