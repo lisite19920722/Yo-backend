@@ -58,7 +58,7 @@ public class PowerGdpCorrelationManagerImpl implements PowerGdpCorrelationManage
     public Map<String, double[]> getPowerGdpCorrelationIndustryMap(String year, String season){
 
         Map<String, double[]> map = new HashMap<>();
-        double[] industryIds = new double[8],
+        double[] years = new double[13],//前端需要知道有哪些年份可用
                  gdps = new double[8],
                  powers = new double[8];
         List<PowerGdpCorrelationIndustryDomain> domains = getPowerGdpCorrelationIndustryDomainList(year, season);
@@ -66,12 +66,16 @@ public class PowerGdpCorrelationManagerImpl implements PowerGdpCorrelationManage
         Iterator<PowerGdpCorrelationIndustryDomain> e = domains.iterator();
         while(e.hasNext()){
             PowerGdpCorrelationIndustryDomain temp = e.next();
-            industryIds[count] = temp.getIndustryId();
             gdps[count] = temp.getIndustryGdp();
             powers[count] = temp.getIndustryPower();
             count++;
         }
-        map.put("ids",industryIds);
+        int startYear = CurrentDateElement.YEAR - 10;
+        for(int i = 0;i<years.length;i++) {
+            years[i] = startYear;
+            startYear++;
+        }
+        map.put("years",years);
         map.put("gdps",gdps);
         map.put("powers",powers);
 

@@ -1,125 +1,115 @@
 <div class="vbox cgq_fontsize" style="margin-bottom:5em">
-	<!--topbar-->
     <div class="wrapper lter b-b bg-white">
-		
    		<div class="subview3_title">{{title}}</div>
  	</div>
-
- 	<!--企业用电量与经济增长关联分析————————————————————————————————————————————————————————————————————————————————————————————————————————————-->
-	<div class="wrapper bg-white container space-top" style="margin-bottom:0;">
-	    <div class="row">
-	      <!--标题-->
-	      <div class="col-md-12 topbar">
-	      	<h4 class="cgq_title">工业用电量与GDP增长率关联分析</h4>
-	      </div>
-	      <!--highchart-->
-	      <div class="col-md-8 chartshow">
-	        <highchart   id="charttotal" config="TotalPowerGDPChart" ></highchart>
-	      </div>
-	      <!--Menu side-->
-	      <div class="col-md-4 menustructer">
-	      	<div>
-		      	<div class="col-md-12" style="padding-top:0.5em">
-	            	<div class="block panel padder-v cgq_bg-lightgreen item cgq_marginaround1em cgq_contentwidth">
-		                <span class="text-white font-thin h1 block">{{totaldata.powergrowthrate}}%</span>
-		                <span class="text-xs">{{totaldata.year}}年工业用电量增长率预测值</span>
-		                	<i class="glyphicon glyphicon-send" aria-hidden="true"></i>                                                                                                              
+ 	<div ng-controller="PowerTotalCtrl">
+		<div class="wrapper bg-white container space-top" style="margin-bottom:0;">
+		    <div class="row">
+		      <div class="col-md-12 topbar">
+		      	<h4 class="cgq_title">工业用电量与GDP增长率关联分析</h4>
+		      </div>
+		      <div class="col-md-8 chartshow">
+		        <highchart   id="charttotal" config="TotalPowerGDPChart" ></highchart>
+		      </div>
+		      <div class="col-md-4 menustructer">
+		      	<div>
+			      	<div class="col-md-12" style="padding-top:0.5em">
+		            	<div class="block panel padder-v cgq_bg-lightgreen item cgq_marginaround1em cgq_contentwidth">
+			                <span class="text-white font-thin h1 block">{{totaldata.powergrowthrate}}%</span>
+			                <span class="text-xs">{{totaldata.year}}年工业用电量增长率预测值</span>
+			                <i class="glyphicon glyphicon-send" aria-hidden="true"></i>                                                                   
+			            </div>
 		            </div>
-	            </div>
-	            <div class="col-md-12 ">
-	            	<div class="block panel padder-v cgq_bg-lightyellow item cgq_marginaround1em cgq_contentwidth">
-		                <span class="text-white font-thin h1 block">{{totaldata.gdpgrowthrate}}%</span>
-		                <span class="text-xs">{{totaldata.year}}年GDP增长率预测值</span>
-		                	<i class="glyphicon glyphicon-send" aria-hidden="true"></i>
-		                </span>
-	              	</div>
-	            </div>
-	      		<div class="col-md-12 cgq_marginaround1em" style="margin-top:1em">
-					<article class="media cgq_contentwidth">
-			            <div class="pull-left">
-			              <span class="fa-stack fa-lg">
-			                <i class="fa fa-circle fa-stack-2x text-info"></i>
-			                <i class="icon-bulb fa-spin fa-stack-1x text-white"></i>
-			              </span>
-			              <span class="h4">一句话解读</span>
-			            </div>
-			            <div class="media-body clear">			              
-			              <small class="block m-t-xs">{{totaldata.oneword}}</small>
-			            </div>
-          			</article>
-	      		</div>
-
-	      		<div class="col-md-12 cgq_marginaround1em">
-				    <div class="btn-group dropdown">
-			        	<button class="btn btn-success cgq-fixed-buttonwidth" data-toggle="dropdown" aria-expanded="false">切换图表视图<span class="caret"></span></button>
-			          	<ul class="dropdown-menu">
-			            <li><a ng-click="changeTotalChart('spline')">曲线图</a></li>
-			            <li class="divider"></li>
-			            <li><a ng-click="changeTotalChart('column')">直方图</a></li>
-			            <li><a ng-click="changeTotalChart('area')">区域图</a></li>
-			          </ul>
-			        </div>
-	      		</div>
-	      		<div class="col-md-12 cgq_marginaround1em">
-	      			<button ng-click="showTotalTable()" class="btn m-b-xs btn-primary cgq-fixed-buttonwidth">详细数据列表</button>
-	      		</div>
-	      		
-	      	</div>
-	      </div>
+		            <div class="col-md-12 ">
+		            	<div class="block panel padder-v cgq_bg-lightyellow item cgq_marginaround1em cgq_contentwidth">
+			                <span class="text-white font-thin h1 block">{{totaldata.gdpgrowthrate}}%</span>
+			                <span class="text-xs">{{totaldata.year}}年GDP增长率预测值</span>
+			                	<i class="glyphicon glyphicon-send" aria-hidden="true"></i>
+			                </span>
+		              	</div>
+		            </div>
+		      		<div class="col-md-12 cgq_marginaround1em" style="margin-top:1em">
+						<article class="media cgq_contentwidth">
+				            <div class="pull-left">
+				              <span class="fa-stack fa-lg">
+				                <i class="fa fa-circle fa-stack-2x text-info"></i>
+				                <i class="icon-bulb fa-spin fa-stack-1x text-white" style="margin-top:6px;"></i>
+				              </span>
+				              <span class="h4">一句话解读</span>
+				            </div>
+				            <div class="media-body clear" style="width:100%;">			              
+				              <small class="block m-t-xs">{{totaldata.oneword}}</small>
+				            </div>
+	          			</article>
+		      		</div>
+		      		<div class="col-md-12 cgq_marginaround1em">
+					    <div class="btn-group dropdown">
+				        	<button class="btn btn-success cgq-fixed-buttonwidth" data-toggle="dropdown" aria-expanded="false">切换图表视图<span class="caret"></span></button>
+				          	<ul class="dropdown-menu">
+				            <li><a ng-click="changeTotalChart('spline')">曲线图</a></li>
+				            <li class="divider"></li>
+				            <li><a ng-click="changeTotalChart('column')">直方图</a></li>
+				            <li><a ng-click="changeTotalChart('area')">区域图</a></li>
+				          </ul>
+				        </div>
+		      		</div>
+		      		<div class="col-md-12 cgq_marginaround1em">
+		      			<button ng-click="showTotalTable()" class="btn m-b-xs btn-primary cgq-fixed-buttonwidth">详细数据列表</button>
+		      		</div>
+		      	</div>
+		      </div>
+		    </div>
+	    </div>
+	    <div class="bg-white container padding0em" style="border-top:0" ng-if="totalshow">
+	    	<div class="panel panel-default paddingmargin0em" >
+		    	<div class="panel-heading">数据详情</div>  
+			    <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
+				      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
+				      	<td>年份</td>
+				        <td ng-repeat="year in totaldata.yearvalue">{{year}}</td>
+				      </tr>
+				      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
+				      	<td>GDP同比增长率</td>
+				        <td>{{totaldata.gdprate[0]}}%</td>
+				        <td>{{totaldata.gdprate[1]}}%</td>
+				        <td>{{totaldata.gdprate[2]}}%</td>
+				        <td>{{totaldata.gdprate[3]}}%</td>
+				        <td>{{totaldata.gdprate[4]}}%</td>
+				        <td>{{totaldata.gdprate[5]}}%</td>
+				        <td>{{totaldata.gdprate[6]}}%</td>
+				        <td>{{totaldata.gdprate[7]}}%</td>
+				        <td>{{totaldata.gdprate[8]}}%</td>
+				        <td>{{totaldata.gdprate[9]}}%</td>
+				        <td>{{totaldata.gdprate[10]}}%</td>
+				        <td>{{totaldata.gdprate[11]}}%</td>
+				        <td>{{totaldata.gdprate[12]}}%</td>
+				      </tr>
+				      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
+				      	<td>工业用电量同比增长率</td>
+				        <td>{{totaldata.powerrate[0]}}%</td>
+				        <td>{{totaldata.powerrate[1]}}%</td>
+				        <td>{{totaldata.powerrate[2]}}%</td>
+				        <td>{{totaldata.powerrate[3]}}%</td>
+				        <td>{{totaldata.powerrate[4]}}%</td>
+				        <td>{{totaldata.powerrate[5]}}%</td>
+				        <td>{{totaldata.powerrate[6]}}%</td>
+				        <td>{{totaldata.powerrate[7]}}%</td>
+				        <td>{{totaldata.powerrate[8]}}%</td>
+				        <td>{{totaldata.powerrate[9]}}%</td>
+				        <td>{{totaldata.powerrate[10]}}%</td>
+				        <td>{{totaldata.powerrate[11]}}%</td>
+				        <td>{{totaldata.powerrate[12]}}%</td>
+				      </tr>
+			    </table>
+	  		</div>
 	    </div>
     </div>
-    <div class="bg-white container padding0em" style="border-top:0" ng-if="totalshow">
-    	<div class="panel panel-default paddingmargin0em" >
-	    	<div class="panel-heading">数据详情</div>  
-		    <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
-			      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
-			      	<td>年份</td>
-			        <td ng-repeat="year in totaldata.yearvalue">{{year}}</td>
-			      </tr>
-			      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
-			      	<td>GDP同比增长率</td>
-			        <td>{{totaldata.gdprate[0]}}%</td>
-			        <td>{{totaldata.gdprate[1]}}%</td>
-			        <td>{{totaldata.gdprate[2]}}%</td>
-			        <td>{{totaldata.gdprate[3]}}%</td>
-			        <td>{{totaldata.gdprate[4]}}%</td>
-			        <td>{{totaldata.gdprate[5]}}%</td>
-			        <td>{{totaldata.gdprate[6]}}%</td>
-			        <td>{{totaldata.gdprate[7]}}%</td>
-			        <td>{{totaldata.gdprate[8]}}%</td>
-			        <td>{{totaldata.gdprate[9]}}%</td>
-			        <td>{{totaldata.gdprate[10]}}%</td>
-			        <td>{{totaldata.gdprate[11]}}%</td>
-			        <td>{{totaldata.gdprate[12]}}%</td>
-			      </tr>
-			      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
-			      	<td>工业用电量同比增长率</td>
-			        <td>{{totaldata.powerrate[0]}}%</td>
-			        <td>{{totaldata.powerrate[1]}}%</td>
-			        <td>{{totaldata.powerrate[2]}}%</td>
-			        <td>{{totaldata.powerrate[3]}}%</td>
-			        <td>{{totaldata.powerrate[4]}}%</td>
-			        <td>{{totaldata.powerrate[5]}}%</td>
-			        <td>{{totaldata.powerrate[6]}}%</td>
-			        <td>{{totaldata.powerrate[7]}}%</td>
-			        <td>{{totaldata.powerrate[8]}}%</td>
-			        <td>{{totaldata.powerrate[9]}}%</td>
-			        <td>{{totaldata.powerrate[10]}}%</td>
-			        <td>{{totaldata.powerrate[11]}}%</td>
-			        <td>{{totaldata.powerrate[12]}}%</td>
-			      </tr>
-		    </table>
-  		</div>
-    </div>
-
     <!--用电量增长率与行业产值增长率分析预测—————————————————————————————————第二图———————————————————————————————————————————————————————————————————————————-->
-    <div class="wrapper bg-white container space-top" ng-controller="EconomyPowerConsumptionCtrl_Industries">
+    <div class="wrapper bg-white container space-top" ng-controller="PowerIndustryCtrl">
 	    <div class="row">
-	      <!--标题-->
 	      <div class="col-md-12 topbar">
 	      	<h4 class="cgq_title"><span>行业用电量与产值增长率对比分析</span><span>{{}}</span></h4>
 	      </div>
-	      <!--highchart图表-->
 	      <div class="col-md-12 cgq-clearsidepadding">
 	      	<div class="col-md-6 chartshow cgq-paddingaround0.5em cgq-dashedborder">
 	        	<highchart   id="chartvocation" config='VocationChartPiePower'></highchart>
@@ -130,96 +120,95 @@
 	      </div>
 	      <div class="col-md-12" style="padding-top:0.5em;padding-bottom:0.5em;border-bottom:1px dashed lightblue">
 	      	
-	      	<li ng-click="changeYear(2007)" class="inline col-md-1 cgq-wrap b-info">
+	      	<li ng-click="changeYear(totalData.years[1])" class="inline col-md-1 cgq-wrap b-info">
 	      		<div class="tl-content panel bg-info padder">
 	              <span class="arrow arrow-info bottom"></span>
 	              <span class="arrow arrow-info bottom"></span>
-	              <div class="text-lt">2007</div>
+	              <div class="text-lt">{{totalData.years[1]}}</div>
 	            </div>
 	      	</li>
-	      	<li ng-click="changeYear(2008)" class="inline col-md-1 cgq-wrap b-info">
+	      	<li ng-click="changeYear(totalData.years[2])" class="inline col-md-1 cgq-wrap b-info">
 	      		<div class="tl-content panel bg-info padder">
 	              <span class="arrow arrow-info bottom"></span>
 	              <span class="arrow arrow-info bottom"></span>
-	              <div class="text-lt">2008</div>
+	              <div class="text-lt">{{totalData.years[2]}}</div>
 	            </div>
 	      	</li>
-			<li ng-click="changeYear(2009)" class="inline col-md-1 cgq-wrap b-info">
+			<li ng-click="changeYear(totalData.years[3])" class="inline col-md-1 cgq-wrap b-info">
 	      		<div class="tl-content panel bg-info padder">
 	              <span class="arrow arrow-info bottom"></span>
 	              <span class="arrow arrow-info bottom"></span>
-	              <div class="text-lt">2009</div>
+	              <div class="text-lt">{{totalData.years[3]}}</div>
 	            </div>
 	      	</li>
-	      	<li ng-click="changeYear(2010)" class="inline col-md-1 cgq-wrap b-info">
+	      	<li ng-click="changeYear(totalData.years[4])" class="inline col-md-1 cgq-wrap b-info">
 	      		<div class="tl-content panel bg-info padder">
 	              <span class="arrow arrow-info bottom"></span>
 	              <span class="arrow arrow-info bottom"></span>
-	              <div class="text-lt">2010</div>
+	              <div class="text-lt">{{totalData.years[4]}}</div>
 	            </div>
 	      	</li>
-	      	<li ng-click="changeYear(2011)" class="inline col-md-1 cgq-wrap b-info">
+	      	<li ng-click="changeYear(totalData.years[5])" class="inline col-md-1 cgq-wrap b-info">
 	      		<div class="tl-content panel bg-info padder">
 	              <span class="arrow arrow-info bottom"></span>
 	              <span class="arrow arrow-info bottom"></span>
-	              <div class="text-lt">2011</div>
+	              <div class="text-lt">{{totalData.years[5]}}</div>
 	            </div>
 	      	</li>
-	      	<li ng-click="changeYear(2012)" class="inline col-md-1 cgq-wrap b-info">
+	      	<li ng-click="changeYear(totalData.years[6])" class="inline col-md-1 cgq-wrap b-info">
 	      		<div class="tl-content panel bg-info padder">
 	              <span class="arrow arrow-info bottom"></span>
 	              <span class="arrow arrow-info bottom"></span>
-	              <div class="text-lt">2012</div>
+	              <div class="text-lt">{{totalData.years[6]}}</div>
 	            </div>
 	      	</li>
-	      	<li ng-click="changeYear(2013)" class="inline col-md-1 cgq-wrap b-info">
+	      	<li ng-click="changeYear(totalData.years[7])" class="inline col-md-1 cgq-wrap b-info">
 	      		<div class="tl-content panel bg-info padder">
 	              <span class="arrow arrow-info bottom"></span>
 	              <span class="arrow arrow-info bottom"></span>
-	              <div class="text-lt">2013</div>
+	              <div class="text-lt">{{totalData.years[7]}}</div>
 	            </div>
 	      	</li>
-	      	<li ng-click="changeYear(2014)" class="inline col-md-1 cgq-wrap b-info">
+	      	<li ng-click="changeYear(totalData.years[8])" class="inline col-md-1 cgq-wrap b-info">
 	      		<div class="tl-content panel bg-info padder">
 	              <span class="arrow arrow-info bottom"></span>
 	              <span class="arrow arrow-info bottom"></span>
-	              <div class="text-lt">2014</div>
+	              <div class="text-lt">{{totalData.years[8]}}</div>
 	            </div>
 	      	</li>
-	      	<li ng-click="changeYear(2015)" class="inline col-md-1 cgq-wrap b-info">
+	      	<li ng-click="changeYear(totalData.years[9])" class="inline col-md-1 cgq-wrap b-info">
 	      		<div class="tl-content panel bg-info padder">
 	              <span class="arrow arrow-info bottom"></span>
 	              <span class="arrow arrow-info bottom"></span>
-	              <div class="text-lt">2015</div>
+	              <div class="text-lt">{{totalData.years[9]}}</div>
 	            </div>
 	      	</li>
-	      	<li ng-click="changeYear(2016)" class="inline col-md-1 cgq-wrap b-success">
+	      	<li ng-click="changeYear(totalData.years[10])" class="inline col-md-1 cgq-wrap b-success">
 	      		<div class="tl-content panel bg-success padder">
 	              <span class="arrow arrow-success bottom"></span>
 	              <span class="arrow arrow-success bottom"></span>
-	              <div class="text-lt">2016</div>
+	              <div class="text-lt">{{totalData.years[10]}}</div>
 	            </div>
 	      	</li>
-	      	<li ng-click="changeYear(2017)" class="inline col-md-1 cgq-wrap b-success">
+	      	<li ng-click="changeYear(totalData.years[11])" class="inline col-md-1 cgq-wrap b-success">
 	      		<div class="tl-content panel bg-success padder">
 	              <span class="arrow arrow-success bottom"></span>
 	              <span class="arrow arrow-success bottom"></span>
-	              <div class="text-lt">2017</div>
+	              <div class="text-lt">{{totalData.years[11]}}</div>
 	            </div>
 	      	</li>
-	      	<li ng-click="changeYear(2018)" class="inline col-md-1 cgq-wrap b-success">
+	      	<li ng-click="changeYear(totalData.years[12])" class="inline col-md-1 cgq-wrap b-success">
 	      		<div class="tl-content panel bg-success padder">
 	              <span class="arrow arrow-success bottom"></span>
 	              <span class="arrow arrow-success bottom"></span>
-	              <div class="text-lt">2018</div>
+	              <div class="text-lt">{{totalData.years[12]}}</div>
 	            </div>
 	      	</li>	      	
 	      </div>
-	      <!---->
 	      <div class="col-md-12" style="padding:3px">
 	      	<table st-table="rowCollectionBasic" class="table table-bordered table-striped" style="margin-bottom:0;font-size:70%;text-align:center;">		      
 		          <tr st-select-row="row" class="ng-scope ng-isolate-scope">
-			      	<td><span style="color:orange">{{tempvalue.yearmark}}</span><span>年数据：</span></td>
+			      	<td><span style="color:orange">{{getIndustryParams.year}}</span><span>年数据：</span></td>
 			        <td><strong>农林牧渔</strong></td>
 			        <td><strong>工业</strong></td>
 			        <td><strong>建筑</strong></td>
@@ -231,111 +220,105 @@
 			      </tr>
 			      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
 			      	<td>用电量增长率</td>
-			        <td>{{tempvalue.power[0]}}%</td>
-			        <td>{{tempvalue.power[1]}}%</td>
-			        <td>{{tempvalue.power[2]}}%</td>
-			        <td>{{tempvalue.power[3]}}%</td>
-			        <td>{{tempvalue.power[4]}}%</td>
-			        <td>{{tempvalue.power[5]}}%</td>
-			        <td>{{tempvalue.power[6]}}%</td>
-			        <td>{{tempvalue.power[7]}}%</td>
+			        <td>{{totalData.powers[0]}}%</td>
+			        <td>{{totalData.powers[1]}}%</td>
+			        <td>{{totalData.powers[2]}}%</td>
+			        <td>{{totalData.powers[3]}}%</td>
+			        <td>{{totalData.powers[4]}}%</td>
+			        <td>{{totalData.powers[5]}}%</td>
+			        <td>{{totalData.powers[6]}}%</td>
+			        <td>{{totalData.powers[7]}}%</td>
 			      </tr>
 			      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
 			      	<td>产值增长率</td>
-			        <td >{{tempvalue.gdp[0]}}%</td>
-			        <td >{{tempvalue.gdp[1]}}%</td>
-			        <td >{{tempvalue.gdp[2]}}%</td>
-			        <td >{{tempvalue.gdp[3]}}%</td>
-			        <td >{{tempvalue.gdp[4]}}%</td>
-			        <td >{{tempvalue.gdp[5]}}%</td>
-			        <td >{{tempvalue.gdp[6]}}%</td>
-			        <td >{{tempvalue.gdp[7]}}%</td>
+			        <td >{{totalData.gdps[0]}}%</td>
+			        <td >{{totalData.gdps[1]}}%</td>
+			        <td >{{totalData.gdps[2]}}%</td>
+			        <td >{{totalData.gdps[3]}}%</td>
+			        <td >{{totalData.gdps[4]}}%</td>
+			        <td >{{totalData.gdps[5]}}%</td>
+			        <td >{{totalData.gdps[6]}}%</td>
+			        <td >{{totalData.gdps[7]}}%</td>
 			      </tr>
 		    </table>
 	      </div>
 	      
 	    </div>
     </div>
-    <!--End of Vocation-->
-
     <!--用电量增长率与行业产值增长率分析预测—————————————————————————————————第三图———————————————————————————————————————————————————————————————————————————-->
-    <div class="wrapper bg-white container space-top" ng-controller="EconomyPowerConsumptionCtrl_IndustryEach">
+    <div class="wrapper bg-white container space-top" ng-controller="PowerIndustrySoloCtrl">
 	    <div class="row">
-	      <!--标题-->
 	      <div class="col-md-12 topbar">
 	      	<h4 class="cgq_title">行业用电量与产值增长率关联分析</h4>
 	      </div>
-	      <!--上面一半-->
 	      <div class="col-md-12" style="padding:0;border-bottom:1px solid #428bca;">
-		      <!--highchart图表-->
-		      <div class="col-md-9" style="padding:2em 1em 0 1em">			      	
+		      <div class="col-md-9" style="padding:2em 1em 0 1em;border-right:1px solid #428bca;margin-right:-1px;">			      	
 		        <highchart  id="singlechartvocationbyyear" config='SingleVocationChartByYear'></highchart>
-		        <div class="float-table-year" ng-if="isshow.isShowYearTable">
+		        <div class="float-table-year" ng-if="isShowDataTable">
 			      	<table st-table="rowCollectionBasic" class="table table-bordered table-striped">
 				      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
-				      	<td><span style="color:rgb(100,214,40);">{{temptable.selectedindustry}}</span>数据：</td>
-				        <td>{{industriesdata.total.years[0]}}</td>
-				        <td>{{industriesdata.total.years[1]}}</td>
-				        <td>{{industriesdata.total.years[2]}}</td>
-				        <td>{{industriesdata.total.years[3]}}</td>
-				        <td>{{industriesdata.total.years[4]}}</td>
-				        <td>{{industriesdata.total.years[5]}}</td>
-				        <td>{{industriesdata.total.years[6]}}</td>
+				      	<td><span style="color:rgb(100,214,40);">{{industryType}}</span>数据：</td>
+				        <td>{{yearData.years[0]}}</td>
+				        <td>{{yearData.years[1]}}</td>
+				        <td>{{yearData.years[2]}}</td>
+				        <td>{{yearData.years[3]}}</td>
+				        <td>{{yearData.years[4]}}</td>
+				        <td>{{yearData.years[5]}}</td>
+				        <td>{{yearData.years[6]}}</td>
 				      </tr>
 				      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
 				      	<td>行业产值同比增长率</td>
-				        <td>{{temptable.year.gdp[0]}}%</td>
-				        <td>{{temptable.year.gdp[1]}}%</td>
-				        <td>{{temptable.year.gdp[2]}}%</td>
-				        <td>{{temptable.year.gdp[3]}}%</td>
-				        <td>{{temptable.year.gdp[4]}}%</td>
-				        <td>{{temptable.year.gdp[5]}}%</td>
-				        <td>{{temptable.year.gdp[6]}}%</td>
+				        <td>{{yearData.gdps[0]}}%</td>
+				        <td>{{yearData.gdps[1]}}%</td>
+				        <td>{{yearData.gdps[2]}}%</td>
+				        <td>{{yearData.gdps[3]}}%</td>
+				        <td>{{yearData.gdps[4]}}%</td>
+				        <td>{{yearData.gdps[5]}}%</td>
+				        <td>{{yearData.gdps[6]}}%</td>
 				      </tr>
 				      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
 				      	<td>行业用电量同比增长率</td>
-				        <td>{{temptable.year.power[0]}}%</td>
-				        <td>{{temptable.year.power[1]}}%</td>
-				        <td>{{temptable.year.power[2]}}%</td>
-				        <td>{{temptable.year.power[3]}}%</td>
-				        <td>{{temptable.year.power[4]}}%</td>
-				        <td>{{temptable.year.power[5]}}%</td>
-				        <td>{{temptable.year.power[6]}}%</td>
+				        <td>{{yearData.powers[0]}}%</td>
+				        <td>{{yearData.powers[1]}}%</td>
+				        <td>{{yearData.powers[2]}}%</td>
+				        <td>{{yearData.powers[3]}}%</td>
+				        <td>{{yearData.powers[4]}}%</td>
+				        <td>{{yearData.powers[5]}}%</td>
+				        <td>{{yearData.powers[6]}}%</td>
 				      </tr>
 				      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
 				      	<td></td>
-				        <td>{{industriesdata.total.years[7]}}</td>
-				        <td>{{industriesdata.total.years[8]}}</td>
-				        <td>{{industriesdata.total.years[9]}}</td>
-				        <td class="success">{{industriesdata.total.years[10]}}</td>
-				        <td class="success">{{industriesdata.total.years[11]}}</td>
-				        <td class="success">{{industriesdata.total.years[12]}}</td>
+				        <td>{{yearData.years[7]}}</td>
+				        <td>{{yearData.years[8]}}</td>
+				        <td>{{yearData.years[9]}}</td>
+				        <td class="success">{{yearData.years[10]}}</td>
+				        <td class="success">{{yearData.years[11]}}</td>
+				        <td class="success">{{yearData.years[12]}}</td>
 				        <td></td>
 				      </tr>
 				      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
 				      	<td>行业产值同比增长率</td>
-				        <td>{{temptable.year.gdp[7]}}%</td>
-				        <td>{{temptable.year.gdp[8]}}%</td>
-				        <td>{{temptable.year.gdp[9]}}%</td>
-				        <td>{{temptable.year.gdp[10]}}%</td>
-				        <td>{{temptable.year.gdp[11]}}%</td>
-				        <td>{{temptable.year.gdp[12]}}%</td>
+				        <td>{{yearData.gdps[7]}}%</td>
+				        <td>{{yearData.gdps[8]}}%</td>
+				        <td>{{yearData.gdps[9]}}%</td>
+				        <td>{{yearData.gdps[10]}}%</td>
+				        <td>{{yearData.gdps[11]}}%</td>
+				        <td>{{yearData.gdps[12]}}%</td>
 				        <td></td>
 				      </tr>
 				      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
 				      	<td>行业用电量同比增长率</td>
-				        <td>{{temptable.year.power[7]}}%</td>
-				        <td>{{temptable.year.power[8]}}%</td>
-				        <td>{{temptable.year.power[9]}}%</td>
-				        <td>{{temptable.year.power[10]}}%</td>
-				        <td>{{temptable.year.power[11]}}%</td>
-				        <td>{{temptable.year.power[12]}}%</td>
+				        <td>{{yearData.powers[7]}}%</td>
+				        <td>{{yearData.powers[8]}}%</td>
+				        <td>{{yearData.powers[9]}}%</td>
+				        <td>{{yearData.powers[10]}}%</td>
+				        <td>{{yearData.powers[11]}}%</td>
+				        <td>{{yearData.powers[12]}}%</td>
 				        <td></td>
 				      </tr>
 			    	</table>
 			    </div>
-		      </div>
-		      <!--右侧控制面板-->	      
+		      </div> 
 		      <div class="col-md-3 cgq_menustructer" style="border-left:1px solid #428bca;">
 		      	<div class="col-md-12">
          
@@ -349,8 +332,8 @@
 			              </span>
 			              <span class="h4">一句话解读</span>
 			            </div>
-			            <div class="media-body clear">			              
-			              <small class="block m-t-xs">{{totaldata.oneword}}</small>
+			            <div class="media-body clear" style="width:100%;">			              
+			              <small class="block m-t-xs">用电量与经济增长密切相关：用电量增减变动趋势与GDP增减变动趋势基本一致，GDP增长时，用电量也增长，增速相似；GDP回落时，用电量增长也回落;预测阶段用电量增速将大于GDP增速。</small>
 			            </div>
           			</article>
 	      		</div>
@@ -358,16 +341,16 @@
 		      			<div class="btn-group dropdown">
 				        	<button class="btn btn-success cgq-fixed-buttonwidth" data-toggle="dropdown" aria-expanded="false">选择行业<span class="caret"></span></button>
 				        	<ul class="dropdown-menu" style="padding:0"> 
-				        		<li><a ng-click="changeIndustry(0)">农、林、牧、渔</a></li> 
-					            <li><a ng-click="changeIndustry(1)">工业</a></li>
-					            <li><a ng-click="changeIndustry(2)">建筑业</a></li>        
+				        		<li><a ng-click="changeIndustry(3001)">农、林、牧、渔</a></li> 
+					            <li><a ng-click="changeIndustry(3002)">工业</a></li>
+					            <li><a ng-click="changeIndustry(3003)">建筑业</a></li>        
 					            <li class="divider"></li>
-					            <li><a ng-click="changeIndustry(3)">交通运输、仓储和邮政业</a></li>
-					            <li><a ng-click="changeIndustry(4)">信息传输计、算机服务和软件业</a></li>
-					            <li><a ng-click="changeIndustry(5)">批发和零售、住宿和餐饮业</a></li>
+					            <li><a ng-click="changeIndustry(3004)">交通运输、仓储和邮政业</a></li>
+					            <li><a ng-click="changeIndustry(3005)">信息传输计、算机服务和软件业</a></li>
+					            <li><a ng-click="changeIndustry(3006)">批发和零售、住宿和餐饮业</a></li>
 					            <li class="divider"></li>
-					            <li><a ng-click="changeIndustry(6)">金融、房地产、商务及居民服务业</a></li>
-					            <li><a ng-click="changeIndustry(7)">公共事业及管理组织</a></li>
+					            <li><a ng-click="changeIndustry(3007)">金融、房地产、商务及居民服务业</a></li>
+					            <li><a ng-click="changeIndustry(3008)">公共事业及管理组织</a></li>
 				            </ul>
 				    	</div>		
 		      	</div>
@@ -386,46 +369,43 @@
 	      			<button ng-click="showTables()" class="btn m-b-xs btn-primary cgq-fixed-buttonwidth" data-toggle="modal" data-target="">详细数据列表</button>
 	      		</div>
 	      		<div class="col-md-12" style="margin-top:0.7em;border-top:1px dashed lightblue;padding-top:1em;margin-bottom:1.7em;">
-
 				    <div class="btn-group dropdown">
 			        	<button class="btn btn-success cgq-fixed-buttonwidth" data-toggle="dropdown" aria-expanded="false">选择年份<span class="caret"></span></button>
 			          	<ul class="dropdown-menu">
-			            <li><a ng-click="changeYear(18);changeForcastArea(18)">2018</a></li>			            
-			            <li><a ng-click="changeYear(17);changeForcastArea(17)">2017</a></li>
-			            <li><a ng-click="changeYear(16);changeForcastArea(16)">2016</a></li>
+			            <li><a ng-click="changeYear(yearData.years[12]);changeForcastArea(yearData.years[12])">{{yearData.years[12]}}</a></li>
+			            <li><a ng-click="changeYear(yearData.years[11]);changeForcastArea(yearData.years[11])">{{yearData.years[11]}}</a></li>
+			            <li><a ng-click="changeYear(yearData.years[10]);changeForcastArea(yearData.years[10])">{{yearData.years[10]}}</a></li>
 			            <li class="divider"></li>
-			            <li><a ng-click="changeYear(15);changeForcastArea(15)">2015</a></li>			            
-			            <li><a ng-click="changeYear(14);changeForcastArea(14)">2014</a></li>
-			            <li><a ng-click="changeYear(13);changeForcastArea(13)">2013</a></li>
-			            <li><a ng-click="changeYear(12);changeForcastArea(12)">2012</a></li>			            
-			            <li><a ng-click="changeYear(11);changeForcastArea(11)">2011</a></li>
-			            <li><a ng-click="changeYear(10);changeForcastArea(10)">2010</a></li>
-			            <li><a ng-click="changeYear(9);changeForcastArea(9)">2009</a></li>			            
-			            <li><a ng-click="changeYear(8);changeForcastArea(8)">2008</a></li>
-			            <li><a ng-click="changeYear(7);changeForcastArea(7)">2007</a></li>
-			            <li><a ng-click="changeYear(6);changeForcastArea(6)">2006</a></li>
+			            <li><a ng-click="changeYear(yearData.years[9]);changeForcastArea(yearData.years[9])">{{yearData.years[9]}}</a></li>
+			            <li><a ng-click="changeYear(yearData.years[8]);changeForcastArea(yearData.years[8])">{{yearData.years[8]}}</a></li>
+			            <li><a ng-click="changeYear(yearData.years[7]);changeForcastArea(yearData.years[7])">{{yearData.years[7]}}</a></li>
+			            <li><a ng-click="changeYear(yearData.years[6]);changeForcastArea(yearData.years[6])">{{yearData.years[6]}}</a></li>
+			            <li><a ng-click="changeYear(yearData.years[5]);changeForcastArea(yearData.years[5])">{{yearData.years[5]}}</a></li>
+			            <li><a ng-click="changeYear(yearData.years[4]);changeForcastArea(yearData.years[4])">{{yearData.years[4]}}</a></li>
+			            <li><a ng-click="changeYear(yearData.years[3]);changeForcastArea(yearData.years[3])">{{yearData.years[3]}}</a></li>
+			            <li><a ng-click="changeYear(yearData.years[2]);changeForcastArea(yearData.years[2])">{{yearData.years[2]}}</a></li>
+			            <li><a ng-click="changeYear(yearData.years[1]);changeForcastArea(yearData.years[1])">{{yearData.years[1]}}</a></li>
+			            <li><a ng-click="changeYear(yearData.years[0]);changeForcastArea(yearData.years[0])">{{yearData.years[0]}}</a></li>
 			          </ul>
 			        </div>
 			        <div style="font-family:'微软雅黑';font-size:80%;margin-top:0.3em">Tip:显示不同年份的分季度视图</div>
 		      	</div>
 		      </div>
 	      </div>
-
-	      <!--下面一半-->
 	      <div class="col-md-12">
 	      	<div class="col-md-4 chartshow" style="border-right:1px dashed #428bca;padding:1em">
 	          <highchart  id="singlechartvocation" config='SingleVocationChart'></highchart>
 	     	</div>
 	     	<div class="col-md-8" style="padding:0">
-		     	<div class="col-md-6 chartshow" style="padding:1em">
+		     	<div class="col-md-6 chartshow" style="padding:1em;border-right:1px dashed #428bca;">
 		          <highchart  id="singlechartvocation1" config='IndustryGdpChartBySeasonPie'></highchart>
 		     	</div>
-		     	<div class="col-md-6 chartshow" style="padding:1em;border-left:1px dashed #428bca;padding:1em">
+		     	<div class="col-md-6 chartshow" style="padding:1em;border-right:none">
 		          <highchart  id="singlechartvocation2" config='IndustryPowerChartBySeasonPie'></highchart>
 		     	</div>
-			          <table st-table="rowCollectionBasic" class="table table-bordered table-striped float-table-season" ng-if="isshow.isShowYearTable">
+			          <table st-table="rowCollectionBasic" class="table table-bordered table-striped float-table-season" ng-if="isShowDataTable">
 					      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
-					      	<td><span style="color:orange">{{temptable.selectedyear}}</span>年<span style="color:rgb(100,214,40);">{{temptable.selectedindustry}}</span>数据：</td>
+					      	<td><span style="color:orange">{{yearmark}}</span>年<span style="color:rgb(100,214,40);">{{industryType}}</span>数据：</td>
 					        <td>第一季度</td>
 					        <td>第二季度</td>
 					        <td>第三季度</td>
@@ -433,17 +413,17 @@
 					      </tr>
 					      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
 					      	<td>GDP同比增长率</td>
-					        <td>{{temptable.season.gdp[0]}}%</td>
-					        <td>{{temptable.season.gdp[1]}}%</td>
-					        <td>{{temptable.season.gdp[2]}}%</td>
-					        <td>{{temptable.season.gdp[3]}}%</td>
+					        <td>{{seasonData.gdps[0]}}%</td>
+					        <td>{{seasonData.gdps[1]}}%</td>
+					        <td>{{seasonData.gdps[2]}}%</td>
+					        <td>{{seasonData.gdps[3]}}%</td>
 					      </tr>
 					      <tr st-select-row="row" class="ng-scope ng-isolate-scope">
 					      	<td>工业用电量同比增长率</td>
-					        <td>{{temptable.season.power[0]}}%</td>
-					        <td>{{temptable.season.power[1]}}%</td>
-					        <td>{{temptable.season.power[2]}}%</td>
-					        <td>{{temptable.season.power[3]}}%</td>
+					        <td>{{seasonData.powers[0]}}%</td>
+					        <td>{{seasonData.powers[1]}}%</td>
+					        <td>{{seasonData.powers[2]}}%</td>
+					        <td>{{seasonData.powers[3]}}%</td>
 					      </tr>
 				   	</table>
 	     	</div>
@@ -451,17 +431,14 @@
 	    </div>
     </div>
     <!--规模以上企业用电量增长率与产值增长率分析预测———————————————————————————————————————第四图—————————————————————————————————————————————————————————————————————-->
-    <div class="wrapper bg-white container space-top" style="margin-bottom:0;" ng-controller="EconomyPowerConsumptionOfEnterpriseTotalCtrl">
+    <div class="wrapper bg-white container space-top" style="margin-bottom:0;" ng-controller="PowerEnterpriseAverageCtrl">
 	    <div class="row">
-	      <!--标题-->
 	      <div class="col-md-12 topbar">
 	      	<h4 class="cgq_title">规模以上企业用电量与企业产值增长率关联分析</h4>
 	      </div>
-	      <!--highchart-->
 	      <div class="col-md-8 chartshow">
 	        <highchart   id="chartenterprise" config="AverageEnterpriseChartByYear"></highchart>
 	      </div>
-	      <!--Menu side-->
 	      <div class="col-md-4 menustructer">
 	      	<div>
 		      	<div class="col-md-12" style="padding-top:0.5em">
@@ -484,16 +461,15 @@
 			            <div class="pull-left">
 			              <span class="fa-stack fa-lg">
 			                <i class="fa fa-circle fa-stack-2x text-info"></i>
-			                <i class="icon-bulb fa-spin fa-stack-1x text-white"></i>
+			                <i class="icon-bulb fa-spin fa-stack-1x text-white" style="margin-top:6px;"></i>
 			              </span>
 			              <span class="h4">一句话解读</span>
 			            </div>
-			            <div class="media-body clear">			              
+			            <div class="media-body clear" style="width:100%;">			              
 			              <small class="block m-t-xs">{{enterpriseAverageData.oneword}}</small>
 			            </div>
           			</article>
 	      		</div>
-
 	      		<div class="col-md-12 cgq_marginaround1em">
 				    <div class="btn-group dropdown">
 			        	<button class="btn btn-success cgq-fixed-buttonwidth" data-toggle="dropdown" aria-expanded="false">切换图表视图<span class="caret"></span></button>
