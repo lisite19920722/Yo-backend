@@ -2161,6 +2161,37 @@ fieldset[disabled] .btn-black.active {
   top: -250px;
   margin-bottom: -233px;
 }
+/*
+ *  global css
+ */
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  font-family: 'Microsoft Yahei', STHeiti, sans-serif;
+  width: 100%;
+  height: 100%;
+}
+.zzh-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 0;
+}
+.fc-container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 0;
+}
+.fcc-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+.chart-panelzzh {
+  height: 150%;
+  border-right: solid #ccc 1px;
+}
 .subview3_title {
   border: 0px solid;
   border-left-width: 3px;
@@ -2212,4 +2243,8 @@ fieldset[disabled] .btn-black.active {
   border: 0px none;
   -webkit-box-shadow: 0 0 0;
   box-shadow: 0 0 0;
+}
+.bi-nav-font {
+  font-size: 16px;
+  font-weight: bold;
 }
