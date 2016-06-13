@@ -72,12 +72,11 @@ angular.module('luna')
               }]
             }
           })
-
           //economy  
           .state('app.index', {
             abstract: true,
             url: '^/app/index',
-            templateUrl: 'tpl/app/economy-index.html',
+            templateUrl: 'tpl/app/economy/emenu.html',
             controller: 'AppIndexController',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
@@ -259,35 +258,23 @@ angular.module('luna')
             }
           })
            //population end
-           .state('app.population.population-class', {
-            url: '^/app/population/teacher/class',
-            templateUrl: 'tpl/app/teacher-class.html',
-            controller: 'TeacherClassCtrl',
-            resolve: {
-              controller: ['$ocLazyLoad', function($ocLazyLoad) {
-                return $ocLazyLoad.load([
-                  'scripts/controllers/app/teacher-class.js',
-                ]);
-              }]
-            }
-          })
           .state('app.profile', {
             abstract: true,
             url: '^/app/profile',
-            templateUrl: 'tpl/app/profile.html',
+            templateUrl: 'tpl/app/profile/profile.html',
             resolve: {
             }
           })
           .state('app.profile.person', {
             url: '^/app/profile/person',
-            templateUrl: 'tpl/app/profile-person.html',
+            templateUrl: 'tpl/app/profile/profile-person.html',
             resolve: {
 
             }
           })
           .state('app.profile.password', {
             url: '^/app/profile/password',
-            templateUrl: 'tpl/app/profile-password.html',
+            templateUrl: 'tpl/app/profile/profile-password.html',
             resolve: {
 
             }

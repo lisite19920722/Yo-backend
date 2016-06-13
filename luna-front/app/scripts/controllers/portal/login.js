@@ -1,63 +1,59 @@
 'use strict';
 
-app.controller('LoginController', function($scope,$localStorage,$http,
-    sessionService, tokenFactory, $state,qService, ToasterTool,BASE_URL) {
-
-  $scope.accountCharacter = 'TEACHER';
-  $scope.login_name = "";
-  $scope.login_password = "";
-  $scope.autoLogin = false;
-
-  //登录方法
-  $scope.login = function() {
-
-    $scope.message = "";
-
-    var _n = $scope.login_name;
-    var _p = $scope.login_password;
-
-    if (_n == undefined || _n == "" || _p == undefined || _p == "") {
-      $scope.errorMsg = '用户名/密码不能为空!';
-      return;
-    }
-    
-    // tokenFactory.login({
-    //   'X-Username': _n,
-    //   'X-Password': _p
-    // }).post({},
-    //   function success(data, headers) {
-    //     $http.get(base_Url+'/api/predictData/gdpRawData/list',
-    //       {headers:{'x-auth-token':headers()['x-auth-token']}})
-    //     .success(function(rc){
-    //       sessionService.saveCurrSemeter(rc.data);
-    //     }).error(function(error){
-    //       ToasterTool.error('未知错误发生!','');
-    //     });
-    //   },
-    //   function error(data) {
-    //     ToasterTool.error('登录失败','用户名或密码错误');
-    //   });
-    $http({
-        method:'POST',
-        url:BASE_URL+'/account/authentication',
-        headers:{
-          'X-Username': _n,
-          'X-Password': _p
-        }
-    })
-    .success(function(data){
-      $state.go("app.index.economy.gdp");
-    })
-    .error(function(error){
-      if (error!=null) {
-        $scope.errorMsg =error.message;
+app.controller('LoginController', ['$scope', '$state', 'ResTool', 'AuthTool', 'AccountRes', 'ToasterTool', 
+  function($scope, $state, ResTool, AuthTool, AccountRes, ToasterTool) {
+  // 登录用户结构
+  $scope.loginUser = {
+    username: '',
+    password: ''
+  };
+  //登录
+  $scope.login = () =>{
+    var params = {};
+    $scope.loginPromise = ResTool.httpPost(AccountRes.accountAuthentication, params, {}, {
+      'X-Username': $scope.loginUser.username,
+      'X-Password': encryptPassword($scope.loginUser.password, $scope.loginUser.username)
+    });
+    $scope.loginPromise.then(function(data){
+      if(data.success){
+          var userInfo = data.data;
+          AuthTool.login(data.data, data.headers[AuthTool.TOKEN_HEADER]);
+          console.log(data.headers[AuthTool.TOKEN_HEADER]);
+          ToasterTool.success('登录成功，欢迎回来');
+          $state.go('app.index.economy.gdp');
+      }else{
+          ToasterTool.error('登录失败', data.message);
       }
-    })
-    
+    }, function(error){
+      ToasterTool.error(error.message);
+    });
   };
 
-  $scope.forgotPassword = function(){
-    ToasterTool.info('请联系管理员');
-  };
+  // //修改信息
+  // $scope.changeInfo = (changeType,changedInfo) =>{
+  //   var params = {};
+  //   var body = {};
+  //   body[changeType] = changedInfo;
+  //   $scope.changeInfo = ResTool.httpPutWithToken(AccountRes.accountProfile, params,body, {});
 
-});
+  //   $scope.changeInfo.then(function(data){
+  //     if(data.success){
+  //         ToasterTool.success('修改成功'),data.message;
+  //         $uibModalInstance.close();
+  //         $state.reload('app.person.mng');
+  //     }else{
+  //         ToasterTool.error('修改失败', data.message);
+  //     }
+  //   }, function(error){
+  //     ToasterTool.error(error.message);
+  //   });
+  // };
+  // ~ private methods
+  // 密码加密函数
+  function encryptPassword(password, username, sbin) {
+    var code = sbin === undefined ? '1234' : sbin;
+    console.log(md5(password));
+    return md5(md5(md5(password) + username) + code.toUpperCase());
+  }
+
+}]);
