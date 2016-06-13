@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="tiger.common.dal.persistence.mapper.SchoolPredictionMapper" >
+    <resultMap id="BaseResultMap" type="tiger.common.dal.persistence.population.PopulationSchoolDO" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="modify_time" property="updateTime" jdbcType="TIMESTAMP" />
+        <result column="preyear" property="preyear" jdbcType="VARCHAR" />
+        <result column="town" property="town" jdbcType="VARCHAR" />
+        <result column="town_id" property="town_id" jdbcType="BIGINT" />
+        <result column="prePrimarySchool" property="prePrimarySchool" jdbcType="BIGINT" />
+        <result column="preMiddleSchool" property="preMiddleSchool" jdbcType="BIGINT" />
+        <result column="preHighschool" property="preHighschool" jdbcType="BIGINT" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, create_time, modify_time,preyear,town,town_id,prePrimarySchool,preMiddleSchool,preHighschool
+    </sql>
+    <select id="getSchoolList" resultMap="BaseResultMap">
+        select * from population_school_pre_data
+    </select>
+</mapper>

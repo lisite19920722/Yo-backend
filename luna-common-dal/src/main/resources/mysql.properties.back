@@ -1,7 +1,7 @@
 c3p0.driverClassName=com.mysql.jdbc.Driver
-c3p0.url=jdbc:mysql://localhost:3306/puck?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8
-c3p0.username=puck
-c3p0.password=12345
+c3p0.url=jdbc:mysql://10.60.36.95:3306/luna?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8
+c3p0.username=iockpi
+c3p0.password=1234
 c3p0.MaxPoolSize=5
 c3p0.MinPoolSize=5
 c3p0.MaxIdleTime=28800
