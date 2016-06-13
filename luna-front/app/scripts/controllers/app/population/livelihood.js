@@ -1,8 +1,8 @@
 'use strict';
 
-app.controller('LivelihoodCtrl', ['$scope', 'qService','forecastFactory',function($scope,qService,forecastFactory) {
+app.controller('LivelihoodCtrl', ['$scope','PopulationRes','ResTool',function($scope,PopulationRes,ResTool) {
 
-    var promise = qService.tokenHttpGet(forecastFactory.query,{tableName:'populationEmployInsuranceData'});
+    var promise = ResTool.httpGet(PopulationRes.getEmployInsuranceSchoolList,{},{});
     promise.then(function(rc) {
 
     $scope.preLaborPopulation = rc.data[0];

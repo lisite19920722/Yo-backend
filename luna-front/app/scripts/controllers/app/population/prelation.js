@@ -1,10 +1,10 @@
 'use strict';
 
-app.controller('PrelationCtrl', ['$scope','$stateParams','qService','forecastFactory',function($scope, $stateParams,qService,forecastFactory) {
+app.controller('PrelationCtrl', ['$scope','$stateParams','PopulationRes','ResTool',function($scope, $stateParams,PopulationRes,ResTool) {
 
     $scope.data = null;
     var popData;
-    var promise = qService.tokenHttpGet(forecastFactory.query,{tableName:'laborGdpRelationPreData'});
+    var promise = ResTool.httpGet(PopulationRes.getLaborGdpRelationPreData,{},{});
     promise.then(function(rc) {
 
     console.log(rc.data);
