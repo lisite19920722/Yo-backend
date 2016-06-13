@@ -1,22 +1,19 @@
 'use strict';
 
-app.controller('PopulationStructureCtrl', ['$scope','$stateParams','qService','forecastFactory',function($scope, $stateParams,qService,forecastFactory) {
+app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRes','ResTool',function($scope, $stateParams,PopulationRes,ResTool) {
 
     $scope.data = null;
     var popData;
 
   
-    var promise = qService.tokenHttpGet(forecastFactory.query,{tableName:'populationStructurePreData'});
-    
-   // var promise = qService.tokenHttpGet(forecastFactory.query,{tableName:'populationStructurePreData'});
+    var promise = ResTool.httpGet(PopulationRes.getPopulationStructurePreData,{},{});
     promise.then(function(rc) {
 
     console.log(rc.data);
-     popData=rc.data;
-     //return popData;
+    popData=rc.data;
      
     console.log(popData[0].preResidentPopulation);
-//2015年的数据
+    //2015年的数据
     var popData13=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测男性数据
     var popData14=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测女性数据
     var sumMale6=0;//初始化男性总数
@@ -1683,7 +1680,7 @@ $scope.population_year={
  });  
 
 var sumData;
-var promise2 = qService.tokenHttpGet(forecastFactory.query,{tableName:'sumPopulationData'});
+var promise2 = ResTool.httpGet(PopulationRes.getSumPopulationData,{},{});
     
    // var promise = qService.tokenHttpGet(forecastFactory.query,{tableName:'populationStructurePreData'});
     promise2.then(function(rc2) {

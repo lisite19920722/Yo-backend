@@ -19,4 +19,5 @@ angular
         'mgcrea.ngStrap',
         'ct.ui.router.extras',
         'highcharts-ng',
+        'angular-loading-bar',
     ]);
