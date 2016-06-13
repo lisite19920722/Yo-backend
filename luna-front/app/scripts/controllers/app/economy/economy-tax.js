@@ -517,119 +517,49 @@ app.controller('EconomyTaxDetailCtrl', ['$scope','$stateParams','ResTool','Econo
       monthDetailPromise.then(function(rc){
          $scope.monthTaxChart.series[0].data = rc.data.realTaxMonthDetail;
          $scope.monthTaxChart.series[1].data = rc.data.forecastTaxMonthDetail;
-         $scope.monthTaxChart.series[2].data = rc.data.monthErrorRate;
-      /*    $scope.range = function() {
-        return $scope.monthselectedRange;
-      };
-      $scope.range2=function(){
-        return $scope.monthselectedRange2;
-      };
-       $scope.range3=function(){
-        return $scope.monthselectedRange3;
-      };
-       $scope.range4=function(){
-        return $scope.monthselectedRange4;
-      };
-     
-      var changedetail = function(newValue,oldValue,scope){
-      $scope.taxDetailForecastvalue[1] = Math.round($scope.taxDetailForecastvalue[1]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[2] = Math.round($scope.taxDetailForecastvalue[2]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[3] = Math.round($scope.taxDetailForecastvalue[3]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[4] = Math.round($scope.taxDetailForecastvalue[4]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[5] = Math.round($scope.taxDetailForecastvalue[5]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[6] = Math.round($scope.taxDetailForecastvalue[6]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[7] = Math.round($scope.taxDetailForecastvalue[7]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[8] = Math.round($scope.taxDetailForecastvalue[8]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[9] = Math.round($scope.taxDetailForecastvalue[9]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[10] = Math.round($scope.taxDetailForecastvalue[10]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[1] = Math.round($scope.taxDetailGrowUp[1]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[2] = Math.round($scope.taxDetailGrowUp[2]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[3] = Math.round($scope.taxDetailGrowUp[3]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[4] = Math.round($scope.taxDetailGrowUp[4]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[5] = Math.round($scope.taxDetailGrowUp[5]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[6] = Math.round($scope.taxDetailGrowUp[6]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[7] = Math.round($scope.taxDetailGrowUp[7]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[8] = Math.round($scope.taxDetailGrowUp[8]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[9] = Math.round($scope.taxDetailGrowUp[9]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[10] = Math.round($scope.taxDetailGrowUp[10]*(1+(newValue-oldValue)/200)*100)/100;
-    }
-    var changedetail2 = function(newValue,oldValue,scope){
-      $scope.taxDetailForecastvalue[1] = Math.round($scope.taxDetailForecastvalue[1]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[2] = Math.round($scope.taxDetailForecastvalue[2]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[3] = Math.round($scope.taxDetailForecastvalue[3]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[4] = Math.round($scope.taxDetailForecastvalue[4]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[5] = Math.round($scope.taxDetailForecastvalue[5]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[6] = Math.round($scope.taxDetailForecastvalue[6]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[7] = Math.round($scope.taxDetailForecastvalue[7]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[8] = Math.round($scope.taxDetailForecastvalue[8]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[9] = Math.round($scope.taxDetailForecastvalue[9]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[10] = Math.round($scope.taxDetailForecastvalue[10]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[1] = Math.round($scope.taxDetailGrowUp[1]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[2] = Math.round($scope.taxDetailGrowUp[2]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[3] = Math.round($scope.taxDetailGrowUp[3]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[4] = Math.round($scope.taxDetailGrowUp[4]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[5] = Math.round($scope.taxDetailGrowUp[5]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[6] = Math.round($scope.taxDetailGrowUp[6]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[7] = Math.round($scope.taxDetailGrowUp[7]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[8] = Math.round($scope.taxDetailGrowUp[8]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[9] = Math.round($scope.taxDetailGrowUp[9]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[10] = Math.round($scope.taxDetailGrowUp[10]*(1+(newValue-oldValue)/200)*100)/100;
-    }
-    var changedetail3 = function(newValue,oldValue,scope){
-     $scope.taxDetailForecastvalue[1] = Math.round($scope.taxDetailForecastvalue[1]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[2] = Math.round($scope.taxDetailForecastvalue[2]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[3] = Math.round($scope.taxDetailForecastvalue[3]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[4] = Math.round($scope.taxDetailForecastvalue[4]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[5] = Math.round($scope.taxDetailForecastvalue[5]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[6] = Math.round($scope.taxDetailForecastvalue[6]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[7] = Math.round($scope.taxDetailForecastvalue[7]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[8] = Math.round($scope.taxDetailForecastvalue[8]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[9] = Math.round($scope.taxDetailForecastvalue[9]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[10] = Math.round($scope.taxDetailForecastvalue[10]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[1] = Math.round($scope.taxDetailGrowUp[1]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[2] = Math.round($scope.taxDetailGrowUp[2]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[3] = Math.round($scope.taxDetailGrowUp[3]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[4] = Math.round($scope.taxDetailGrowUp[4]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[5] = Math.round($scope.taxDetailGrowUp[5]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[6] = Math.round($scope.taxDetailGrowUp[6]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[7] = Math.round($scope.taxDetailGrowUp[7]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[8] = Math.round($scope.taxDetailGrowUp[8]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[9] = Math.round($scope.taxDetailGrowUp[9]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[10] = Math.round($scope.taxDetailGrowUp[10]*(1+(newValue-oldValue)/200)*100)/100;
-    }
-    var changedetail4 = function(newValue,oldValue,scope){
-      $scope.taxDetailForecastvalue[1] = Math.round($scope.taxDetailForecastvalue[1]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[2] = Math.round($scope.taxDetailForecastvalue[2]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[3] = Math.round($scope.taxDetailForecastvalue[3]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[4] = Math.round($scope.taxDetailForecastvalue[4]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[5] = Math.round($scope.taxDetailForecastvalue[5]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[6] = Math.round($scope.taxDetailForecastvalue[6]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[7] = Math.round($scope.taxDetailForecastvalue[7]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[8] = Math.round($scope.taxDetailForecastvalue[8]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[9] = Math.round($scope.taxDetailForecastvalue[9]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailForecastvalue[10] = Math.round($scope.taxDetailForecastvalue[10]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[1] = Math.round($scope.taxDetailGrowUp[1]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[2] = Math.round($scope.taxDetailGrowUp[2]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[3] = Math.round($scope.taxDetailGrowUp[3]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[4] = Math.round($scope.taxDetailGrowUp[4]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[5] = Math.round($scope.taxDetailGrowUp[5]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[6] = Math.round($scope.taxDetailGrowUp[6]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[7] = Math.round($scope.taxDetailGrowUp[7]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[8] = Math.round($scope.taxDetailGrowUp[8]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[9] = Math.round($scope.taxDetailGrowUp[9]*(1+(newValue-oldValue)/200)*100)/100;
-      $scope.taxDetailGrowUp[10] = Math.round($scope.taxDetailGrowUp[10]*(1+(newValue-oldValue)/200)*100)/100;
-    }
-      $scope.$watch($scope.range,changedetail);
-      $scope.$watch($scope.range2,changedetail2);
-      $scope.$watch($scope.range3,changedetail3);
-      $scope.$watch($scope.range4,changedetail4);*/
+         $scope.monthTaxChart.series[2].data = rc.data.rc.data.monthGrowUp;
    
       })
     }
-  })
+
+   
+  });
 
 
+ $scope.changeyear = function(param){
+           $scope.monthselectedRange = 0;
+          $scope.monthselectedRange2 = 0;
+          $scope.monthselectedRange3 = 0;
+          $scope.monthselectedRange4 = 0;
+       var yearChangeDetailPromise = ResTool.httpGet(EconomyTaxRes.getYearTaxDetail,{year:param},{});
+       yearChangeDetailPromise.then(function(rc){
+         $scope.monthTaxChart.series[0].data = rc.data.realTaxMonthDetail;
+         $scope.monthTaxChart.series[1].data = rc.data.forecastTaxMonthDetail;
+         $scope.monthTaxChart.series[2].data = rc.data.rc.data.monthGrowUp;
+          $scope.checkdeviation = function(){
+          $scope.deviation = !$scope.deviation;
+         for(i=0;i<rc.data.monthErrorRate.length;i++){
+           if (rc.data.monthErrorRate[i] == 0) {
+            rc.data.monthErrorRate[i] = '--';
+      }
+    }
+    $scope.monthErrorRate = rc.data.monthErrorRate;
+  };
 
+  $scope.checkforecast = function(){
+    $scope.forecast = !$scope.forecast;
+    for(i=0;i<rc.data.realTaxMonthDetail.length;i++){
+      if (rc.data.realTaxMonthDetail[i]==0) {
+        rc.data.realTaxMonthDetail[i] = '--';
+      }
+    }
+     $scope.taxrealvalue = rc.data.realTaxMonthDetail;
+     $scope.forecastMonthDetail = rc.data.forecastTaxMonthDetail;
+
+  };
+       })
+       
+    }
 
   $scope.changeViews = function(){
     if( $scope.monthTaxChart.options.chart.type == 'column')
