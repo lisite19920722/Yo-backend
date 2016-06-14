@@ -9,10 +9,10 @@ app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRe
     var promise = ResTool.httpGet(PopulationRes.getPopulationStructurePreData,{},{});
     promise.then(function(rc) {
 
-    console.log(rc.data);
+
     popData=rc.data;
      
-    console.log(popData[0].preResidentPopulation);
+
     //2015年的数据
     var popData13=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测男性数据
     var popData14=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测女性数据
@@ -121,13 +121,13 @@ app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRe
     popData14[8]=parseFloat(((popData14[8]/(sumMale6+sumFemale6))*100).toFixed(2));
     popData14[9]=parseFloat(((popData14[9]/(sumMale6+sumFemale6))*100).toFixed(2));
     popData14[10]=parseFloat(((popData14[10]/(sumMale6+sumFemale6))*100).toFixed(2));
-   console.log(popData13);
-   console.log(sumMale6);
 
-   console.log(popData14);
-   console.log(sumFemale6);
 
-   //console.log(z);
+
+
+
+
+
  
 //2020年的数据
     var popData1=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测男性数据
@@ -237,11 +237,11 @@ app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRe
     popData2[8]=parseFloat(((popData2[8]/(sumMale+sumFemale))*100).toFixed(2));
     popData2[9]=parseFloat(((popData2[9]/(sumMale+sumFemale))*100).toFixed(2));
     popData2[10]=parseFloat(((popData2[10]/(sumMale+sumFemale))*100).toFixed(2));
-   console.log(popData1);
-   console.log(sumMale);
 
-   console.log(popData2);
-   console.log(sumFemale);
+
+
+
+
  
  //2025年的数据
     var popData3=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测男性数据
@@ -351,11 +351,11 @@ app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRe
     popData4[8]=parseFloat(((popData4[8]/(sumMale1+sumFemale1))*100).toFixed(2));
     popData4[9]=parseFloat(((popData4[9]/(sumMale1+sumFemale1))*100).toFixed(2));
     popData4[10]=parseFloat(((popData4[10]/(sumMale1+sumFemale1))*100).toFixed(2));
-   console.log(popData3);
-   console.log(sumMale1);
 
-   console.log(popData4);
-   console.log(sumFemale1);
+
+
+
+
 
 
   //2030年的数据
@@ -466,11 +466,11 @@ app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRe
     popData6[8]=parseFloat(((popData6[8]/(sumMale2+sumFemale2))*100).toFixed(2));
     popData6[9]=parseFloat(((popData6[9]/(sumMale2+sumFemale2))*100).toFixed(2));
     popData6[10]=parseFloat(((popData6[10]/(sumMale2+sumFemale2))*100).toFixed(2));
-   console.log(popData5);
-   console.log(sumMale2);
 
-   console.log(popData6);
-   console.log(sumFemale2);
+
+
+
+
 
    //2035年的数据
     var popData7=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测男性数据
@@ -580,11 +580,11 @@ app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRe
     popData8[8]=parseFloat(((popData8[8]/(sumMale3+sumFemale3))*100).toFixed(2));
     popData8[9]=parseFloat(((popData8[9]/(sumMale3+sumFemale3))*100).toFixed(2));
     popData8[10]=parseFloat(((popData8[10]/(sumMale3+sumFemale3))*100).toFixed(2));
-   console.log(popData7);
-   console.log(sumMale3);
 
-   console.log(popData8);
-   console.log(sumFemale3);
+
+
+
+
 
    //2040年的数据
     var popData9=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测男性数据
@@ -694,11 +694,11 @@ app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRe
     popData10[8]=parseFloat(((popData10[8]/(sumMale4+sumFemale4))*100).toFixed(2));
     popData10[9]=parseFloat(((popData10[9]/(sumMale4+sumFemale4))*100).toFixed(2));
     popData10[10]=parseFloat(((popData10[10]/(sumMale4+sumFemale4))*100).toFixed(2));
-   console.log(popData9);
-   console.log(sumMale4);
 
-   console.log(popData10);
-   console.log(sumFemale4);
+
+
+
+
 
    //2045年的数据
     var popData11=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测男性数据
@@ -808,11 +808,11 @@ app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRe
     popData12[8]=parseFloat(((popData12[8]/(sumMale5+sumFemale5))*100).toFixed(2));
     popData12[9]=parseFloat(((popData12[9]/(sumMale5+sumFemale5))*100).toFixed(2));
     popData12[10]=parseFloat(((popData12[10]/(sumMale5+sumFemale5))*100).toFixed(2));
-   console.log(popData11);
-   console.log(sumMale5);
 
-   console.log(popData12);
-   console.log(sumFemale5);
+
+
+
+
 
 
 
@@ -832,7 +832,7 @@ app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRe
   //var promise1 = qService.tokenHttpGet(forecastFactory.query,{tableName:'birthrateData'});
   //  promise1.then(function(rc1) {
 
- //   console.log(rc1.data);
+
   
   
 
@@ -1685,7 +1685,7 @@ var promise2 = ResTool.httpGet(PopulationRes.getSumPopulationData,{},{});
    // var promise = qService.tokenHttpGet(forecastFactory.query,{tableName:'populationStructurePreData'});
     promise2.then(function(rc2) {
 
-    console.log(rc2.data);
+
     var sumData=rc2.data;
     //第二张图
           var sum16=0;
@@ -1775,7 +1775,7 @@ var promise2 = ResTool.httpGet(PopulationRes.getSumPopulationData,{},{});
       rate1.push(rate24);
       rate1.push(rate25);
 
-      console.log(sum1);
+
       
 
           var sum26=0;
@@ -1865,7 +1865,7 @@ var promise2 = ResTool.httpGet(PopulationRes.getSumPopulationData,{},{});
       rate2.push(rate34);
       rate2.push(rate35);
 
-      console.log(sum2);
+
 
           var sum36=0;
           var sum37=0;
@@ -1954,7 +1954,7 @@ var promise2 = ResTool.httpGet(PopulationRes.getSumPopulationData,{},{});
       rate3.push(rate44);
       rate3.push(rate45);
 
-      console.log(sum3);
+
 $scope.sumpopulation={
     options:{
       //  colors:lineColors,

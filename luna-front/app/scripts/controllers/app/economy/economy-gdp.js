@@ -146,7 +146,6 @@ app.controller('EconomyGdpCtrl', ['$scope','$stateParams','ResTool','EconomyRes'
 app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRes', function($scope,$stateParams,ResTool,EconomyRes){
     var now = new Date();
     var nowyear = now.getFullYear();
-    console.log(nowyear);
     $scope.txtexpression = "年度GDP预测采用的是基于时间序列的自回归积分滑动平均模型，通过该模型分析预测得出：本年GDP增速较往年有所放缓。";
     $scope.monthexchange=function(param){
        $scope.monthGDPChart.series[0].type=param;

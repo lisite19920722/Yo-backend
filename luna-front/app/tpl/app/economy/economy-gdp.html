@@ -4,13 +4,11 @@
     </div>
     <div class ="wrapper container wrapcontainer">
         <div class ="panel panel-primary">
-            <div class ="panel-heading">
-                <div class ="panel-title">
-                    年度GDP预测分析
-                </div>
+            <div class="topbar">
+                <h4 class="cgq_title">年度GDP预测分析</h4>
             </div>
             <div class ="row">
-                <div class ="col-md-8" style = "border-right:1px solid;padding-top:10px;padding-bottom:10px">
+                <div class ="col-md-8" style = "border-right:1px solid #428bca;padding-top:10px;padding-bottom:10px">
                     <highchart   id ="chart1" config ="yearGDPChart"  style = "margin-left:15px"></highchart>
                 </div>
                 <div class = "col-md-4 wrapleft" >
@@ -146,13 +144,11 @@
         </div>
         <!-- －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－某一年gdp具体数据面板－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
         <div class = "panel panel-primary wraptop" ng-controller="EconomyGdpDetail">
-            <div class = "panel-heading">
-                <div class = "panel-title">
-                    {{yearchoose}}年各季度GDP预测分析
-                </div>
+            <div class="topbar">
+                <h4 class="cgq_title">{{yearchoose}}年各季度GDP预测分析</h4>
             </div>
             <div class = "row">
-                <div class = "col-md-8" style = "border-right:1px solid;padding-top:10px;padding-bottom:10px">
+                <div class = "col-md-8" style = "border-right:1px solid #428bca;padding-top:10px;padding-bottom:10px">
                     <highchart   id = "chart1" config = "monthGDPChart" style = "margin-left:15px"></highchart>
                 </div>
                 <div class = "col-md-4" style = "padding:10px 30px 15px 15px">
@@ -263,13 +259,11 @@
         </div>
         <div ng-controller="industryGdp">
             <div class="panel panel-primary" style = "margin-top:30px"  >
-                <div class="panel-heading">
-                    <div class="panel-title">
-                        分产业GDP预测分析
-                    </div>
+                <div class="topbar">
+                    <h4 class="cgq_title">分产业GDP预测分析</h4>
                 </div>
                 <div class="row">
-                    <div class="col-md-8" style = "border-right:1px solid;padding-top:10px;padding-bottom:10px">
+                    <div class="col-md-8" style = "border-right:1px solid #428bca;padding-top:10px;padding-bottom:10px">
                         <highchart   id="chart1" config="industryyearGDPChart" style = "margin-left:15px"></highchart>
                     </div>
                     <div class="col-md-4" style = "padding:10px 30px 15px 15px">
@@ -373,10 +367,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4" style = "border-right:1px solid">
+                    <div class="col-md-4" style = "border-right:1px solid #428bca">
                         <highchart    config="primaryGDPChart" ></highchart>
                     </div>
-                    <div class="col-md-4" style = "border-right:1px solid">
+                    <div class="col-md-4" style = "border-right:1px solid #428bca">
                         <highchart    config="secondGDPChart" ></highchart>
                     </div>
                     <div class="col-md-4">

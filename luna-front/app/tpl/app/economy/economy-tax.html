@@ -3,7 +3,7 @@
 width:100%;
 }
 .ui-slider-range { background: rgb(35,155,214); }
-.ui-slider-handle { border-color: rgb(35,155,214); }
+.ui-slider-handle { border-color: #428bca; }
 </style>
 <div class="vbox">
     <div class="wrapper lter b-b bg-white">
@@ -11,13 +11,11 @@ width:100%;
     </div>
     <div class="wrapper  container" style="padding:0px;margin-top:1em;margin-bottom:2em">
         <div class="panel panel-primary">
-            <div class="panel-heading">
-                <div class="panel-title">
-                    年度税收收入分析预测
-                </div>
+            <div class="topbar">
+                <h4 class="cgq_title">年度税收收入分析预测</h4>
             </div>
             <div class="row">
-                <div class="col-md-8" style="border-right:1px solid">
+                <div class="col-md-8" style="border-right:1px solid #428bca">
                     <highchart id="yearTaxChart"  config="yearTaxChart" />
                 </div>
                 <div class="col-md-4" style="padding:10px 30px 15px 15px">
@@ -230,13 +228,11 @@ width:100%;
             </div>
         </div>
         <div class="panel panel-primary"   ng-controller="EconomyTaxDetailCtrl">
-            <div class="panel-heading">
-                <div class="panel-title">
-                    {{panelyear}}年月度税收收入分析预测
-                </div>
+            <div class="topbar">
+                <h4 class="cgq_title">{{panelyear}}年月度税收收入分析预测</h4>
             </div>
             <div class="row">
-                <div class="col-md-8" style="border-right:1px solid">
+                <div class="col-md-8" style="border-right:1px solid #428bca">
                     <highchart id="monthTaxChart"  config="monthTaxChart" />
                 </div>
                 <div class="col-md-4" style="padding:10px 30px 15px 15px">

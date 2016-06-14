@@ -7,7 +7,6 @@ app.controller('PrelationCtrl', ['$scope','$stateParams','PopulationRes','ResToo
     var promise = ResTool.httpGet(PopulationRes.getLaborGdpRelationPreData,{},{});
     promise.then(function(rc) {
 
-    console.log(rc.data);
     popData=rc.data;
     //以下为顶部“劳动力总人口与GDP关联分析预测”数据
     var popData1=[0,0,0,0,0,0,0,0,0,0];
@@ -1523,7 +1522,6 @@ $scope.r=function(){
     return $scope.selectedRange;
 };
 function h(newValue,oldValue,scope){
-    console.log(newValue);
     for(var i = 0;i < popData1.length; i++){
   if(tmp === 1){
     gdp1[i]=Math.round((newValue*0.03)*400+tgdp1[i]);
@@ -1538,7 +1536,6 @@ function h(newValue,oldValue,scope){
        popData3[i]=((newValue*0.03)*100000+tmpData3[i]);
     }
 }
-   console.log(popData[9]);
 }
 $scope.$watch($scope.r,h);
 
@@ -1546,7 +1543,6 @@ $scope.rr=function(){
     return $scope.selectedRange1;
 };
 function hh(newValue,oldValue,scope){
-    console.log(newValue);
 for(var i = 0;i < gdp1.length; i++){
     if(tmp === 1){
    gdp1[i]=Math.round((newValue*0.03)*400+tgdp1[i]);
