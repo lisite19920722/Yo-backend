@@ -86,5 +86,5 @@
 .sliderExample {
       width:100%;
     }
-.ui-slider-range { background: #729fcf; }
-.ui-slider-handle { border-color: #729fcf; }
+.ui-slider-range { background: rgb(35,155,214); }
+.ui-slider-handle { border-color: #428bca; }

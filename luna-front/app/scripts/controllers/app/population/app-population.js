@@ -2,5 +2,4 @@
 
 app.controller('AppPopulationController', function($rootScope, $scope) {
 
-
 });

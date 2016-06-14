@@ -1,11 +1,8 @@
 angular.module('luna')
-  .factory('EconomyRes', ['$resource', function($resource) {
+  .factory('EconomyRes', ['$resource','BASE_URL', function($resource,BASE_URL) {
     return {
     getYearGdp: function (headers){
-      return $resource('http://localhost:8080/api/economy/yearGdp', {
-      // return $resource('http://localhost:8080/api/environment/air/air_quality/:id', {
-        // id:'@id',
-      }, {
+      return $resource(BASE_URL+'/economy/yearGdp', {}, {
         get: {
           method: 'GET',
           headers: headers
@@ -13,7 +10,7 @@ angular.module('luna')
       });
     },
     getYearDetail: function(headers){
-      return $resource("http://localhost:8080/api/economy/gdpDetail/:year", {
+      return $resource(BASE_URL+"/economy/gdpDetail/:year", {
         year:'@year'
       }, {
         get:{
@@ -23,7 +20,7 @@ angular.module('luna')
       });
     },
     getIndustryDetail: function(headers){
-      return $resource("http://localhost:8080/api/economy/industryDetail", {
+      return $resource(BASE_URL+"/economy/industryDetail", {
 
       }, {
         get:{
@@ -33,7 +30,7 @@ angular.module('luna')
       })
     },
     getYearIndustryDetail: function(headers){
-      return $resource("http://localhost:8080/api/economy/getIndustryDetail/:year", {
+      return $resource(BASE_URL+"/economy/getIndustryDetail/:year", {
         year:"@year"
       }, {
         get:{

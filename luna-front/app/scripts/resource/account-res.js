@@ -1,10 +1,9 @@
 angular.module('luna')
-    .factory('AccountRes', ['$resource', function($resource) {
+    .factory('AccountRes', ['$resource','BASE_URL', function($resource,BASE_URL) {
     'ngInject';
-  var apiBaseUrl = 'http://localhost:8080/api';
   return {
     account: function (headers) {
-        return $resource(apiBaseUrl + '/account/:id', {
+        return $resource(BASE_URL + '/account/:id', {
           id: '@id'
         }, {
           get: {
@@ -22,7 +21,7 @@ angular.module('luna')
         });
       },
       accountMobile: function (headers) {
-        return $resource(apiBaseUrl + '/account/mobile/:mobile', {
+        return $resource(BASE_URL + '/account/mobile/:mobile', {
           mobile: '@mobile'
         }, {
           get: {
@@ -36,7 +35,7 @@ angular.module('luna')
         });
       },
       accountSms: function (headers) {
-        return $resource(apiBaseUrl + '/account/sms', {}, {
+        return $resource(BASE_URL + '/account/sms', {}, {
           get: {
             method: 'GET',
             headers: headers
@@ -48,7 +47,7 @@ angular.module('luna')
         });
       },
       accountPassword: function (headers) {
-        return $resource(apiBaseUrl + '/account/password', {}, {
+        return $resource(BASE_URL + '/account/password', {}, {
           post: {
             method: 'POST',
             headers: headers
@@ -60,7 +59,7 @@ angular.module('luna')
         });
       },
       accountPasswordSms: function (headers) {
-        return $resource(apiBaseUrl + '/account/password/sms', {}, {
+        return $resource(BASE_URL + '/account/password/sms', {}, {
           post: {
             method: 'POST',
             headers: headers
@@ -72,7 +71,7 @@ angular.module('luna')
         });
       },
       accountAuthentication: function (headers) {
-        return $resource(apiBaseUrl + '/account/authentication', {}, {
+        return $resource(BASE_URL + '/account/authentication', {}, {
           post: {
             method: 'POST',
             headers: headers
@@ -88,7 +87,7 @@ angular.module('luna')
         });
       },
       accountProfile: function (headers) {
-        return $resource(apiBaseUrl + '/account/profile', {}, {
+        return $resource(BASE_URL + '/account/profile', {}, {
           get: {
             method: 'GET',
             headers: headers
@@ -100,7 +99,7 @@ angular.module('luna')
         });
       },
       accountCompany: function (headers) {
-        return $resource(apiBaseUrl + '/account/company', {}, {
+        return $resource(BASE_URL + '/account/company', {}, {
           get: {
             method: 'GET',
             headers: headers
@@ -112,7 +111,7 @@ angular.module('luna')
         });
       },
       accountIcon: function (headers) {
-        return $resource(apiBaseUrl + '/account/icon/:attachId', {
+        return $resource(BASE_URL + '/account/icon/:attachId', {
           attachId: '@attachId'
         }, {
           put: {
@@ -122,7 +121,7 @@ angular.module('luna')
         });
       },
       accountProfileSetting: function(headers){
-        return $resource(apiBaseUrl + '/account/profile/setting', {}, {
+        return $resource(BASE_URL + '/account/profile/setting', {}, {
           put: {
             method: 'PUT',
             headers: headers

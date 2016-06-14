@@ -1,8 +1,8 @@
 angular.module('luna')
-    .factory('PowerRes', ['$resource', function($resource) {
+    .factory('PowerRes', ['$resource','BASE_URL', function($resource,BASE_URL) {
         return {
             getTotal: function (headers){
-                return $resource('http://localhost:8080/api/power/total', {}, {
+                return $resource(BASE_URL+'/power/total', {}, {
                     get: {
                         method: 'GET',
                         headers: headers
@@ -10,7 +10,7 @@ angular.module('luna')
                 });
             },
             getIndustry: function (headers){
-                return $resource('http://localhost:8080/api/power/industry/total/:year', {
+                return $resource(BASE_URL+'/power/industry/total/:year', {
                     year:'@year',
                 }, {
                     get: {
@@ -20,7 +20,7 @@ angular.module('luna')
                 });
             },
             getIndustryYear: function (headers){
-                return $resource('http://localhost:8080/api/power/industry/:industryId', {
+                return $resource(BASE_URL+'/power/industry/:industryId', {
                     industryId:'@industryId',
                 }, {
                     get: {
@@ -30,7 +30,7 @@ angular.module('luna')
                 });
             },
             getIndustrySeason: function (headers){
-                return $resource('http://localhost:8080/api/power/industry/:industryId/:year', {
+                return $resource(BASE_URL+'/power/industry/:industryId/:year', {
                     industryId:'@industryId',
                     year:'@year',
                 }, {
@@ -41,7 +41,7 @@ angular.module('luna')
                 });
             },
             getEnterpriseAverage: function (headers){
-                return $resource('http://localhost:8080/api/power/enterprise/average', {}, {
+                return $resource(BASE_URL+'/power/enterprise/average', {}, {
                     get: {
                         method: 'GET',
                         headers: headers
@@ -49,7 +49,7 @@ angular.module('luna')
                 });
             },
             getEnterpriseYear: function (headers){
-                return $resource('http://localhost:8080/api/power/enterprise/:enterpriseId', {
+                return $resource(BASE_URL+'/power/enterprise/:enterpriseId', {
                     enterpriseId:'@enterpriseId',
                 }, {
                     get: {
@@ -59,7 +59,7 @@ angular.module('luna')
                 });
             },
             getEnterpriseSeason: function (headers){
-                return $resource('http://localhost:8080/api/power/enterprise/:enterpriseId/:year', {
+                return $resource(BASE_URL+'/power/enterprise/:enterpriseId/:year', {
                     enterpriseId:'@enterpriseId',
                     year:'@year',
                 }, {

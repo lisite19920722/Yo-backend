@@ -1,11 +1,8 @@
 angular.module('luna')
-  .factory('EconomyTaxRes', ['$resource', function($resource) {
+  .factory('EconomyTaxRes', ['$resource','BASE_URL', function($resource,BASE_URL) {
     return {
     getYearTax: function (headers){
-      return $resource('http://localhost:8080/api/economy/yearTax', {
-      // return $resource('http://localhost:8080/api/environment/air/air_quality/:id', {
-        // id:'@id',
-      }, {
+      return $resource(BASE_URL+'/economy/yearTax', {}, {
         get: {
           method: 'GET',
           headers: headers
@@ -13,7 +10,7 @@ angular.module('luna')
       });
     },
     getYearTaxDetail: function(headers){
-      return $resource("http://localhost:8080/api/economy/taxDetail/:year", {
+      return $resource(BASE_URL+"/economy/taxDetail/:year", {
         year:'@year'
       }, {
         get:{

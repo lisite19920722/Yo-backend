@@ -26,20 +26,6 @@ angular.module('luna')
             '../bower_components/ng-dialog/css/ngDialog-theme-default.css'
           ]
         },
-        {
-          name: 'ngFileUpload',
-          files: [
-            '../bower_components/ng-file-upload/ng-file-upload.js',
-            '../bower_components/ng-file-upload/ng-file-upload-shim.js'
-          ]
-        },
-        {
-          name: 'ngImgCrop',
-          files: [
-            '../bower_components/ng-img-crop/compile/minified/ng-img-crop.js',
-            '../bower_components/ng-img-crop/compile/minified/ng-img-crop.css'
-          ]
-        },
       ]
     });
   }]);

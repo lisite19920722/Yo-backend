@@ -1,8 +1,8 @@
 angular.module('luna')
-    .factory('PopulationRes', ['$resource', function($resource) {
+    .factory('PopulationRes', ['$resource','BASE_URL', function($resource,BASE_URL) {
         return {
             getEmployInsuranceSchoolList: function (headers){
-                return $resource('http://localhost:8080/api/population/populationEmployInsuranceData/list', {}, {
+                return $resource(BASE_URL+'/population/populationEmployInsuranceData/list', {}, {
                     get: {
                         method: 'GET',
                         headers: headers
@@ -10,7 +10,7 @@ angular.module('luna')
                 });
             },
             getLaborGdpRelationPreData: function (headers){
-                return $resource('http://localhost:8080/api/population/laborGdpRelationPreData/list', {}, {
+                return $resource(BASE_URL+'/population/laborGdpRelationPreData/list', {}, {
                     get: {
                         method: 'GET',
                         headers: headers
@@ -18,7 +18,7 @@ angular.module('luna')
                 });
             },
             getPopulationStructurePreData: function (headers){
-                return $resource('http://localhost:8080/api/population/populationStructurePreData/list', {}, {
+                return $resource(BASE_URL+'/population/populationStructurePreData/list', {}, {
                     get: {
                         method: 'GET',
                         headers: headers
@@ -26,7 +26,7 @@ angular.module('luna')
                 });
             },
             getSumPopulationData: function (headers){
-                return $resource('http://localhost:8080/api/population/sumPopulationData/list', {}, {
+                return $resource(BASE_URL+'/population/sumPopulationData/list', {}, {
                     get: {
                         method: 'GET',
                         headers: headers
@@ -34,7 +34,7 @@ angular.module('luna')
                 });
             },
             getBirthrateData: function (headers){
-                return $resource('http://localhost:8080/api/population/birthrateData/list', {}, {
+                return $resource(BASE_URL+'/population/birthrateData/list', {}, {
                     get: {
                         method: 'GET',
                         headers: headers

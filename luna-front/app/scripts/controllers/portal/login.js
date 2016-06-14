@@ -28,26 +28,6 @@ app.controller('LoginController', ['$scope', '$state', 'ResTool', 'AuthTool', 'A
       ToasterTool.error(error.message);
     });
   };
-
-  // //修改信息
-  // $scope.changeInfo = (changeType,changedInfo) =>{
-  //   var params = {};
-  //   var body = {};
-  //   body[changeType] = changedInfo;
-  //   $scope.changeInfo = ResTool.httpPutWithToken(AccountRes.accountProfile, params,body, {});
-
-  //   $scope.changeInfo.then(function(data){
-  //     if(data.success){
-  //         ToasterTool.success('修改成功'),data.message;
-  //         $uibModalInstance.close();
-  //         $state.reload('app.person.mng');
-  //     }else{
-  //         ToasterTool.error('修改失败', data.message);
-  //     }
-  //   }, function(error){
-  //     ToasterTool.error(error.message);
-  //   });
-  // };
   // ~ private methods
   // 密码加密函数
   function encryptPassword(password, username, sbin) {

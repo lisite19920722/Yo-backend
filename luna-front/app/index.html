@@ -8,14 +8,14 @@
 	<link rel="stylesheet" href="styles/app.css">
 	<link rel="stylesheet" href="styles/portal.css">
 	<link rel="stylesheet" href="styles/css/tax.css">
-	<link rel="stylesheet" href="styles/economy/GDP.css" >
+	<link rel="stylesheet" href="styles/css/GDP.css" >
 	<link rel="stylesheet" href="styles/css/main.css">
-	<link rel="stylesheet" href="styles/css/app.min.css"/>
 	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" href="../bower_components/bootstrap-slider/slider.css"/>
 	<link rel="stylesheet" href="../bower_components/jquery-ui/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" href="../bower_components/angular-loading-bar/src/loading-bar.css">
 	<link rel="stylesheet" href="../bower_components/angularJS-Toaster/toaster.min.css"/>
+	<link rel="stylesheet" href="styles/css/app.min.css"/>
 </head>
 <body>
 	<script src="../bower_components/jquery/dist/jquery.min.js"></script>
@@ -61,18 +61,12 @@
 	<script src="scripts/services/alert-tool.js"></script>
 	<script src="scripts/services/toaster-tool.js"></script>
 	<script src="scripts/services/date-tool.js"></script>
-	<script src="scripts/services/system-service.js"></script>
-	<script src="scripts/services/session-service.js"></script>
-	<script src="scripts/services/q-service.js"></script>
 	<script src="scripts/resource/environment-res.js"></script>
 	<script src="scripts/resource/economy-gdpres.js"></script>
 	<script src="scripts/resource/economy-taxres.js"></script>
 	<script src="scripts/resource/power-res.js"></script>
 	<script src="scripts/resource/population-res.js"></script>
 	<script src="scripts/resource/account-res.js"></script>
-	<script src="scripts/filters/account-filter.js"></script>
-	<script src="scripts/filters/common-filter.js"></script>
-	<script src="scripts/config/loadingConfig.js"></script>
 	<div class="app app-aside-fixed" ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}" ui-view></div>
 	<toaster-container toaster-options="{'position-class': 'toast-top-center'}"></toaster-container>
 </body>

@@ -163,7 +163,6 @@ angular.module('luna')
               }]
             }
           })
-
           //economy end
 
           //environment start
@@ -257,7 +256,8 @@ angular.module('luna')
               }]
             }
           })
-           //population end
+          //population end
+          
           .state('app.profile', {
             abstract: true,
             url: '^/app/profile',
