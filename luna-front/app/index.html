@@ -20,6 +20,7 @@
 	<link rel="stylesheet" href="../bower_components/bootstrap-slider/slider.css" type="text/css"/>
 	<link rel="stylesheet" href="../bower_components/jquery-ui/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="../bower_components/angular-loading-bar/src/loading-bar.css">
+	<link rel="stylesheet" href="../bower_components/angularJS-Toaster/toaster.min.css" type="text/css"/>
 </head>
 <body>
     <!-- 引用外部 script/js -->
@@ -104,7 +105,7 @@
 	<!-- config -->
 	<script src="scripts/config/loadingConfig.js"></script>
 	<!-- toaster -->
-    <toaster-container toaster-options="{'position-class': 'toast-top-center'}"></toaster-container>
 	<div class="app app-aside-fixed" ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}" ui-view></div>
+	<toaster-container toaster-options="{'position-class': 'toast-top-center'}"></toaster-container>
 </body>
 </html>
