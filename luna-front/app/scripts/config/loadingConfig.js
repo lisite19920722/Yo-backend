@@ -1,4 +1,4 @@
 angular.module('luna')
-  .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
- 	
- }])
+.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+
+}])
