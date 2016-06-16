@@ -6,6 +6,9 @@ angular.module('luna')
       function($rootScope, $state, $stateParams) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
+
+        //初始化弹窗
+        $('[data-toggle="popover"]').popover();
       }
     ]
   )
@@ -72,6 +75,35 @@ angular.module('luna')
               }]
             }
           })
+
+          //数据管理
+          .state('app.data', {//二级导航栏
+            abstract: true,
+            url: '/data',
+            templateUrl: 'tpl/app/data/datamenu.html',
+            controller:'DataCtrl',
+            resolve: {
+              css: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/data/dataCtrl.js',
+                ]);
+              }]
+            }
+          })
+          .state('app.data.insertEconomy', {
+            url: '^/data/insert',
+            templateUrl: 'tpl/app/data/insertEconomy.html',
+            controller: 'EconomyDataInsertCtrl',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/data/economyDataInsertCtrl.js',
+                ]);
+              }]
+            }
+          })
+          //数据管理
+
           //economy  
           .state('app.index', {
             abstract: true,

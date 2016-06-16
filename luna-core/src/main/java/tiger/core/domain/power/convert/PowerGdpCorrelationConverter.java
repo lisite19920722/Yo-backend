@@ -38,6 +38,14 @@ public class PowerGdpCorrelationConverter {
         }
         return powerDomains;
     }
+    public static PowerGdpCorrelationDO convert2DO(PowerGdpCorrelationDomain source) {
+        PowerGdpCorrelationDO target = new PowerGdpCorrelationDO();
+        target.setYear(source.getYear());
+        target.setRealGdpValue(source.getGdpValue());
+        target.setRealPowerValue(source.getPowerValue());
+
+        return target;
+    }
 
     private static PowerGdpCorrelationDomain singleConvertOnReal(PowerGdpCorrelationDO powerDO){
 
