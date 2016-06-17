@@ -1,6 +1,10 @@
 angular.module('luna')
-  .controller('AppCtrl', ['$scope', '$localStorage', '$window',
-    function(              $scope, $localStorage,   $window ) {
+  .controller('AppCtrl', ['$scope', '$localStorage', '$window','AuthTool',
+    function(              $scope, $localStorage,   $window, AuthTool ) {
+      // 获取当前登录用户
+      $scope.loginUser = AuthTool.getLoginUser();
+      // 获取当前团队
+      $scope.currWorkspace = AuthTool.getCurrWorkspace();
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');

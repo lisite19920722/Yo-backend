@@ -1,38 +1,29 @@
+/**
+ * 统一的权限控制工具
+ *
+ */
 angular.module('luna')
-  .service('AuthTool', ['$sessionStorage', '$localStorage', function($localStorage, $sessionStorage) {
-    'ngInject';
-  //常量
-   var TOKEN_KEY = 'X-Auth-Token',
-       TOKEN_HEADER = 'x-auth-token',
-       LOGIN_USER = 'Login-User',
-       CURR_WORKSPACE = 'Curr-Workspace',
-       WORKSPACE_LIST = 'Workspace-List',
-       USERNAME = 'username',
-       PASSWORD = 'password';
+  .service('AuthTool', ['$localStorage', '$sessionStorage', function ($localStorage, $sessionStorage) {
 
-    var md = {};
+    //常量
+    var TOKEN_KEY = 'X-Auth-Token',
+      LOGIN_USER = 'Login-User',
+      CURR_WORKSPACE = 'Curr-Workspace',
+      WORKSPACE_LIST = 'Workspace-List',
+      USERNAME = 'username',
+      PASSWORD = 'password';
 
-    md = {
-      TOKEN_KEY: TOKEN_KEY,
-      TOKEN_HEADER: TOKEN_HEADER,
-      LOGIN_USER: LOGIN_USER,
-      CURR_WORKSPACE: CURR_WORKSPACE,
-      WORKSPACE_LIST: WORKSPACE_LIST,
-      USERNAME : USERNAME,
-      PASSWORD : PASSWORD
-    };
-
-    md.isLogin = function () {
+    this.isLogin = function () {
       return $sessionStorage[LOGIN_USER] && $sessionStorage[TOKEN_KEY];
     };
 
-    md.login = function (user, token) {
+    this.login = function (user, token) {
       $sessionStorage[LOGIN_USER] = user;
       $sessionStorage[TOKEN_KEY] = token;
     };
 
-    md.logout = function () {
-      var loginUser = md.getLoginUser();
+    this.logout = function () {
+      var loginUser = this.getLoginUser();
 
       delete $sessionStorage[CURR_WORKSPACE];
       delete $sessionStorage[WORKSPACE_LIST];
@@ -47,15 +38,15 @@ angular.module('luna')
       delete $localStorage[PASSWORD];
     };
 
-    md.getLoginUser = function () {
+    this.getLoginUser = function () {
       return $sessionStorage[LOGIN_USER];
     };
 
-    md.updateLoginUser = function (user) {
+    this.updateLoginUser = function (user) {
       $sessionStorage[LOGIN_USER] = user;
     };
 
-    md.updateLoginUserRolesAndPermissions = function (roles, permissions) {
+    this.updateLoginUserRolesAndPermissions = function (roles, permissions) {
       $sessionStorage[LOGIN_USER].roles = roles;
       $sessionStorage[LOGIN_USER].permissions = {};
       angular.forEach(permissions, function (item) {
@@ -63,24 +54,24 @@ angular.module('luna')
       });
     };
 
-    md.saveLoginInfo = function (username, password) {
+    this.saveLoginInfo = function (username, password) {
       $localStorage[USERNAME] = username;
       $localStorage[PASSWORD] = password;
     };
 
-    md.saveWorkspaceInfo = function (workspace) {
-      var loginUser = md.getLoginUser();
+    this.saveWorkspaceInfo = function (workspace) {
+      var loginUser = this.getLoginUser();
       $localStorage[CURR_WORKSPACE + loginUser.id] = workspace;
     };
 
-    md.getCurrWorkspace = function () {
+    this.getCurrWorkspace = function () {
       return $sessionStorage[CURR_WORKSPACE];
     };
 
-    md.updateCurrWorkspace = function (workspace) {
+    this.updateCurrWorkspace = function (workspace) {
       $sessionStorage[CURR_WORKSPACE] = workspace;
 
-      var list = md.getWorkspaceList();
+      var list = this.getWorkspaceList();
       for(var i = 0; i < list.length; i++) {
         if(list[i].id == workspace.id) {
           list[i] = workspace;
@@ -89,36 +80,36 @@ angular.module('luna')
       }
     };
 
-    md.checkCurrWorkspace = function () {
-      var workspaceList = md.getWorkspaceList();
+    this.checkCurrWorkspace = function () {
+      var workspaceList = this.getWorkspaceList();
       /**
        * 检查localstorage是否保存最近访问团队的记录,
        * 存在则设置当前团队为最近访问团队, 不存在则设置当前团队为列表第一个团队
        */
 
-      var historyWorkspace = md.loadWorkspaceInfo();
+      var historyWorkspace = this.loadWorkspaceInfo();
       if(historyWorkspace && historyWorkspace.id) {
         var i, len;
         for(i = 0, len = workspaceList.length; i < len; i++) {
           if(historyWorkspace.id == workspaceList[i].id) {
-            md.updateCurrWorkspace(workspaceList[i]);
+            this.updateCurrWorkspace(workspaceList[i]);
           }
         }
 
-        if(!md.getCurrWorkspace()) {
-          md.updateCurrWorkspace(workspaceList[0]);
-          md.saveWorkspaceInfo(workspaceList[0]);
+        if(!this.getCurrWorkspace()) {
+          this.updateCurrWorkspace(workspaceList[0]);
+          this.saveWorkspaceInfo(workspaceList[0]);
         }
       } else {
-        md.updateCurrWorkspace(workspaceList[0]);
-        md.saveWorkspaceInfo(workspaceList[0]);
+        this.updateCurrWorkspace(workspaceList[0]);
+        this.saveWorkspaceInfo(workspaceList[0]);
       }
     };
 
     // 删除当前所在团队
-    md.deleteCurrWorkspace = function () {
-      var currWorkspace = md.getCurrWorkspace(),
-        workspaceList = md.getWorkspaceList();
+    this.deleteCurrWorkspace = function () {
+      var currWorkspace = this.getCurrWorkspace(),
+        workspaceList = this.getWorkspaceList();
 
       var i, len;
       for(i = 0, len = workspaceList.length; i < len; i++) {
@@ -128,12 +119,12 @@ angular.module('luna')
         }
       }
 
-      md.updateWorkspaceList(workspaceList);
+      this.updateWorkspaceList(workspaceList);
     };
 
     // 跳转到个人贷款空间
-    md.jumpPersonalWorkspace = function () {
-      var i, len, workspaceList = md.getWorkspaceList();
+    this.jumpPersonalWorkspace = function () {
+      var i, len, workspaceList = this.getWorkspaceList();
 
       // 跳转到个人贷款空间
       var personWorkspace = null;
@@ -145,19 +136,19 @@ angular.module('luna')
       if(!personWorkspace) {
         personWorkspace = workspaceList[0];
       }
-      md.updateCurrWorkspace(personWorkspace);
-      md.saveWorkspaceInfo(personWorkspace);
+      this.updateCurrWorkspace(personWorkspace);
+      this.saveWorkspaceInfo(personWorkspace);
     };
 
-    md.getWorkspaceList = function () {
+    this.getWorkspaceList = function () {
       return $sessionStorage[WORKSPACE_LIST];
     };
 
-    md.updateWorkspaceList = function (workspaceList) {
+    this.updateWorkspaceList = function (workspaceList) {
       $sessionStorage[WORKSPACE_LIST] = workspaceList;
     };
 
-    md.loadLoginInfo = function () {
+    this.loadLoginInfo = function () {
       if ($localStorage[USERNAME] && $localStorage[PASSWORD]) {
         return {
           username: $localStorage[USERNAME],
@@ -168,17 +159,15 @@ angular.module('luna')
       }
     };
 
-    md.loadWorkspaceInfo = function () {
-      var loginUser = md.getLoginUser();
+    this.loadWorkspaceInfo = function () {
+      var loginUser = this.getLoginUser();
       return $localStorage[CURR_WORKSPACE + loginUser.id];
     };
 
     // 密码加密函数
-    md.encryptPassword = function (password, username, sbin) {
+    this.encryptPassword = function (password, username, sbin) {
       var code = sbin === undefined ? '1234' : sbin;
 
       return md5(md5(md5(password) + username) + code.toUpperCase());
     };
-
-   return md;
-}]);
+  }]);

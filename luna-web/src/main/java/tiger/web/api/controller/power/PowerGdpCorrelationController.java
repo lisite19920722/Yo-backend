@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import tiger.biz.power.support.*;
+import tiger.common.dal.annotation.LoginRequired;
 import tiger.core.basic.BaseResult;
 import tiger.web.api.constants.APIConstants;
 
@@ -33,6 +34,7 @@ public class PowerGdpCorrelationController {
      *
      * */
     @RequestMapping(value="/total", method = RequestMethod.GET)
+    @LoginRequired
     public BaseResult<Map<String, double[]>> getTotal() {
         Map<String, double[]> map = pgcm.getPowerGdpArray();
         return new BaseResult(map);

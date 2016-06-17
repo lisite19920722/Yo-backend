@@ -17,8 +17,7 @@ app.controller('LoginController', ['$scope', '$state', 'ResTool', 'AuthTool', 'A
     $scope.loginPromise.then(function(data){
       if(data.success){
           var userInfo = data.data;
-          AuthTool.login(data.data, data.headers[AuthTool.TOKEN_HEADER]);
-          console.log(data.headers[AuthTool.TOKEN_HEADER]);
+          AuthTool.login(data.data, data.headers[AuthTool.TOKEN_KEY]);
           ToasterTool.success('登录成功，欢迎回来');
           $state.go('app.index.economy.gdp');
       }else{

@@ -3,7 +3,7 @@
 <mapper namespace="tiger.common.dal.persistence.mapper.PowerGdpCorrelationEnterpriseAverageMapper" >
     <resultMap id="BaseResultMap" type="tiger.common.dal.persistence.power.PowerGdpCorrelationEnterpriseAverageDO" >
         <id column="id" property="id" jdbcType="BIGINT" />
-        <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
         <result column="modify_time" property="updateTime" jdbcType="TIMESTAMP" />
         <result column="year" property="year" jdbcType="BIGINT" />
         <result column="real_gdp_value" property="realGdpValue" jdbcType="DOUBLE" />
