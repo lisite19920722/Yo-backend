@@ -80,24 +80,24 @@ angular.module('luna')
           .state('app.data', {//二级导航栏
             abstract: true,
             url: '/data',
-            templateUrl: 'tpl/app/data/datamenu.html',
+            templateUrl: 'tpl/app/dataMng/datamenu.html',
             controller:'DataCtrl',
             resolve: {
               css: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/data/dataCtrl.js',
+                  'scripts/controllers/app/dataMng/dataCtrl.js',
                 ]);
               }]
             }
           })
           .state('app.data.insertEconomy', {
             url: '^/data/insert',
-            templateUrl: 'tpl/app/data/insertEconomy.html',
+            templateUrl: 'tpl/app/dataMng/insertEconomy.html',
             controller: 'EconomyDataInsertCtrl',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/data/economyDataInsertCtrl.js',
+                  'scripts/controllers/app/dataMng/economyDataInsertCtrl.js',
                 ]);
               }]
             }

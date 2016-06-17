@@ -1,0 +1,18 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm">
+    <div class="col w  dk b-r bg-auto second_nav_gray">
+        <div class="panel no_border" draggable="true" style="position:fixed;width:199px;">
+            <div class="panel-heading second_nav_head">
+                数据管理
+            </div>
+            <div class="list-group" ng-if="true" style="font-size:0.9em;border-bottom:1px solid lightgrey;">
+                <li ui-sref="app.data.insert" class="list-group-item second_nav_body">
+                    <a>经济数据录入</a>
+                </li>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div ui-view>
+        </div>
+    </div>
+</div>
