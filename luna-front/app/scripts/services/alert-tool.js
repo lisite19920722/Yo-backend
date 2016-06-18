@@ -1,26 +1,11 @@
 /**
- * 统一的 SweetAlert 提示框服务
+ * 统一的 SweetAlert 提示框工具
  *  ~ 如果要扩展，参考 http://t4t5.github.io/sweetalert/
  *
  * 调用方式
  *
- *  通用alert(single button)
+ *  通用 alert(single button)
  *  AlertTool.alert(options).then(function() {
- *
- *  });
- *
- *  success alert(single button)
- *  AlertTool.success(options).then(function() {
- *
- *  });
- *
- *  warning alert(single button)
- *  AlertTool.warning(options).then(function() {
- *
- *  });
- *
- *  error alert(single button)
- *  AlertTool.error(options).then(function() {
  *
  *  });
  *
@@ -30,16 +15,9 @@
  *      AlertTool.close();
  *    }
  *  });
- *
- *  delete confirm alert(double button)
- *  AlertTool.deleteConfirm(options).then(function(isConfirm) {
- *    if(isConfirm) {
- *      AlertTool.close();
- *    }
- *  });
  */
 angular.module('luna')
-  .service('AlertTool', ['SweetAlert', '$popover', '$q', '$window', function (SweetAlert, $popover, $q, $window) {
+  .service('AlertTool', ['SweetAlert', '$q', '$window', function (SweetAlert, $q, $window) {
     this.alert = function (options) {
       var deferred = $q.defer();
 
@@ -70,39 +48,47 @@ angular.module('luna')
       return deferred.promise;
     };
 
-    this.deleteConfirm = function (options) {
-      options.type = options.type ? options.type : 'error';
-      return this.confirm(options);
-    };
-
-    this.success = function (options) {
+    this.successAlert = function (options) {
       options.type = options.type ? options.type : 'success';
       return this.alert(options);
     };
 
-    this.warning = function (options) {
+    this.warningAlert = function (options) {
       options.type = options.type ? options.type : 'warning';
       return this.alert(options);
     };
 
-    this.error = function (options) {
+    this.infoAlert = function (options) {
+      options.type = options.type ? options.type : 'info';
+      return this.alert(options);
+    };
+
+    this.errorAlert = function (options) {
       options.type = options.type ? options.type : 'error';
       return this.alert(options);
+    };
+
+    this.successConfirm = function (options) {
+      options.type = options.type ? options.type : 'success';
+      return this.confirm(options);
+    };
+
+    this.warningConfirm = function (options) {
+      options.type = options.type ? options.type : 'warning';
+      return this.confirm(options);
+    };
+
+    this.infoConfirm = function (options) {
+      options.type = options.type ? options.type : 'info';
+      return this.confirm(options);
+    };
+
+    this.errorConfirm = function (options) {
+      options.type = options.type ? options.type : 'error';
+      return this.confirm(options);
     };
 
     this.close = function () {
       $window.swal.close();
     };
-
-    this.popover = function(element, content, isShow, trigger){
-      var trig = trigger || 'click';
-      var pop = $popover(element, {content:content, trigger:trig});
-      if(isShow){
-        pop.$promise.then(pop.toggle);
-      }
-      return pop;
-    };
-
-
-
   }]);

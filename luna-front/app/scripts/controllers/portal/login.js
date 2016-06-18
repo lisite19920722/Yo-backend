@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('LoginController', ['$scope', '$state', 'ResTool', 'AuthTool', 'AccountRes', 'ToasterTool', 
-  function($scope, $state, ResTool, AuthTool, AccountRes, ToasterTool) {
+app.controller('LoginController', ['$scope', '$rootScope', '$state', 'ResTool', 'AuthTool', 'AccountRes', 'DataRes', 'ToasterTool', 
+  function($scope, $rootScope, $state, ResTool, AuthTool, AccountRes, DataRes, ToasterTool) {
   // 登录用户结构
   $scope.loginUser = {
     username: '',
@@ -17,8 +17,20 @@ app.controller('LoginController', ['$scope', '$state', 'ResTool', 'AuthTool', 'A
     $scope.loginPromise.then(function(data){
       if(data.success){
           var userInfo = data.data;
-          AuthTool.login(data.data, data.headers[AuthTool.TOKEN_KEY]);
+          AuthTool.login(data.data, data.data.extParams["X-Auth-Token"]);
+          AuthTool.setCurrWorkspace(data.data.workspaces[0]);
           ToasterTool.success('登录成功，欢迎回来');
+          //数据管理界面显示控制
+          ResTool.httpGetWithWorkspace(DataRes.isShowDataPanel, {}, {})
+          .then(function(data) {
+            if (data.data.code === "501") {
+              $rootScope.isShowDataMngPanel = false;
+            } else {
+              $rootScope.isShowDataMngPanel = true;
+            }
+          }, function(err) {
+            $scope.isShowDataMngPanel = false;
+          });
           $state.go('app.index.economy.gdp');
       }else{
           ToasterTool.error('登录失败', data.message);

@@ -1,10 +1,26 @@
 angular.module('luna')
-  .controller('AppCtrl', ['$scope', '$localStorage', '$window','AuthTool',
-    function(              $scope, $localStorage,   $window, AuthTool ) {
+  .controller('AppCtrl', ['$scope', '$state', '$localStorage', '$window','AuthTool', 'AlertTool', 'ResTool','AccountRes','DataRes',
+    function(              $scope, $state, $localStorage,   $window, AuthTool, AlertTool, ResTool, AccountRes, DataRes) {
       // 获取当前登录用户
       $scope.loginUser = AuthTool.getLoginUser();
       // 获取当前团队
       $scope.currWorkspace = AuthTool.getCurrWorkspace();
+
+      $scope.logout = function () {
+        AlertTool.warningConfirm({
+          title: '确定要退出系统?'
+        }).then(function (isConfirm) {
+          if (isConfirm) {
+            ResTool.httpDeleteWithToken(AccountRes.accountAuthentication, null, null)
+              .then(function () {
+                AuthTool.logout();
+                AlertTool.close();
+                // 跳转到登录界面
+                $state.go('portal.login');
+              });
+          }
+        });
+      };
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');

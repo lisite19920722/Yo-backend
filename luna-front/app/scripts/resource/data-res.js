@@ -26,5 +26,13 @@ angular.module('luna')
           },
         });
       },
+      isShowDataPanel: function (headers) {
+        return $resource(BASE_URL + '/data/isshow', {}, {
+          post: {
+            method: 'GET',
+            headers: headers
+          },
+        });
+      },
   };        
 }]);

@@ -68,6 +68,12 @@ angular.module('luna')
       return $sessionStorage[CURR_WORKSPACE];
     };
 
+    //--临时方法
+    this.setCurrWorkspace = function (workspace) {
+      $sessionStorage[CURR_WORKSPACE] = workspace;
+    };
+    //--临时方法
+
     this.updateCurrWorkspace = function (workspace) {
       $sessionStorage[CURR_WORKSPACE] = workspace;
 
@@ -153,7 +159,7 @@ angular.module('luna')
         return {
           username: $localStorage[USERNAME],
           password: $localStorage[PASSWORD]
-        }
+        };
       } else {
         return null;
       }

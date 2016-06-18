@@ -40,10 +40,7 @@ import tiger.web.api.form.account.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 用户类API
@@ -130,6 +127,11 @@ public class AccountController extends BaseController {
 
         // 设置token
         this.setToken(response, token);
+
+        //因为跨域的问题, 展示将token绑定到account的字段里面
+        HashMap map = new HashMap<>();
+        map.put("X-Auth-Token",token);
+        account.setExtParams(map);
         return new BaseResult<>(account);
     }
 

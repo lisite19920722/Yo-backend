@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import tiger.biz.power.support.*;
 import tiger.common.dal.annotation.LoginRequired;
+import tiger.common.dal.annotation.Permission;
+import tiger.common.dal.enums.PermissionEnum;
 import tiger.core.basic.BaseResult;
 import tiger.web.api.constants.APIConstants;
 
@@ -33,6 +35,7 @@ public class PowerGdpCorrelationController {
      * 获取工业用电量与经济发展关联分析数据
      *
      * */
+    @Permission(permission = {PermissionEnum.VIEW_ALL})
     @RequestMapping(value="/total", method = RequestMethod.GET)
     @LoginRequired
     public BaseResult<Map<String, double[]>> getTotal() {

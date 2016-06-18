@@ -13,8 +13,8 @@ angular.module('luna')
       value['headers'] = headers;
 
       // 全局处理错误逻辑
-      if(value.code == "100") { //标记
-        // 需要重新登录
+      if(value.code == "502") { //标记
+        //需要重新登录
         AuthTool.logout();
         $state.go('portal.login');
       } else {
