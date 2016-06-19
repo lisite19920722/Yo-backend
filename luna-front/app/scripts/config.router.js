@@ -103,8 +103,26 @@ angular.module('luna')
             }
           })
           //数据管理
+          //economy 
+           .state('app.data.populationinsert', {
+             url: '^/data/insert/population',
+             templateUrl: 'tpl/app/dataMng/insetPopulation.html',
+             controller: 'PopulationDataInsertCtrl',
+             resolve: {
+               controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                 return $ocLazyLoad.load([
+                   'scripts/controllers/app/dataMng/populationDataInsertCtrl.js',
+                 ]);
+               }]
+             }
+           })
 
-          //economy  
+             //population
+
+
+
+
+
           .state('app.index', {
             abstract: true,
             url: '^/app/index',
