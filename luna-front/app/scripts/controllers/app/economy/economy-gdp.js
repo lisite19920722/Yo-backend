@@ -3,7 +3,7 @@
 app.controller('EconomyGdpCtrl', ['$scope','$stateParams','ResTool','EconomyRes', function($scope,$stateParams,ResTool,EconomyRes){
     var yearGdpParams = {};
     var yearGdpHeader = {};
-    var yearPromise = ResTool.httpGet(EconomyRes.getYearGdp,yearGdpParams,yearGdpHeader);
+    var yearPromise = ResTool.httpGetWithWorkspace(EconomyRes.getYearGdp,yearGdpParams,yearGdpHeader);
     yearPromise.then(function(rc){
 
        $scope.gdprealvalue=rc.data.realYearGdp;
@@ -152,7 +152,7 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
        $scope.monthGDPChart.series[1].type=param;
        $scope.monthGDPChart.series[2].type='spline';
        };
-    var yearDetailPromise = ResTool.httpGet(EconomyRes.getYearDetail,{year:nowyear},{});
+    var yearDetailPromise = ResTool.httpGetWithWorkspace(EconomyRes.getYearDetail,{year:nowyear},{});
     $scope.yearchoose = nowyear;
     yearDetailPromise.then(function(rc){
       $scope.gdpquarterrealvalue = rc.data.realGdpQuarterDetail;
@@ -281,7 +281,7 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
      
    });
     $scope.changeyear=function(param){
-        var yearDetailPromise = ResTool.httpGet(EconomyRes.getYearDetail,{year:param},{});
+        var yearDetailPromise = ResTool.httpGetWithWorkspace(EconomyRes.getYearDetail,{year:param},{});
         yearDetailPromise.then(function(rc){
         $scope.yearchoose = param;
         $scope.monthGDPChart.series[0].data=rc.data.realGdpQuarterDetail;
@@ -306,7 +306,7 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
 }]);
 
 app.controller('industryGdp', ['$scope','$stateParams','ResTool','EconomyRes', function($scope,$stateParams,ResTool,EconomyRes){
-     var IndustryPromise = ResTool.httpGet(EconomyRes.getIndustryDetail,{},{});
+     var IndustryPromise = ResTool.httpGetWithWorkspace(EconomyRes.getIndustryDetail,{},{});
      $scope.industryexchange=function(param){
        $scope.industryyearGDPChart.series[0].type=param;
        $scope.industryyearGDPChart.series[1].type=param;
@@ -418,7 +418,7 @@ app.controller('industryGdp', ['$scope','$stateParams','ResTool','EconomyRes', f
         var Industrynowyear = Industrynow.getFullYear();
         $scope.thisyear = Industrynowyear;
         $scope.industrydetail = !$scope.industrydetail;
-        var IndustryYearDetailPromise = ResTool.httpGet(EconomyRes.getYearIndustryDetail,{year:Industrynowyear},{});
+        var IndustryYearDetailPromise = ResTool.httpGetWithWorkspace(EconomyRes.getYearIndustryDetail,{year:Industrynowyear},{});
         IndustryYearDetailPromise.then(function(rc){
         $scope.thisyearfirstindustryvalue = rc.data.firstIndustryRealDetail;
         $scope.thisyearfirstindustryfcvalue = rc.data.firstIndustryForecastDetail;
@@ -674,7 +674,7 @@ app.controller('industryGdp', ['$scope','$stateParams','ResTool','EconomyRes', f
         });
       $scope.industrychangeyear = function(param){
         $scope.thisyear = param;
-          var IndustryDetailPromise = ResTool.httpGet(EconomyRes.getYearIndustryDetail,{year:param},{});
+          var IndustryDetailPromise = ResTool.httpGetWithWorkspace(EconomyRes.getYearIndustryDetail,{year:param},{});
           IndustryDetailPromise.then(function(rc){
               $scope.primaryGDPChart.series[0].data = rc.data.firstIndustryRealDetail;
               $scope.primaryGDPChart.series[1].data = rc.data.firstIndustryForecastDetail;

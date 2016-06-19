@@ -3,7 +3,7 @@
 app.controller('PowerEnterpriseAverageCtrl', 
     ['$scope','ResTool','PowerRes', function($scope, ResTool, PowerRes) {
     var getAverageParams = {};
-	var getAveragePromise = ResTool.httpGet(PowerRes.getEnterpriseAverage, getAverageParams, {});
+	var getAveragePromise = ResTool.httpGetWithWorkspace(PowerRes.getEnterpriseAverage, getAverageParams, {});
 	getAveragePromise.then(function(data) {
 		$scope.getData = data.data;
 		$scope.enterpriseAverageData = {

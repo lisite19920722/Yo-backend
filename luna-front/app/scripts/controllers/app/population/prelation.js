@@ -4,7 +4,7 @@ app.controller('PrelationCtrl', ['$scope','$stateParams','PopulationRes','ResToo
 
     $scope.data = null;
     var popData;
-    var promise = ResTool.httpGet(PopulationRes.getLaborGdpRelationPreData,{},{});
+    var promise = ResTool.httpGetWithWorkspace(PopulationRes.getLaborGdpRelationPreData,{},{});
     promise.then(function(rc) {
 
     popData=rc.data;

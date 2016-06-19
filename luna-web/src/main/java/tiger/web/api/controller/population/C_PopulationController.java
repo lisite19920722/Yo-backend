@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import tiger.biz.population.suport.C_PopulationManager;
+import tiger.common.dal.annotation.LoginRequired;
+import tiger.common.dal.annotation.Permission;
+import tiger.common.dal.enums.PermissionEnum;
 import tiger.core.basic.BaseResult;
 import tiger.web.api.constants.APIConstants;
 import tiger.web.api.controller.BaseController;
@@ -30,6 +33,8 @@ public class C_PopulationController extends BaseController {
      *
      * @return
      */
+    @LoginRequired
+    @Permission(permission = {PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @RequestMapping(value="/populationEmployInsuranceData/list", method = RequestMethod.GET)
     public BaseResult getEmployInsuranceSchoolList()
     {
@@ -41,6 +46,8 @@ public class C_PopulationController extends BaseController {
      *
      * @return
      */
+    @LoginRequired
+    @Permission(permission = {PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @RequestMapping(value="/laborGdpRelationPreData/list", method = RequestMethod.GET)
     public BaseResult getLaborGdpRelationPreData()
     {
@@ -52,6 +59,8 @@ public class C_PopulationController extends BaseController {
      *
      * @return
      */
+    @LoginRequired
+    @Permission(permission = {PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @RequestMapping(value="/populationStructurePreData/list", method = RequestMethod.GET)
     public BaseResult getPopulationStructurePreData()
     {
@@ -63,6 +72,8 @@ public class C_PopulationController extends BaseController {
      *
      * @return
      */
+    @LoginRequired
+    @Permission(permission = {PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @RequestMapping(value="/sumPopulationData/list", method = RequestMethod.GET)
     public BaseResult getSumPopulationData()
     {
@@ -74,6 +85,8 @@ public class C_PopulationController extends BaseController {
      *
      * @return
      */
+    @LoginRequired
+    @Permission(permission = {PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @RequestMapping(value="/birthrateData/list", method = RequestMethod.GET)
     public BaseResult getBirthrateData()
     {

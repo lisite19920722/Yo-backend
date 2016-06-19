@@ -1,7 +1,7 @@
 
 app.controller('EconomyTaxCtrl', ['$scope','$stateParams','ResTool','EconomyTaxRes', function($scope,$stateParams,ResTool,EconomyTaxRes){
 
-  var TaxPromise = ResTool.httpGet(EconomyTaxRes.getYearTax,{},{});
+  var TaxPromise = ResTool.httpGetWithWorkspace(EconomyTaxRes.getYearTax,{},{});
   var now = new Date();
   var year = now.getFullYear();
   $scope.colorpicker = {
@@ -196,7 +196,7 @@ app.controller('EconomyTaxCtrl', ['$scope','$stateParams','ResTool','EconomyTaxR
           $scope.selectedRange2 = 0;
           $scope.selectedRange3 = 0;
           $scope.selectedRange4 = 0;
-        var adjuestTaxPromise = ResTool.httpGet(EconomyTaxRes.getYearTax,{},{});
+        var adjuestTaxPromise = ResTool.httpGetWithWorkspace(EconomyTaxRes.getYearTax,{},{});
          adjuestTaxPromise.then(function(rc){
           $scope.yearTaxChart.series[0].data = rc.data.realYearTax;
           $scope.yearTaxChart.series[1].data = rc.data.forecastYearTax;
@@ -276,7 +276,7 @@ app.controller('EconomyTaxCtrl', ['$scope','$stateParams','ResTool','EconomyTaxR
 app.controller('EconomyTaxDetailCtrl', ['$scope','$stateParams','ResTool','EconomyTaxRes', function($scope,$stateParams,ResTool,EconomyTaxRes){
    var now = new Date();
   var year = now.getFullYear();
-  var DetailPromise = ResTool.httpGet(EconomyTaxRes.getYearTaxDetail,{year:year},{});
+  var DetailPromise = ResTool.httpGetWithWorkspace(EconomyTaxRes.getYearTaxDetail,{year:year},{});
   DetailPromise.then(function(rc){
     $scope.taxrealvalue = rc.data.realTaxMonthDetail;
     $scope.taxDetailForecastvalue = rc.data.forecastTaxMonthDetail;
@@ -513,7 +513,7 @@ app.controller('EconomyTaxDetailCtrl', ['$scope','$stateParams','ResTool','Econo
           $scope.monthselectedRange2 = 0;
           $scope.monthselectedRange3 = 0;
           $scope.monthselectedRange4 = 0;
-      var monthDetailPromise = ResTool.httpGet(EconomyTaxRes.getYearTaxDetail,{year:year},{});
+      var monthDetailPromise = ResTool.httpGetWithWorkspace(EconomyTaxRes.getYearTaxDetail,{year:year},{});
       monthDetailPromise.then(function(rc){
          $scope.monthTaxChart.series[0].data = rc.data.realTaxMonthDetail;
          $scope.monthTaxChart.series[1].data = rc.data.forecastTaxMonthDetail;
@@ -531,7 +531,7 @@ app.controller('EconomyTaxDetailCtrl', ['$scope','$stateParams','ResTool','Econo
           $scope.monthselectedRange2 = 0;
           $scope.monthselectedRange3 = 0;
           $scope.monthselectedRange4 = 0;
-       var yearChangeDetailPromise = ResTool.httpGet(EconomyTaxRes.getYearTaxDetail,{year:param},{});
+       var yearChangeDetailPromise = ResTool.httpGetWithWorkspace(EconomyTaxRes.getYearTaxDetail,{year:param},{});
        yearChangeDetailPromise.then(function(rc){
          $scope.monthTaxChart.series[0].data = rc.data.realTaxMonthDetail;
          $scope.monthTaxChart.series[1].data = rc.data.forecastTaxMonthDetail;

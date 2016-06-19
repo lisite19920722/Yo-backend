@@ -6,7 +6,7 @@ app.controller('PowerIndustryCtrl',
 		$scope.getIndustryParams = {
 	    	'year': year,
 	    };
-		var getTotalPromise = ResTool.httpGet(PowerRes.getIndustry, $scope.getIndustryParams, {});
+		var getTotalPromise = ResTool.httpGetWithWorkspace(PowerRes.getIndustry, $scope.getIndustryParams, {});
 		getTotalPromise.then(function(data) {
 			$scope.totalData = data.data;
 			$scope.VocationChartPiePower = {

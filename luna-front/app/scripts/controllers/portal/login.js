@@ -8,6 +8,11 @@ app.controller('LoginController', ['$scope', '$rootScope', '$state', 'ResTool', 
     password: ''
   };
   //登录
+  $scope.setSessionStorage = function(callback,userInfo) {
+    AuthTool.login(userInfo, userInfo.extParams["X-Auth-Token"]);
+    AuthTool.setCurrWorkspace(userInfo.workspaces[0]);
+    callback();
+  };
   $scope.login = () =>{
     var params = {};
     $scope.loginPromise = ResTool.httpPost(AccountRes.accountAuthentication, params, {}, {
@@ -17,21 +22,10 @@ app.controller('LoginController', ['$scope', '$rootScope', '$state', 'ResTool', 
     $scope.loginPromise.then(function(data){
       if(data.success){
           var userInfo = data.data;
-          AuthTool.login(data.data, data.data.extParams["X-Auth-Token"]);
-          AuthTool.setCurrWorkspace(data.data.workspaces[0]);
-          ToasterTool.success('登录成功，欢迎回来');
-          //数据管理界面显示控制
-          ResTool.httpGetWithWorkspace(DataRes.isShowDataPanel, {}, {})
-          .then(function(data) {
-            if (data.data.code === "501") {
-              $rootScope.isShowDataMngPanel = false;
-            } else {
-              $rootScope.isShowDataMngPanel = true;
-            }
-          }, function(err) {
-            $scope.isShowDataMngPanel = false;
-          });
-          $state.go('app.index.economy.gdp');
+          $scope.setSessionStorage(function() {
+            ToasterTool.success('登录成功，欢迎回来');
+            $state.go('app.index.economy.gdp');
+          },userInfo);
       }else{
           ToasterTool.error('登录失败', data.message);
       }

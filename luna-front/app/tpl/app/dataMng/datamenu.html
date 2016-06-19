@@ -12,7 +12,8 @@
         </div>
     </div>
     <div class="col">
-        <div ui-view>
+        <div ui-view ng-if="isShowDataMngPanel">
         </div>
+        <div ng-if="!isShowDataMngPanel" style="text-align:center;margin-top:50px;">需要管理员权限！</div>
     </div>
 </div>

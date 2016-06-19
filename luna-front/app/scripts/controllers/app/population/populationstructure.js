@@ -6,7 +6,7 @@ app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRe
     var popData;
 
   
-    var promise = ResTool.httpGet(PopulationRes.getPopulationStructurePreData,{},{});
+    var promise = ResTool.httpGetWithWorkspace(PopulationRes.getPopulationStructurePreData,{},{});
     promise.then(function(rc) {
 
 
@@ -829,7 +829,7 @@ app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRe
   var pieColors = new Array('#3795BC', '#FB9705');  //'#0787C8', '#1FC22B'
 
 
-  //var promise1 = qService.tokenHttpGet(forecastFactory.query,{tableName:'birthrateData'});
+  //var promise1 = qService.tokenhttpGetWithWorkspace(forecastFactory.query,{tableName:'birthrateData'});
   //  promise1.then(function(rc1) {
 
 
@@ -1680,9 +1680,9 @@ $scope.population_year={
  });  
 
 var sumData;
-var promise2 = ResTool.httpGet(PopulationRes.getSumPopulationData,{},{});
+var promise2 = ResTool.httpGetWithWorkspace(PopulationRes.getSumPopulationData,{},{});
     
-   // var promise = qService.tokenHttpGet(forecastFactory.query,{tableName:'populationStructurePreData'});
+   // var promise = qService.tokenhttpGetWithWorkspace(forecastFactory.query,{tableName:'populationStructurePreData'});
     promise2.then(function(rc2) {
 
 

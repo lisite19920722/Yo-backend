@@ -2,7 +2,7 @@
 
 app.controller('LivelihoodCtrl', ['$scope','PopulationRes','ResTool',function($scope,PopulationRes,ResTool) {
 
-    var promise = ResTool.httpGet(PopulationRes.getEmployInsuranceSchoolList,{},{});
+    var promise = ResTool.httpGetWithWorkspace(PopulationRes.getEmployInsuranceSchoolList,{},{});
     promise.then(function(rc) {
 
     $scope.preLaborPopulation = rc.data[0];

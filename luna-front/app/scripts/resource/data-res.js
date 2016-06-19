@@ -28,7 +28,7 @@ angular.module('luna')
       },
       isShowDataPanel: function (headers) {
         return $resource(BASE_URL + '/data/isshow', {}, {
-          post: {
+          get: {
             method: 'GET',
             headers: headers
           },

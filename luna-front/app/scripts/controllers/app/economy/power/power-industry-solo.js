@@ -7,7 +7,7 @@ app.controller('PowerIndustrySoloCtrl',
 			$scope.getIndustryYearParams = {
 		    	'industryId': industryId,
 		    };
-			var getYearPromise = ResTool.httpGet(PowerRes.getIndustryYear, $scope.getIndustryYearParams, {});
+			var getYearPromise = ResTool.httpGetWithWorkspace(PowerRes.getIndustryYear, $scope.getIndustryYearParams, {});
 			getYearPromise.then(function(data) {
 				$scope.yearData = data.data;
 				$scope.SingleVocationChartByYear={
@@ -81,7 +81,7 @@ app.controller('PowerIndustrySoloCtrl',
 		    	'industryId': industryId,
 		    	'year': year,
 		    };
-			var getSeasonPromise = ResTool.httpGet(PowerRes.getIndustrySeason, $scope.getIndustrySeasonParams, {});
+			var getSeasonPromise = ResTool.httpGetWithWorkspace(PowerRes.getIndustrySeason, $scope.getIndustrySeasonParams, {});
 			getSeasonPromise.then(function(data) {
 				$scope.seasonData = data.data;
 				$scope.SingleVocationChart={
