@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tiger.biz.dataMng.support.DataMngManager;
 import tiger.core.domain.power.PowerGdpCorrelationDomain;
-import tiger.core.service.data.DataMngService;
+import tiger.core.service.dataMng.DataMngService;
 
 /**
  * @Author: [mondooo.cgq]
