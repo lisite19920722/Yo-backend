@@ -16,7 +16,7 @@ import tiger.core.basic.BaseResult;
 import tiger.core.domain.power.PowerGdpCorrelationDomain;
 import tiger.web.api.constants.APIConstants;
 import tiger.web.api.controller.BaseController;
-import tiger.web.api.form.data.PowerTotalCreateForm;
+import tiger.web.api.form.dataMng.PowerTotalCreateForm;
 
 import javax.validation.Valid;
 
