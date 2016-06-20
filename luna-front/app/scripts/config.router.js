@@ -102,8 +102,6 @@ angular.module('luna')
               }]
             }
           })
-          //数据管理
-          //economy 
            .state('app.data.populationinsert', {
              url: '^/data/insert/population',
              templateUrl: 'tpl/app/dataMng/insetPopulation.html',
@@ -116,13 +114,8 @@ angular.module('luna')
                }]
              }
            })
-
-             //population
-
-
-
-
-
+           //数据管理
+          //economy 
           .state('app.index', {
             abstract: true,
             url: '^/app/index',
