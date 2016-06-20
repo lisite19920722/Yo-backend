@@ -4,7 +4,7 @@ app.controller('EconomyDataInsertCtrl',
 	var now = (new Date()).getFullYear();
 	$scope.fourYear = [now-1,now,now+1,now+2,now+3];
 	//用电 整体
-	$scope.powerTotalSelectYear = (new Date()).getFullYear()-1;
+	$scope.powerTotalSelectYear = $scope.fourYear[0].toString();
 	$scope.powerTotalPowerValue = null;
 	$scope.powerTotalGdpValue = null;
 	$scope.submitPowerTotal = function() {
@@ -17,7 +17,7 @@ app.controller('EconomyDataInsertCtrl',
 			"powerValue": $scope.powerTotalPowerValue,
 			"gdpValue": $scope.powerTotalGdpValue
 		};
-		var PowerTotalPromise = ResTool.httpPost(DataRes.PowerTotal,{},powerTotalBody,{});
+		var PowerTotalPromise = ResTool.httpPostWithWorkspace(DataRes.PowerTotal,{},powerTotalBody,{});
 		PowerTotalPromise.then(function(data) {
 			if (data.success) {
 				ToasterTool.success("录入数据成功！");
@@ -35,4 +35,6 @@ app.controller('EconomyDataInsertCtrl',
 	$scope.powerIndustryPowerValue = null;
 	$scope.powerIndustryGdpValue = null;
 
+	//gdp
+	$scope.gdpTypeSelected = "0";
 }]);

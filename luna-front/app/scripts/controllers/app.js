@@ -6,6 +6,18 @@ angular.module('luna')
       // 获取当前团队
       $scope.currWorkspace = AuthTool.getCurrWorkspace();
 
+      //数据录入权限判断
+      ResTool.httpGetWithWorkspace(DataRes.isShowDataPanel, {}, {})
+      .then(function(data) {
+        // console.log("success"); //测试通过
+        if (data.code == "501") {
+          $scope.isShowDataMngPanel = false;
+        } else {
+          $scope.isShowDataMngPanel = true;
+        }
+      }, function(err) {
+        $scope.isShowDataMngPanel = false;
+      });
       $scope.logout = function () {
         AlertTool.warningConfirm({
           title: '确定要退出系统?'
