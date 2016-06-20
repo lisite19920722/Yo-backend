@@ -35,4 +35,6 @@ app.controller('EconomyDataInsertCtrl',
 	$scope.powerIndustryPowerValue = null;
 	$scope.powerIndustryGdpValue = null;
 
+	//gdp
+	$scope.gdpTypeSelected = "0";
 }]);
