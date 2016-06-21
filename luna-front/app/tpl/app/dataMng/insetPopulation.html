@@ -1,4 +1,4 @@
-<div  style="padding:20px;">
+﻿<div  style="padding:20px;">
 	<div class="panel panel-default">
 		<div class="panel-heading font-bold">
 			人口结构数据录入
@@ -6,7 +6,7 @@
 		<div class="panel-body">
 			<form class="form-inline ng-pristine ng-valid" role="form">
 				<div class="form-group m-r-sm">
-					<label class="" for="powerSelectYear">年份:</label>
+					<label class="offset-12" for="powerSelectYear">年份:</label>
 					<select id="powerSelectYear" class="form-control width-power">
 						<option ng-repeat="year in fourYear">{{year}}</option>
 					</select>
@@ -24,9 +24,10 @@
 						</div>
 					</div>
 					<div class="form-group m-r-sm">
-						<label class="" for="power-enterprise-gdp">人口数量:</label>
+						<label class="" for="power-enterprise-gdp">人口占比:</label>
 						<div class="input-group width-power">
 							<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
+							<span class="input-group-addon">%</span>
 						</div>
 					</div>
 					<button class="btn w-xs btn-default btn-datainsert">提交</button>
@@ -51,39 +52,48 @@
 					&nbsp;&nbsp;&nbsp;<label class="" for="power-enterprise-power">劳动力人口:</label>
 					<div class="input-group width-power">
 						<input class="form-control" id="power-enterprise-power" placeholder="请输入">
+                                                    <span class="input-group-addon">万人</span>
 					</div>
 				</div>
 				<div class="form-group m-r-sm">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="" for="power-enterprise-power">就业人口:</label>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="" for="power-enterprise-power">就业人数:</label>
 					<div class="input-group width-power">
 						<input class="form-control" id="power-enterprise-power" placeholder="请输入">
+						<span class="input-group-addon">万人</span>
 					</div>
 				</div>
 				<div class="form-group m-r-sm">
-					<label class="" for="power-enterprise-gdp">第一产业人口:</label>
+					<label class="" for="power-enterprise-gdp">第一产业比例:</label>
 					<div class="input-group width-power">
 						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
+						<span class="input-group-addon">%</span>
 					</div>
 				</div><br><br>
 				<div class="form-group m-r-sm">
-					<label class="" for="power-enterprise-gdp">第二产业人口:</label>
+					<label class="" for="power-enterprise-gdp">第二产业比例:</label>
 					<div class="input-group width-power">
 						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
+						<span class="input-group-addon">%</span>
 					</div>
 				</div>
 				<div class="form-group m-r-sm">
-					<label class="" for="power-enterprise-gdp">第三产业人口:</label>
+					<label class="" for="power-enterprise-gdp">第三产业比例:</label>
 					<div class="input-group width-power">
 						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
+						<span class="input-group-addon">%</span>
 					</div>
 				</div>
+				
 				<div class="form-group m-r-sm">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<label class="" for="power-enterprise-gdp">保险:</label>
+					
+					<label class="" for="power-enterprise-gdp">养老保险结余:</label>
 					<div class="input-group width-power">
 						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
+						<span class="input-group-addon">亿元</span>
 					</div>
-				</div><br><br>
+				</div>
+
+				<br><br>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<button class="btn w-xs btn-default btn-datainsert">提交</button>
 			</form>
@@ -117,24 +127,30 @@
 					</div>
 				</div><br><br>
 				<div class="form-group m-r-sm">
-					<label class="" for="power-enterprise-gdp">小学文化人口:</label>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label class="" for="power-enterprise-gdp">小学数量:</label>
 					<div class="input-group width-power">
 						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
+						<span class="input-group-addon">所</span>
 					</div>
 				</div>
 				<div class="form-group m-r-sm">
-					<label class="" for="power-enterprise-gdp">中学文化人口:</label>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label class="" for="power-enterprise-gdp">中学数量:</label>
 					<div class="input-group width-power">
 						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
+						<span class="input-group-addon">所</span>
 					</div>
 				</div>
 				<div class="form-group m-r-sm">
-					<label class="" for="power-enterprise-gdp">大学文化人口:</label>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label class="" for="power-enterprise-gdp">大学数量:</label>
 					<div class="input-group width-power">
 						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
+						<span class="input-group-addon">所</span>
 					</div>
 				</div><br><br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<button class="btn w-xs btn-default btn-datainsert">提交</button>
 			</form>
 		</div>
