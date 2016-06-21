@@ -305,7 +305,13 @@ angular.module('luna')
             abstract: true,
             url: '^/app/profile',
             templateUrl: 'tpl/app/profile/profile.html',
+            controller: 'ProfileCtrl',
             resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/profile/profile.js'
+                ]);
+              }]
             }
           })
           .state('app.profile.person', {
@@ -318,8 +324,13 @@ angular.module('luna')
           .state('app.profile.password', {
             url: '^/app/profile/password',
             templateUrl: 'tpl/app/profile/profile-password.html',
+            controller: 'ProfilePswCtrl',
             resolve: {
-
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/profile/psw.js'
+                ]);
+              }]
             }
           })
           .state('app.message', {
