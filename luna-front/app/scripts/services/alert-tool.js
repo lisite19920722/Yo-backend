@@ -37,7 +37,7 @@ angular.module('luna')
 
       options = options || {};
       options.showCancelButton = true;
-      options.closeOnConfirm = false;
+      options.closeOnConfirm = true;
       options.confirmButtonText = options.confirmButtonText || '确定';
       options.cancelButtonText = options.cancelButtonText || '取消';
 
