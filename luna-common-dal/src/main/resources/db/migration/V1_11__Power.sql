@@ -23,7 +23,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `enterprise_average_forcast`;
 CREATE TABLE `enterprise_average_forcast` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `creat_time` datetime DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
   `modify_time` datetime DEFAULT NULL,
   `year` int(11) NOT NULL,
   `real_gdp_value` double DEFAULT NULL,
@@ -46,7 +46,7 @@ COMMIT;
 DROP TABLE IF EXISTS `enterprise_data_forcast`;
 CREATE TABLE `enterprise_data_forcast` (
   `id` bigint(20) NOT NULL,
-  `creat_time` datetime DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
   `modify_time` datetime DEFAULT NULL,
   `year` int(11) NOT NULL,
   `season` int(11) NOT NULL,
@@ -77,7 +77,7 @@ COMMIT;
 DROP TABLE IF EXISTS `enterprise_data_raw`;
 CREATE TABLE `enterprise_data_raw` (
   `id` bigint(20) NOT NULL,
-  `creat_time` datetime DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
   `modify_time` datetime DEFAULT NULL,
   `year` int(11) NOT NULL,
   `season` int(11) NOT NULL,
@@ -95,7 +95,7 @@ CREATE TABLE `enterprise_data_raw` (
 DROP TABLE IF EXISTS `industry_data_forcast`;
 CREATE TABLE `industry_data_forcast` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `creat_time` datetime DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
   `modify_time` datetime DEFAULT NULL,
   `year` int(11) NOT NULL,
   `season` int(11) NOT NULL,
@@ -122,7 +122,7 @@ COMMIT;
 DROP TABLE IF EXISTS `industry_data_raw`;
 CREATE TABLE `industry_data_raw` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `creat_time` datetime DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
   `modify_time` datetime DEFAULT NULL,
   `year` int(11) NOT NULL,
   `season` int(11) NOT NULL,
@@ -140,7 +140,7 @@ CREATE TABLE `industry_data_raw` (
 DROP TABLE IF EXISTS `power_total_forcast`;
 CREATE TABLE `power_total_forcast` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `creat_time` datetime DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
   `modify_time` datetime DEFAULT NULL,
   `year` int(11) NOT NULL,
   `real_gdp_value` double DEFAULT NULL,
@@ -163,7 +163,7 @@ COMMIT;
 DROP TABLE IF EXISTS `power_total_raw`;
 CREATE TABLE `power_total_raw` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `creat_time` datetime DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
   `modify_time` datetime DEFAULT NULL,
   `year` int(11) NOT NULL,
   `gdp_value` double DEFAULT NULL,

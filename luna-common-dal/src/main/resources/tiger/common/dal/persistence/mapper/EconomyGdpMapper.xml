@@ -33,4 +33,10 @@
         <include refid="Base_Column_List"/>
         from gdp_forecast_data
     </select>
+    <select id="getYearIndustryDetail" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from gdp_forecast_data
+        where year = #{year,jdbcType=BIGINT}
+    </select>
 </mapper>

@@ -311,10 +311,10 @@ CREATE TABLE `population_structure_data` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `create_time` datetime DEFAULT NULL,
   `modify_time` datetime DEFAULT NULL,
-  `year` int(11) DEFAULT NULL,
-  `ageType_id` bigint(20) NOT NULL,
-  `sexType_id` bigint(20) NOT NULL,
-  `residentPopulation` int(11) NOT NULL,
+  `year` bigint(20) DEFAULT NULL,
+  `age_type_id` bigint(20) NOT NULL,
+  `sex_type_id` bigint(20) NOT NULL,
+  `resident_population` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

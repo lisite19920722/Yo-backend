@@ -231,14 +231,12 @@ app.controller('AirCtrl', ['$scope','ResTool','EnvironmentRes','$timeout',functi
 			var info3=[];
 			info3.push("<h4><strong>太仓市气象局(明日天气预报)</strong></h4>");
 			info3.push("<table class='table table-bordered table-striped'>");
-			weatherString1="<tr><td class='maptable' style='line-height:35px;'>明日气温</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>14℃~24℃</div></td></tr>";
+			var weatherString1="<tr><td class='maptable' style='line-height:35px;'>明日气温</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>"+$scope.airConditionLowtemp[4]+"℃~"+$scope.airConditionHightemp[4]+"℃</div></td></tr>";
 			info3.push(weatherString1);
-			weatherString2="<tr><td class='maptable' style='line-height:35px;'>相对湿度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>50%</div></td></tr>";
+			var weatherString2="<tr><td class='maptable' style='line-height:35px;'>天气状况</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>"+$scope.airConditionType[4]+"</div></td></tr>";
 			info3.push(weatherString2);
-			weatherString3="<tr><td class='maptable' style='line-height:35px;'>风级</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>3~4</div></td></tr>";
+			var weatherString3="<tr><td class='maptable' style='line-height:35px;'>风向风级</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>"+$scope.airConditionFengxiangFengli[4]+"</div></td></tr>";
 			info3.push(weatherString3);
-			weatherString4="<tr><td class='maptable' style='line-height:35px;'>风向</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:2.5px;margin-top:4px;'>东南风</div></td></tr>";
-			info3.push(weatherString4);
 			info3.push("</table>");
 			var infowindow3 = new AMap.InfoWindow({
 				content: info3.join(''),
@@ -2065,10 +2063,14 @@ app.controller('AirCtrl', ['$scope','ResTool','EnvironmentRes','$timeout',functi
 			var info4=[];
 			info4.push("<h4><strong>华能国际电力股份有限公司电厂(实时数据)</strong></h4>");
 			info4.push("<table class='table table-bordered table-striped'>");
-			info4.push("<tr><td class='maptable' style='line-height:35px;'>排放量</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>0.44亿</div></td></tr>");
-			info4.push("<tr><td class='maptable' style='line-height:35px;'>烟尘浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>12.5mg/m³</div></td></tr>");
-			info4.push("<tr><td class='maptable' style='line-height:35px;'>二氧化硫浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>48.26mg/m³</div></td></tr>");
-			info4.push("<tr><td class='maptable' style='line-height:35px;'>氮氧化物浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>115.25mg/m³</div></td></tr>");
+			var huanengString1="<tr><td class='maptable' style='line-height:35px;'>排放量</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>"+$scope.pollutionDischarge[2]+"万</div></td></tr>";
+			info4.push(huanengString1);
+			var huanengString2="<tr><td class='maptable' style='line-height:35px;'>烟尘浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>"+$scope.pollutionSmoke[2]+"mg/m³</div></td></tr>";
+			info4.push(huanengString2);
+			var huanengString3="<tr><td class='maptable' style='line-height:35px;'>二氧化硫浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>"+$scope.pollutionSo2[2]+"mg/m³</div></td></tr>";
+			info4.push(huanengString3);
+			var huanengString4="<tr><td class='maptable' style='line-height:35px;'>氮氧化物浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>"+$scope.pollutionNo[2]+"mg/m³</div></td></tr>";
+			info4.push(huanengString4);
 			info4.push("<tr><td class='maptable' style='line-height:35px;'>废气排放状况</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>正常</div></td></tr>");
 			info4.push("</table>");
 			var infowindow4 = new AMap.InfoWindow({
@@ -2090,10 +2092,14 @@ app.controller('AirCtrl', ['$scope','ResTool','EnvironmentRes','$timeout',functi
 			var info5=[];
 			info5.push("<h4><strong>玖龙纸业(太仓)有限公司(实时数据)</strong></h4>");
 			info5.push("<table class='table table-bordered table-striped'>");
-			info5.push("<tr><td class='maptable' style='line-height:35px;'>排放量</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>0.26亿</div></td></tr>");
-			info5.push("<tr><td class='maptable' style='line-height:35px;'>烟尘浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>8.08mg/m³</div></td></tr>");
-			info5.push("<tr><td class='maptable' style='line-height:35px;'>二氧化硫浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>16.25mg/m³</div></td></tr>");
-			info5.push("<tr><td class='maptable' style='line-height:35px;'>氮氧化物浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>69.15mg/m³</div></td></tr>");
+			var jiulongString1="<tr><td class='maptable' style='line-height:35px;'>排放量</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>"+$scope.pollutionDischarge[1]+"万</div></td></tr>";
+			info5.push(jiulongString1);
+			var jiulongString2="<tr><td class='maptable' style='line-height:35px;'>烟尘浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>"+$scope.pollutionSmoke[1]+"mg/m³</div></td></tr>";
+			info5.push(jiulongString2);
+			var jiulongString3="<tr><td class='maptable' style='line-height:35px;'>二氧化硫浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>"+$scope.pollutionSo2[1]+"mg/m³</div></td></tr>";
+			info5.push(jiulongString3);
+			var jiulongString4="<tr><td class='maptable' style='line-height:35px;'>氮氧化物浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>"+$scope.pollutionNo[1]+"mg/m³</div></td></tr>";
+			info5.push(jiulongString4);
 			info5.push("<tr><td class='maptable' style='line-height:35px;'>废气排放状况</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>正常</div></td></tr>");
 			info5.push("</table>");
 			var infowindow5 = new AMap.InfoWindow({
@@ -2115,10 +2121,14 @@ app.controller('AirCtrl', ['$scope','ResTool','EnvironmentRes','$timeout',functi
 			var info6=[];
 			info6.push("<h4><strong>太仓港协鑫发电有限公司(实时数据)</strong></h4>");
 			info6.push("<table class='table table-bordered table-striped'>");
-			info6.push("<tr><td class='maptable' style='line-height:35px;'>排放量</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>0.7亿</div></td></tr>");
-			info6.push("<tr><td class='maptable' style='line-height:35px;'>烟尘浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>2.56mg/m³</div></td></tr>");
-			info6.push("<tr><td class='maptable' style='line-height:35px;'>二氧化硫浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>27.33mg/m³</div></td></tr>");
-			info6.push("<tr><td class='maptable' style='line-height:35px;'>氮氧化物浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>36.39mg/m³</div></td></tr>");
+			var xiexinString1="<tr><td class='maptable' style='line-height:35px;'>排放量</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>"+$scope.pollutionDischarge[0]+"万</div></td></tr>";
+			info6.push(xiexinString1);
+			var xiexinString2="<tr><td class='maptable' style='line-height:35px;'>烟尘浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>"+$scope.pollutionSmoke[0]+"mg/m³</div></td></tr>";
+			info6.push(xiexinString2);
+			var xiexinString3="<tr><td class='maptable' style='line-height:35px;'>二氧化硫浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>"+$scope.pollutionSo2[0]+"mg/m³</div></td></tr>";
+			info6.push(xiexinString3);
+			var xiexinString4="<tr><td class='maptable' style='line-height:35px;'>氮氧化物浓度</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>"+$scope.pollutionNo[0]+"mg/m³</div></td></tr>";
+			info6.push(xiexinString4);
 			info6.push("<tr><td class='maptable' style='line-height:35px;'>废气排放状况</td><td><div class='map-table-right' style='background-Color:#5cb85c;margin-left:10px;margin-top:4px;'>正常</div></td></tr>");
 			info6.push("</table>");
 			var infowindow6 = new AMap.InfoWindow({

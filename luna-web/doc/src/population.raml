@@ -1,0 +1,75 @@
+﻿description: |
+  代码相关接口
+
+/population_structure/{id}:
+get:
+  is: [secured]
+	description: |
+	常住人口结构分析预测
+	responses:
+		200:
+		  body:
+        application/json:
+          schema:
+            {
+              "code":"200",
+              "message":"成功",
+              "data":{
+              "id": "1",
+              "year": 3,
+              "age_type_id": 3,
+              "sex_type_id": 2,
+              "resident_population": 233343
+              },
+              "success": true
+               }
+/total/{year}:
+get:
+  is: [secured]
+  description: |
+  常住人口总量分析预测
+  queryParameters:
+    year: 
+      type: string
+      description: |
+        数据年份
+  responses:
+    200:
+      body:
+        application/json:
+          schema:
+            {
+              "code":"200",
+              "message":"成功",
+              "data":{
+                       
+              },
+              "success": true
+               }
+/increase/{townId}:
+  get:
+    is: [secured]
+    description: |
+      获取各镇人口自然增长率分析数据 按城镇
+    queryParameters:
+      townId:
+        type: string
+        description: |
+          城镇id
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": "200",
+                "message": "操作成功",
+                "data": {
+                  
+                },
+                "success": true
+              }
+           
+
+
++

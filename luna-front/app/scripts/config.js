@@ -16,6 +16,9 @@ var app =
       }
     ])
     .config(function ($httpProvider){
-      // $httpProvider.interceptors.push('loadingInterceptor');
+      
     })
+    .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+
+    }])
     .constant('apiBaseUrl', '');

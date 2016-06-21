@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import tiger.biz.power.support.*;
+import tiger.common.dal.annotation.LoginRequired;
+import tiger.common.dal.annotation.Permission;
+import tiger.common.dal.enums.PermissionEnum;
 import tiger.core.basic.BaseResult;
 import tiger.web.api.constants.APIConstants;
 
@@ -32,6 +35,8 @@ public class PowerGdpCorrelationController {
      * 获取工业用电量与经济发展关联分析数据
      *
      * */
+    @LoginRequired
+    @Permission(permission = {PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @RequestMapping(value="/total", method = RequestMethod.GET)
     public BaseResult<Map<String, double[]>> getTotal() {
         Map<String, double[]> map = pgcm.getPowerGdpArray();
@@ -42,6 +47,8 @@ public class PowerGdpCorrelationController {
      * 获取行业用电量与行业产值对比分析数据
      *
      * */
+    @LoginRequired
+    @Permission(permission = {PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @RequestMapping(value = "/industry/total/{year}",method = RequestMethod.GET)
     public BaseResult< Map<String, double[]>> getIndustryMap(@PathVariable("year") String year){
         Map<String, double[]> map =pgcm.getPowerGdpCorrelationIndustryMap(year, "4");
@@ -52,6 +59,8 @@ public class PowerGdpCorrelationController {
      * 行业用电量与经济发展关联分析 根据行业获取各年度数据
      *
      * */
+    @LoginRequired
+    @Permission(permission = {PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @RequestMapping(value = "/industry/{industryId}",method = RequestMethod.GET)
     public BaseResult getIndustrySoloMap(@PathVariable("industryId") String industryId){
         Map map = pgcm.getPowerGdpCorrelationIndustrySoloDomainMapTotal(industryId, "4");
@@ -62,6 +71,8 @@ public class PowerGdpCorrelationController {
      * 行业用电量与经济发展关联分析 根据行业和年度获取四个季度的数据
      *
      * */
+    @LoginRequired
+    @Permission(permission = {PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @RequestMapping(value = "/industry/{industryId}/{year}",method = RequestMethod.GET)
     public BaseResult getIndustrySoloMap(@PathVariable("industryId") String industryId,
                                          @PathVariable("year") String year){
@@ -73,6 +84,8 @@ public class PowerGdpCorrelationController {
      * 获取 企业用电量与经济发展关联分析 平均值数据
      *
      * */
+    @LoginRequired
+    @Permission(permission = {PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @RequestMapping(value = "/enterprise/average",method = RequestMethod.GET)
     public BaseResult getEnterpriseAverageList(){
         Map<String, double[]> map = pgcm.getEnterpriseAverageArray();
@@ -83,6 +96,8 @@ public class PowerGdpCorrelationController {
      * 企业用电量与企业产值关联分析 根据企业获取各年度数据
      *
      * */
+    @LoginRequired
+    @Permission(permission = {PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @RequestMapping(value = "/enterprise/{enterpriseId}",method = RequestMethod.GET)
     public BaseResult getEnterpriseSoloMap(@PathVariable("enterpriseId") String enterpriseId){
         Map map = pgcm.getPowerGdpCorrelationEnterpriseSoloDomainMapTotal(enterpriseId, "4");
@@ -93,6 +108,8 @@ public class PowerGdpCorrelationController {
      * 企业用电量与企业产值关联分析 根据企业id和年度获取四个季度的数据
      *
      * */
+    @LoginRequired
+    @Permission(permission = {PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @RequestMapping(value = "/enterprise/{enterpriseId}/{year}",method = RequestMethod.GET)
     public BaseResult getEnterpriseSoloList(@PathVariable("enterpriseId") String enterpriseId,
                                          @PathVariable("year") String year){

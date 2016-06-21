@@ -1,0 +1,259 @@
+<div class="insert-economy-module">
+	<div class="panel panel-default">
+		<div class="panel-heading font-bold">
+			用电总体数据
+		</div>
+		<div class="panel-body">
+			<form class="form-inline ng-pristine ng-valid" role="form">
+				<div class="form-group m-r-sm">
+					<label class="" for="powerTotalSelectYear">年度:</label>
+					<select id="powerTotalSelectYear" ng-model="powerTotalSelectYear" class="form-control width-power">
+	          <option ng-repeat="year in fourYear">{{year}}</option>
+	        </select>
+				</div>
+				<div class="form-group m-r-sm">
+					<label class="" for="power-total-power">太仓市工业用电量同比增长率:</label>
+					<div class="input-group width-power">
+						<input class="form-control" id="power-total-power" ng-model="powerTotalPowerValue" placeholder="请输入..">
+						<span class="input-group-addon">%</span>
+					</div>
+				</div>
+				<div class="form-group m-r-sm">
+					<label class="" for="power-total-gdp">太仓市GDP同比增长率:</label>
+					<div class="input-group width-power">
+						<input class="form-control" id="power-total-gdp" ng-model="powerTotalGdpValue" placeholder="请输入..">
+						<span class="input-group-addon">%</span>
+					</div>
+				</div>
+				<button class="btn w-xs btn-default btn-datainsert" ng-click="submitPowerTotal()">提交</button>
+			</form>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading font-bold">
+			行业用电数据录入
+		</div>
+		<div class="panel-body">
+			<form class="form-inline ng-pristine ng-valid" role="form">
+				<div class="m-b-sm">
+					<div class="form-group m-r-sm">
+						<label class="" for="powerIndustrySelectYear">年度:</label>
+						<select id="powerIndustrySelectYear" ng-model="powerIndustrySelectYear" class="form-control width-power">
+				          <option ng-repeat="year in fourYear">{{year}}</option>
+				        </select>
+					</div>
+					<div class="form-group m-r-sm">
+						<label class="" for="powerIndustrySelectQuarter">季度:</label>
+						<select id="powerIndustrySelectQuarter" ng-model="powerIndustrySelectQuarter" class="form-control width-power">
+				          <option value="1">第一季度</option>
+				          <option value="2">第二季度</option>
+				          <option value="3">第三季度</option>
+				          <option value="4">第四季度</option>
+				        </select>
+					</div>
+					<div class="form-group m-r-sm">
+						<label class="" for="powerIndustrySelected">行业:</label>
+						<select id="powerIndustrySelected" ng-model="powerIndustrySelected" class="form-control width-power">
+				          <option value="3001">农、林、牧、渔</option>
+				          <option value="3002">工业</option>
+				          <option value="3003">建筑业</option>
+				          <option value="3004">交通运输、仓储和邮政业</option>
+				          <option value="3005">信息传输、计算机服务和软件业</option>
+				          <option value="3006">批发零售、住宿和餐饮业</option>
+				          <option value="3007">金融房地产商务及居民服务业</option>
+				          <option value="3008">公共事业及管理组织</option>
+				        </select>
+					</div>
+				</div>
+				<br>
+				<div class="form-group m-r-sm">
+					<label class="" for="power-industry-power">行业用电量同比增长率:</label>
+					<div class="input-group width-power">
+						<input class="form-control" id="power-industry-power" ng-model="powerIndustryPowerValue" placeholder="请输入..">
+						<span class="input-group-addon">%</span>
+					</div>
+				</div>
+				<div class="form-group m-r-sm">
+					<label class="" for="power-industry-gdp">行业产值同比增长率:</label>
+					<div class="input-group width-power">
+						<input class="form-control" id="power-industry-gdp" placeholder="请输入..">
+						<span class="input-group-addon">%</span>
+					</div>
+				</div>
+				<button class="btn w-xs btn-default btn-datainsert">提交</button>
+			</form>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading font-bold">
+			企业用电数据录入
+		</div>
+		<div class="panel-body">
+			<form class="form-inline ng-pristine ng-valid" role="form">
+				<div class="m-b-sm">
+					<div class="form-group m-r-sm">
+						<label class="" for="powerSelectYear">年度:</label>
+						<select id="powerSelectYear" class="form-control width-power">
+				          <option ng-repeat="year in fourYear">{{year}}</option>
+				        </select>
+					</div>
+					<div class="form-group m-r-sm">
+						<label class="" for="powerEnterpriseSelectQuarter">季度:</label>
+						<select id="powerEnterpriseSelectQuarter" class="form-control width-power">
+				          <option value="1">第一季度</option>
+				          <option value="2">第二季度</option>
+				          <option value="3">第三季度</option>
+				          <option value="4">第四季度</option>
+				        </select>
+					</div>
+					<div class="form-group m-r-sm">
+						<label class="" for="powerEnterpriseSelected">企业:</label>
+						<select id="powerEnterpriseSelected" class="form-control width-power">
+				          <option value="5001">太仓振辉化纤有限公司</option>
+				          <option value="5002">苏州达诺铸造有限公司</option>
+				          <option value="5003">申久化纤有限公司</option>
+				          <option value="5004">太仓协鑫光伏科技有限公司</option>
+				          <option value="5005">舍弗勒(中国)有限公司</option>
+				          <option value="5006">江苏长乐纤维科技有限公司</option>
+				          <option value="5007">太仓海螺水泥有限公司</option>
+				          <option value="5008">太仓中化环保化工有限公司</option>
+				          <option value="5009">奥特斯维能源(太仓)有限公司</option>
+				          <option value="5010">太仓利泰纺织厂有限公司</option>
+				        </select>
+					</div>
+				</div>
+				<br>
+				<div class="form-group m-r-sm">
+					<label class="" for="power-enterprise-power">企业用电量同比增长率:</label>
+					<div class="input-group width-power">
+						<input class="form-control" id="power-enterprise-power" placeholder="请输入..">
+						<span class="input-group-addon">%</span>
+					</div>
+				</div>
+				<div class="form-group m-r-sm">
+					<label class="" for="power-enterprise-gdp">企业产值同比增长率:</label>
+					<div class="input-group width-power">
+						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入..">
+						<span class="input-group-addon">%</span>
+					</div>
+				</div>
+				<button class="btn w-xs btn-default btn-datainsert">提交</button>
+			</form>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading font-bold">
+			GDP数据录入
+		</div>
+		<div class="panel-body">
+			<form class="form-inline ng-pristine ng-valid" role="form">
+				<div class="form-group m-r-sm" style="margin-left: 7.2rem">
+					<label class="" for="powerSelectYear">年度:</label>
+					<select id="powerSelectYear" class="form-control width-power">
+	          <option ng-repeat="year in fourYear">{{year}}</option>
+	        </select>
+				</div>
+				<div class="form-group m-r-sm" style="margin-left: 16.5rem">
+					<label class="" for="powerEnterpriseSelectQuarter">季度:</label>
+					<select id="powerEnterpriseSelectQuarter" class="form-control width-power">
+	          			  <option value="1">第一季度</option>
+				          <option value="2">第二季度</option>
+				          <option value="3">第三季度</option>
+				          <option value="4">第四季度</option>
+	        		</select>
+				</div>
+			</form>
+			<form class="form-inline ng-pristine ng-valid" role="form" style = "margin-top: 1.5rem">
+				<div class="form-group m-r-sm" style="margin-left: 3rem">
+							<label class="" for="powerIndustrySelected">GDP产业类型:</label>
+							<select id="powerIndustrySelected" ng-model="gdpTypeSelected" class="form-control width-power btn-sm">
+					          <option value="0">全行业</option>
+					          <option value="1">第一产业</option>
+					          <option value="2">第二产业</option>
+					          <option value="3">第三产业</option>
+					        </select>
+				 </div>
+				 <div class="form-group m-r-sm" style="margin-left: 9.5rem">
+						<label class="" for="power-industry-gdp">本年度GDP目标:</label>
+						<div class="input-group width-power input-group-sm">
+							<input class="form-control" id="power-industry-gdp" placeholder="请输入..">
+							<span class="input-group-addon">亿元</span>
+						</div>
+				 </div>
+			</form>
+			<form class="form-inline ng-pristine ng-valid" role="form">
+				<div class="form-group m-r-sm" style = "margin-top: 1.5rem">
+							<label class="" for="powerIndustrySelected">全民生产总值(GDP):</label>
+							<div class="input-group input-group-sm" >
+							  <input type="text" class="form-control" placeholder="请输入" aria-describedby="basic-addon2">
+							  <span class="input-group-addon" id="basic-addon2">亿元</span>
+							</div>
+				 </div>
+				 <div class="form-group m-r-sm" style = "margin-top: 1.5rem">
+							<label class="" for="powerIndustrySelected">GDP同比增长率:</label>
+							<div class="input-group input-group-sm" >
+							  <input type="text" class="form-control" placeholder="请输入" aria-describedby="basic-addon2">
+							  <span class="input-group-addon" id="basic-addon2">亿元</span>
+							</div>
+				 </div>
+			</form>
+			<button class="btn w-xs btn-default btn-datainsert" style="margin-top: 2rem;margin-left: 9.7rem">提交</button>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading font-bold">
+			税收数据录入
+		</div>
+		<div class="panel-body">
+			<form class="form-inline ng-pristine ng-valid" role="form">
+				<div class="form-group m-r-sm" style="margin-left: 5.2rem">
+					<label class="" for="powerSelectYear">年度:</label>
+					<select id="powerSelectYear" class="form-control width-power">
+	          <option ng-repeat="year in fourYear">{{year}}</option>
+	        </select>
+				</div>
+				<div class="form-group m-r-sm" style="margin-left: 6rem">
+					<label class="" for="powerEnterpriseSelectQuarter">月份:</label>
+					<select id="powerEnterpriseSelectQuarter" class="form-control width-power">
+	          <option value="1">1月</option>
+	          <option value="2">2月</option>
+	          <option value="3">3月</option>
+	          <option value="4">4月</option>
+	          <option value="1">5月</option>
+	          <option value="2">6月</option>
+	          <option value="3">7月</option>
+	          <option value="4">8月</option>
+	          <option value="1">9月</option>
+	          <option value="2">10月</option>
+	          <option value="3">11月</option>
+	          <option value="4">12月</option>
+	        </select>
+				</div>
+			</form>
+			<form class="form-inline ng-pristine ng-valid" role="form" style = "margin-top: 1.5rem">
+				 <div class="form-group m-r-sm" style="margin-left: 0rem">
+						<label class="" for="power-industry-gdp">本年度税收目标:</label>
+						<div class="input-group width-power input-group-sm">
+							<input class="form-control" id="power-industry-gdp" placeholder="请输入..">
+							<span class="input-group-addon">亿元</span>
+						</div>
+				 </div>
+				<div class="form-group m-r-sm"  >
+							<label class="" for="powerIndustrySelected">税收总值:</label>
+							<div class="input-group input-group-sm" >
+							  <input type="text" class="form-control" placeholder="请输入" aria-describedby="basic-addon2">
+							  <span class="input-group-addon" id="basic-addon2">亿元</span>
+							</div>
+				 </div>
+				 <div class="form-group m-r-sm" >
+							<label class="" for="powerIndustrySelected">税收同比增长率:</label>
+							<div class="input-group input-group-sm" >
+							  <input type="text" class="form-control" placeholder="请输入" aria-describedby="basic-addon2">
+							  <span class="input-group-addon" id="basic-addon2">亿元</span>
+							</div>
+				 </div>
+			</form>
+			<button class="btn w-xs btn-default btn-datainsert" style="margin-top: 2rem;margin-left: 8rem">提交</button>
+		</div>
+	</div>
+</div>

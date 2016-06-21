@@ -42,7 +42,8 @@ public class EconomyGdpMangerimpl implements EconomyGdpManger{
                 if (temp.getGdpRealValue() == 0){
 
                 }else {
-                    quarterErroRate[temp.getQuarter()-1]=Math.abs((temp.getGdpRealValue()-temp.getGdpForecastValue())/temp.getGdpForecastValue());
+                    java.text.DecimalFormat df = new java.text.DecimalFormat("#.0");
+                    quarterErroRate[temp.getQuarter()-1]=Double.parseDouble(df.format(Math.abs((temp.getGdpRealValue()-temp.getGdpForecastValue())/temp.getGdpForecastValue())*100));
                 }
 
                 quarterGrowUp[temp.getQuarter()-1]=temp.getGdpGrowthRate();
@@ -76,7 +77,8 @@ public class EconomyGdpMangerimpl implements EconomyGdpManger{
                     if (temp.getGdpRealValue()==0){
 
                     }else{
-                        yearErrorRate[i] = Math.abs((temp.getGdpRealValue()- temp.getGdpForecastValue()) / temp.getGdpForecastValue());
+                        java.text.DecimalFormat df = new java.text.DecimalFormat("#.0");
+                        yearErrorRate[i] = Double.parseDouble(df.format(Math.abs((temp.getGdpRealValue()- temp.getGdpForecastValue()) / temp.getGdpForecastValue())*100));
                     }
 
                     yearGrowUp[i] = temp.getGdpGrowthRate();
@@ -132,6 +134,54 @@ public class EconomyGdpMangerimpl implements EconomyGdpManger{
         map.put("FirstForecastYearGdp",FirstForecastYearGdp);
         map.put("SecondForecastYearGdp",SecondForcastYearGdp);
         map.put("ThirdForecastYearGdp",ThirdForcastYearGdp);
+        return map;
+    }
+
+    public Map<String,double[]> getYearIndustryDetail(Long year){
+        double firstIndustryRealDetail[] = new double[4],
+               firstIndustryForecastDetail[] = new double[4],
+               firstIndustryGrowRate[] =new double[4];
+
+        double  secondIndustryRealDetail[] = new double[4],
+                secondIndustryForecastDetail[] = new double[4],
+                secondIndustryGrowRate[] = new double[4];
+
+        double  thirdIndustryRealDetail[] = new double[4],
+                thirdIndustryForecastDetail[] = new double[4],
+                thirdIndustryGrowRate[] = new double[4];
+
+        Map<String,double[]> map = new HashMap<>();
+
+        List<GdpDetailDO> gdpDetailDOList = economyGdpService.getYearIndustryDetail(year);
+
+        Iterator<GdpDetailDO> e = gdpDetailDOList.iterator();
+
+        while(e.hasNext()){
+            GdpDetailDO temp = e.next();
+
+            if (temp.getIndustryType_id() == 12){
+                firstIndustryRealDetail[temp.getQuarter()-1]=temp.getGdpRealValue();
+                firstIndustryForecastDetail[temp.getQuarter()-1] = temp.getGdpForecastValue();
+                firstIndustryGrowRate[temp.getQuarter()-1] = temp.getGdpGrowthRate();
+            }else if (temp.getIndustryType_id() == 13){
+                secondIndustryRealDetail[temp.getQuarter()-1] = temp.getGdpRealValue();
+                secondIndustryForecastDetail[temp.getQuarter()-1] = temp.getGdpForecastValue();
+                secondIndustryGrowRate[temp.getQuarter()-1] = temp.getGdpGrowthRate();
+            }else if (temp.getIndustryType_id() == 14){
+                thirdIndustryRealDetail[temp.getQuarter()-1] = temp.getGdpRealValue();
+                thirdIndustryForecastDetail[temp.getQuarter()-1] = temp.getGdpForecastValue();
+                thirdIndustryGrowRate[temp.getQuarter()-1] = temp.getGdpGrowthRate();
+            }
+        }
+        map.put("firstIndustryRealDetail",firstIndustryRealDetail);
+        map.put("firstIndustryForecastDetail",firstIndustryForecastDetail);
+        map.put("firstIndustryGrowRate",firstIndustryGrowRate);
+        map.put("secondIndustryRealDetail",secondIndustryRealDetail);
+        map.put("secondIndustryForecastDetail",secondIndustryForecastDetail);
+        map.put("secondIndustryGrowRate",secondIndustryGrowRate);
+        map.put("thirdIndustryRealDetail",thirdIndustryRealDetail);
+        map.put("thirdIndustryForecastDetail",thirdIndustryForecastDetail);
+        map.put("thirdIndustryGrowRate",thirdIndustryGrowRate);
         return map;
     }
 }

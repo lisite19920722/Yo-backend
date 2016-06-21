@@ -1,6 +1,38 @@
 angular.module('luna')
-  .controller('AppCtrl', ['$scope', '$localStorage', '$window',
-    function(              $scope, $localStorage,   $window ) {
+  .controller('AppCtrl', ['$scope', '$state', '$localStorage', '$window','AuthTool', 'AlertTool', 'ResTool','AccountRes','DataRes',
+    function(              $scope, $state, $localStorage,   $window, AuthTool, AlertTool, ResTool, AccountRes, DataRes) {
+      // 获取当前登录用户
+      $scope.loginUser = AuthTool.getLoginUser();
+      // 获取当前团队
+      $scope.currWorkspace = AuthTool.getCurrWorkspace();
+
+      //数据录入权限判断
+      ResTool.httpGetWithWorkspace(DataRes.isShowDataPanel, {}, {})
+      .then(function(data) {
+        // console.log("success"); //测试通过
+        if (data.code == "501") {
+          $scope.isShowDataMngPanel = false;
+        } else {
+          $scope.isShowDataMngPanel = true;
+        }
+      }, function(err) {
+        $scope.isShowDataMngPanel = false;
+      });
+      $scope.logout = function () {
+        AlertTool.warningConfirm({
+          title: '确定要退出系统?'
+        }).then(function (isConfirm) {
+          if (isConfirm) {
+            ResTool.httpDeleteWithToken(AccountRes.accountAuthentication, null, null)
+              .then(function () {
+                AuthTool.logout();
+                AlertTool.close();
+                // 跳转到登录界面
+                $state.go('portal.login');
+              });
+          }
+        });
+      };
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');

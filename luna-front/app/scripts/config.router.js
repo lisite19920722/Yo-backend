@@ -6,6 +6,9 @@ angular.module('luna')
       function($rootScope, $state, $stateParams) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
+
+        //初始化弹窗
+        $('[data-toggle="popover"]').popover();
       }
     ]
   )
@@ -73,11 +76,50 @@ angular.module('luna')
             }
           })
 
-          //economy  
+          //数据管理
+          .state('app.data', {//二级导航栏
+            abstract: true,
+            url: '/data',
+            templateUrl: 'tpl/app/dataMng/datamenu.html',
+            controller:'DataCtrl',
+            resolve: {
+              css: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/dataMng/dataCtrl.js',
+                ]);
+              }]
+            }
+          })
+          .state('app.data.insertEconomy', {
+            url: '^/data/insert',
+            templateUrl: 'tpl/app/dataMng/insertEconomy.html',
+            controller: 'EconomyDataInsertCtrl',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/dataMng/economyDataInsertCtrl.js',
+                ]);
+              }]
+            }
+          })
+           .state('app.data.populationinsert', {
+             url: '^/data/insert/population',
+             templateUrl: 'tpl/app/dataMng/insetPopulation.html',
+             controller: 'PopulationDataInsertCtrl',
+             resolve: {
+               controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                 return $ocLazyLoad.load([
+                   'scripts/controllers/app/dataMng/populationDataInsertCtrl.js',
+                 ]);
+               }]
+             }
+           })
+           //数据管理
+          //economy 
           .state('app.index', {
             abstract: true,
             url: '^/app/index',
-            templateUrl: 'tpl/app/economy-index.html',
+            templateUrl: 'tpl/app/economy/emenu.html',
             controller: 'AppIndexController',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
@@ -139,11 +181,15 @@ angular.module('luna')
           .state('app.index.economy.powerconsumption', {
             url: '^/app/index/economy/powerconsumption/:title',
             templateUrl: 'tpl/app/economy/economy-powerconsumption.html',
-            controller: 'EconomyPowerConsumptionCtrl',
+            controller: 'PowerCtrl',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/economy/economy-powerconsumption.js',
+                  'scripts/controllers/app/economy/power/power.js',
+                  'scripts/controllers/app/economy/power/power-total.js',
+                  'scripts/controllers/app/economy/power/power-industry.js',
+                  'scripts/controllers/app/economy/power/power-industry-solo.js',
+                  'scripts/controllers/app/economy/power/power-enterprise-average.js',
                 ]);
               }]
             }
@@ -151,16 +197,15 @@ angular.module('luna')
           .state('app.index.economy.powerconsumptionofenterprises', {
             url: '^/app/index/economy/powerconsumption/enterprises/:title',
             templateUrl: 'tpl/app/economy/economy-powerconsumption-enterprises.html',
-            controller: 'EconomyPowerConsumptionOfEnterprisesCtrl',
+            controller: 'PowerEnterpriseSoloCtrl',
             resolve: {
               controller: ['$ocLazyLoad', function($ocLazyLoad) {
                 return $ocLazyLoad.load([
-                  'scripts/controllers/app/economy/economy-powerconsumption-enterprises.js',
+                  'scripts/controllers/app/economy/power/power-enterprise-solo.js',
                 ]);
               }]
             }
           })
-
           //economy end
 
           //environment start
@@ -254,36 +299,25 @@ angular.module('luna')
               }]
             }
           })
-           //population end
-           .state('app.population.population-class', {
-            url: '^/app/population/teacher/class',
-            templateUrl: 'tpl/app/teacher-class.html',
-            controller: 'TeacherClassCtrl',
-            resolve: {
-              controller: ['$ocLazyLoad', function($ocLazyLoad) {
-                return $ocLazyLoad.load([
-                  'scripts/controllers/app/teacher-class.js',
-                ]);
-              }]
-            }
-          })
+          //population end
+          
           .state('app.profile', {
             abstract: true,
             url: '^/app/profile',
-            templateUrl: 'tpl/app/profile.html',
+            templateUrl: 'tpl/app/profile/profile.html',
             resolve: {
             }
           })
           .state('app.profile.person', {
             url: '^/app/profile/person',
-            templateUrl: 'tpl/app/profile-person.html',
+            templateUrl: 'tpl/app/profile/profile-person.html',
             resolve: {
 
             }
           })
           .state('app.profile.password', {
             url: '^/app/profile/password',
-            templateUrl: 'tpl/app/profile-password.html',
+            templateUrl: 'tpl/app/profile/profile-password.html',
             resolve: {
 
             }

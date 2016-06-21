@@ -2,9 +2,14 @@
 @import "../utilities";
 @import "../reset";
 @import "../mixins";
+@import "../common";
 @import "environment/environment";
+@import "economy/power";
+@import "population/pop";
+@import "data/dataMng";
 
 @import "index";
+@luna_border_color:#428bca;
 
 @info_color: #23b7e5;
 
@@ -76,4 +81,9 @@
   border:0px none;
   -webkit-box-shadow:0 0 0;
   box-shadow: 0 0 0;
+}
+.bi-nav-font {
+  //侧边导航栏字体
+  font-size: 16px;
+  font-weight: bold;
 }

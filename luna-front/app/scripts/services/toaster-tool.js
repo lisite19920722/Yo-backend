@@ -15,7 +15,8 @@ angular.module('luna')
         type: 'success',
         title: title || '',
         body: body || '',
-        showCloseButton: true
+        showCloseButton: false,
+        timeout: 2000
       });
     };
 
@@ -24,7 +25,8 @@ angular.module('luna')
         type: 'info',
         title: title || '',
         body: body || '',
-        showCloseButton: true
+        showCloseButton: false,
+        timeout: 2000
       });
     };
 
@@ -33,7 +35,8 @@ angular.module('luna')
         type: 'warning',
         title: title || '',
         body: body || '',
-        showCloseButton: true
+        showCloseButton: false,
+        timeout: 2000
       });
     };
 
@@ -42,7 +45,8 @@ angular.module('luna')
         type: 'error',
         title: title || '',
         body: body || '',
-        showCloseButton: true
+        showCloseButton: false,
+        timeout: 2000
       });
     };
   }]);

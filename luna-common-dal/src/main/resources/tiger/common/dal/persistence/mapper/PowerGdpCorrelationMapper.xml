@@ -22,4 +22,42 @@
         where
         year &gt;= #{startYear, jdbcType=VARCHAR} and year &lt;= #{endYear, jdbcType=VARCHAR}
     </select>
+    <select id="selectByYear" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select * from power_total_forcast
+        where
+        year = #{year, jdbcType=BIGINT}
+    </select>
+    <update id="updateByPrimaryKey" parameterType="tiger.common.dal.persistence.power.PowerGdpCorrelationDO">
+        update power_total_forcast
+        set create_time = #{createTime, jdbcType=TIMESTAMP},
+        year = #{year, jdbcType=BIGINT},
+        real_gdp_value = #{realGdpValue, jdbcType=DOUBLE},
+        forcast_gdp_value = #{forcastGdpValue, jdbcType=DOUBLE},
+        real_power_value = #{realPowerValue, jdbcType=DOUBLE},
+        forcast_power_value = #{forcastPowerValue, jdbcType=DOUBLE},
+        modify_time = CURRENT_TIMESTAMP
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <insert id="insertSelective" parameterType="tiger.common.dal.persistence.power.PowerGdpCorrelationDO" useGeneratedKeys="true"
+            keyProperty="id">
+        insert into power_total_forcast
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            year,
+            real_gdp_value,
+            forcast_gdp_value,
+            real_power_value,
+            forcast_power_value,
+            create_time,
+            modify_time
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{year,jdbcType=BIGINT},
+            #{realGdpValue,jdbcType=DOUBLE},
+            #{forcastGdpValue,jdbcType=DOUBLE},
+            #{realPowerValue,jdbcType=DOUBLE},
+            #{forcastPowerValue,jdbcType=DOUBLE},
+            CURRENT_TIMESTAMP,
+            CURRENT_TIMESTAMP
+        </trim>
+    </insert>
 </mapper>

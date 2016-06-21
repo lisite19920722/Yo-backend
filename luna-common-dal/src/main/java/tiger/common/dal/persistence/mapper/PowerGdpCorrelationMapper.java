@@ -22,4 +22,16 @@ public interface PowerGdpCorrelationMapper {
      * @return
      */
     List<PowerGdpCorrelationDO> getPowerGdpCorrelationDOList(@Param("startYear")String startYear, @Param("endYear")String endYear);
+
+    /**
+     * 录入数据
+     *
+     * @param powerGdpCorrelationDO
+     * @return
+     */
+    int insertSelective(PowerGdpCorrelationDO powerGdpCorrelationDO);
+
+    int updateByPrimaryKey(PowerGdpCorrelationDO powerGdpCorrelationDO);
+
+    PowerGdpCorrelationDO selectByYear(@Param("year")int year);
 }
