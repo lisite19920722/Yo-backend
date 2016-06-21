@@ -95,7 +95,7 @@ public class AccountManagerImpl implements AccountManager {
         AccountDomain accountDomain = accountService.readByMobile(mobile);
         // 检验手机号码是否注册
         if (accountDomain == null) {
-            throw new TigerException(ErrorCodeEnum.NOT_FOUND, "未注册的手机号码");
+            throw new TigerException(ErrorCodeEnum.NOT_FOUND, "未注册的帐号");
         }
         // 检验账户设置
         if (!StringUtil.equals(mobile, accountDomain.getMobile())) {
@@ -110,7 +110,7 @@ public class AccountManagerImpl implements AccountManager {
             return accountDomain;
         }
 
-        throw new TigerException(ErrorCodeEnum.BIZ_FAIL, "手机号码密码不匹配");
+        throw new TigerException(ErrorCodeEnum.BIZ_FAIL, "帐号密码不匹配");
     }
 
     /**
