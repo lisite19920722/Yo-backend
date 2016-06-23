@@ -91,7 +91,7 @@ angular.module('luna')
             }
           })
           .state('app.data.insertEconomy', {
-            url: '^/data/insert',
+            url: '^/data/insertEconomy',
             templateUrl: 'tpl/app/dataMng/insertEconomy.html',
             controller: 'EconomyDataInsertCtrl',
             resolve: {
@@ -102,8 +102,8 @@ angular.module('luna')
               }]
             }
           })
-           .state('app.data.populationinsert', {
-             url: '^/data/insert/population',
+           .state('app.data.insertPopulation', {
+             url: '^/data/insertPopulation',
              templateUrl: 'tpl/app/dataMng/insetPopulation.html',
              controller: 'PopulationDataInsertCtrl',
              resolve: {
