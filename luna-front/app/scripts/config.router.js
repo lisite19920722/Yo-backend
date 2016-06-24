@@ -104,7 +104,7 @@ angular.module('luna')
           })
            .state('app.data.insertPopulation', {
              url: '^/data/insertPopulation',
-             templateUrl: 'tpl/app/dataMng/insetPopulation.html',
+             templateUrl: 'tpl/app/dataMng/insertPopulation.html',
              controller: 'PopulationDataInsertCtrl',
              resolve: {
                controller: ['$ocLazyLoad', function($ocLazyLoad) {

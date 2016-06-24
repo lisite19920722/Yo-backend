@@ -489,11 +489,30 @@
 .m-r-xs {
   margin-right: 5px;
 }
+.primary-school-number{
+  margin-left: 26px;
+}
+.middle-school-number{
+  margin-left: 23px;
+}
+
+
 .m-r-sm {
   margin-right: 10px;
 }
+.town-name{
+  margin-left: 50px;
+   margin-right: 10px;
+}
+.employ-num {
+
+  margin-right: 38px;
+}
 .m-r {
   margin-right: 15px;
+}
+.general-submit{
+  margin-left: 91px;
 }
 .m-r-md {
   margin-right: 20px;
@@ -2201,11 +2220,32 @@ body {
 .insert-economy-module {
   padding: 30px 50px;
 }
+.insert-population-module {
+  padding: 30px 50px;
+}
+
+.labor-employment-year{
+  margin-left: 55px;
+}
+
+.labor-num{
+  margin-left: 13px;
+}
+
 .data-insert-selector {
   border-radius: 0 !important;
 }
 .width-power {
   width: 120px;
+}
+.width-population{
+width: 120px;
+}
+.width-population-resident{
+  width: 130px;
+}
+.width-population-age{
+  width: 125px;
 }
 .subview3_title {
   border: 0px solid;
