@@ -16,6 +16,7 @@ public class PopulationStructureDomain extends BaseDomain {
     private long sexTypeId;
     private int residentPopulation;
 
+
     public int getResidentPopulation() {
         return residentPopulation;
     }
@@ -32,14 +33,6 @@ public class PopulationStructureDomain extends BaseDomain {
         this.sexTypeId = sexTypeId;
     }
 
-    public long getAgeTypeId() {
-        return ageTypeId;
-    }
-
-    public void setAgeTypeId(long ageTypeId) {
-        this.ageTypeId = ageTypeId;
-    }
-
     public int getYear() {
         return year;
     }
@@ -48,8 +41,13 @@ public class PopulationStructureDomain extends BaseDomain {
         this.year = year;
     }
 
+    public long getAgeTypeId() {
+        return ageTypeId;
+    }
 
-
+    public void setAgeTypeId(long ageTypeId) {
+        this.ageTypeId = ageTypeId;
+    }
 
     //下面和无参数的构造函数
     public PopulationStructureDomain() {

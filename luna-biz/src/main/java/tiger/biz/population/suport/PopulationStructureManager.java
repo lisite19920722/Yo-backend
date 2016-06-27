@@ -10,8 +10,8 @@ import tiger.core.domain.population.PopulationStructureDomain;
 public interface PopulationStructureManager {
     /**
      * 获取一条人口结构记录
-     * @param id
+     * @param
      * @return
      */
-    BaseResult<PopulationStructureDomain> read(Long id);
+    BaseResult read();
 }

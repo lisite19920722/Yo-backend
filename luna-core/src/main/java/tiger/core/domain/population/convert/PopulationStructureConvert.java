@@ -8,6 +8,7 @@ import tiger.core.domain.population.PopulationStructureDomain;
  * Created by Winter on 2016/6/11.
  */
 public class PopulationStructureConvert {
+
     public static PopulationStructureDomain convertDOToDomain(PopulationStructureDO populationStructureDO) {
         if(null==populationStructureDO)
         {return null;}
@@ -16,4 +17,14 @@ public class PopulationStructureConvert {
         BeanUtil.copyPropertiesWithIgnores(populationStructureDO,populationStructureDomain);
         return populationStructureDomain;
     }
+
+public static PopulationStructureDO convertDomainToDO(PopulationStructureDomain populationStructureDomain)
+{
+ if(populationStructureDomain==null)
+     { return null;}
+    PopulationStructureDO populationStructureDO=new PopulationStructureDO();
+    BeanUtil.copyPropertiesWithIgnores(populationStructureDomain,populationStructureDO);
+    return populationStructureDO;
+}
+
 }

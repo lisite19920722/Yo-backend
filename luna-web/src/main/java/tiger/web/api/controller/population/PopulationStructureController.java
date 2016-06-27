@@ -20,8 +20,13 @@ public class PopulationStructureController {
     @Autowired
     PopulationStructureManager populationStructureManager;
 
-    @RequestMapping(value = "/population_structure/{id}", method = RequestMethod.GET)
-    public BaseResult<PopulationStructureDomain> getPopulationStructureById(@PathVariable("id") Long id) {
-        return populationStructureManager.read(id);
+    /**
+     * 获取PopulationStructureDomain
+     * @return
+     */
+    @RequestMapping(value = "/population_structure", method = RequestMethod.GET)
+    @ResponseBody
+    public BaseResult getPopulationStructure() {
+        return populationStructureManager.read();
     }
 }
