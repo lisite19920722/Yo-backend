@@ -46,5 +46,20 @@ public class PopulationStructureServiceImpl implements PopulationStructureServic
 
     }
 
+    @Override
+    public PopulationStructureDomain createPopulationStructure  (PopulationStructureDomain populationStructureDomain){
+        if(populationStructureDomain==null)
+        {
+            return null;
+        }
+
+        PopulationStructureDO populationStructureDO=PopulationStructureConvert.convertDomainToDO(populationStructureDomain);
+        if(populationStructureMapper.insertSelective(populationStructureDO)>0)
+        {
+        return PopulationStructureConvert.convertDOToDomain(populationStructureDO);
+        }
+        return null;
+    }
+
 
 }

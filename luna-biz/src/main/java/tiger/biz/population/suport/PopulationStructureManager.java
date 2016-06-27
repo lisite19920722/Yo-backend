@@ -14,4 +14,11 @@ public interface PopulationStructureManager {
      * @return
      */
     BaseResult read();
+
+    /**
+     * 往人口结构表中插入数据
+     * @param populationStructureDomain
+     * @return
+     */
+    BaseResult<PopulationStructureDomain> create(PopulationStructureDomain populationStructureDomain);
 }

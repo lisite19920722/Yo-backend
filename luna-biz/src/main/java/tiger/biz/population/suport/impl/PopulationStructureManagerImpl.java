@@ -32,4 +32,19 @@ public class PopulationStructureManagerImpl implements PopulationStructureManage
        arrays.add(populationStructureDomainList);
         return new BaseResult(arrays);
     }
+
+    /**
+     * 创建一条数据结构的记录
+     * @param populationStructureDomain
+     * @return
+     */
+
+    @Override
+    public BaseResult<PopulationStructureDomain> create(PopulationStructureDomain populationStructureDomain)
+    {
+        PopulationStructureDomain resultDomain=populationStructureService.createPopulationStructure(populationStructureDomain);
+        return new BaseResult<>(resultDomain);
+    }
+
+
 }

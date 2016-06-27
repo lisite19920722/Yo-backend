@@ -22,4 +22,20 @@
         from population_structure_data
     </select>
 
+    <insert id="insertSelective" parameterType="tiger.common.dal.persistence.population.PopulationStructureDO" useGeneratedKeys="true" keyProperty="id" >
+        insert into population_structure_data
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            year,
+            age_type_id,
+            sex_type_id,
+            resident_population,
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            #{year,jdbcType=BIGINT},
+            #{ageTypeId,jdbcType=BIGINT},
+            #{sexTypeId,jdbcType=BIGINT},
+            #{residentPopulation,jdbcType=BIGINT},
+        </trim>
+    </insert>
+
 </mapper>
