@@ -91,7 +91,7 @@ angular.module('luna')
             }
           })
           .state('app.data.insertEconomy', {
-            url: '^/data/insert',
+            url: '^/data/insertEconomy',
             templateUrl: 'tpl/app/dataMng/insertEconomy.html',
             controller: 'EconomyDataInsertCtrl',
             resolve: {
@@ -102,9 +102,9 @@ angular.module('luna')
               }]
             }
           })
-           .state('app.data.populationinsert', {
-             url: '^/data/insert/population',
-             templateUrl: 'tpl/app/dataMng/insetPopulation.html',
+           .state('app.data.insertPopulation', {
+             url: '^/data/insertPopulation',
+             templateUrl: 'tpl/app/dataMng/insertPopulation.html',
              controller: 'PopulationDataInsertCtrl',
              resolve: {
                controller: ['$ocLazyLoad', function($ocLazyLoad) {

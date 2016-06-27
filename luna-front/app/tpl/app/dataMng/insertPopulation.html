@@ -1,62 +1,67 @@
-﻿<div  style="padding:20px;">
+﻿<div class="insert-population-module">
 	<div class="panel panel-default">
 		<div class="panel-heading font-bold">
-			人口结构数据录入
+			人口结构数据
 		</div>
 		<div class="panel-body">
-			<form class="form-inline ng-pristine ng-valid" role="form">
-				<div class="form-group m-r-sm">
-					<label class="offset-12" for="powerSelectYear">年份:</label>
-					<select id="powerSelectYear" class="form-control width-power">
-						<option ng-repeat="year in fourYear">{{year}}</option>
+			<form action="" class="form-inline ng-pristine ng-valid" role="form">
+				<div class="form-group m-r-sm labor-employment-year">
+					<label for="PopulationSelectedYear" class="">年份:</label>
+					<select  ng-model="populationSelectYear" id="populationSelectYear" class="form-control width-population">
+						<option  ng-repeat="year in fourYear">{{year}}</option>
 					</select>
+				</div><br><br>
+
+				<div class="form-group m-r-sm labor-employment-year">
+					<label for="sex">性别:</label>
+                    <select ng-model="sexForPopulation" id="sex" class="form-control width-population">
+                    	<option value="1">男</option>
+                    	<option value="2">女</option>
+                    </select>
 				</div>
+
+				<div class="form-group m-r-sm ">
+					<label  for="population-age" >年龄：</label>
+                    <div class="input-group width-population-age ">
+                    <input type="text" id="population-age" class="form-control" ng-model="populationAge" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength = 2 placeholder="0-99">
+                    <span class="input-group-addon">岁</span>
+                    </div>
+				</div>
+
 				<div class="form-group m-r-sm">
-					<label class="" for="powerEnterpriseSelectQuarter">性别:</label>
-					<select id="powerEnterpriseSelectQuarter" class="form-control width-power">
-						<option value="1">男</option>
-						<option value="2">女</option>
-					</select>
-					<div class="form-group m-r-sm">
-						<label class="" for="power-enterprise-power">年龄:</label>
-						<div class="input-group width-power">
-							<input class="form-control" id="power-enterprise-power" placeholder="0-99的数值">
-						</div>
+					<label for="residentsPopulation">常住人口</label>
+					<div class="input-group width-population-resident">
+						<input type="text" class="form-control" placeholder="请输入..">
+						<span class="input-group-addon">人</span>
 					</div>
-					<div class="form-group m-r-sm">
-						<label class="" for="power-enterprise-gdp">人口占比:</label>
-						<div class="input-group width-power">
-							<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
-							<span class="input-group-addon">%</span>
-						</div>
-					</div>
-					<button class="btn w-xs btn-default btn-datainsert">提交</button>
 				</div>
+				<br><br>
+				<button class="general-submit btn w-xs btn-default btn-datainsert">提交</button>
 			</form>
 		</div>
 	</div>
+
 	<div class="panel panel-default">
 		<div class="panel-heading font-bold">
-			劳动力就业数据录入
+			劳动力就业数据
 		</div>
 		<div class="panel-body">
 			<form class="form-inline ng-pristine ng-valid" role="form">
-				<div class="form-group m-r-sm">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="form-group m-r-sm labor-employment-year">
 					<label class="" for="powerSelectYear">年份:</label>
 					<select id="powerSelectYear" class="form-control width-power">
 						<option ng-repeat="year in fourYear">{{year}}</option>
 					</select>
 				</div><br><br>
-				<div class="form-group m-r-sm">
-					&nbsp;&nbsp;&nbsp;<label class="" for="power-enterprise-power">劳动力人口:</label>
+				<div class="form-group employ-num labor-num">
+					<label class="" for="power-enterprise-power">劳动力人口:</label>
 					<div class="input-group width-power">
 						<input class="form-control" id="power-enterprise-power" placeholder="请输入">
-                                                    <span class="input-group-addon">万人</span>
+                                 <span class="input-group-addon">万人</span>
 					</div>
 				</div>
 				<div class="form-group m-r-sm">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="" for="power-enterprise-power">就业人数:</label>
+					<label class="" for="power-enterprise-power">就业人数:</label>
 					<div class="input-group width-power">
 						<input class="form-control" id="power-enterprise-power" placeholder="请输入">
 						<span class="input-group-addon">万人</span>
@@ -94,29 +99,26 @@
 				</div>
 
 				<br><br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<button class="btn w-xs btn-default btn-datainsert">提交</button>
+				<button class="general-submit btn w-xs btn-default btn-datainsert">提交</button>
 			</form>
 		</div>
 	</div>
 	<div class="panel panel-default">
 		<div class="panel-heading font-bold">
-			人口受教育程度数据录入
+			学校分布数据
 		</div>
 		<div class="panel-body">
 			<form class="form-inline ng-pristine ng-valid" role="form">
-				<div class="form-group m-r-sm">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="form-group m-r-sm labor-employment-year">
 					<label class="" for="powerSelectYear">年份:</label>
 					<select id="powerSelectYear" class="form-control width-power">
 						<option ng-repeat="year in fourYear">{{year}}</option>
 					</select>
 				</div>
-				<div class="form-group m-r-sm">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="form-group town-name">
 					<label class="" for="power-enterprise-power">城镇名称:</label>
 					<div class="input-group width-power">
-						<select id="powerIndustrySelectQuarter" ng-model="powerIndustrySelectQuarter" class="form-control width-power">
+						<select id="powerIndustrySelectQuarter" ng-model="townsName" class="form-control width-power">
 							<option value="1">城厢镇</option>
 							<option value="2">沙溪镇</option>
 							<option value="3">璜泾镇</option>
@@ -126,33 +128,35 @@
 						</select>
 					</div>
 				</div><br><br>
-				<div class="form-group m-r-sm">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="form-group primary-school-number">
+				
 					<label class="" for="power-enterprise-gdp">小学数量:</label>
 					<div class="input-group width-power">
 						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
 						<span class="input-group-addon">所</span>
 					</div>
 				</div>
-				<div class="form-group m-r-sm">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="form-group middle-school-number">
+				
 					<label class="" for="power-enterprise-gdp">中学数量:</label>
 					<div class="input-group width-power">
 						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
 						<span class="input-group-addon">所</span>
 					</div>
 				</div>
-				<div class="form-group m-r-sm">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			
+				<div class="form-group middle-school-number">
 					<label class="" for="power-enterprise-gdp">大学数量:</label>
 					<div class="input-group width-power">
 						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
 						<span class="input-group-addon">所</span>
 					</div>
 				</div><br><br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<button class="btn w-xs btn-default btn-datainsert">提交</button>
+				<button class="general-submit btn w-xs btn-default btn-datainsert">提交</button>
 			</form>
 		</div>
 	</div>
 </div>
+
+
+

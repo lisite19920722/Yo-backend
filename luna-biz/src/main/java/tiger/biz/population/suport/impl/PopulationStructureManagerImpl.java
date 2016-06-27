@@ -9,22 +9,27 @@ import tiger.core.basic.exception.TigerException;
 import tiger.core.domain.population.PopulationStructureDomain;
 import tiger.core.service.population.PopulationStructureService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Winter on 2016/6/10.
  */
 @Service
-public class PopulationStructureImpl implements PopulationStructureManager{
+public class PopulationStructureManagerImpl implements PopulationStructureManager{
 
     @Autowired
     private PopulationStructureService populationStructureService;
     @Override
-    public BaseResult<PopulationStructureDomain> read(Long id) {
-        PopulationStructureDomain populationstructure=populationStructureService.getPopulationStructureById(id);
+    public BaseResult read() {
+        List arrays=new ArrayList();
+        List<PopulationStructureDomain> populationStructureDomainList=populationStructureService.getPopulationStructure();
 
-        if(populationstructure==null)
+        if(populationStructureDomainList==null)
         {
-            throw new TigerException(ErrorCodeEnum.NOT_FOUND,"没有从service里面成功获得数据");
+            throw new TigerException(ErrorCodeEnum.NOT_FOUND,"出现这个错误，请看一下biz层里面的manager出了什么问题");
         }
-        return new BaseResult<PopulationStructureDomain>(populationstructure);
+       arrays.add(populationStructureDomainList);
+        return new BaseResult(arrays);
     }
 }
