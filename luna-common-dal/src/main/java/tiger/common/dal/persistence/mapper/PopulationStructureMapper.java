@@ -11,5 +11,5 @@ public interface PopulationStructureMapper {
 
     List<PopulationStructureDO> select();
 
-
+    int insertSelective(PopulationStructureDO record);
 }

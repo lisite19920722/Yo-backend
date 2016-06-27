@@ -25,6 +25,8 @@
         order by id desc
         limit 0,180
     </select>
+
+    
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from water_quality_data
         where id = #{id,jdbcType=BIGINT}

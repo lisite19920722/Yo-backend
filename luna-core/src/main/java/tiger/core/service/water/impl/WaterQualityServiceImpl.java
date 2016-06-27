@@ -37,6 +37,7 @@ public class WaterQualityServiceImpl implements WaterQualityService{
         List<WaterQualityDO> waterQualityDOList = waterQualityMapper.select();
         List<WaterQualityDomain> waterQualityDomainList=new ArrayList<>();
         Iterator<WaterQualityDO> e = waterQualityDOList.iterator();
+        
         WaterQualityDO temp = e.next();
         waterQualityDomainList.add(WaterQualityConvert.convertDOToDomain(temp));
         while(e.hasNext()){

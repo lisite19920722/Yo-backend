@@ -12,4 +12,11 @@ public interface PopulationStructureService {
 
     List<PopulationStructureDomain> getPopulationStructure();//函数的返回值是domain类型的数据
 
+    /**
+     * 创建一个人口结构记录
+     * @param populationStructureDomain
+     * @return
+     */
+    PopulationStructureDomain createPopulationStructure(PopulationStructureDomain populationStructureDomain);
+
 }
