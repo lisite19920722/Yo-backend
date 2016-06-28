@@ -14,13 +14,13 @@
 
 				<div class="form-group m-r-sm labor-employment-year">
 					<label for="sex">性别:</label>
-                    <select ng-model="sexForPopulation" id="sex" class="form-control width-population">
+                    <select ng-model="sexForPopulation" id="sex" class="form-control width-sex">
                     	<option value="1">男</option>
                     	<option value="2">女</option>
                     </select>
 				</div>
 
-				<div class="form-group m-r-sm ">
+				<div class="form-group m-r-sm labor-employment-year">
 					<label  for="population-age" >年龄：</label>
                     <div class="input-group width-population-age ">
                     <input type="text" id="population-age" class="form-control" ng-model="populationAge" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength = 2 placeholder="0-99">
@@ -28,7 +28,7 @@
                     </div>
 				</div>
 
-				<div class="form-group m-r-sm">
+				<div class="form-group m-r-sm labor-employment-year">
 					<label for="residentsPopulation">常住人口</label>
 					<div class="input-group width-population-resident">
 						<input type="text" class="form-control" placeholder="请输入..">
@@ -40,6 +40,7 @@
 			</form>
 		</div>
 	</div>
+
 
 	<div class="panel panel-default">
 		<div class="panel-heading font-bold">
@@ -103,6 +104,7 @@
 			</form>
 		</div>
 	</div>
+
 	<div class="panel panel-default">
 		<div class="panel-heading font-bold">
 			学校分布数据
@@ -156,7 +158,98 @@
 			</form>
 		</div>
 	</div>
+
+
+	<div class="panel panel-default">
+		<div class="panel-heading font-bold">
+			劳动力与GDP关联数据
+		</div>
+		<div class="panel-body">
+			<form class="form-inline ng-pristine ng-valid" role="form">
+				<div class="form-group m-r-sm labor-employment-year">
+					<label class="" for="powerSelectYear">年份:</label>
+					<select id="powerSelectYear" class="form-control width-power">
+						<option ng-repeat="year in fourYear">{{year}}</option>
+					</select>
+				</div><br><br>
+
+
+                <div class="form-group m-r-sm">
+					<label class="" for="power-enterprise-gdp">第一产业人口:</label>
+					<div class="input-group width-power">
+						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
+						<span class="input-group-addon">人</span>
+					</div>
+				</div>
+				<div class="form-group m-r-sm">
+					<label class="" for="power-enterprise-gdp">第二产业人口:</label>
+					<div class="input-group width-power">
+						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
+						<span class="input-group-addon">人</span>
+					</div>
+				</div>
+				
+				<div class="form-group m-r-sm">
+					
+					<label class="" for="power-enterprise-gdp">第三产业人口:</label>
+					<div class="input-group width-power">
+						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
+						<span class="input-group-addon">人</span>
+					</div>
+				</div>
+				<br><br>
+
+
+
+				<div class="form-group m-r-sm">
+					<label class="" for="power-enterprise-gdp">第一产业产值:</label>
+					<div class="input-group width-power">
+						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
+						<span class="input-group-addon">亿元</span>
+					</div>
+				</div>
+				<div class="form-group m-r-sm">
+					<label class="" for="power-enterprise-gdp">第二产业产值:</label>
+					<div class="input-group width-power">
+						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
+						<span class="input-group-addon">亿元</span>
+					</div>
+				</div>
+				
+				<div class="form-group m-r-sm">
+					
+					<label class="" for="power-enterprise-gdp">第三产业产值:</label>
+					<div class="input-group width-power">
+						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
+						<span class="input-group-addon">亿元</span>
+					</div>
+				</div>
+				<br><br>
+
+				<div class="form-group m-r-sm">
+					<label class="" for="power-enterprise-gdp">地方生产总值:</label>
+					<div class="input-group width-power">
+						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
+						<span class="input-group-addon">亿元</span>
+					</div>
+				</div>
+				
+
+				<div class="form-group retail-margin">
+					<label class="retail-margin" for="power-enterprise-gdp">社会消费品零售总额:</label>
+					<div class="input-group width-power">
+						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
+						<span class="input-group-addon">亿元</span>
+					</div>
+				</div>
+                <br><br>
+				<button class="general-submit btn w-xs btn-default btn-datainsert">提交</button>
+			</form>
+		</div>
+	</div>
 </div>
+
+
 
 
 

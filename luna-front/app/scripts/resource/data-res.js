@@ -10,6 +10,7 @@ angular.module('luna')
           },
         });
       },
+      
       PowerIndustry: function (headers) {
         return $resource(BASE_URL + '/data/economy/power/industry', {}, {
           post: {
