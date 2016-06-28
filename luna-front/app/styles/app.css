@@ -2232,6 +2232,12 @@ body {
 .width-population-age {
   width: 125px;
 }
+.width-sex {
+  width: 150px;
+}
+.retail-margin {
+  margin-left: 92px;
+}
 .insert-economy-module {
   padding: 30px 50px;
 }
