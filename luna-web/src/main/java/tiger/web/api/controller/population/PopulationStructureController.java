@@ -24,10 +24,7 @@ public class PopulationStructureController {
     @Autowired
     PopulationStructureManager populationStructureManager;
 
-    /**
-     * 获取PopulationStructureDomain
-     * @return
-     */
+
     @RequestMapping(value = "/population_structure", method = RequestMethod.GET)
     @ResponseBody
     public BaseResult getPopulationStructure() {
