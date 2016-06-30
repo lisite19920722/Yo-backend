@@ -37,7 +37,7 @@ app.controller('LoginController', ['$scope', '$rootScope', '$state', 'ResTool', 
   // 密码加密函数
   function encryptPassword(password, username, sbin) {
     var code = sbin === undefined ? '1234' : sbin;
-    // console.log(md5(password));
+    console.log(md5(password));
     return md5(md5(md5(password) + username) + code.toUpperCase());
   }
 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="tiger.common.dal.persistence.mapper.PeopleEmployInsuranceMapper" >
+    <resultMap id="BaseResultMap" type="tiger.common.dal.persistence.population.PeopleEmployInsuranceDO" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="year" property="year" jdbcType="BIGINT" />
+        <result column="laborPopulation" property="laborPopulation" jdbcType="DOUBLE" />
+        <result column="employedPopulation" property="employedPopulation" jdbcType="DOUBLE" />
+        <result column="firstPopulation" property="firstPopulation" jdbcType="DOUBLE" />
+        <result column="secondPopulation" property="secondPopulation" jdbcType="DOUBLE" />
+        <result column="thirdPopulation" property="thirdPopulation" jdbcType="DOUBLE" />
+        <result column="insurance" property="insurance" jdbcType="DOUBLE" />
+    </resultMap>
+
+    <insert id="insertSelective" parameterType="tiger.common.dal.persistence.population.PeopleEmployInsuranceDO"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into population_employ_insurance_data
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            year,
+            laborPopulation,
+            employedPopulation,
+            firstPopulation,
+            secondPopulation,
+            thirdPopulation,
+            insurance
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            #{year,jdbcType=BIGINT},
+            #{laborPopulation,jdbcType=BIGINT},
+            #{employedPopulation,jdbcType=BIGINT},
+            #{firstPopulation,jdbcType=BIGINT},
+            #{secondPopulation,jdbcType=BIGINT},
+            #{thirdPopulation,jdbcType=BIGINT},
+            #{insurance,jdbcType=BIGINT},
+
+        </trim>
+    </insert>
+
+</mapper>

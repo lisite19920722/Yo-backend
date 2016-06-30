@@ -71,7 +71,7 @@ CREATE TABLE `labor_gdp_relation_data` (
   `Gdp` double NOT NULL,
   `firstLaborPopulation` int(20) NOT NULL,
   `secondLaborPopulation` int(20) NOT NULL,
-  `thirdLaborPopoulation` int(20) NOT NULL,
+  `thirdLaborPopulation` int(20) NOT NULL,
   `firstGdp` double NOT NULL,
   `secondGdp` double NOT NULL,
   `thirdGdp` double NOT NULL,
