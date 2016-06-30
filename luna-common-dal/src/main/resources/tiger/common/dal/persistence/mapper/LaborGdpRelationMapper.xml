@@ -1,37 +1,33 @@
-
-
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="tiger.common.dal.persistence.mapper.LaborGdpRelationMapper">
     <resultMap id="BaseResultMap" type="tiger.common.dal.persistence.population.LaborGdpRelationDO">
         <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="year" property="year" jdbcType="BIGINT"/>
-        <result column="Gdp" property="Gdp" jdbcType="BIGINT"/>
+        <result column="laborPopulation" property="laborPopulation" jdbcType="BIGINT"/>
         <result column="firstLaborPopulation" property="firstLaborPopulation" jdbcType="BIGINT"/>
         <result column="secondLaborPopulation" property="secondLaborPopulation" jdbcType="BIGINT"/>
-        <result column="thirdLaborPopoulation" property="thirdLaborPopoulation" jdbcType="BIGINT"/>
+        <result column="thirdLaborPopulation" property="thirdLaborPopulation" jdbcType="BIGINT"/>
+        <result column="Gdp" property="Gdp" jdbcType="BIGINT"/>
         <result column="firstGdp" property="firstGdp" jdbcType="BIGINT"/>
         <result column="secondGdp" property="secondGdp" jdbcType="BIGINT"/>
         <result column="thirdGdp" property="thirdGdp" jdbcType="BIGINT"/>
         <result column="aveGdp" property="aveGdp" jdbcType="BIGINT"/>
         <result column="retailSale" property="retailSale" jdbcType="BIGINT"/>
+        <result column="localGdp" property="localGdp" jdbcType="BIGINT"/>
+
     </resultMap>
 
-    <sql id="Base_Column_List">
-        id,year,Gdp,firstLaborPopulation,secondLaborPopulation,thirdLaborPopoulation,firstGdp,secondGdp,thirdGdp,aveGdp,retailSale
-    </sql>
-
-
-
-    <insert id="insertSelective" parameterType="tiger.common.dal.persistence.population.LaborGdpRelationDO" useGeneratedKeys="true" keyProperty="id" >
+    <insert id="insertSelective" parameterType="tiger.common.dal.persistence.population.LaborGdpRelationDO"
+            useGeneratedKeys="true" keyProperty="id">
         insert into labor_gdp_relation_data
         <trim prefix="(" suffix=")" suffixOverrides="," >
             year,
-            Gdp,
+            laborPopulation,
             firstLaborPopulation,
             secondLaborPopulation,
-            thirdLaborPopoulation,
+            thirdLaborPopulation,
+            Gdp,
             firstGdp,
             secondGdp,
             thirdGdp,
@@ -40,14 +36,15 @@
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
             #{year,jdbcType=BIGINT},
-            #{Gdp,jdbcType=BIGINT},
+            #{laborPopulation,jdbcType=BIGINT},
             #{firstLaborPopulation,jdbcType=BIGINT},
             #{secondLaborPopulation,jdbcType=BIGINT},
-            #{thirdLaborPopoulation,jdbcType=BIGINT},
+            #{thirdLaborPopulation,jdbcType=BIGINT},
+            #{Gdp,jdbcType=BIGINT},
             #{firstGdp,jdbcType=BIGINT},
             #{secondGdp,jdbcType=BIGINT},
             #{thirdGdp,jdbcType=BIGINT},
-            #aveGdp,jdbcType=BIGINT},
+            #{aveGdp,jdbcType=BIGINT},
             #{retailSale,jdbcType=BIGINT},
         </trim>
     </insert>
