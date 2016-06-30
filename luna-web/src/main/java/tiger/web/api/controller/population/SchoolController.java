@@ -15,22 +15,22 @@ import javax.validation.Valid;
  * Created by Winter on 2016/6/30.
  */
 
+
+@RestController
+@ResponseBody
+@RequestMapping(APIConstants.BASE_API_URL + "/population")
+public class SchoolController {
+
+    @Autowired
+    SchoolManager schoolManager;
+
+    @RequestMapping(value="/insert_school",method = RequestMethod.POST)
     @ResponseBody
-    @RequestMapping(APIConstants.BASE_API_URL + "/population")
-
-
-    public class SchoolController {
-        @Autowired
-        SchoolManager schoolManager;
-
-        @RequestMapping(value="/insert_school",method = RequestMethod.POST)
-        @ResponseBody
-        public BaseResult<SchoolDomain> createPopulationStructure(@RequestBody @Valid SchoolForm schoolForm, BindingResult
-                bindingResult)
-        {
-            SchoolDomain schoolDomain=schoolForm.convert2Domain();
-            return schoolManager.create(schoolDomain);
-
-        }
+    public BaseResult<SchoolDomain> createSchool(@RequestBody @Valid SchoolForm schoolForm, BindingResult
+            bindingResult)
+    {
+        SchoolDomain schoolDomain=schoolForm.convert2Domain();
+        return schoolManager.create(schoolDomain);
 
     }
+}

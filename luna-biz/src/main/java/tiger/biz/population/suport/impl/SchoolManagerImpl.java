@@ -1,6 +1,7 @@
 package tiger.biz.population.suport.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import tiger.biz.population.suport.SchoolManager;
 import tiger.core.basic.BaseResult;
 import tiger.core.domain.population.SchoolDomain;
@@ -9,6 +10,7 @@ import tiger.core.service.population.SchoolService;
 /**
  * Created by Winter on 2016/6/30.
  */
+@Service
 public class SchoolManagerImpl implements SchoolManager {
 
     @Autowired
