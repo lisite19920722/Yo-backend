@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="tiger.common.dal.persistence.mapper.SchoolMapper" >
+    <resultMap id="BaseResultMap" type="tiger.common.dal.persistence.population.SchoolDO" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="year" property="year" jdbcType="BIGINT" />
+        <result column="town" property="town" jdbcType="VARCHAR" />
+        <result column="town_id" property="town_id" jdbcType="BIGINT" />
+        <result column="primarySchool" property="primarySchool" jdbcType="BIGINT" />
+        <result column="middleSchool" property="middleSchool" jdbcType="BIGINT" />
+        <result column="highSchool" property="highSchool" jdbcType="BIGINT" />
+    </resultMap>
+
+    <insert id="insertSelective" parameterType="tiger.common.dal.persistence.population.SchoolDO"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into population_school_data
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            year,
+            town,
+            town_id,
+            primarySchool,
+            middleSchool,
+            highSchool
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            #{year,jdbcType=BIGINT},
+            #{town,jdbcType=VARCHAR},
+            #{town_id,jdbcType=BIGINT},
+            #{primarySchool,jdbcType=BIGINT},
+            #{middleSchool,jdbcType=BIGINT},
+            #{highSchool,jdbcType=BIGINT},
+
+        </trim>
+    </insert>
+
+</mapper>
