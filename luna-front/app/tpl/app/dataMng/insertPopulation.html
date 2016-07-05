@@ -6,7 +6,7 @@
 		<div class="panel-body">
 			<form action="" class="form-inline ng-pristine ng-valid" role="form">
 				<div class="form-group m-r-sm labor-employment-year">
-					<label for="PopulationSelectedYear" class="">年份:</label>
+					<label for="populationSelectYear" class="">年份:</label>
 					<select  ng-model="populationSelectYear" id="populationSelectYear" class="form-control width-population">
 						<option  ng-repeat="year in fourYear">{{year}}</option>
 					</select>
@@ -31,12 +31,12 @@
 				<div class="form-group m-r-sm labor-employment-year">
 					<label for="residentsPopulation">常住人口</label>
 					<div class="input-group width-population-resident">
-						<input type="text" class="form-control" placeholder="请输入..">
+						<input type="text" id="residentsPopulation" ng-model="residentsPopulation" class="form-control" placeholder="请输入..">
 						<span class="input-group-addon">人</span>
 					</div>
 				</div>
 				<br><br>
-				<button class="general-submit btn w-xs btn-default btn-datainsert">提交</button>
+				<button class="general-submit btn w-xs btn-default btn-datainsert" ng-click="submitPopulationData">提交</button>
 			</form>
 		</div>
 	</div>
