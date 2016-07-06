@@ -19,6 +19,10 @@ $scope.submitPopulationData  = function () {	AlertTool.confirm({
 				ToasterTool.warning("空值警告");
 				return;
 			}
+			if (!/^\d+(\.\d+)?$/.test($scope.populationAge )||!/^\d+(\.\d+)?$/.test(!$scope.residentsPopulation)) {
+				ToasterTool.warning("请输入数字！");
+				return;
+			}
 			var populationBody = {
 				"year": $scope.populationSelectYear,
 				"ageTypeId": $scope.populationAge,
@@ -55,6 +59,10 @@ $scope.submitPopulationData  = function () {	AlertTool.confirm({
 			if (isConfirm) {
 				if (!$scope.laborNum || !$scope.employNum|| !$scope.firstIndustry|| !$scope.secondIndustry|| !$scope.thirdIndustry|| !$scope.insurance) {
 					ToasterTool.warning("空值警告");
+					return;
+				}
+				if (!/^\d+(\.\d+)?$/.test($scope.laborNum )||!/^\d+(\.\d+)?$/.test(!$scope.employNum)||!/^\d+(\.\d+)?$/.test(!$scope.firstIndustry)||!/^\d+(\.\d+)?$/.test(!$scope.secondIndustry)||!/^\d+(\.\d+)?$/.test(!$scope.thirdIndustry)||!/^\d+(\.\d+)?$/.test(!$scope.insurance)) {
+					ToasterTool.warning("请输入数字！");
 					return;
 				}
 				var peopleEmployInsuranceBody = {
@@ -94,6 +102,10 @@ $scope.submitPopulationData  = function () {	AlertTool.confirm({
 			if (isConfirm) {
 				if (!$scope.primarySchoolNum|| !$scope.middleSchoolNum|| !$scope.highSchoolNum) {
 					ToasterTool.warning("空值警告");
+					return;
+				}
+				if (!/^\d+(\.\d+)?$/.test($scope.primarySchoolNum )||!/^\d+(\.\d+)?$/.test(!$scope.middleSchoolNum)||!/^\d+(\.\d+)?$/.test(!$scope.highSchoolNum)) {
+					ToasterTool.warning("请输入数字！");
 					return;
 				}
 				var schoolNumBody = {
@@ -136,6 +148,10 @@ $scope.submitPopulationData  = function () {	AlertTool.confirm({
 			if (isConfirm) {
 				if (!$scope.firstLaborNum || !$scope.secondLaborNum|| !$scope.thirdLaborNum|| !$scope.firstGdp|| !$scope.secondGdp|| !$scope.thirdGdp|| !$scope.Gdp|| !$scope.retailSale) {
 					ToasterTool.warning("空值警告");
+					return;
+				}
+				if (!/^\d+(\.\d+)?$/.test($scope.firstLaborNum )||!/^\d+(\.\d+)?$/.test(!$scope.secondLaborNum)||!/^\d+(\.\d+)?$/.test(!$scope.thirdLaborNum)||!/^\d+(\.\d+)?$/.test(!$scope.firstGdp)||!/^\d+(\.\d+)?$/.test(!$scope.secondGdp)||!/^\d+(\.\d+)?$/.test(!$scope.thirdGdp)||!/^\d+(\.\d+)?$/.test(!$scope.Gdp)||!/^\d+(\.\d+)?$/.test(!$scope.retailSale)) {
+					ToasterTool.warning("请输入数字！");
 					return;
 				}
 				var laborGdpRelationBody = {
