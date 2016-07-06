@@ -120,4 +120,52 @@ $scope.submitPopulationData  = function () {	AlertTool.confirm({
 
 
 
-}]);
+		$scope.laborGdpYear=$scope.fourYear[0].toString();
+		$scope.firstLaborNum = null;
+		$scope.secondLaborNum = null;
+		$scope.thirdLaborNum = null;
+		$scope.firstGdp = null;
+		$scope.secondGdp = null;
+		$scope.thirdGdp = null;
+		$scope.Gdp = null;
+		$scope.retailSale = null;
+
+		$scope.submitLaborGdpRelationData= function () {	AlertTool.confirm({
+			title: '确定录入已输入数据?'
+		}).then(function (isConfirm) {
+			if (isConfirm) {
+				if (!$scope.firstLaborNum || !$scope.secondLaborNum|| !$scope.thirdLaborNum|| !$scope.firstGdp|| !$scope.secondGdp|| !$scope.thirdGdp|| !$scope.Gdp|| !$scope.retailSale) {
+					ToasterTool.warning("空值警告");
+					return;
+				}
+				var laborGdpRelationBody = {
+					"year": $scope.laborGdpYear,
+					"laborPopulation": 0,
+					"firstLaborPopulation": $scope.firstLaborNum,
+					"secondLaborPopulation": $scope.secondLaborNum,
+					"thirdLaborPopulation": $scope.thirdLaborNum,
+					"firstGdp":$scope.firstGdp,
+					"secondGdp": $scope.secondGdp,
+					"thirdGdp": $scope.thirdGdp,
+					"aveGdp": 0,
+					"retailSale": $scope.retailSale,
+					"gdp": $scope.Gdp
+				};
+				var LaborGdpRelationPromise = ResTool.httpPostWithWorkspace(PeopleRes.laborGdpRelationInsert,{},laborGdpRelationBody,{});
+				LaborGdpRelationPromise.then(function(data) {
+					if (data.success) {
+						ToasterTool.success("录入数据成功！");
+						return;
+					}else {
+						ToasterTool.error("失败!");
+					}
+				}, function(err) {
+					ToasterTool.error(err.message);
+				});
+			}
+		});
+		};
+
+
+
+	}]);

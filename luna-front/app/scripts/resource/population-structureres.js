@@ -39,7 +39,14 @@ angular.module('luna')
               },
           });
       },
-
+      laborGdpRelationInsert:function (headers) {
+          return $resource(BASE_URL + '/population/insert_labor_gdp_relation', {}, {
+              post: {
+                  method: 'POST',
+                  headers: headers
+              },
+          });
+      },
 
   };        
 }]);
