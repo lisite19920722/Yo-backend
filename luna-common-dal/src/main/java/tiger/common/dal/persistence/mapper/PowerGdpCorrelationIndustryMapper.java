@@ -33,4 +33,9 @@ public interface PowerGdpCorrelationIndustryMapper {
      */
     List<PowerGdpCorrelationIndustryDO> getPowerGdpCorrelationIndustrySoloDOList(@Param("industryId")String industryId, @Param("startYear")String startYear, @Param("endYear")String endYear, @Param("season")String season);
 
+    int insertSelective(PowerGdpCorrelationIndustryDO powerGdpCorrelationIndustryDO);
+
+    int updateByPrimaryKey(PowerGdpCorrelationIndustryDO powerGdpCorrelationIndustryDO);
+
+    PowerGdpCorrelationIndustryDO selectByYearSeasonId(@Param("year")int year,@Param("season")int season, @Param("industryId")int industryId);
 }

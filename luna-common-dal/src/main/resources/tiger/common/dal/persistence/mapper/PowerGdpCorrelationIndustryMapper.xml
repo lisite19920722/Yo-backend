@@ -27,4 +27,49 @@
             </if>
         </where>
     </select>
+    <select id="selectByYearSeasonId" resultMap="BaseResultMap">
+        select * from industry_data_forcast
+        where
+        year = #{year, jdbcType=BIGINT} and industry_id = #{industryId, jdbcType=BIGINT} and season = #{season, jdbcType=BIGINT}
+    </select>
+    <update id="updateByPrimaryKey">
+        update industry_data_forcast
+        set
+        create_time = #{createTime, jdbcType=TIMESTAMP},
+        year = #{year, jdbcType=BIGINT},
+        season = #{season, jdbcType=BIGINT},
+        industry_id = #{industryId, jdbcType=BIGINT},
+        real_industry_gdp = #{realIndustryGdp, jdbcType=DOUBLE},
+        forcast_industry_gdp = #{forcastIndustryGdp, jdbcType=DOUBLE},
+        real_industry_power = #{realIndustryPower, jdbcType=DOUBLE},
+        forcast_industry_power = #{forcastIndustryPower, jdbcType=DOUBLE},
+        modify_time = CURRENT_TIMESTAMP
+        where
+        id = #{id,jdbcType=BIGINT}
+    </update>
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id">
+        insert into industry_data_forcast
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            year,
+            season,
+            industry_id,
+            real_industry_gdp,
+            forcast_industry_gdp,
+            real_industry_power,
+            forcast_industry_power,
+            create_time,
+            modify_time
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{year,jdbcType=BIGINT},
+            #{season, jdbcType=BIGINT},
+            #{industryId, jdbcType=BIGINT},
+            #{realIndustryGdp, jdbcType=DOUBLE},
+            #{forcastIndustryGdp, jdbcType=DOUBLE},
+            #{realIndustryPower, jdbcType=DOUBLE},
+            #{forcastIndustryPower, jdbcType=DOUBLE},
+            CURRENT_TIMESTAMP,
+            CURRENT_TIMESTAMP
+        </trim>
+    </insert>
 </mapper>

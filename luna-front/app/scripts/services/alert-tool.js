@@ -22,8 +22,9 @@ angular.module('luna')
       var deferred = $q.defer();
 
       options = options || {};
-      options.confirmButtonText = options.confirmButtonText || '确定';
+    
       options.cancelButtonText = options.cancelButtonText || '取消';
+        options.confirmButtonText = options.confirmButtonText || '确定';
 
       SweetAlert.swal(options, function (data) {
         deferred.resolve(data);

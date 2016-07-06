@@ -4,10 +4,12 @@
  */
 package tiger.core.domain.power;
 
+import tiger.core.domain.BaseDomain;
+
 /**
  * Created by Bongo on 16/3/3.
  */
-public class PowerGdpCorrelationIndustrySoloDomain extends PowerGdpCorrelationBaseDomain {
+public class PowerGdpCorrelationIndustrySoloDomain extends BaseDomain {
 
     /**
      * 行业代号 300开头
@@ -20,7 +22,7 @@ public class PowerGdpCorrelationIndustrySoloDomain extends PowerGdpCorrelationBa
     private int year;
 
     /**
-     * 数据-季度 season=0表示年数据
+     * 数据-季度 season=4表示年数据
      * */
     private int season;
 

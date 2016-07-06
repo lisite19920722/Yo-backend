@@ -90,7 +90,7 @@ angular.module('luna')
       }
     });
   }])
-  // 监视不同类型的工作空间(团队)可以访问的页面
+  //监视不同类型的工作空间(团队)可以访问的页面
   .run(['$state', '$rootScope', '$timeout', 'AuthTool', function ($state, $rootScope, $timeout, AuthTool) {
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
       var currWorkspace = AuthTool.getCurrWorkspace();
