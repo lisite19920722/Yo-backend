@@ -10,26 +10,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import tiger.biz.account.support.AccountManager;
-import tiger.common.dal.enums.AttachTypeEnum;
 import tiger.common.dal.persistence.account.query.AccountQuery;
-import tiger.common.dal.persistence.attach.query.AttachQuery;
 import tiger.common.dal.redis.RedisComponent;
 import tiger.common.util.DateUtil;
-import tiger.common.util.FileUtil;
 import tiger.common.util.PhoneUtil;
 import tiger.common.util.StringUtil;
 import tiger.core.basic.BaseResult;
-import tiger.core.basic.constants.SystemConstants;
 import tiger.core.basic.enums.ErrorCodeEnum;
 import tiger.core.basic.exception.TigerException;
 import tiger.core.domain.account.AccountDomain;
 import tiger.core.domain.account.AccountLoginLogDomain;
 import tiger.core.domain.account.AccountSignUpDomain;
 import tiger.core.domain.account.convert.AccountConvert;
-import tiger.core.domain.attach.AttachDomain;
 import tiger.core.service.account.AccountService;
 import tiger.core.service.account.LoginLogService;
-import tiger.core.service.attach.QiniuAttachService;
 import tiger.core.service.system.InvitationCodeService;
 import tiger.core.service.system.SystemParamService;
 import tiger.core.service.workspace.WorkspaceService;
@@ -52,9 +46,6 @@ public class AccountManagerImpl implements AccountManager {
 
     @Autowired
     LoginLogService loginLogService;
-
-    @Autowired
-    QiniuAttachService qiniuAttachService;
 
     @Autowired
     SystemParamService systemParamService;
@@ -104,9 +95,6 @@ public class AccountManagerImpl implements AccountManager {
         // 检验密码
         if (StringUtil.equals(password, PasswordEncryptUtil.getLoginPassword(accountDomain.getPassword(),
                 mobile, PasswordEncryptUtil.SBIN))) {
-            // 设置头像信息, 公司信息
-            accountDomain = setCompanyAndIcon(accountDomain);
-
             return accountDomain;
         }
 
@@ -160,45 +148,9 @@ public class AccountManagerImpl implements AccountManager {
         // 1. 添加空的公司信息
         // 2. 关联新建的账户与公司
         AccountDomain accountDomain = AccountConvert.convertAccountSignUpDomainToAccountDomain(account);
-        accountDomain.setIconId(accountService.getDefaultIconId());
-
         accountDomain = accountService.addAccount(accountDomain);
 
         return accountDomain;
-    }
-
-    /**
-     * 关联用户头像业务
-     *
-     * @param accountId
-     * @param attachId
-     * @return
-     */
-    @Override
-    public BaseResult<Boolean> attachToAccountHeader(Long accountId, Long attachId) {
-        // 判断attachId是否存在
-        if (!qiniuAttachService.isExist(attachId)) {
-            return new BaseResult<>(ErrorCodeEnum.NOT_FOUND, false);
-        }
-        // 判断accountId是否为attachId的所有者
-        if (!qiniuAttachService.isOwner(attachId, accountId)) {
-            return new BaseResult<>(ErrorCodeEnum.UNAUTHORIZED, false);
-        }
-        // 判断attachId是否为公开附件
-        if (!qiniuAttachService.isAttachType(attachId, AttachTypeEnum.PUBLIC)) {
-            return new BaseResult<>(ErrorCodeEnum.ILLEGAL_PARAMETER_VALUE, false);
-        }
-        // 检查attachId是否为图像
-        AttachDomain attachDomain = qiniuAttachService.read(attachId);
-        if (!FileUtil.isImageFileFromName(attachDomain.getName())) {
-            return new BaseResult<>(ErrorCodeEnum.BIZ_UNSUPPORTED_KIND, false);
-        }
-
-        if (accountService.updateAccountHeaderIcon(accountId, attachId) > 0) {
-            return new BaseResult<>(true);
-        } else {
-            return new BaseResult<>(ErrorCodeEnum.BIZ_FAIL, false);
-        }
     }
 
 
@@ -246,7 +198,7 @@ public class AccountManagerImpl implements AccountManager {
         accountQuery.setIds(ids);
 
         List<AccountDomain> accountDomains = accountService.queryAll(accountQuery);
-        return setCompaniesAndIcons(accountDomains);
+        return accountDomains;
     }
 
     @Override
@@ -271,83 +223,4 @@ public class AccountManagerImpl implements AccountManager {
         return accountDomain;
     }
 
-    /**
-     * 设置头像和公司
-     *
-     * @param account
-     * @return
-     */
-    @Override
-    public AccountDomain setCompanyAndIcon(AccountDomain account) {
-        try {
-            // 设置头像信息, 公司信息
-            List<AccountDomain> accountDomains = new ArrayList<>(SystemConstants.SIZE_ONE);
-            accountDomains.add(account);
-            account = setCompaniesAndIcons(accountDomains).get(SystemConstants.FIRST_INDEX);
-            return account;
-        } catch (Exception e) {
-            logger.error("获取头像和公司时发生错误:[" + account + "]");
-            return account;
-        }
-    }
-
-    @Override
-    public List<AccountDomain> setCompaniesAndIcons(List<AccountDomain> accounts) {
-        try {
-            return setAccountIcons(accounts);
-        } catch (Exception e) {
-            logger.error("获取头像和公司时发生错误, 参数为:[" + accounts + "]");
-            return accounts;
-        }
-    }
-
-    // ~ Private Method
-
-
-    /**
-     * 设置accountDomains的头像信息
-     *
-     * @param accountDomains
-     * @return
-     */
-    private List<AccountDomain> setAccountIcons(List<AccountDomain> accountDomains) {
-        // 如果查询结果为空,提前结束
-        if (CollectionUtils.isEmpty(accountDomains)) {
-            return accountDomains;
-        }
-
-        List<Long> attachIds = new ArrayList<>(accountDomains.size());
-
-        accountDomains.forEach(accountDomain -> {
-            // 添加头像ids
-            if (accountDomain.getIconId() != null) {
-                attachIds.add(accountDomain.getIconId());
-            }
-        });
-
-        // 构建AttachQuery查询 头像信息
-        AttachQuery attachQuery = new AttachQuery();
-        attachQuery.setIds(attachIds);
-        List<AttachDomain> iconDomains = qiniuAttachService.query(attachQuery);
-
-        Map<Long, AttachDomain> iconDomainMap = new HashMap<>(iconDomains.size());
-
-        // 构建HashMap,方便查找
-        iconDomains.forEach(iconDomain -> iconDomainMap.put(iconDomain.getId(), qiniuAttachService.getAttachWithSignedUrl(iconDomain)));
-
-        // 设置头像
-        accountDomains.forEach(accountDomain -> {
-            if (accountDomain.getIconId() != null) {
-                AttachDomain attachDomain = iconDomainMap.get(accountDomain.getIconId());
-                // 检查头像参数
-                if (AttachTypeEnum.PUBLIC.equals(attachDomain.getAttachType()) && FileUtil.isImageFileFromName(attachDomain.getName())) {
-                    accountDomain.setIcon(attachDomain);
-                } else {
-                    logger.error("用户[ " + accountDomain + " ]头像设置错误");
-                }
-            }
-        });
-
-        return accountDomains;
-    }
 }

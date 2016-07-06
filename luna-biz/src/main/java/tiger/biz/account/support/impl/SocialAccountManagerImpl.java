@@ -11,9 +11,7 @@ import org.springframework.stereotype.Service;
 import tiger.biz.account.support.AccountManager;
 import tiger.biz.account.support.SocialAccountManager;
 import tiger.common.dal.enums.AccountSocialTypeEnum;
-import tiger.common.dal.enums.AttachTypeEnum;
 import tiger.common.dal.enums.SystemParamTypeEnum;
-import tiger.common.util.FileUtil;
 import tiger.common.util.StringUtil;
 import tiger.core.basic.BaseResult;
 import tiger.core.basic.enums.ErrorCodeEnum;
@@ -21,10 +19,8 @@ import tiger.core.basic.exception.TigerException;
 import tiger.core.domain.account.AccountBindDomain;
 import tiger.core.domain.account.AccountDomain;
 import tiger.core.domain.account.AccountSocialAuthDomain;
-import tiger.core.domain.attach.AttachDomain;
 import tiger.core.service.account.AccountBindService;
 import tiger.core.service.account.AccountService;
-import tiger.core.service.attach.QiniuAttachService;
 import tiger.core.service.system.SystemParamService;
 import tiger.core.social.auth.SocialAuthFactory;
 
@@ -50,10 +46,6 @@ public class SocialAccountManagerImpl implements SocialAccountManager {
 
     @Autowired
     AccountService accountService;
-
-
-    @Autowired
-    QiniuAttachService qiniuAttachService;
 
     @Autowired
     AccountManager accountManager;
@@ -253,16 +245,6 @@ public class SocialAccountManagerImpl implements SocialAccountManager {
             //2.1 直接登录
             AccountDomain account = accountService.read(accountBindDomain.getAccountId());
             resultDomain.setCanBindAccount(false);
-            //2.2 设置用户头像和公司信息
-            // 设置头像信息
-            AttachDomain attachDomain = account.getIcon();
-            if (null != attachDomain) {
-                if (AttachTypeEnum.PUBLIC.equals(attachDomain.getAttachType()) && FileUtil.isImageFileFromName(attachDomain.getName())) {
-                    account.setIcon(qiniuAttachService.getAttachWithSignedUrlById(attachDomain.getId()));
-                } else {
-                    logger.error("用户[ " + account + " ]头像设置错误");
-                }
-            }
             // 设置公司信息
             if (!accountManager.hasBindMobile(account.getId())) {
                 account.setMobile(null);
