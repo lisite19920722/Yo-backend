@@ -16,6 +16,10 @@ app.controller('EconomyDataInsertCtrl',
 				ToasterTool.warning("空值警告");
 				return;
 			}
+			if (!/^\d+(\.\d+)?$/.test($scope.powerTotalPowerValue)||!/^\d+(\.\d+)?$/.test($scope.powerTotalGdpValue)) {
+				ToasterTool.warning("请输入数字！");
+				return;
+			}
 			var powerTotalBody = {
 				"year": $scope.powerTotalSelectYear,
 				"powerValue": $scope.powerTotalPowerValue,
@@ -48,6 +52,10 @@ app.controller('EconomyDataInsertCtrl',
           if (isConfirm) {
             if (!$scope.powerIndustryPowerValue || !$scope.powerIndustryGdpValue) {
 				ToasterTool.warning("空值警告");
+				return;
+			}
+			if (!/^\d+(\.\d+)?$/.test($scope.powerIndustryPowerValue)||!/^\d+(\.\d+)?$/.test($scope.powerIndustryGdpValue)) {
+				ToasterTool.warning("请输入数字！");
 				return;
 			}
 			var powerIndustryBody = {
@@ -83,6 +91,10 @@ app.controller('EconomyDataInsertCtrl',
           if (isConfirm) {
             if (!$scope.powerEnterprisePowerValue || !$scope.powerEnterpriseGdpValue) {
 				ToasterTool.warning("空值警告");
+				return;
+			}
+			if (!/^\d+(\.\d+)?$/.test($scope.powerEnterprisePowerValue)||!/^\d+(\.\d+)?$/.test($scope.powerEnterpriseGdpValue)) {
+				ToasterTool.warning("请输入数字！");
 				return;
 			}
 			var powerEnterpriseBody = {
