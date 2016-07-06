@@ -7,6 +7,7 @@ package tiger.core.domain.power.convert;
 import tiger.common.dal.persistence.BaseDO;
 import tiger.common.dal.persistence.power.PowerGdpCorrelationEnterpriseSoloDO;
 import tiger.common.dal.persistence.power.PowerGdpCorrelationIndustryDO;
+import tiger.core.domain.BaseDomain;
 import tiger.core.domain.power.PowerGdpCorrelationBaseDomain;
 import tiger.core.domain.power.PowerGdpCorrelationEnterpriseSoloDomain;
 import tiger.core.domain.power.PowerGdpCorrelationIndustrySoloDomain;
@@ -21,7 +22,7 @@ public class PowerConvertUtil {
      * @return PowerGdpCorrelationIndustrySoloDomain 如果是真实值则调用
      * @param _DO
      * */
-    public static PowerGdpCorrelationBaseDomain singleConvertOnReal(BaseDO _DO){
+    public static BaseDomain singleConvertOnReal(BaseDO _DO){
 
         if (_DO instanceof PowerGdpCorrelationEnterpriseSoloDO){
             PowerGdpCorrelationEnterpriseSoloDomain domain = new PowerGdpCorrelationEnterpriseSoloDomain();
@@ -52,7 +53,7 @@ public class PowerConvertUtil {
      * @return PowerGdpCorrelationIndustrySoloDomain 如果是预测值则调用
      * @param _DO
      * */
-    public static PowerGdpCorrelationBaseDomain singleConvertOnForcast(BaseDO _DO){
+    public static BaseDomain singleConvertOnForcast(BaseDO _DO){
 
         if (_DO instanceof PowerGdpCorrelationEnterpriseSoloDO){
             PowerGdpCorrelationEnterpriseSoloDomain domain = new PowerGdpCorrelationEnterpriseSoloDomain();

@@ -47,4 +47,20 @@ public class PowerGdpCorrelationEnterpriseSoloConverter {
         }
         return domains;
     }
+    /**
+     * convert domain -> do
+     *
+     * @param source
+     * @return
+     */
+    public static PowerGdpCorrelationEnterpriseSoloDO convert2DO(PowerGdpCorrelationEnterpriseSoloDomain source) {
+        PowerGdpCorrelationEnterpriseSoloDO target = new PowerGdpCorrelationEnterpriseSoloDO();
+        target.setYear(source.getYear());
+        target.setSeason(source.getSeason());
+        target.setEnterpriseId(source.getEnterpriseId());
+        target.setRealEnterprisePower(source.getPowerValue());
+        target.setRealEnterpriseGdp(source.getGdpValue());
+
+        return target;
+    }
 }

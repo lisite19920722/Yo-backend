@@ -34,14 +34,78 @@ app.controller('EconomyDataInsertCtrl',
 			});
           }
         });
-      };
+    };
 	//用电 行业
 	$scope.powerIndustrySelectYear = (new Date()).getFullYear()-1+"";
 	$scope.powerIndustrySelectQuarter = "1";
 	$scope.powerIndustrySelected = "3001";
 	$scope.powerIndustryPowerValue = null;
 	$scope.powerIndustryGdpValue = null;
-
+	$scope.submitPowerIndustry = function () {
+        AlertTool.confirm({
+          title: '确定录入已输入数据?'
+        }).then(function (isConfirm) {
+          if (isConfirm) {
+            if (!$scope.powerIndustryPowerValue || !$scope.powerIndustryGdpValue) {
+				ToasterTool.warning("空值警告");
+				return;
+			}
+			var powerIndustryBody = {
+				"year": $scope.powerIndustrySelectYear,
+				"season":$scope.powerIndustrySelectQuarter,
+				"industryId":$scope.powerIndustrySelected,
+				"powerValue": $scope.powerIndustryPowerValue,
+				"gdpValue": $scope.powerIndustryGdpValue
+			};
+			var PowerTotalPromise = ResTool.httpPostWithWorkspace(DataRes.PowerIndustry,{},powerIndustryBody,{});
+			PowerTotalPromise.then(function(data) {
+				if (data.success) {
+					ToasterTool.success("录入数据成功！");
+					return;
+				}else {
+					ToasterTool.error("失败!");
+				}
+			}, function(err) {
+				ToasterTool.error(err.message);
+			});
+          }
+        });
+    };
+    $scope.powerEnterpriseSelectYear = (new Date()).getFullYear()-1+"";
+    $scope.powerEnterpriseSelectQuarter = "1";
+    $scope.powerEnterpriseSelected = "5001";
+    $scope.powerEnterprisePowerValue = null;
+    $scope.powerEnterpriseGdpValue = null;
+    $scope.submitPowerEnterprise = function () {
+        AlertTool.confirm({
+          title: '确定录入已输入数据?'
+        }).then(function (isConfirm) {
+          if (isConfirm) {
+            if (!$scope.powerEnterprisePowerValue || !$scope.powerEnterpriseGdpValue) {
+				ToasterTool.warning("空值警告");
+				return;
+			}
+			var powerEnterpriseBody = {
+				"year": $scope.powerEnterpriseSelectYear,
+				"season":$scope.powerEnterpriseSelectQuarter,
+				"enterpriseId":$scope.powerEnterpriseSelected,
+				"powerValue": $scope.powerEnterprisePowerValue,
+				"gdpValue": $scope.powerEnterpriseGdpValue
+			};
+			var PowerTotalPromise = ResTool.httpPostWithWorkspace(DataRes.PowerEnterprise,{},powerEnterpriseBody,{});
+			PowerTotalPromise.then(function(data) {
+				if (data.success) {
+					ToasterTool.success("录入数据成功！");
+					return;
+				}else {
+					ToasterTool.error("失败!");
+				}
+			}, function(err) {
+				ToasterTool.error(err.message);
+			});
+          }
+        });
+    };
 	//gdp
 	$scope.gdpTypeSelected = "0";
 }]);
