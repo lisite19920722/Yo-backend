@@ -31,6 +31,15 @@ angular.module('luna')
         });
       },
 
+      schoolNumDataInsert: function (headers) {
+          return $resource(BASE_URL + '/population/insert_school', {}, {
+              post: {
+                  method: 'POST',
+                  headers: headers
+              },
+          });
+      },
+
 
   };        
 }]);

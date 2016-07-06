@@ -120,15 +120,15 @@
 		<div class="panel-body">
 			<form class="form-inline ng-pristine ng-valid" role="form">
 				<div class="form-group m-r-sm labor-employment-year">
-					<label class="" for="powerSelectYear">年份:</label>
-					<select id="powerSelectYear" class="form-control width-power">
+					<label class="" for="schoolSelectYear">年份:</label>
+					<select id="schoolSelectYear" ng-model="schoolSelectYear" class="form-control width-power">
 						<option ng-repeat="year in fourYear">{{year}}</option>
 					</select>
 				</div>
 				<div class="form-group town-name">
-					<label class="" for="power-enterprise-power">城镇名称:</label>
+					<label class="" for="townId">城镇名称:</label>
 					<div class="input-group width-power">
-						<select id="powerIndustrySelectQuarter" ng-model="townsName" class="form-control width-power">
+						<select id="townId"  ng-model="townId" class="form-control width-power">
 							<option value="1">城厢镇</option>
 							<option value="2">沙溪镇</option>
 							<option value="3">璜泾镇</option>
@@ -139,33 +139,34 @@
 					</div>
 				</div><br><br>
 				<div class="form-group primary-school-number">
-				
-					<label class="" for="power-enterprise-gdp">小学数量:</label>
+					<label class="" for="primarySchoolNum">小学数量:</label>
 					<div class="input-group width-power">
-						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
+						<input class="form-control" id="primarySchoolNum" ng-model="primarySchoolNum" placeholder="请输入">
 						<span class="input-group-addon">所</span>
 					</div>
 				</div>
 				<div class="form-group middle-school-number">
 				
-					<label class="" for="power-enterprise-gdp">中学数量:</label>
+					<label class="" for="middleSchoolNum">中学数量:</label>
 					<div class="input-group width-power">
-						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
+						<input class="form-control" id="middleSchoolNum" ng-model="middleSchoolNum" placeholder="请输入">
 						<span class="input-group-addon">所</span>
 					</div>
 				</div>
 			
 				<div class="form-group middle-school-number">
-					<label class="" for="power-enterprise-gdp">大学数量:</label>
+					<label class="" for="highSchoolNum">大学数量:</label>
 					<div class="input-group width-power">
-						<input class="form-control" id="power-enterprise-gdp" placeholder="请输入">
+						<input class="form-control" id="highSchoolNum" ng-model="highSchoolNum" placeholder="请输入">
 						<span class="input-group-addon">所</span>
 					</div>
 				</div><br><br>
-				<button class="general-submit btn w-xs btn-default btn-datainsert">提交</button>
+				<button class="general-submit btn w-xs btn-default btn-datainsert" ng-click="submitSchoolNumData()">提交</button>
 			</form>
 		</div>
 	</div>
+
+
 
 
 	<div class="panel panel-default">
