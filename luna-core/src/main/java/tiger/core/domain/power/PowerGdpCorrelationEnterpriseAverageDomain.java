@@ -4,10 +4,12 @@
  */
 package tiger.core.domain.power;
 
+import tiger.core.domain.BaseDomain;
+
 /**
  * Created by Bongo on 16/3/4.
  */
-public class PowerGdpCorrelationEnterpriseAverageDomain {
+public class PowerGdpCorrelationEnterpriseAverageDomain extends BaseDomain{
 
     /**
      * 数据所属年份

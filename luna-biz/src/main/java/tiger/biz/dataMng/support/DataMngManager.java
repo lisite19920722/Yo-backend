@@ -5,6 +5,8 @@
 package tiger.biz.dataMng.support;
 
 import tiger.core.domain.power.PowerGdpCorrelationDomain;
+import tiger.core.domain.power.PowerGdpCorrelationEnterpriseSoloDomain;
+import tiger.core.domain.power.PowerGdpCorrelationIndustrySoloDomain;
 
 /**
  * @Author: [mondooo.cgq]
@@ -20,4 +22,20 @@ public interface DataMngManager {
      * @return
      */
     boolean createPowerTotal(PowerGdpCorrelationDomain domain);
+
+    /**
+     * 行业用电插入数据
+     *
+     * @param domain
+     * @return
+     */
+    boolean createPowerIndustry(PowerGdpCorrelationIndustrySoloDomain domain);
+
+    /**
+     * 企业用电 插入数据
+     *
+     * @param domain
+     * @return
+     */
+    boolean createPowerEnterprise(PowerGdpCorrelationEnterpriseSoloDomain domain);
 }

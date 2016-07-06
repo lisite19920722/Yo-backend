@@ -24,4 +24,9 @@ public interface PowerGdpCorrelationEnterpriseSoloMapper {
      */
     List<PowerGdpCorrelationEnterpriseSoloDO> getPowerGdpCorrelationEnterpriseSoloDOList(@Param("enterpriseId")String enterpriseId, @Param("startYear")String startYear, @Param("endYear")String endYear, @Param("season")String season);
 
+    int insertSelective(PowerGdpCorrelationEnterpriseSoloDO powerGdpCorrelationEnterpriseSoloDO);
+
+    int updateByPrimaryKey(PowerGdpCorrelationEnterpriseSoloDO powerGdpCorrelationEnterpriseSoloDO);
+
+    PowerGdpCorrelationEnterpriseSoloDO selectByYearSeasonId(@Param("year")int year,@Param("season")int season, @Param("enterpriseId")int industryId);
 }
