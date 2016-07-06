@@ -139,7 +139,7 @@ app.controller('PowerIndustryCtrl',
 	    	    type: 'column',
 	    	    name: '同比增长率',
 	    	    data: $scope.totalData.gdps,
-	    	    color:'#8B8682',
+	    	    color:'#8B7E80',
 	    	}]
 	    };
 		},function(error) {});
