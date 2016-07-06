@@ -1,6 +1,9 @@
 //controller: 'EconomyGdpCtrl'
 // 'use strict';
 app.controller('EconomyGdpCtrl', ['$scope','$stateParams','ResTool','EconomyRes', function($scope,$stateParams,ResTool,EconomyRes){
+    (function() {
+        document.body.scrollIntoView();
+    })();
     var yearGdpParams = {};
     var yearGdpHeader = {};
     var yearPromise = ResTool.httpGetWithWorkspace(EconomyRes.getYearGdp,yearGdpParams,yearGdpHeader);

@@ -2,6 +2,9 @@
 
 app.controller('LivelihoodCtrl', ['$scope','PopulationRes','ResTool',function($scope,PopulationRes,ResTool) {
 
+    (function() {
+        document.body.scrollIntoView();
+    })();
     var promise = ResTool.httpGetWithWorkspace(PopulationRes.getEmployInsuranceSchoolList,{},{});
     promise.then(function(rc) {
 

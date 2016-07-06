@@ -1,6 +1,9 @@
 'use strict';
 app.controller('EconomyDataInsertCtrl', 
     ['$scope','ResTool','DataRes','ToasterTool','AlertTool', function($scope, ResTool, DataRes,ToasterTool,AlertTool) { //这里注入的顺序不能变
+	(function() {
+		document.body.scrollIntoView();
+	})();
 	var now = (new Date()).getFullYear();
 	$scope.fourYear = [now-1,now,now+1,now+2,now+3];
 	//用电 整体

@@ -1,6 +1,9 @@
 'use strict';
 app.controller('PowerTotalCtrl', 
     ['$scope','ResTool','PowerRes', function($scope, ResTool, PowerRes) { //这里注入的顺序不能变
+   	(function() {
+		document.body.scrollIntoView();
+	})();
 	var getTotalParams = {};
 	var getTotalPromise = ResTool.httpGetWithWorkspace(PowerRes.getTotal, getTotalParams, {});
 	getTotalPromise.then(function(data) {

@@ -1,6 +1,9 @@
 'use strict';
 app.controller('PopulationDataInsertCtrl', 
     ['$scope','ResTool','PeopleRes','ToasterTool','AlertTool', function($scope, ResTool, PeopleRes,ToasterTool,AlertTool) { //这里注入的顺序不能变
+    	(function() {
+    		document.body.scrollIntoView();
+    	})();
 //年份可以选择前后中的五年；
 var now = (new Date()).getFullYear();
 $scope.fourYear = [now-1,now,now+1,now+2,now+3];

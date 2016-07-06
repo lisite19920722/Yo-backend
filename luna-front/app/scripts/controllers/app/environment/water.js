@@ -1,6 +1,9 @@
 'use strict';
       
 app.controller('WaterCtrl', ['$scope','ResTool','EnvironmentRes','$http',function($scope,ResTool,EnvironmentRes,$http) {
+    (function() {
+        document.body.scrollIntoView();
+    })();
     //--------------------------waterPollutionGetPromise----------------------------
     var waterPollutionGetParams = {
         // 'id':1,

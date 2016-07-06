@@ -1,9 +1,10 @@
 'use strict';
 
 app.controller('EconomyKeqiangCtrl', ['$scope','$stateParams', function($scope, $stateParams) {
-    
-
-    
+  
+  (function() {
+    document.body.scrollIntoView();
+  })();  
     //alert(rc.data);
     //$scope.forecastvalue=rc.data[0].gdpForecastValue;
     

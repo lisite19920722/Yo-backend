@@ -2,6 +2,9 @@
 
 
 app.controller('AirCtrl', ['$scope','ResTool','EnvironmentRes','$timeout',function($scope,ResTool,EnvironmentRes,$timeout) { 
+	(function() {
+		document.body.scrollIntoView();
+	})();
 	//盒子3中高德地图的初始化
 	var map = new AMap.Map('map_canvas',{
 		zoom: 12,

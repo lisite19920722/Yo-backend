@@ -2,6 +2,9 @@
 
 app.controller('PowerEnterpriseSoloCtrl', 
     ['$scope','ResTool','PowerRes', function($scope, ResTool, PowerRes) {
+    	(function() {
+    		document.body.scrollIntoView();
+    	})();
     	$scope.title = '企业用电量与产值关联分析';
 	  	$scope.map = new AMap.Map('consumptionbyenterprise',{
 	        zoom: 12,
