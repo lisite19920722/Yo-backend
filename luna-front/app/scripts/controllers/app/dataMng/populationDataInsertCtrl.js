@@ -81,4 +81,43 @@ $scope.submitPopulationData  = function () {	AlertTool.confirm({
 		});
 		};
 
+
+		$scope.schoolSelectYear=$scope.fourYear[0].toString();
+		$scope.townId = "1";
+		$scope.primarySchoolNum = null;
+		$scope.middleSchoolNum = null;
+		$scope.highSchoolNum = null;
+
+		$scope.submitSchoolNumData  = function () {	AlertTool.confirm({
+			title: '确定录入已输入数据?'
+		}).then(function (isConfirm) {
+			if (isConfirm) {
+				if (!$scope.primarySchoolNum|| !$scope.middleSchoolNum|| !$scope.highSchoolNum) {
+					ToasterTool.warning("空值警告");
+					return;
+				}
+				var schoolNumBody = {
+					"year": $scope.schoolSelectYear,
+					"town_id": $scope.townId,
+					"primarySchool": $scope.primarySchoolNum,
+					"middleSchool": $scope.middleSchoolNum,
+					"highSchool": $scope.highSchoolNum,
+				};
+				var SchoolPromise = ResTool.httpPostWithWorkspace(PeopleRes.schoolNumDataInsert,{},schoolNumBody,{});
+				SchoolPromise.then(function(data) {
+					if (data.success) {
+						ToasterTool.success("录入数据成功！");
+						return;
+					}else {
+						ToasterTool.error("失败!");
+					}
+				}, function(err) {
+					ToasterTool.error(err.message);
+				});
+			}
+		});
+		};
+
+
+
 }]);
