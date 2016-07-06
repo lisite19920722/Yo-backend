@@ -13,6 +13,15 @@ angular.module('luna')
         });
       },
 
+      PeopleEmployInsurance: function (headers) {
+          return $resource(BASE_URL + '/population/insert_employ_insurance', {}, {
+              post: {
+                  method: 'POST',
+                  headers: headers
+              },
+          });
+      },
+
         isShowDataPanel: function (headers) {
         return $resource(BASE_URL + '/data/isshow', {}, {
           get: {

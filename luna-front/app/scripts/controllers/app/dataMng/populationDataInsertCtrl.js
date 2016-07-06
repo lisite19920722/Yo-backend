@@ -11,7 +11,6 @@ $scope.populationAge = null;
 $scope.residentsPopulation = null;
 
 
-
 $scope.submitPopulationData  = function () {	AlertTool.confirm({
 		title: '确定录入已输入数据?'
 	}).then(function (isConfirm) {
@@ -40,5 +39,46 @@ $scope.submitPopulationData  = function () {	AlertTool.confirm({
 		}
 	});
 };
+
+
+		$scope.laborSelectYear=$scope.fourYear[0].toString();
+		$scope.laborNum = null;
+		$scope.employNum = null;
+		$scope.firstIndustry = null;
+		$scope.secondIndustry = null;
+		$scope.thirdIndustry = null;
+		$scope.insurance = null;
+
+		$scope.submitPeopleEmployInsuranceData  = function () {	AlertTool.confirm({
+			title: '确定录入已输入数据?'
+		}).then(function (isConfirm) {
+			if (isConfirm) {
+				if (!$scope.laborNum || !$scope.employNum|| !$scope.firstIndustry|| !$scope.secondIndustry|| !$scope.thirdIndustry|| !$scope.insurance) {
+					ToasterTool.warning("空值警告");
+					return;
+				}
+				var peopleEmployInsuranceBody = {
+					"year": $scope.laborSelectYear,
+					"laborPopulation": $scope.laborNum,
+					"employedPopulation": $scope.employNum,
+					"firstPopulation": $scope.firstIndustry,
+					"secondPopulation": $scope.secondIndustry,
+					"thirdPopulation": $scope.thirdIndustry,
+					"insurance":$scope.insurance
+				};
+				var PeoplePromise = ResTool.httpPostWithWorkspace(PeopleRes.PeopleEmployInsurance,{},peopleEmployInsuranceBody,{});
+				PeoplePromise.then(function(data) {
+					if (data.success) {
+						ToasterTool.success("录入数据成功！");
+						return;
+					}else {
+						ToasterTool.error("失败!");
+					}
+				}, function(err) {
+					ToasterTool.error(err.message);
+				});
+			}
+		});
+		};
 
 }]);
