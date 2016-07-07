@@ -45,31 +45,31 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<!--五强企业废水排放数据详情-->
-			<div class="bg-white fc-water" style=""ng-if="industryshow">
-				<div class="panel panel-default paddingmargin0em">
-					<div class="panel-heading"><center>数据详情</center></div>
-					<table st-table="rowCollectionBasic" class="table table-bordered table-striped">
-						<tr st-select-row="row" class="ng-scope ng-isolate-scope">
-							<td ng-repeat="year in totaldata.tabledata" style="text-align: center;">{{year.yearvalue}}</td>
-						</tr>
-						<tr st-select-row="row" class="ng-scope ng-isolate-scope">
-							<td ng-repeat="JLfactory in totaldata.tabledata" style="text-align: center;">{{JLfactory.JLfactory}}</td>
-						</tr>
-						<tr st-select-row="row" class="ng-scope ng-isolate-scope">
-							<td ng-repeat="Afactory in totaldata.tabledata" style="text-align: center;">{{Afactory.Afactory}}</td>
-						</tr>
-						<tr st-select-row="row" class="ng-scope ng-isolate-scope">
-							<td ng-repeat="Bfactory in totaldata.tabledata" style="text-align: center;">{{Bfactory.Bfactory}}</td>
-						</tr>
-						<tr st-select-row="row" class="ng-scope ng-isolate-scope">
-							<td ng-repeat="Cfactory in totaldata.tabledata" style="text-align: center;">{{Cfactory.Cfactory}}</td>
-						</tr>
-						<tr st-select-row="row" class="ng-scope ng-isolate-scope">
-							<td ng-repeat="Dfactory in totaldata.tabledata" style="text-align: center;">{{Dfactory.Dfactory}}</td>
-						</tr>
-					</table>
+				<!--五强企业废水排放数据详情-->
+				<div class="bg-white fc-water" style="margin:0;width:100%" ng-if="industryshow">
+					<div class="panel panel-default paddingmargin0em">
+						<div class="panel-heading"><center>数据详情</center></div>
+						<table st-table="rowCollectionBasic" class="table table-bordered table-striped">
+							<tr st-select-row="row" class="ng-scope ng-isolate-scope">
+								<td ng-repeat="year in totaldata.tabledata" style="text-align: center;">{{year.yearvalue}}</td>
+							</tr>
+							<tr st-select-row="row" class="ng-scope ng-isolate-scope">
+								<td ng-repeat="JLfactory in totaldata.tabledata" style="text-align: center;">{{JLfactory.JLfactory}}</td>
+							</tr>
+							<tr st-select-row="row" class="ng-scope ng-isolate-scope">
+								<td ng-repeat="Afactory in totaldata.tabledata" style="text-align: center;">{{Afactory.Afactory}}</td>
+							</tr>
+							<tr st-select-row="row" class="ng-scope ng-isolate-scope">
+								<td ng-repeat="Bfactory in totaldata.tabledata" style="text-align: center;">{{Bfactory.Bfactory}}</td>
+							</tr>
+							<tr st-select-row="row" class="ng-scope ng-isolate-scope">
+								<td ng-repeat="Cfactory in totaldata.tabledata" style="text-align: center;">{{Cfactory.Cfactory}}</td>
+							</tr>
+							<tr st-select-row="row" class="ng-scope ng-isolate-scope">
+								<td ng-repeat="Dfactory in totaldata.tabledata" style="text-align: center;">{{Dfactory.Dfactory}}</td>
+							</tr>
+						</table>
+					</div>
 				</div>
 			</div>
 			<!-- 盒子1结束 -->
