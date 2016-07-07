@@ -14,6 +14,9 @@
                 <li ui-sref="app.pmenu.livelihood" class="list-group-item second_nav_body" style="border-bottom:1px solid lightgrey;border-top:1px solid lightgrey;">
                     <a>民生分析预测</a>
                 </li>
+                    <li ui-sref="app.pmenu.test" class="list-group-item second_nav_body">
+                    <a>练习</a>
+                </li>
             </div>
             <div class="list-group"  ng-if="true">
                 <li ng-repeat="class in classes" class="list-group-item second_nav_body" ui-sref="app.course.teacher-class({name:'{{class.course.name}}',number:'{{class.number}}'})">

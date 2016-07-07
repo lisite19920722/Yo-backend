@@ -299,6 +299,20 @@ angular.module('luna')
               }]
             }
           })
+
+           //自己加的一个
+            .state('app.pmenu.test', {
+            url: '^/app/pmenu/test',
+            templateUrl: 'tpl/app/population/test.html',
+            controller: 'testCtrl',
+            resolve: {
+              controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  'scripts/controllers/app/population/testCtrl.js'
+                ]);
+              }]
+            }
+          })
           //population end
           
           .state('app.profile', {

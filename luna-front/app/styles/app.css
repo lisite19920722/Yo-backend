@@ -2241,6 +2241,12 @@ body {
 input.ng-invalid {
   background-color: lightblue;
 }
+select.ng-dirty {
+  background-color: white;
+}
+.select {
+  background-color: lightblue;
+}
 .insert-economy-module {
   padding: 30px 50px;
 }
