@@ -1,13 +1,13 @@
 ﻿<div class="insert-population-module">
 	<div class="panel panel-default">
 		<div class="panel-heading font-bold">
-			人口结构数据
+			人口结构
 		</div>
 		<div class="panel-body">
 			<form action="" class="form-inline ng-pristine ng-valid" role="form">
 				<div class="form-group m-r-sm labor-employment-year">
 					<label for="populationSelectYear" class="">年份:</label>
-					<select  ng-model="populationSelectYear" id="populationSelectYear" class="form-control width-population">
+					<select  ng-model="populationSelectYear" id="populationSelectYear" class="form-control width-population" >
 						<option  ng-repeat="year in fourYear">{{year}}</option>
 					</select>
 				</div><br><br>
@@ -23,7 +23,7 @@
 				<div class="form-group m-r-sm labor-employment-year">
 					<label  for="population-age" >年龄：</label>
                     <div class="input-group width-population-age ">
-                    <input type="text" id="population-age" class="form-control" ng-model="populationAge"  maxlength = 2 placeholder="0-99">
+                    <input type="text" id="population-age" class="form-control" ng-model="populationAge"  maxlength = 2 placeholder="0-99" required>
                     <span class="input-group-addon">岁</span>
                     </div>
 				</div>
@@ -31,7 +31,7 @@
 				<div class="form-group m-r-sm labor-employment-year">
 					<label for="residentsPopulation">常住人口</label>
 					<div class="input-group width-population-resident">
-						<input type="text" id="residentsPopulation" ng-model="residentsPopulation" class="form-control" placeholder="请输入..">
+						<input type="text" id="residentsPopulation" ng-model="residentsPopulation" class="form-control" placeholder="请输入.." required>
 						<span class="input-group-addon">人</span>
 					</div>
 				</div>
@@ -59,7 +59,7 @@
 				<div class="form-group employ-num labor-num">
 					<label class="" for="laborNum">劳动力人口:</label>
 					<div class="input-group width-power">
-						<input class="form-control" ng-model="laborNum" id="laborNum" placeholder="请输入">
+						<input class="form-control" ng-model="laborNum" id="laborNum" placeholder="请输入" required>
                                  <span class="input-group-addon">万人</span>
 					</div>
 				</div>
@@ -68,14 +68,14 @@
 				<div class="form-group m-r-sm">
 					<label class="" for="employNum">就业人数:</label>
 					<div class="input-group width-power">
-						<input class="form-control" ng-model="employNum" id="employNum" placeholder="请输入">
+						<input class="form-control" ng-model="employNum" id="employNum" placeholder="请输入" required>
 						<span class="input-group-addon">万人</span>
 					</div>
 				</div>
 				<div class="form-group m-r-sm">
 					<label class="" for="firstIndustry">第一产业比例:</label>
 					<div class="input-group width-power">
-						<input class="form-control" ng-model="firstIndustry" id="firstIndustry" placeholder="请输入">
+						<input class="form-control" ng-model="firstIndustry" id="firstIndustry" placeholder="请输入" required>
 						<span class="input-group-addon">%</span>
 					</div>
 				</div><br><br>
@@ -83,14 +83,14 @@
 				<div class="form-group m-r-sm">
 					<label class="" for="secondIndustry">第二产业比例:</label>
 					<div class="input-group width-power">
-						<input class="form-control" ng-model="secondIndustry" id="secondIndustry" placeholder="请输入">
+						<input class="form-control" ng-model="secondIndustry" id="secondIndustry" placeholder="请输入" required>
 						<span class="input-group-addon">%</span>
 					</div>
 				</div>
 				<div class="form-group m-r-sm">
 					<label class="" for="thirdIndustry">第三产业比例:</label>
 					<div class="input-group width-power">
-						<input class="form-control" ng-model="thirdIndustry" id="thirdIndustry"  placeholder="请输入">
+						<input class="form-control" ng-model="thirdIndustry" id="thirdIndustry"  placeholder="请输入" required>
 						<span class="input-group-addon">%</span>
 					</div>
 				</div>
@@ -99,7 +99,7 @@
 					
 					<label class="" for="insurance">养老保险结余:</label>
 					<div class="input-group width-power">
-						<input class="form-control" ng-model="insurance" id="insurance"  placeholder="请输入">
+						<input class="form-control" ng-model="insurance" id="insurance"  placeholder="请输入" required>
 						<span class="input-group-addon">亿元</span>
 					</div>
 				</div>
@@ -141,7 +141,7 @@
 				<div class="form-group primary-school-number">
 					<label class="" for="primarySchoolNum">小学数量:</label>
 					<div class="input-group width-power">
-						<input class="form-control" id="primarySchoolNum" ng-model="primarySchoolNum" placeholder="请输入">
+						<input class="form-control" id="primarySchoolNum" ng-model="primarySchoolNum" placeholder="请输入" required>
 						<span class="input-group-addon">所</span>
 					</div>
 				</div>
@@ -149,7 +149,7 @@
 				
 					<label class="" for="middleSchoolNum">中学数量:</label>
 					<div class="input-group width-power">
-						<input class="form-control" id="middleSchoolNum" ng-model="middleSchoolNum" placeholder="请输入">
+						<input class="form-control" id="middleSchoolNum" ng-model="middleSchoolNum" placeholder="请输入" required>
 						<span class="input-group-addon">所</span>
 					</div>
 				</div>
@@ -157,7 +157,7 @@
 				<div class="form-group middle-school-number">
 					<label class="" for="highSchoolNum">大学数量:</label>
 					<div class="input-group width-power">
-						<input class="form-control" id="highSchoolNum" ng-model="highSchoolNum" placeholder="请输入">
+						<input class="form-control" id="highSchoolNum" ng-model="highSchoolNum" placeholder="请输入" required>
 						<span class="input-group-addon">所</span>
 					</div>
 				</div><br><br>
@@ -177,7 +177,7 @@
 			<form class="form-inline ng-pristine ng-valid" role="form">
 				<div class="form-group m-r-sm labor-employment-year">
 					<label class="" for="laborGdpYear">年份:</label>
-					<select id="laborGdpYear" ng-model="laborGdpYear" class="form-control width-power">
+					<select id="laborGdpYear" ng-model="laborGdpYear" class="form-control width-power" required>
 						<option ng-repeat="year in fourYear">{{year}}</option>
 					</select>
 				</div><br><br>
@@ -186,7 +186,7 @@
                 <div class="form-group m-r-sm">
 					<label class="" for="firstLaborNum">第一产业人口:</label>
 					<div class="input-group width-power">
-						<input class="form-control" id="firstLaborNum" ng-model="firstLaborNum" placeholder="请输入">
+						<input class="form-control" id="firstLaborNum" ng-model="firstLaborNum" placeholder="请输入" required>
 						<span class="input-group-addon">人</span>
 					</div>
 				</div>
@@ -194,7 +194,7 @@
 				<div class="form-group m-r-sm">
 					<label class="" for="secondLaborNum">第二产业人口:</label>
 					<div class="input-group width-power">
-						<input class="form-control" id="secondLaborNum" ng-model="secondLaborNum" placeholder="请输入">
+						<input class="form-control" id="secondLaborNum" ng-model="secondLaborNum" placeholder="请输入" required>
 						<span class="input-group-addon">人</span>
 					</div>
 				</div>
@@ -203,7 +203,7 @@
 					
 					<label class="" for="thirdLaborNum">第三产业人口:</label>
 					<div class="input-group width-power">
-						<input class="form-control" id="thirdLaborNum" ng-model="thirdLaborNum" placeholder="请输入">
+						<input class="form-control" id="thirdLaborNum" ng-model="thirdLaborNum" placeholder="请输入" required>
 						<span class="input-group-addon">人</span>
 					</div>
 				</div>
@@ -214,14 +214,14 @@
 				<div class="form-group m-r-sm">
 					<label class="" for="firstGdp">第一产业产值:</label>
 					<div class="input-group width-power">
-						<input class="form-control" id="firstGdp" ng-model="firstGdp" placeholder="请输入">
+						<input class="form-control" id="firstGdp" ng-model="firstGdp" placeholder="请输入" required>
 						<span class="input-group-addon">亿元</span>
 					</div>
 				</div>
 				<div class="form-group m-r-sm">
 					<label class="" for="secondGdp">第二产业产值:</label>
 					<div class="input-group width-power">
-						<input class="form-control" id="secondGdp"  ng-model="secondGdp" placeholder="请输入">
+						<input class="form-control" id="secondGdp"  ng-model="secondGdp" placeholder="请输入" required>
 						<span class="input-group-addon">亿元</span>
 					</div>
 				</div>
@@ -230,7 +230,7 @@
 					
 					<label class="" for="thirdGdp">第三产业产值:</label>
 					<div class="input-group width-power">
-						<input class="form-control" id="thirdGdp" ng-model="thirdGdp" placeholder="请输入">
+						<input class="form-control" id="thirdGdp" ng-model="thirdGdp" placeholder="请输入" required>
 						<span class="input-group-addon">亿元</span>
 					</div>
 				</div>
@@ -239,7 +239,7 @@
 				<div class="form-group m-r-sm">
 					<label class="" for="Gdp">地方生产总值:</label>
 					<div class="input-group width-power">
-						<input class="form-control" id="Gdp"  ng-model="Gdp" placeholder="请输入">
+						<input class="form-control" id="Gdp"  ng-model="Gdp" placeholder="请输入" required>
 						<span class="input-group-addon">亿元</span>
 					</div>
 				</div>
@@ -248,7 +248,7 @@
 				<div class="form-group retail-margin">
 					<label class="retail-margin" for="retailSale">社会消费品零售总额:</label>
 					<div class="input-group width-power">
-						<input class="form-control" id="retailSale" ng-model="retailSale" placeholder="请输入">
+						<input class="form-control" id="retailSale" ng-model="retailSale" placeholder="请输入" required>
 						<span class="input-group-addon">亿元</span>
 					</div>
 				</div>

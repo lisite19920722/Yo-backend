@@ -2238,6 +2238,9 @@ body {
 .retail-margin {
   margin-left: 92px;
 }
+input.ng-invalid {
+  background-color: lightblue;
+}
 .insert-economy-module {
   padding: 30px 50px;
 }
