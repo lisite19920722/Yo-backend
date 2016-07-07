@@ -8,6 +8,7 @@ package tiger.common.dal.enums;
  * Created by HuPeng on 2015/9/1.
  */
 public enum RoleEnum implements BaseEnum {
+    EPA("EPA", "环保局", 4),
     CUSTOMER("CUSTOMER", "普通员工", 3),
     ADMIN("ADMIN", "管理员", 2),
     OWNER("OWNER", "所有者", 1),

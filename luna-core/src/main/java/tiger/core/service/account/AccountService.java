@@ -166,11 +166,6 @@ public interface AccountService {
      */
     HashMap<String, String> getExtParamByAccount(AccountDomain accountDomain);
 
-    /*
-     *随机获取头像码
-     */
-    Long getDefaultIconId();
-
     /**
      * 通过id获取用户基本信息
      *

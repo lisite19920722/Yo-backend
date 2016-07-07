@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import tiger.biz.water.support.WaterQualityManager;
+import tiger.common.dal.annotation.LoginRequired;
+import tiger.common.dal.annotation.Permission;
+import tiger.common.dal.enums.PermissionEnum;
 import tiger.core.basic.BaseResult;
 import tiger.core.domain.water.WaterQualityDomain;
 import tiger.web.api.constants.APIConstants;
@@ -31,7 +34,9 @@ public class WaterQualityController {
      *
      * @return
      */
+    @LoginRequired
     @RequestMapping(value = "/water_quality", method = RequestMethod.GET)
+    @Permission(permission = {PermissionEnum.ENVIRONMENT,PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @ResponseBody
     public BaseResult getWaterQuality(){
         return  waterQualityManager.read();
@@ -43,7 +48,9 @@ public class WaterQualityController {
      * @param id the id
      * @return the base result
      */
+    @LoginRequired
     @RequestMapping(value = "/water_quality/{id}", method = RequestMethod.DELETE)
+    @Permission(permission = {PermissionEnum.ENVIRONMENT,PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @ResponseBody
     public BaseResult<Boolean> deleteWaterQualityById(@PathVariable("id") Long id) {
         return waterQualityManager.delete(id);
@@ -57,7 +64,9 @@ public class WaterQualityController {
      * @param id            the id
      * @return the base result
      */
+    @LoginRequired
     @RequestMapping(value = "/water_quality/{id}", method = RequestMethod.PUT)
+    @Permission(permission = {PermissionEnum.ENVIRONMENT,PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @ResponseBody
     public BaseResult<Boolean> updateWaterQualityById(@RequestBody @Valid WaterQualityUpdateForm waterQualityForm,
                                                        BindingResult bindingResult,
@@ -75,7 +84,9 @@ public class WaterQualityController {
      * @param bindingResult the binding result
      * @return the base result
      */
+    @LoginRequired
     @RequestMapping(value = "/water_quality", method = RequestMethod.POST)
+    @Permission(permission = {PermissionEnum.ENVIRONMENT,PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @ResponseBody
     public BaseResult<WaterQualityDomain> createWaterQuality(@RequestBody @Valid WaterQualityCreateForm waterQualityForm,
                                            BindingResult bindingResult) {

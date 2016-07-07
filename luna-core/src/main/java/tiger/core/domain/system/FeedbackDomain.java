@@ -4,13 +4,7 @@
  */
 package tiger.core.domain.system;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import tiger.common.util.annotation.CopyIgnore;
 import tiger.core.domain.BaseDomain;
-import tiger.core.domain.attach.AttachDomain;
-import tiger.core.domain.attach.AttachRelateDomain;
-
-import java.util.List;
 
 /**
  * @author alfred_yuan
@@ -29,13 +23,6 @@ public class FeedbackDomain extends BaseDomain {
     private String mobile;
 
     private String content;
-
-    @JsonIgnore
-    @CopyIgnore
-    private List<AttachRelateDomain> attachRelateDomains;
-
-    @CopyIgnore
-    private List<AttachDomain> attaches;
 
     public Long getAccountId() {
         return accountId;
@@ -77,19 +64,4 @@ public class FeedbackDomain extends BaseDomain {
         this.content = content;
     }
 
-    public List<AttachRelateDomain> getAttachRelateDomains() {
-        return attachRelateDomains;
-    }
-
-    public void setAttachRelateDomains(List<AttachRelateDomain> attachRelateDomains) {
-        this.attachRelateDomains = attachRelateDomains;
-    }
-
-    public List<AttachDomain> getAttaches() {
-        return attaches;
-    }
-
-    public void setAttaches(List<AttachDomain> attaches) {
-        this.attaches = attaches;
-    }
 }

@@ -1,6 +1,9 @@
 'use strict';
       
 app.controller('WaterCtrl', ['$scope','ResTool','EnvironmentRes','$http',function($scope,ResTool,EnvironmentRes,$http) {
+    (function() {
+        document.body.scrollIntoView();
+    })();
     //--------------------------waterPollutionGetPromise----------------------------
     var waterPollutionGetParams = {
         // 'id':1,
@@ -8,7 +11,7 @@ app.controller('WaterCtrl', ['$scope','ResTool','EnvironmentRes','$http',functio
     var waterPollutionGetHeaders = {
 
     };
-    var waterPollutionGetPromise = ResTool.httpGet(EnvironmentRes.getWaterPollution, waterPollutionGetParams, waterPollutionGetHeaders);
+    var waterPollutionGetPromise = ResTool.httpGetWithWorkspace(EnvironmentRes.getWaterPollution, waterPollutionGetParams, waterPollutionGetHeaders);
     waterPollutionGetPromise.then(function(data){
         // console.log(data.data);
         $scope.box1Date=data.data[0];
@@ -602,7 +605,7 @@ app.controller('WaterCtrl', ['$scope','ResTool','EnvironmentRes','$http',functio
     var waterQualityGetHeaders = {
 
     };
-    var waterQualityGetPromise = ResTool.httpGet(EnvironmentRes.getWaterQuality, waterQualityGetParams, waterQualityGetHeaders);
+    var waterQualityGetPromise = ResTool.httpGetWithWorkspace(EnvironmentRes.getWaterQuality, waterQualityGetParams, waterQualityGetHeaders);
     waterQualityGetPromise.then(function(data){
         // console.log(data.data);
     }, function(error){
@@ -610,7 +613,7 @@ app.controller('WaterCtrl', ['$scope','ResTool','EnvironmentRes','$http',functio
     });
     //-------------------------waterQualityGetPromise结束--------------------------
     
-    // var promise1 = qService.tokenHttpGet(rawFactory.query,{tableName:'waterIndustryData'});
+    // var promise1 = qService.tokenhttpGetWithWorkspace(rawFactory.query,{tableName:'waterIndustryData'});
     // promise1.then(function(rc2) {
     //     $scope.list11=rc2.data[0];
     //     $scope.list12=rc2.data[1];
@@ -619,7 +622,7 @@ app.controller('WaterCtrl', ['$scope','ResTool','EnvironmentRes','$http',functio
     //     $scope.list15=rc2.data[4];
     //     $scope.date_industry=rc2.data[5];
     // });
-    // var promise2 = qService.tokenHttpGet(rawFactory.query,{tableName:'waterPollutionData'});
+    // var promise2 = qService.tokenhttpGetWithWorkspace(rawFactory.query,{tableName:'waterPollutionData'});
     // promise2.then(function(rc3) {
     //   $scope.JiuLONGDischarge=rc3.data[0];
     //   $scope.TCCityzoneDischarge=rc3.data[1];

@@ -27,10 +27,8 @@ import tiger.core.basic.exception.TigerException;
 import tiger.core.domain.account.AccountDomain;
 import tiger.core.domain.account.AccountLoginLogDomain;
 import tiger.core.domain.account.AccountResetPwdDomain;
-import tiger.core.domain.attach.AttachDomain;
 import tiger.core.service.account.AccountService;
 import tiger.core.service.account.LoginLogService;
-import tiger.core.service.attach.QiniuAttachService;
 import tiger.core.service.system.SmsService;
 import tiger.core.service.system.SystemParamService;
 import tiger.web.api.constants.APIConstants;
@@ -65,8 +63,6 @@ public class AccountController extends BaseController {
     private SmsService smsService;
     @Autowired
     private AccountService accountService;
-    @Autowired
-    private QiniuAttachService qiniuAttachService;
     @Autowired
     private LoginLogService loginLogService;
     @Autowired
@@ -146,23 +142,8 @@ public class AccountController extends BaseController {
     public BaseResult<AccountDomain> getUserProfile() {
         AccountDomain accountDomain = this.currentAccount();
 
-        AttachDomain attachDomain = qiniuAttachService.getAttachWithSignedUrlById(accountDomain.getIconId());
-        accountDomain.setIcon(attachDomain);
         accountDomain.setExtParams(accountService.getExtParamById(accountDomain.getId()));
         return new BaseResult<>(accountDomain);
-    }
-
-    /**
-     * 更新用户头像
-     *
-     * @param attchId
-     * @return
-     */
-    @RequestMapping(value = "/icon/{attachId}", method = RequestMethod.PUT)
-    @ResponseBody
-    @LoginRequired
-    public BaseResult<Boolean> attachHeaderIcon(@PathVariable("attachId") Long attchId) {
-        return accountManager.attachToAccountHeader(currentAccount().getId(), attchId);
     }
 
     /**
@@ -359,7 +340,7 @@ public class AccountController extends BaseController {
         if (account == null) {
             return new BaseResult<>(ErrorCodeEnum.NOT_FOUND.getCode(), "没有找到相应用户");
         }
-        return new BaseResult<>(accountManager.setCompanyAndIcon(account));
+        return new BaseResult<>(account);
     }
 
     /**

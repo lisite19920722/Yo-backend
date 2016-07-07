@@ -1,6 +1,8 @@
 
 app.controller('EconomyTaxCtrl', ['$scope','$stateParams','ResTool','EconomyTaxRes', function($scope,$stateParams,ResTool,EconomyTaxRes){
-
+  (function() {
+    document.body.scrollIntoView();
+  })();
   var TaxPromise = ResTool.httpGetWithWorkspace(EconomyTaxRes.getYearTax,{},{});
   var now = new Date();
   var year = now.getFullYear();

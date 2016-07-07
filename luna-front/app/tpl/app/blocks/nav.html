@@ -3,7 +3,7 @@
     <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
         <span translate="aside.nav.HEADER">查看</span>
     </li>
-    <li>
+    <li ng-if="isShowEconomyPanel">
         <a ui-sref="app.index.economy.gdp({title:'GDP'})" class="auto">
             <span class="pull-right text-muted">
                 <i class="fa fa-fw fa-angle-right text"></i>
@@ -13,7 +13,7 @@
             <span class="bi-nav-font" translate="aside.nav.DASHBOARD">经济BI</span>
         </a>
     </li>
-    <li>
+    <li ng-if="isShowEnvironmentPanel">
         <a ui-sref="app.emenu.air" class="auto">
             <span class="pull-right text-muted">
                 <i class="fa fa-fw fa-angle-right text"></i>
@@ -23,7 +23,7 @@
             <span class="bi-nav-font" translate="aside.nav.DASHBOARD">环境BI</span>
         </a>
     </li>
-    <li>
+    <li ng-if="isShowPopulationPanel">
         <a ui-sref="app.pmenu.populationstructure" class="auto">
             <span class="pull-right text-muted">
                 <i class="fa fa-fw fa-angle-right text"></i>

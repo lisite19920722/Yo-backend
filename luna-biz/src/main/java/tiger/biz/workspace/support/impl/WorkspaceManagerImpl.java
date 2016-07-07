@@ -219,8 +219,6 @@ public class WorkspaceManagerImpl implements WorkspaceManager {
         List<AccountDomain> accountDomainList = new ArrayList<>(members.size());
         members.forEach(member -> accountDomainList.add(member.getAccount()));
 
-        accountManager.setCompaniesAndIcons(accountDomainList);
-
         return new BaseResult<>(members);
     }
 

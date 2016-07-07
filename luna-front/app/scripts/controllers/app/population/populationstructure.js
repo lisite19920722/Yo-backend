@@ -1,7 +1,9 @@
 'use strict';
 
 app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRes','ResTool',function($scope, $stateParams,PopulationRes,ResTool) {
-
+    (function() {
+      document.body.scrollIntoView();
+    })();
     $scope.data = null;
     var popData;
 

@@ -16,14 +16,17 @@ app.controller('PowerEnterpriseAverageCtrl',
 			powerrate:$scope.getData.powers,
 		};
 		$scope.AverageEnterpriseChartByYear={
-			 options:{
-			    chart: {
-			        type: 'spline'
-			    },
-			 },
-			 title: {
-			    text: '规模以上企业（综合）用电量与经济增长关联分析',
-			    x: -20 //center
+			credits:{
+	    	    enabled:false // 禁用版权信息
+	    	},
+			options:{
+			   chart: {
+			       type: 'spline'
+			   },
+			},
+			title: {
+			   text: '规模以上企业（综合）用电量与经济增长关联分析',
+			   x: -20 //center
 			},
 			subtitle: {
 			    text: '',
@@ -69,7 +72,7 @@ app.controller('PowerEnterpriseAverageCtrl',
 			}, {
 			    name: '企业产值同比增长率',
 			    data: $scope.enterpriseAverageData.gdprate,
-			    color:'#8B8682',
+			    color:'#8B7E80',
 			}]
 		};
 	});

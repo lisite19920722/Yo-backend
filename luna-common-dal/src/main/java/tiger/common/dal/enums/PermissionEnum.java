@@ -20,6 +20,9 @@ public enum PermissionEnum implements BaseEnum {
     //bi 相关权限
     MANAGE_ALL("MANAGE_ALL","管理员权限"),
     VIEW_ALL("VIEW_ALL","市长权限,可查看所有数据"),
+    ENVIRONMENT("ENVIRONMENT","查看环境模块的权限"),
+    ECONOMY("ECONOMY","查看经济模块的权限"),
+    POPULATION("POPULATION","查看人口模块的权限"),
 
     //客户相关权限
     CREATE_CUSTOMER_MEMBER("CREATE_CUSTOMER_MEMBER","创建个人工作空间客户"),

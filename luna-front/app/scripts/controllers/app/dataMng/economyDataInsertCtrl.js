@@ -1,6 +1,9 @@
 'use strict';
 app.controller('EconomyDataInsertCtrl', 
     ['$scope','ResTool','DataRes','ToasterTool','AlertTool', function($scope, ResTool, DataRes,ToasterTool,AlertTool) { //这里注入的顺序不能变
+	(function() {
+		document.body.scrollIntoView();
+	})();
 	var now = (new Date()).getFullYear();
 	$scope.fourYear = [now-1,now,now+1,now+2,now+3];
 	//用电 整体
@@ -14,6 +17,10 @@ app.controller('EconomyDataInsertCtrl',
           if (isConfirm) {
             if (!$scope.powerTotalPowerValue || !$scope.powerTotalGdpValue) {
 				ToasterTool.warning("空值警告");
+				return;
+			}
+			if (!/^\d+(\.\d+)?$/.test($scope.powerTotalPowerValue)||!/^\d+(\.\d+)?$/.test($scope.powerTotalGdpValue)) {
+				ToasterTool.warning("请输入数字！");
 				return;
 			}
 			var powerTotalBody = {
@@ -50,6 +57,10 @@ app.controller('EconomyDataInsertCtrl',
 				ToasterTool.warning("空值警告");
 				return;
 			}
+			if (!/^\d+(\.\d+)?$/.test($scope.powerIndustryPowerValue)||!/^\d+(\.\d+)?$/.test($scope.powerIndustryGdpValue)) {
+				ToasterTool.warning("请输入数字！");
+				return;
+			}
 			var powerIndustryBody = {
 				"year": $scope.powerIndustrySelectYear,
 				"season":$scope.powerIndustrySelectQuarter,
@@ -83,6 +94,10 @@ app.controller('EconomyDataInsertCtrl',
           if (isConfirm) {
             if (!$scope.powerEnterprisePowerValue || !$scope.powerEnterpriseGdpValue) {
 				ToasterTool.warning("空值警告");
+				return;
+			}
+			if (!/^\d+(\.\d+)?$/.test($scope.powerEnterprisePowerValue)||!/^\d+(\.\d+)?$/.test($scope.powerEnterpriseGdpValue)) {
+				ToasterTool.warning("请输入数字！");
 				return;
 			}
 			var powerEnterpriseBody = {

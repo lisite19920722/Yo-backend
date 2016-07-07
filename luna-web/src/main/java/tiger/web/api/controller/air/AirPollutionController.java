@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import tiger.biz.air.support.AirPollutionManager;
+import tiger.common.dal.annotation.LoginRequired;
+import tiger.common.dal.annotation.Permission;
+import tiger.common.dal.enums.PermissionEnum;
 import tiger.core.basic.BaseResult;
 import tiger.core.domain.air.AirPollutionDomain;
 import tiger.web.api.constants.APIConstants;
@@ -31,7 +34,9 @@ public class AirPollutionController {
      *
      * @return
      */
+    @LoginRequired
     @RequestMapping(value = "/air_pollution", method = RequestMethod.GET)
+    @Permission(permission = {PermissionEnum.ENVIRONMENT,PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @ResponseBody
     public BaseResult getAirPollution() {
         return airPollutionManager.read();
@@ -43,7 +48,9 @@ public class AirPollutionController {
      * @param id the id
      * @return the base result
      */
+    @LoginRequired
     @RequestMapping(value = "/air_pollution/{id}", method = RequestMethod.DELETE)
+    @Permission(permission = {PermissionEnum.ENVIRONMENT,PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @ResponseBody
     public BaseResult<Boolean> deleteAirPollutionById(@PathVariable("id") Long id) {
         return airPollutionManager.delete(id);
@@ -57,7 +64,9 @@ public class AirPollutionController {
      * @param id               the id
      * @return the base result
      */
+    @LoginRequired
     @RequestMapping(value = "/air_pollution/{id}", method = RequestMethod.PUT)
+    @Permission(permission = {PermissionEnum.ENVIRONMENT,PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @ResponseBody
     public BaseResult<Boolean> updateAirPollutionById(@RequestBody @Valid AirPollutionUpdateForm airPollutionForm,
                                                       BindingResult bindingResult,
@@ -74,7 +83,9 @@ public class AirPollutionController {
      * @param bindingResult    the binding result
      * @return the base result
      */
+    @LoginRequired
     @RequestMapping(value = "/air_pollution", method = RequestMethod.POST)
+    @Permission(permission = {PermissionEnum.ENVIRONMENT,PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @ResponseBody
     public BaseResult<AirPollutionDomain> createAirPollution(@RequestBody @Valid AirPollutionCreateForm airPollutionForm,
                                                              BindingResult bindingResult) {

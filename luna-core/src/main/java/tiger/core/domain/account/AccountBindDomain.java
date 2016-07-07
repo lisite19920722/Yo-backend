@@ -7,8 +7,6 @@ package tiger.core.domain.account;
 import tiger.common.dal.enums.AccountSocialTypeEnum;
 import tiger.common.util.annotation.CopyIgnore;
 import tiger.core.domain.BaseDomain;
-import tiger.core.domain.attach.AttachDomain;
-
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,8 +36,6 @@ public class AccountBindDomain extends BaseDomain {
 
     private Long iconId;
 
-    private AttachDomain icon;
-
     private Boolean hasBind;
 
     private Map<String, String> extParams = new HashMap<>();
@@ -50,14 +46,6 @@ public class AccountBindDomain extends BaseDomain {
 
     public void setHasBind(Boolean hasBind) {
         this.hasBind = hasBind;
-    }
-
-    public AttachDomain getIcon() {
-        return icon;
-    }
-
-    public void setIcon(AttachDomain icon) {
-        this.icon = icon;
     }
 
     public Date getCreateTime() {

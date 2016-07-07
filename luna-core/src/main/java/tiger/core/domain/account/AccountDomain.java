@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import tiger.common.dal.enums.GenderEnum;
 import tiger.common.util.annotation.CopyIgnore;
 import tiger.core.domain.BaseDomain;
-import tiger.core.domain.attach.AttachDomain;
 import tiger.core.domain.workspace.AccountWorkspaceDomain;
 import tiger.core.domain.workspace.WorkspaceDomain;
 
@@ -80,12 +79,6 @@ public class AccountDomain extends BaseDomain {
     private String timezone;
 
     /**
-     * 头像
-     */
-    @CopyIgnore
-    private AttachDomain icon;
-
-    /**
      * 头像id
      */
     private Long iconId;
@@ -117,15 +110,6 @@ public class AccountDomain extends BaseDomain {
 
     @CopyIgnore
     private List<WorkspaceDomain> workspaces;
-
-
-    public AttachDomain getIcon() {
-        return icon;
-    }
-
-    public void setIcon(AttachDomain icon) {
-        this.icon = icon;
-    }
 
     public Long getIconId() {
         return iconId;

@@ -37,11 +37,8 @@ import tiger.core.domain.account.AccountDomain;
 import tiger.core.domain.account.AccountResetPwdDomain;
 import tiger.core.domain.account.convert.AccountBaseConvert;
 import tiger.core.domain.account.convert.AccountConvert;
-import tiger.core.domain.attach.AttachDomain;
 import tiger.core.domain.workspace.WorkspaceDomain;
 import tiger.core.service.account.AccountService;
-import tiger.core.service.attach.AttachRelateService;
-import tiger.core.service.attach.AttachService;
 import tiger.core.service.system.SystemParamService;
 import tiger.core.service.workspace.WorkspaceService;
 
@@ -67,11 +64,7 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     PermissionMapper permissionMapper;
     @Autowired
-    AttachService attachService;
-    @Autowired
     SystemParamService systemParamService;
-    @Autowired
-    AttachRelateService attachRelateService;
     @Autowired
     AttachRelateMapper attachRelateMapper;
     @Autowired
@@ -340,24 +333,6 @@ public class AccountServiceImpl implements AccountService {
         }
 
         return AccountConvert.convert2Domain(accountMapper.queryAllAccount(query));
-    }
-
-    /**
-     * 随机获取一个默认头像码
-     */
-    @Override
-    public Long getDefaultIconId() {
-        List<AttachDomain> defaultIconIds;
-        AttachRelateQuery attachRelateQuery = new AttachRelateQuery();
-        attachRelateQuery.setBizTypeEnum(AttachBizTypeEnum.DEFAULT_ICON);
-        defaultIconIds = attachRelateService.listAttaches(attachRelateQuery);
-        if (CollectionUtils.isEmpty(defaultIconIds)) {
-            logger.error("系统未设置默认头像!!");
-            return null;
-        }
-        int index = (int) (Math.random() * defaultIconIds.size());
-        return defaultIconIds.get(index).getId();
-
     }
 
     //~ private methods

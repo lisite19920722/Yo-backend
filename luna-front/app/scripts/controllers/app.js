@@ -1,23 +1,46 @@
 angular.module('luna')
-  .controller('AppCtrl', ['$scope', '$state', '$localStorage', '$window','AuthTool', 'AlertTool', 'ResTool','AccountRes','DataRes',
-    function(              $scope, $state, $localStorage,   $window, AuthTool, AlertTool, ResTool, AccountRes, DataRes) {
+  .controller('AppCtrl', ['$scope', '$state', '$localStorage', '$window','AuthTool', 'AlertTool', 'ResTool','AccountRes','DataRes','PrivilegeRes',
+    function(              $scope, $state, $localStorage,   $window, AuthTool, AlertTool, ResTool, AccountRes, DataRes, PrivilegeRes) {
       // 获取当前登录用户
       $scope.loginUser = AuthTool.getLoginUser();
       // 获取当前团队
       $scope.currWorkspace = AuthTool.getCurrWorkspace();
 
       //数据录入权限判断
+      $scope.isShowEconomyPanel = true;
+      $scope.isShowEnvironmentPanel = true;
+      $scope.isShowPopulationPanel = true;
+      $scope.isShowDataMngPanel = true;
+      //控制数据录入大类显示
       ResTool.httpGetWithWorkspace(DataRes.isShowDataPanel, {}, {})
       .then(function(data) {
-        // console.log("success"); //测试通过
         if (data.code == "501") {
           $scope.isShowDataMngPanel = false;
-        } else {
-          $scope.isShowDataMngPanel = true;
         }
-      }, function(err) {
-        $scope.isShowDataMngPanel = false;
-      });
+      }, function(err) {});
+      // //控制环境大类显示
+      // ResTool.httpGetWithWorkspace(PrivilegeRes.Environment, {}, {})
+      // .then(function(data) {
+      //   if (data.code == "501") {
+      //     $scope.isShowEnvironmentPanel = false;
+      //   }
+      // }, function(err) {});
+      // //控制经济大类显示
+      // ResTool.httpGetWithWorkspace(PrivilegeRes.Economy, {}, {})
+      // .then(function(data) {
+      //   if (data.code == "501") {
+      //     $scope.isShowEconomyPanel = false;
+      //   }
+      // }, function(err) {});
+      // //控制人口大类显示
+      // ResTool.httpGetWithWorkspace(PrivilegeRes.Population, {}, {})
+      // .then(function(data) {
+      //   if (data.code == "501") {
+      //     $scope.isShowPopulationPanel = false;
+      //   }
+      // }, function(err) {});
+
+      //登出系统
       $scope.logout = function () {
         AlertTool.warningConfirm({
           title: '确定要退出系统?'

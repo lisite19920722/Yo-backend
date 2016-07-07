@@ -57,11 +57,6 @@ public interface AccountManager {
     String createToken(AccountLoginLogDomain loginLogDomain, int expireDay);
 
     /**
-     * 附件和用户头像关联
-     */
-    BaseResult<Boolean> attachToAccountHeader(Long accountId, Long attachId);
-
-    /**
      * 更新用户,融合ExtParam
      *
      * @param domain
@@ -93,18 +88,4 @@ public interface AccountManager {
      */
     AccountDomain checkAndGetAccount(Long accountId);
 
-    /**
-     * 设置头像和公司
-     *
-     * @param account
-     * @return
-     */
-    AccountDomain setCompanyAndIcon(AccountDomain account);
-
-    /**
-     * 设置account是的公司和头像信息
-     * @param accounts
-     * @return
-     */
-    List<AccountDomain> setCompaniesAndIcons(List<AccountDomain> accounts);
 }

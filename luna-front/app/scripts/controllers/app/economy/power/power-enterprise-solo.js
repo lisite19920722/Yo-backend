@@ -2,6 +2,9 @@
 
 app.controller('PowerEnterpriseSoloCtrl', 
     ['$scope','ResTool','PowerRes', function($scope, ResTool, PowerRes) {
+    	(function() {
+    		document.body.scrollIntoView();
+    	})();
     	$scope.title = '企业用电量与产值关联分析';
 	  	$scope.map = new AMap.Map('consumptionbyenterprise',{
 	        zoom: 12,
@@ -369,7 +372,7 @@ app.controller('PowerEnterpriseSoloCtrl',
 			    	}, {
 			    	    name: '企业产值同比增长率',
 			    	    data: $scope.yearData.gdps,
-			    	    color:'#8B8682',
+			    	    color:'#8B7E80',
 			    	}]
 				};
 			},function(error) {
@@ -446,7 +449,7 @@ app.controller('PowerEnterpriseSoloCtrl',
 				    }, {
 				        name: '企业产值增长率',
 				        data: $scope.seasonData.gdps,
-				        color:'#8B8682',
+				        color:'#8B7E80',
 				    }]
 				};
 				$scope.IndustryGdpChartBySeasonPie={
@@ -509,7 +512,7 @@ app.controller('PowerEnterpriseSoloCtrl',
 				            ['第三季度',   $scope.seasonData.gdps[2]],
 				            ['第四季度',   $scope.seasonData.gdps[3]],
 				        ],
-				        color:'#8B8682',
+				        color:'#8B7E80',
 				    }]
 				};
 				$scope.IndustryPowerChartBySeasonPie = {

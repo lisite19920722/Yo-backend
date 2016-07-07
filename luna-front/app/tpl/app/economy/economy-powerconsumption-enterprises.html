@@ -1,5 +1,5 @@
 <div class="vbox cgq_fontsize" style="margin-bottom:5em" name="cgqmarker">
-    <div class="wrapper lter b-b bg-white" >
+    <div id="powerconsumptionenterprisesolo" class="wrapper lter b-b bg-white" >
         <a ui-sref="app.index.economy.powerconsumption({title:'工业用电量与经济增长关联分析模块'})" class="pull-right btn btn-sm btn-info m-t-n-xs" >返回</a>
         <div class="subview3_title">{{title}}</div>
     </div>
@@ -103,7 +103,7 @@
                     </div>
                     <div class="col-md-12 cgq_marginaround1em" style="margin-top:1em">
                         <article class="media cgq_contentwidth">
-                            <div class="pull-left">
+                            <div class="pull-left" style="margin-left:-1px;">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x text-info"></i>
                                     <i class="icon-bulb fa-spin fa-stack-1x text-white icon-bulb-position"></i>
@@ -111,8 +111,16 @@
                                 <span class="h4">一句话解读</span>
                             </div>
                             <div class="media-body clear" style="width:100%;">
-                                <small class="block m-t-xs">用电量与经济增长密切相关：用电量增减变动趋势与GDP增减变动趋势基本一致，GDP增长时，用电量也增长，增速相似；GDP回落时，用电量增长也回落;预测阶段用电量增速将大于GDP增速。</small>
-                            </div>
+                            <small class="block m-t-xs">
+                                <i class="fa fa-circle" style="width:6%;float:left;margin-top:0.2em;"></i><div style="width:94%;float:left;margin-bottom:0.4em;"><span>企业用电量与企业产值增长率关联分析时所采用的是格兰杰因果检验模型和误差修正模型的组合模型。</span></div>
+                            </small>
+                            <small class="block m-t-xs">
+                                <i class="fa fa-circle" style="width:6%;float:left;margin-top:0.2em;"></i><div style="width:94%;float:left;margin-bottom:0.4em;"><span>用电量增减变动趋势与产值增减变动趋势基本一致。</span></div>
+                            </small>
+                            <small class="block m-t-xs">
+                                <i class="fa fa-circle" style="width:6%;float:left;margin-top:0.2em;"></i><div style="width:94%;float:left;margin-bottom:0.4em;"><span>预测该企业用电量近年内有下降趋势，企业产值则缓慢回升。</span></div>
+                            </small>
+                        </div>
                         </article>
                     </div>
                     <div class="col-md-12" style="margin-top:0.7em;">

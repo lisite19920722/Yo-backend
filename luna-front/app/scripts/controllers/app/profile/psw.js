@@ -1,6 +1,9 @@
 'use strict';
 
 app.controller('ProfilePswCtrl', ['$scope', 'ResTool','AccountRes','AlertTool','ToasterTool', function($scope, ResTool, AccountRes, AlertTool, ToasterTool) {
+	(function() {
+		document.body.scrollIntoView();
+	})();
 	$scope.g = {};
 	$scope.changePsw = function() {
 		AlertTool.confirm({
