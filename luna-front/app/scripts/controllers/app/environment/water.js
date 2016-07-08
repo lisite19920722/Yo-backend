@@ -78,28 +78,28 @@ app.controller('WaterCtrl', ['$scope','ResTool','EnvironmentRes','$http',functio
                 {
                     name: '太仓市佳煌针织印染有限公司',
                     // data: $scope.list11
-                    data: [5122, 2919, 4323, 1767, 2310, 4559, 1929]
-
+                    data: [5122, 2919, 4323, 1767, 2310, 4559, 1929],        
+                    color:"#7cb5ec"
                 }, {
                     name: '洛克伍德染料有限公司',
                     // data: $scope.list12
-                    data: [1595, 1200, 1914, 1444, 1568, 1862, 1717]
-
+                    data: [1595, 1200, 1914, 1444, 1568, 1862, 1717],
+                    color:"#73e58d"
                 }, {
                     name: '太仓虹盛印染厂',
                     // data: $scope.list13
-                    data: [1016, 830, 902, 1134, 616, 349, 508]
-
+                    data: [1016, 830, 902, 1134, 616, 349, 508],
+                    color:"#444444"
                 }, {
                     name: '太仓市金佳漂染厂',
                     // data: $scope.list14
-                    data: [649, 966, 1078, 902, 2037, 1813, 1489]
-
+                    data: [649, 966, 1078, 902, 2037, 1813, 1489],
+                    color:"#0033ff"
                 }, {
                     name: '江苏长乐纤维科技有限公司',
                     // data: $scope.list15
-                    data: [1654, 1556, 1865, 2567, 2015, 1892, 1568]
-
+                    data: [1654, 1556, 1865, 2567, 2015, 1892, 1568],
+                    color:"#888888"
                 }
             ]
         };       
@@ -199,29 +199,29 @@ app.controller('WaterCtrl', ['$scope','ResTool','EnvironmentRes','$http',functio
             series: [
                 {
                     name: '玖龙纸业有限公司',
-                    color:'#57d160',
-                    data: $scope.discharge1
+                    data: $scope.discharge1,
                     // data: [500, 400, 300, 400, 600, 800]
+                    color:"#4bd4cd"
                 }, {
                     name: '太仓市城区污水处理厂',
-                    color:'#ffb143',
-                    data: $scope.discharge2
+                    data: $scope.discharge2,
                     // data: [500, 400, 300, 400, 600, 800]
+                    color:"#69d5f2"
                 }, {
                     name: '浏河镇污水处理厂',
-                    color:'#c7e74f',
-                    data: $scope.discharge3
+                    data: $scope.discharge3,
                     // data: [500, 400, 300, 400, 600, 800]
+                    color:"#aaaaaa"
                 }, {
                     name: '港城组团污水处理厂',
-                    color:'#f8d940',
-                    data: $scope.discharge4
+                    data: $scope.discharge4,
                     // data: [500, 400, 300, 400, 600, 800]
+                    color:"#27ab83"
                 }, {
                     name: '太仓江城城市污水处理有限公司',
-                    color:'#69afcd',
-                    data: $scope.discharge5
+                    data: $scope.discharge5,
                     // data: [500, 400, 300, 400, 600, 800]
+                    color:"#c8a9ed"
                 }
             ]
         };
@@ -288,29 +288,29 @@ app.controller('WaterCtrl', ['$scope','ResTool','EnvironmentRes','$http',functio
                 series: [
                     {
                         name: '玖龙纸业有限公司',
-                        color:'#69afcd',
-                        // data: $scope.JiuLONGDischarge
-                        data: [500, 400, 300, 400, 600, 800]
+                        data: $scope.discharge1,
+                        // data: [500, 400, 300, 400, 600, 800]
+                        color:"#4bd4cd"
                     }, {
                         name: '太仓市城区污水处理厂',
-                        color:'#ffb143',
-                        // data: $scope.TCCityzoneDischarge
-                        data: [500, 400, 300, 400, 600, 800]
+                        data: $scope.discharge2,
+                        // data: [500, 400, 300, 400, 600, 800]
+                        color:"#69d5f2"
                     }, {
                         name: '浏河镇污水处理厂',
-                        color:'#c7e74f',
-                        // data: $scope.LiuHeDischarge
-                        data: [500, 400, 300, 400, 600, 800]
+                        data: $scope.discharge3,
+                        // data: [500, 400, 300, 400, 600, 800]
+                        color:"#aaaaaa"
                     }, {
                         name: '港城组团污水处理厂',
-                        color:'#f8d940',
-                        // data: $scope.GangChengDischarge
-                        data: [500, 400, 300, 400, 600, 800]
+                        data: $scope.discharge4,
+                        // data: [500, 400, 300, 400, 600, 800]
+                        color:"#27ab83"
                     }, {
                         name: '太仓江城城市污水处理有限公司',
-                        color:'#57d160',
-                        // data: $scope.TCRivertownDischarge
-                        data: [500, 400, 300, 400, 600, 800]
+                        data: $scope.discharge5,
+                        // data: [500, 400, 300, 400, 600, 800]
+                        color:"#c8a9ed"
                     }
                 ]
             };
@@ -1212,9 +1212,9 @@ app.controller('WaterCtrl', ['$scope','ResTool','EnvironmentRes','$http',functio
         addMarker($scope.wasteWaterAnalysisMarker, '/images/environment/factory.png', 'waterPollution');
         addMarkerOneAnalysis(waterQualityMarkerArrOne, '/images/environment/marker_sprite.png', 'waterQuality');
         mapObj.setFitView();
-        mapObj.zoomOut();
-        mapObj.zoomOut();
-        mapObj.zoomOut();
+        // mapObj.zoomIn();
+        // mapObj.zoomOut();
+        // mapObj.zoomOut();
     };
     $scope.btn_waterEnvironmentAllList = function() {
         $scope.tableStatus = {
