@@ -27,7 +27,7 @@
                                                         <span class="text-xs"><span id="populationPreYear1">2020</span>年老年人比例预测值</span>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12 " style="padding-top:0.5em;padding-left:0px" >
+                                                <div class="col-md-12 " style="padding-top:0.5em;padding-left:0px">
                                                     <div class="block panel padder-v cgq_bg-lightyellow item cgq_marginaround1em cgq_contentwidth;" >
                                                         <span class="text-white font-thin h1 block"><span id="sexRatio">105.11：100</span></span>
                                                         <span class="text-xs"><span id="populationPreYear">2020</span>年男性人数：女性人数</span>
@@ -39,9 +39,7 @@
 
                                             <div class="ioc-panel-desc">
 
-
                                                 <hr/>
-
                                                 <div class="pull-left" >
                                                     <br /> <br />
                                                     <span class="fa-stack fa-lg" style="margin-left:4px">
@@ -59,42 +57,65 @@
                                                         </small>
                                                         <small class="block m-t-xs">
                                                             <i class="fa fa-circle" style="width:6%;float:left;margin-top:0.2em;"></i><div style="width:94%;float:left;margin-bottom:0.4em;"><span>常住人口结构分析预测采用的是灰色预测模型。</span></div>
-                                                        </small>
+                                                        </smallrg                                                    </div>
                                                     </div>
-
-
                                                 </div>
+
+
+                                                <div style="width:369px;height:1px;margin:15px auto;padding:0px;background-color:#FFFFFF;overflow:hidden;"></div>
+
+                                                <div class="btn-group dropdown">
+                                                 <br /> <br />
+                                                 <button class="btn btn-success" data-toggle="dropdown" aria-expanded="false" style="width:8em;margin-left:10px;">年份选择<span class="caret"></span></button>
+                                                 <ul class="dropdown-menu">
+                                                    <li ng-repeat="bttn in buttonMap"><a ng-click="btn_click(bttn)" ng-model="predictionModal" btn-radio="bttn.radio">{{bttn.label}}</a></li>
+                                                </ul>
                                             </div>
-                                            
+                                            <br /><br />
 
-                                            <div style="width:369px;height:1px;margin:15px auto;padding:0px;background-color:#FFFFFF;overflow:hidden;"></div>
-
-                                            <div class="btn-group dropdown">
-                                               <br /> <br />
-                                               <button class="btn btn-success" data-toggle="dropdown" aria-expanded="false" style="width:120px;margin-left:10px;">年份选择<span class="caret"></span></button>
-                                               <ul class="dropdown-menu">
-                                                <li ng-repeat="bttn in buttonMap"><a ng-click="btn_click(bttn)" ng-model="predictionModal" btn-radio="bttn.radio">{{bttn.label}}</a></li>
-                                            </ul>
+                                            <div class="col-md-12 cgq_marginaround1em" style="margin-left:-5px;">
+                                                <button ng-click="showPopulationDetail()"  class="btn m-b-xs btn-primary cgq-fixed-buttonwidth">详细数据列表</button>
+                                            </div>
+                                            <div style="height:10px"></div>
                                         </div>
-<br /><br />
-                                          <div class="btn-group  dropdown ">
-                                               <button class="btn btn-success" data-toggle="dropdown" aria-expanded="false" style="width:120px;margin-left:10px;">年份选择<span class="caret"></span></button>
-                                               <ul class="dropdown-menu">
-                                                <li ng-repeat="bttn in buttonMap"><a ng-click="btn_click(bttn)" ng-model="predictionModal" btn-radio="bttn.radio">{{bttn.label}}</a></li>
-                                            </ul>
-                                        </div>
+                                    </div>
+                                </div>
+                                <div style="width:1198px;height:1px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden;"></div>
 
 
-                                        <div class="col-md-12 cgq_marginaround1em" style="margin-left:-5px;">
-                                            <button ng-click="showTotalTable()"  class="btn m-b-xs btn-primary cgq-fixed-buttonwidth">详细数据列表</button>
-                                        </div>
 
-                                        <div style="height:10px"></div>
+
+
+
+                                <div class="bg-white fc-datatable" ng-if="totalshow">
+                                    <div class="panel panel-default paddingmargin0em">
+                                        <div class="panel-heading"><center>数据详情</center></div>
+                                        <div class="panel-heading"><center>数据详情</center></div>
+                                        <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
+                                            <tr class="ng-scope ng-isolate-scope">
+                                                <td ng-repeat="year in totaldata.tabledata" style="text-align: center;">{{year.yearvalue}}</td>
+                                            </tr>
+                                            <tr class="ng-scope ng-isolate-scope">
+                                                <td ng-repeat="weather in totaldata.tabledata" style="text-align: center;">{{weather.weather}}</td>
+                                            </tr>
+                                            <tr class="ng-scope ng-isolate-scope">
+                                                <td ng-repeat="Htemperature in totaldata.tabledata" style="text-align: center;">{{Htemperature.Htemperature}}</td>
+                                            </tr>
+                                            <tr class="ng-scope ng-isolate-scope">
+                                                <td ng-repeat="Ltemperature in totaldata.tabledata" style="text-align: center;">{{Ltemperature.Ltemperature}}</td>
+                                            </tr>
+                                            <tr class="ng-scope ng-isolate-scope">
+                                                <td ng-repeat="wind in totaldata.tabledata" style="text-align: center;">{{wind.wind}}</td>
+                                            </tr>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
 
-                            <div style="width:1198px;height:1px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden;"></div>
+
+
+
+
                             <div class="row" >
                                 <div class=" col-md-12" >
                                     <div class="col-md-6 chart-panel" style="padding-top:22px" >
