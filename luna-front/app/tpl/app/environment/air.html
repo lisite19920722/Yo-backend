@@ -400,79 +400,62 @@
                     </div>
                     <div class="col-md-12">
                         <div ng-show="mapTableStatus.wasteAir">
-                            <table class="table table-hover table-responsive" style="font-size:14px;margin-bottom:0px">
+                            <table class="table table-hover table-responsive" style="font-size:14px;margin-bottom:0px;width:350px;padding:0px">
                                 <tr>
-                                    <th style="width:25%">企业</th>
-                                    <th style="width:19%">流量(万m³)</th>
-                                    <th style="width:19%">
-                                        烟尘
-                                    <br>(mg/m³)</th>
-                                    <th style="width:19%">
-                                        SO2
-                                    <br>(mg/m³)</th>
-                                    <th style="width:18%">
-                                        氮氧化物
-                                    <br>(mg/m³)</th>
+                                    <th style="width:40%;text-align:center;">企业</th>
+                                    <!-- <th style="width:20%">流量<br>(万m³)</th> -->
+                                    <th style="width:20%;text-align:center;">烟尘<br>(mg/m³)</th>
+                                    <th style="width:20%;text-align:center;">SO2<br>(mg/m³)</th>
+                                    <th style="width:20%;text-align:center;">氮氧化物<br>(mg/m³)</th>
                                 </tr>
+
                             </table>
                         </div>
                         <div style="overflow: auto; overflow-x:hidden;height:180px" ng-show="mapTableStatus.wasteAir" >
-                            <table class="table table-hover table-responsive" style="font-size:14px;margin-bottom:0">
-                                <tr >
-                                    <td style="width:25%">太仓港协鑫发电</td>
-                                    <td style="width:19%">
+                            <table class="table table-hover table-responsive" style="font-size:14px;margin-bottom:0;width:350px;padding:0px">
+                                <tr style="width:100%">
+                                    <td style="width:40%;text-align:center;">太仓港协鑫发电</td>
+                                    <!-- <td>
                                         <span>{{pollutionDischarge[0]}}</span>
-                                        <!-- <span>6558</span> -->
-                                    </td>
-                                    <td style="width:19%">
+                                    </td> -->
+                                    <td style="width:20%;text-align:center;">
                                         <span>{{pollutionSmoke[0]}}</span>
-                                        <!-- <span>32.15</span> -->
                                     </td>
-                                    <td style="width:19%">
+                                    <td style="width:20%;text-align:center;">
                                         <span>{{pollutionSo2[0]}}</span>
-                                        <!-- <span>15.21</span> -->
                                     </td>
-                                    <td style="width:18%">
+                                    <td style="width:20%;text-align:center;">
                                         <span>{{pollutionNo[0]}}</span>
-                                        <!-- <span>30.21</span> -->
                                     </td>
                                 </tr>
                                 <tr >
-                                    <td style="width:25%">玖龙纸业</td>
-                                    <td style="width:19%">
+                                    <td>玖龙纸业</td>
+                                    <!-- <td>
                                         <span>{{pollutionDischarge[1]}}</span>
-                                        <!-- <span>7132</span> -->
+                                    </td> -->
+                                    <td>
+                                        <span style="text-align:center;">{{pollutionSmoke[1]}}</span>
                                     </td>
-                                    <td style="width:19%">
-                                        <span>{{pollutionSmoke[1]}}</span>
-                                        <!-- <span>30.23</span> -->
+                                    <td>
+                                        <span style="text-align:center;">{{pollutionSo2[1]}}</span>
                                     </td>
-                                    <td style="width:19%">
-                                        <span>{{pollutionSo2[1]}}</span>
-                                        <!-- <span>16.13</span> -->
-                                    </td>
-                                    <td style="width:18%">
-                                        <span>{{pollutionNo[1]}}</span>
-                                        <!-- <span>35.36</span> -->
+                                    <td>
+                                        <span style="text-align:center;">{{pollutionNo[1]}}</span>
                                     </td>
                                 </tr>
                                 <tr >
-                                    <td style="width:25%">华能国际电力</td>
-                                    <td style="width:19%">
+                                    <td>华能国际电力</td>
+                                    <!-- <td>
                                         <span>{{pollutionDischarge[2]}}</span>
-                                        <!-- <span>6541</span> -->
+                                    </td> -->
+                                    <td>
+                                        <span style="text-align:center;">{{pollutionSmoke[2]}}</span>
                                     </td>
-                                    <td style="width:19%">
-                                        <span>{{pollutionSmoke[2]}}</span>
-                                        <!-- <span>27.32</span> -->
+                                    <td>
+                                        <span style="text-align:center;">{{pollutionSo2[2]}}</span>
                                     </td>
-                                    <td style="width:19%">
-                                        <span>{{pollutionSo2[2]}}</span>
-                                        <!-- <span>33.39</span> -->
-                                    </td>
-                                    <td style="width:18%">
-                                        <span>{{pollutionNo[2]}}</span>
-                                        <!-- <span>39.65</span> -->
+                                    <td>
+                                        <span style="text-align:center;">{{pollutionNo[2]}}</span>
                                     </td>
                                 </tr>
                             </table>
