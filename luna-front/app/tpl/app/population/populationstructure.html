@@ -11,107 +11,142 @@
                             <div class="topbar">
                                 <h4 class="cgq_title">常住人口结构分析预测</h4>
                             </div>
-                            <div class="panel-body" style="padding:0">
+
+
+                            <div class="panel-body" style="padding-top:22px">
                                 <div class="row">
                                     <div class="span12 col-md-12">
                                         <div class="col-md-8 chart-panel ">
                                             <highchart id="age_ration" config="age_ration" style="height: 620px" style="float:left"></highchart>
                                         </div>
                                         <div class="col-md-4">
-                                            <p class="fill-margin"></p>
+                                            <div>
+                                                <div class="col-md-12" style="padding-top:0.5em;padding-left:0px">
+                                                    <div class="block panel padder-v cgq_bg-lightgreen item cgq_marginaround1em cgq_contentwidth">
+                                                        <span class="text-white font-thin h1 block"><span id="oldManProportion">32.08</span>%</span>
+                                                        <span class="text-xs"><span id="populationPreYear1">2020</span>年老年人比例预测值</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 " style="padding-top:0.5em;padding-left:0px" >
+                                                    <div class="block panel padder-v cgq_bg-lightyellow item cgq_marginaround1em cgq_contentwidth;" >
+                                                        <span class="text-white font-thin h1 block"><span id="sexRatio">105.11：100</span></span>
+                                                        <span class="text-xs"><span id="populationPreYear">2020</span>年男性人数：女性人数</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+
+
                                             <div class="ioc-panel-desc">
-                                                <p class="ioc-panel-desc-title">
-                                                    <div style="background:#929dce;width:115px;height:30px;text-align:center;line-height:30px;font-size:15px;color:#FFFFFF;font-weight:bold" >数据详情</div>
-                                                </p>
-                                                <div style="height:3px"></div>
-                                                <h4>预测结果解读</h4>
-                                                <p id="abc">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp     太仓市人口结构呈现不断老龄化趋势；其中，60岁及以上人口比例从2015的 31.02% 增加到2020的 32.08%。
-                                                    <blockquote class="pop-text">    影响：</br>
-                                                        1. 劳动人口減少；</br>
-                                                        2. 产业劳动力资源相对短缺；</br>
-                                                        3. 政府社保医保开销持续增加，导致财政负担过高。</br>
-                                                    </blockquote>
-                                                    <blockquote class="pop-text">
-                                                        解决办法：</br>
-                                                        1. 实行鼓励生育政策；</br>
-                                                        2. 完善社会保障体系；</br>
-                                                    3. 适度提高老人退休年龄；</blockquote>
-                                                </p>
+
+
+                                                <hr/>
+
+                                                <div class="pull-left" >
+                                                    <br /> <br />
+                                                    <span class="fa-stack fa-lg" style="margin-left:4px">
+                                                        <i class="fa fa-circle fa-stack-2x text-info"></i>
+                                                        <i class="icon-bulb fa-stack-1x text-white fa-spin icon-bulb-position"></i>
+                                                    </span>
+                                                    <span class="h4">一句话解读</span>
+                                                    <br />
+                                                    <div class="media-body clear" style="width:100%;margin-left:9px;padding-right:26px" >
+                                                        <small class="block m-t-xs">
+                                                            <i class="fa fa-circle" style="width:6%;float:left;margin-top:0.2em;"></i><div style="width:94%;float:left;margin-bottom:0.4em;"><span id="abc">数据分析：60岁及以上人口比例从2015的 31.02% 增加到2020的 32.08%。</span></div>
+                                                        </small>
+                                                        <small class="block m-t-xs">
+                                                            <i class="fa fa-circle" style="width:6%;float:left;margin-top:0.2em;"></i><div style="width:94%;float:left;margin-bottom:0.4em;"><span id="conclusion">结论：太仓市人口结构呈现不断老龄化趋势。</span></div>
+                                                        </small>
+                                                        <small class="block m-t-xs">
+                                                            <i class="fa fa-circle" style="width:6%;float:left;margin-top:0.2em;"></i><div style="width:94%;float:left;margin-bottom:0.4em;"><span>常住人口结构分析预测采用的是灰色预测模型。</span></div>
+                                                        </small>
+                                                    </div>
+
+
+                                                </div>
                                             </div>
-                                            <hr/>
-                                            <div class="pull-left">
-                                                <span class="fa-stack fa-lg">
-                                                    <i class="fa fa-circle fa-stack-2x text-info"></i>
-                                                    <i class="icon-bulb fa-stack-1x text-white fa-spin icon-bulb-position"></i>
-                                                </span>
-                                                <span class="h4">一句话解读</span>
-                                                <br />
-                                                <span class="pop-text">  常住人口结构分析预测采用的是灰色预测模型。</span>
-                                            </div>
+                                            
+
                                             <div style="width:369px;height:1px;margin:15px auto;padding:0px;background-color:#FFFFFF;overflow:hidden;"></div>
+
                                             <div class="btn-group dropdown">
-                                                <button class="btn btn-success" data-toggle="dropdown" aria-expanded="false" style="width:120px;">年份选择<span class="caret"></span></button>
-                                                <ul class="dropdown-menu">
-                                                    <li ng-repeat="bttn in buttonMap"><a ng-click="btn_click(bttn)" ng-model="predictionModal" btn-radio="bttn.radio">{{bttn.label}}</a></li>
-                                                </ul>
-                                            </div>
-                                            <div style="height:10px"></div>
+                                               <br /> <br />
+                                               <button class="btn btn-success" data-toggle="dropdown" aria-expanded="false" style="width:120px;margin-left:10px;">年份选择<span class="caret"></span></button>
+                                               <ul class="dropdown-menu">
+                                                <li ng-repeat="bttn in buttonMap"><a ng-click="btn_click(bttn)" ng-model="predictionModal" btn-radio="bttn.radio">{{bttn.label}}</a></li>
+                                            </ul>
                                         </div>
+<br /><br />
+                                          <div class="btn-group  dropdown ">
+                                               <button class="btn btn-success" data-toggle="dropdown" aria-expanded="false" style="width:120px;margin-left:10px;">年份选择<span class="caret"></span></button>
+                                               <ul class="dropdown-menu">
+                                                <li ng-repeat="bttn in buttonMap"><a ng-click="btn_click(bttn)" ng-model="predictionModal" btn-radio="bttn.radio">{{bttn.label}}</a></li>
+                                            </ul>
+                                        </div>
+
+
+                                        <div class="col-md-12 cgq_marginaround1em" style="margin-left:-5px;">
+                                            <button ng-click="showTotalTable()"  class="btn m-b-xs btn-primary cgq-fixed-buttonwidth">详细数据列表</button>
+                                        </div>
+
+                                        <div style="height:10px"></div>
                                     </div>
                                 </div>
-                                <div style="width:1198px;height:1px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden;"></div>
-                                <div class="row" >
-                                    <div class=" col-md-12">
-                                        <div class="col-md-6 chart-panel">
-                                            <highchart id="population_year" config="population_year" style="width:98%;height:500px"></highchart>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <highchart id="population_prediction_year" config="population_prediction_year" style="width:98%;height:500px"></highchart>
-                                        </div>
+                            </div>
+
+                            <div style="width:1198px;height:1px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden;"></div>
+                            <div class="row" >
+                                <div class=" col-md-12" >
+                                    <div class="col-md-6 chart-panel" style="padding-top:22px" >
+                                        <highchart id="population_year" config="population_year" style="width:98%;height:500px"></highchart>
+                                    </div>
+                                    <div class="col-md-6" style="padding-top:22px">
+                                        <highchart id="population_prediction_year" config="population_prediction_year" style="width:98%;height:500px"></highchart>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row" style="margin-top: 20px">
-                    <div class="col-md-12">
-                        <div class="panel panel-primary" style="margin-top: 20px;">
-                            <div class="topbar">
-                                <h4 class="cgq_title">常住人口总量分析预测</h4>
-                            </div>
-                            <div class="panel-body" style="padding:0">
-                                <div class="row">
-                                    <div class="col-md-8 chart-panel" style="height:450px">
-                                        <highchart id="sumpopulation" config="sumpopulation" style="height: 450px"></highchart>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-md-12">
+                    <div class="panel panel-primary" style="margin-top: 20px;">
+                        <div class="topbar">
+                            <h4 class="cgq_title">常住人口总量分析预测</h4>
+                        </div>
+                        <div class="panel-body" style="padding-top:22px">
+                            <div class="row">
+                                <div class="col-md-8 chart-panel" style="height:450px">
+                                    <highchart id="sumpopulation" config="sumpopulation" style="height: 450px"></highchart>
+                                </div>
+                                <div class="col-md-4">
+                                    <p class="fill-margin"></p>
+                                    <div class="ioc-panel-desc">
+                                        <p class="ioc-panel-desc-title">
+                                            <div style="background:#929dce;width:115px;height:30px;text-align:center;line-height:30px;font-size:15px;color:#FFFFFF;font-weight:bold" >数据详情</div>
+                                        </p>
+                                        <div style="height:3px"></div>
+                                        <h4>预测结果解读</h4>
+                                        <p id='a' style="margin-right:10px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 总体来看，太仓市的人口总量处于平稳状态，呈增长趋势，随着二胎政策的全面开放，促进了人口数量的增加。</p>
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="fill-margin"></p>
-                                        <div class="ioc-panel-desc">
-                                            <p class="ioc-panel-desc-title">
-                                                <div style="background:#929dce;width:115px;height:30px;text-align:center;line-height:30px;font-size:15px;color:#FFFFFF;font-weight:bold" >数据详情</div>
-                                            </p>
-                                            <div style="height:3px"></div>
-                                            <h4>预测结果解读</h4>
-                                            <p id='a' style="margin-right:10px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 总体来看，太仓市的人口总量处于平稳状态，呈增长趋势，随着二胎政策的全面开放，促进了人口数量的增加。</p>
+                                    <hr />
+                                    <div class="pull-left">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x text-info"></i>
+                                            <i class="icon-bulb fa-stack-1x text-white fa-spin icon-bulb-position"></i>
+                                        </span>
+                                        <span class="h4">一句话解读</span>
+                                        <br />
+                                        <div style="margin-right:10px">
+                                            <span style="margin-right:10px" class="pop-text">  常住人口总量分析预测采用的是灰色预测模型。</span>
                                         </div>
-                                        <hr />
-                                        <div class="pull-left">
-                                            <span class="fa-stack fa-lg">
-                                                <i class="fa fa-circle fa-stack-2x text-info"></i>
-                                                <i class="icon-bulb fa-stack-1x text-white fa-spin icon-bulb-position"></i>
-                                            </span>
-                                            <span class="h4">一句话解读</span>
-                                            <br />
-                                            <div style="margin-right:10px">
-                                                <span style="margin-right:10px" class="pop-text">  常住人口总量分析预测采用的是灰色预测模型。</span>
-                                            </div>
-                                        </div>
-                                        <div style="width:369px;height:1px;margin:15px auto;padding:0px;background-color:#FFFFFF;overflow:hidden;"></div>
-                                        <div class="btn-group dropdown">
-                                            <button class="btn btn-success" data-toggle="dropdown" aria-expanded="false" style="width:120px;">年份选择<span class="caret"></span></button>
-                                            <ul class="dropdown-menu">
-                                                <li ng-repeat="bttn in buttonMap1"><a ng-model="predictionModal" style="margin-bottom:1px;" btn-radio="bttn.radio" ng-click="btn_click1(bttn)">{{bttn.label}}</a></button>
+                                    </div>
+                                    <div style="width:369px;height:1px;margin:15px auto;padding:0px;background-color:#FFFFFF;overflow:hidden;"></div>
+                                    <div class="btn-group dropdown">
+                                        <button class="btn btn-success" data-toggle="dropdown" aria-expanded="false" style="width:120px;">年份选择<span class="caret"></span></button>
+                                        <ul class="dropdown-menu">
+                                            <li ng-repeat="bttn in buttonMap1"><a ng-model="predictionModal" style="margin-bottom:1px;" btn-radio="bttn.radio" ng-click="btn_click1(bttn)">{{bttn.label}}</a></button>
                                             </ul>
                                         </div>
                                         <div style="height:10px"></div>
