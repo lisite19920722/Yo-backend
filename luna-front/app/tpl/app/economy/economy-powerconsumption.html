@@ -351,6 +351,19 @@
 						</div>
 					</article>
 				</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 				<div class="col-md-12" style="margin-top:0.7em;">
 					<div class="btn-group dropdown">
 						<button class="btn btn-success cgq-fixed-buttonwidth" data-toggle="dropdown" aria-expanded="false">选择行业<span class="caret"></span></button>
@@ -368,6 +381,28 @@
 						</ul>
 					</div>
 				</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 				<div class="col-md-12" style="margin-top:0.7em;">
 					<div class="btn-group dropdown">
 						<button class="btn btn-success cgq-fixed-buttonwidth" data-toggle="dropdown" aria-expanded="false">切换图表视图<span class="caret"></span></button>
@@ -382,6 +417,9 @@
 				<div class="col-md-12" style="margin-top:1em;">
 					<button ng-click="showTables()" class="btn m-b-xs btn-primary cgq-fixed-buttonwidth" data-toggle="modal" data-target="">详细数据列表</button>
 				</div>
+
+
+
 				<div class="col-md-12" style="margin-top:0.7em;border-top:1px dashed lightblue;padding-top:1em;margin-bottom:1.7em;">
 					<div class="btn-group dropdown">
 						<button class="btn btn-success cgq-fixed-buttonwidth" data-toggle="dropdown" aria-expanded="false">选择年份<span class="caret"></span></button>
@@ -417,9 +455,12 @@
 				<div class="col-md-6 chartshow" style="padding:1em;border-right:none">
 					<highchart  id="singlechartvocation2" config='IndustryPowerChartBySeasonPie'></highchart>
 				</div>
+
+
+
 				<table st-table="rowCollectionBasic" class="table table-bordered table-striped float-table-season" ng-if="isShowDataTable">
 					<tr st-select-row="row" class="ng-scope ng-isolate-scope">
-						<td><span style="color:orange">{{yearmark}}</span>年<span style="color:rgb(100,214,40);">{{industryType}}</span>数据：</td>
+						<td><span style="color:orange">{{pyear}}</span>年<span style="color:rgb(100,214,40);">{{industryType}}</span>数据：</td>
 						<td>第一季度</td>
 						<td>第二季度</td>
 						<td>第三季度</td>
@@ -440,6 +481,10 @@
 						<td>{{seasonData.powers[3]}}%</td>
 					</tr>
 				</table>
+
+
+
+				
 			</div>
 		</div>
 	</div>
