@@ -165,17 +165,7 @@ var piecolor=new Array('#7CB5EC','#929dce','#90ED7D');
 
     },
 
-    legend: {
-        x: 'center',
-        data:['第一产业人口', '第二产业人口', '第三产业人口'],
-        y:'bottom',
-        itemGap:20,
-        textStyle:{
-            fontWeight:'normal'
-
-        }
-
-    },
+ 
     series : [
         {
             type:'chord',
@@ -338,7 +328,7 @@ var splinecolors=new Array('#3CB371','#000000','#87CEFA' );
         label: 2045 + "年",
         radio: "Right"
       }];
-
+ $scope.sumyear="2016-2025";
 $scope.btn_click=function(btn){
    $scope.change(btn);
 };
@@ -354,7 +344,6 @@ $scope.populationChart.title.text="太仓市2016至2025年劳动力总人口预�
     $scope.populationChart.series[0].data=popData1;
     $scope.predictChart.options.title.text="太仓市2016至2025年劳动力人口与经济关联分析预测";
      $scope.predictChart.options.xAxis.categories=[2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
-  //  $scope.predictChart.yAxis[1].tickPositions=[0,50,100,150,200,250];
     $scope.predictChart.series=[{
             name: '人口(人)',
             color: '#7CB5EC',
@@ -698,16 +687,7 @@ $scope.change2=function(btn){
             saveAsImage : {show: true}
         }
     },
-    legend: {
-        x: 'center',
-        y: 'bottom',
-        itemGap:20,
-        data:['第一产业人口', '第二产业人口', '第三产业人口'],
-        textStyle:{
-            fontWeight:'normal'
-        }
-    },
-    series : [
+       series : [
         {
             type:'chord',
             sort : 'ascending',
@@ -845,15 +825,7 @@ $scope.change2=function(btn){
             saveAsImage : {show: true}
         }
     },
-    legend: {
-        x: 'center',
-        y: 'bottom',
-        itemGap:20,
-        data:['第一产业人口', '第二产业人口', '第三产业人口'],
-        textStyle:{
-            fontWeight:'normal'
-        }
-    },
+ 
     series : [
         {
             type:'chord',
@@ -992,15 +964,7 @@ $scope.change2=function(btn){
             saveAsImage : {show: true}
         }
     },
-    legend: {
-        x: 'center',
-        y: 'bottom',
-        itemGap:20,
-        data:['第一产业人口', '第二产业人口', '第三产业人口'],
-        textStyle:{
-            fontWeight:'normal'
-        }
-    },
+ 
     series : [
         {
             type:'chord',
@@ -1142,15 +1106,7 @@ $scope.change2=function(btn){
             saveAsImage : {show: true}
         }
     },
-    legend: {
-        x: 'center',
-        y: 'bottom',
-        itemGap:20,
-        data:['第一产业人口', '第二产业人口', '第三产业人口'],
-        textStyle:{
-            fontWeight:'normal'
-        }
-    },
+
     series : [
         {
             type:'chord',
@@ -1292,15 +1248,7 @@ $scope.change2=function(btn){
             saveAsImage : {show: true}
         }
     },
-    legend: {
-        x: 'center',
-        y: 'bottom',
-        itemGap:20,
-        data:['第一产业人口', '第二产业人口', '第三产业人口'],
-        textStyle:{
-            fontWeight:'normal'
-        }
-    },
+ 
     series : [
         {
             type:'chord',
@@ -1440,15 +1388,7 @@ $scope.change2=function(btn){
             saveAsImage : {show: true}
         }
     },
-    legend: {
-        x: 'center',
-        y: 'bottom',
-        itemGap:20,
-        data:['第一产业人口', '第二产业人口', '第三产业人口'],
-        textStyle:{
-            fontWeight:'normal'
-        }
-    },
+   
     series : [
         {
             type:'chord',
@@ -1662,7 +1602,7 @@ options:{ chart: {
         }
     },
         series: [{
-            name: '人口(人)',
+            name: '人口',
             color: '#7CB5EC',
             type: 'column',
             yAxis: 1,
@@ -1688,7 +1628,7 @@ options:{ chart: {
             }
 
         }, {
-            name: 'GDP(亿元)',
+            name: 'GDP',
             color: '#89A54E',
             type: 'spline',
             data: gdp1,
