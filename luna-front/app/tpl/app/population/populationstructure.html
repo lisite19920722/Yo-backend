@@ -123,23 +123,6 @@
                         </div>
                     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     <div class="row" >
                         <div class=" col-md-12" >
                             <div class="col-md-6 chart-panel" style="padding-top:22px" >
@@ -201,7 +184,35 @@
                                     <li ng-repeat="bttn in buttonMap1"><a ng-model="predictionModal" style="margin-bottom:1px;" btn-radio="bttn.radio" ng-click="btn_click1(bttn)">{{bttn.label}}</a></button>
                                     </ul>
                                 </div>
+                                  <br /><br />
+
+                                            <div class="col-md-12 cgq_marginaround1em" style="margin-left:-5px;">
+                                                <button ng-click="showPopulationDetail1()"  class="btn m-b-xs btn-primary cgq-fixed-buttonwidth">详细数据列表</button>
+                                            </div>
                                 <div style="height:10px"></div>
+                            </div>
+                        </div>
+
+
+                                <div class="bg-white fc-datatable" ng-if="totalshow1">
+                                 <div class="panel panel-default paddingmargin0em">
+
+                                    
+                                   <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
+                                       <div class="panel-heading"><center>{{sumyear}}年数据详情</center></div>
+                                       <tr class="ng-scope ng-isolate-scope">
+                                           <td>年份</td>
+                                           <td ng-repeat="year in sumpopulation.options.xAxis[0].categories">{{year}}</td>
+                                       </tr>
+                                       <tr class="ng-scope ng-isolate-scope">
+                                           <td>人口总数</td>
+                                           <td ng-repeat="num in sumpeople track by $index"> {{num}}</td>
+                                       </tr>
+                                       <tr class="ng-scope ng-isolate-scope">
+                                        <td>人口增长率</td>
+                                        <td ng-repeat="num in growth track by $index">{{num}}%</td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>

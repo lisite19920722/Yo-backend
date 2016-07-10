@@ -11,11 +11,16 @@ app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRe
 
 
 
-//是否显示数据详情函数
+//是否显示人口结构数据详情函数
   $scope.showPopulationDetail = function(){
       $scope.totalshow= !$scope.totalshow;
     };
+  //是否显示人口总量数据详情
+$scope.showPopulationDetail1 = function(){
+      $scope.totalshow1= !$scope.totalshow1;
+    };
 
+  
     //列表中的数据
     
 
@@ -2101,7 +2106,7 @@ $scope.sumpopulation={
             }
         }, { // Secondary yAxis
             title: {
-                text: '人口总量',
+                text: '人口总量（人）',
                 style: {
                     color: Highcharts.getOptions().colors[1]
                 },
@@ -2110,7 +2115,7 @@ $scope.sumpopulation={
             },
             labels: {
 
-                format: '{value}人',
+                format: '{value}',
                 style: {
                     color: Highcharts.getOptions().colors[1]
                 },
@@ -2153,12 +2158,22 @@ $scope.sumpopulation={
       $scope.btn_click1=function(btn){
     $scope.change1(btn);
   };
+   //默认人口总量是2016-2025
+      $scope.sumpeople=sum1;
+      //默认人口增长率是2016-2025
+      $scope.growth=rate1;
+   $scope.sumyear="2016-2025";
   $scope.change1=function(btn){
     if(btn.name===2025){
+      $scope.sumyear="2016-2025";
+      //人口总量
+      $scope.sumpeople=sum1;
+      //人口增长率
+      $scope.growth=rate1;
       document.getElementById('a').innerHTML="2016年的人口增长率0.25%相比2025年的0.23%有了小幅度的降低。";
          document.getElementById('sumconclusion').innerHTML="总体来看，太仓市的人口总量处于平稳状态，呈增长趋势，随着二胎政策的全面开放，促进了人口数量的增加。";
     $scope.sumpopulation.options.xAxis[0].categories=['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'];
-    $scope.sumpopulation.options.title.text="太仓市2016年到2025年人口总量预测趋势图";
+    $scope.sumpopulation.options.title.text="太仓市2016-2025年人口总量预测趋势图";
     $scope.sumpopulation.series=[{
             name: '人口总量',
             type: 'column',
@@ -2183,10 +2198,15 @@ $scope.sumpopulation={
         }];
      }
      if(btn.name===2035){
+       //人口增长率
+      $scope.growth=rate2;
+       //人口总量
+      $scope.sumpeople=sum2;
+       $scope.sumyear="2026-2035";
         document.getElementById('a').innerHTML="2026年的人口增长率0.19%相比2035年的0.11%有了小幅度的增长。";
          document.getElementById('sumconclusion').innerHTML="总体来看，太仓市的人口总量处于平稳状态，呈增长趋势。";
         $scope.sumpopulation.options.xAxis[0].categories=['2026','2027','2028','2029','2030','2031','2032','2033','2034','2035'];
-        $scope.sumpopulation.options.title.text="太仓市2026年到2035年人口总量预测趋势图";
+        $scope.sumpopulation.options.title.text="太仓市2026-2035年人口总量预测趋势图";
     $scope.sumpopulation.series=[{
             name: '人口总量',
             type: 'column',
@@ -2211,10 +2231,15 @@ $scope.sumpopulation={
         }];
      }
      if(btn.name===2045){
+       //人口增长率
+      $scope.growth=rate3;
+       //人口总量
+      $scope.sumpeople=sum3;
+       $scope.sumyear="2036-205";
         document.getElementById('a').innerHTML="2045年的人口增长率0.13%相比2036年的0.13%有了小幅度的增长。";
          document.getElementById('sumconclusion').innerHTML="总体来看，太仓市的人口总量处于平稳状态，无增长趋势。";
      $scope.sumpopulation.options.xAxis[0].categories=['2036','2037','2038','2039','2040','2041','2042','2043','2044','2045'];
-        $scope.sumpopulation.options.title.text="太仓市2036年到2045年人口总量预测趋势图";
+        $scope.sumpopulation.options.title.text="太仓市2036-2045年人口总量预测趋势图";
     $scope.sumpopulation.series=[{
             name: '人口总量',
             type: 'column',
