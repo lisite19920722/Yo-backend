@@ -14,7 +14,6 @@
 
 
 
-
                             <div class="panel-body" style="padding-top:22px;">
                                 <div class="row">
                                     <div class="span12 col-md-12">
@@ -113,11 +112,11 @@
                                             </tr>
                                              <tr class="ng-scope ng-isolate-scope">
                                                  <td>男性</td>
-                                                 <td ng-repeat="num in manpre"> {{num}}%</td>
+                                                 <td ng-repeat="num in manpre track by $index"> {{num}}%</td>
                                             </tr>
                                             <tr class="ng-scope ng-isolate-scope">
                                                 <td >女性</td>
-                                                 <td ng-repeat="num in womanpre">{{num}}%</td>
+                                                 <td ng-repeat="num in womanpre track by $index">{{num}}%</td>
                                             </tr>
                                         </table>
                                     </div>
