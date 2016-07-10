@@ -225,9 +225,13 @@
                     <div class="topbar">
                         <h4 class="cgq_title">当前各乡镇常住人口自然增长率分析</h4>
                     </div>
+                  
+
                     <div class="panel-body" style="padding:0">
                         <div class="row">
                             <div class="col-md-8 chart-panel">
+
+                            <!--地图在这里引入，地图的id为“conMap”-->
                                 <div style="margin-top:8px;margin-bottom:8px;margin-left:15px;">
                                     <div id="conMap"></div>
                                 </div>
@@ -236,16 +240,46 @@
                                 <p class="fill-margin"></p>
                                 <div class="ioc-panel-desc">
                                     <p class="ioc-panel-desc-title">
-                                        <div style="background:#929dce;width:115px;height:30px;text-align:center;line-height:30px;font-size:15px;color:#FFFFFF;font-weight:bold" >数据详情</div>
+                                        <div style="background:#929dce;width:115px;height:30px;text-align:center;line-height:30px;font-size:15px;color:#FFFFFF;font-weight:bold" style="margin-left:-5px;">说明信息</div>
                                     </p>
                                     <div style="height:3px"></div>
                                     <h5><span style="color:#CC0033">红色框------该乡镇人口自然增长率为负</span></h5>
                                     <h5><span style="color:#66cc66">绿色框------该乡镇人口自然增长率为正</span></h5>
                                     <br />
-                                    <h4>结果解读</h4>
-                                    <p style="margin-right:10px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp从图中可以看出太仓各乡镇的人口自然增长率情况；</p>
-                                    <div id="map" style="width:400px;height:40px"></div>
+                                    <div style="background:#929dce;width:115px;height:30px;text-align:center;line-height:30px;font-size:15px;color:#FFFFFF;font-weight:bold" >结果解读</div>
+                                    <br><br>
+                                    <p style="margin-right:10px">从图中可以看出太仓各乡镇的人口自然增长率情况；</p>
+                                     <br>
+                                            <div class="col-md-12 cgq_marginaround1em" style="margin-left:-15px;">
+                                                <button ng-click="showPopulationDetail2()"  class="btn m-b-xs btn-primary cgq-fixed-buttonwidth">详细数据列表</button>
+                                            </div>
                                 </div>
+                            </div>
+
+                        </div>
+                        <div class="bg-white fc-datatable" ng-if="totalshow2">
+                                 <div class="panel panel-default paddingmargin0em">
+
+                                    
+                                   <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
+                                       <div class="panel-heading"><center>{{sumyear}}年数据详情</center></div>
+                                       <tr class="ng-scope ng-isolate-scope">
+                                           <td>城镇名称</td>
+                                           <td ng-repeat="year in townsname">{{year}}</td>
+                                       </tr>
+                                       <tr class="ng-scope ng-isolate-scope">
+                                           <td>出生率</td>
+                                           <td ng-repeat="num in birthrate track by $index"> {{num}}</td>
+                                       </tr>
+                                       <tr class="ng-scope ng-isolate-scope">
+                                        <td>死亡率</td>
+                                        <td ng-repeat="num in deathrate track by $index">{{num}}%</td>
+                                    </tr>
+                                     <tr class="ng-scope ng-isolate-scope">
+                                        <td>人口自然增长率</td>
+                                        <td ng-repeat="num in populationrate track by $index">{{num}}%</td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>

@@ -19,6 +19,9 @@ app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRe
 $scope.showPopulationDetail1 = function(){
       $scope.totalshow1= !$scope.totalshow1;
     };
+    $scope.showPopulationDetail2 = function(){
+      $scope.totalshow2= !$scope.totalshow2;
+    };
 
   
     //列表中的数据
@@ -878,7 +881,7 @@ $scope.showPopulationDetail1 = function(){
   //  promise1.then(function(rc1) {
 
 
-  
+  //地图开头
   
 
 var map = new AMap.Map('conMap');
@@ -908,6 +911,9 @@ AMap.plugin(['AMap.ToolBar','AMap.Scale'],function(){
  marker1.setMap(map);
     // 设置鼠标划过点标记显示的文字提示
     marker1.setTitle('');
+
+
+
 var infow=[];
 infow.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#CC0033;font-size:18px'>浮桥镇</div>")
     // 设置label标签
@@ -1232,6 +1238,9 @@ var points =[
    // {"lng":121.118541,"lat":31.592205,"count":16},  //金浪镇
     {"lng":121.190549,"lat":31.467665,"count":16}
 ];
+
+
+  //地图结尾
 /* map.plugin(["AMap.Heatmap"], function() {
         //初始化heatmap对象
         heatmap = new AMap.Heatmap(map, {
