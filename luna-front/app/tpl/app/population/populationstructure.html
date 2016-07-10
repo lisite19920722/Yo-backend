@@ -262,7 +262,7 @@
 
                                     
                                    <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
-                                       <div class="panel-heading"><center>{{sumyear}}年数据详情</center></div>
+                                       <div class="panel-heading"><center>各城镇数据详情</center></div>
                                        <tr class="ng-scope ng-isolate-scope">
                                            <td>城镇名称</td>
                                            <td ng-repeat="year in townsname">{{year}}</td>
@@ -273,11 +273,11 @@
                                        </tr>
                                        <tr class="ng-scope ng-isolate-scope">
                                         <td>死亡率</td>
-                                        <td ng-repeat="num in deathrate track by $index">{{num}}%</td>
+                                        <td ng-repeat="num in deathrate track by $index">{{num}}</td>
                                     </tr>
                                      <tr class="ng-scope ng-isolate-scope">
                                         <td>人口自然增长率</td>
-                                        <td ng-repeat="num in populationrate track by $index">{{num}}%</td>
+                                        <td ng-repeat="num in populationrate track by $index">{{num}}</td>
                                     </tr>
                                 </table>
                             </div>
