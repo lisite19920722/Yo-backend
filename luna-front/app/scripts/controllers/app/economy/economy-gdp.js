@@ -8,7 +8,11 @@ app.controller('EconomyGdpCtrl', ['$scope','$stateParams','ResTool','EconomyRes'
     var yearGdpHeader = {};
     var yearPromise = ResTool.httpGetWithWorkspace(EconomyRes.getYearGdp,yearGdpParams,yearGdpHeader);
     yearPromise.then(function(rc){
-
+        for(var ryg = 0; ryg<rc.data.realYearGdp.length;ryg++){
+            if (rc.data.realYearGdp[ryg] == 0) {
+                rc.data.realYearGdp[ryg] = null;
+            }
+        }
        $scope.gdprealvalue=rc.data.realYearGdp;
        $scope.gdpforecastvalue=rc.data.forecastYearGdp;
        $scope.gdpgrowratevalue=rc.data.yearGrow;
@@ -25,8 +29,6 @@ app.controller('EconomyGdpCtrl', ['$scope','$stateParams','ResTool','EconomyRes'
         $scope.checkforecast=function(){
         $scope.forecast=!$scope.forecast;
       };
-
-
         $scope.xAxis= [
                     
                     '2007',
@@ -68,6 +70,7 @@ app.controller('EconomyGdpCtrl', ['$scope','$stateParams','ResTool','EconomyRes'
                 to:12.5,
                 color:'rgba(68, 170, 213, .2)',
                 label: {
+                        
                         text: '预测区',
                         verticalAlign: 'top',
                         style: {
@@ -76,7 +79,14 @@ app.controller('EconomyGdpCtrl', ['$scope','$stateParams','ResTool','EconomyRes'
                         }
                        
                     }
-                }]
+                }],labels: {
+                    rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '8px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
             },
             yAxis: [{
                 min: 0,
@@ -158,6 +168,56 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
     var yearDetailPromise = ResTool.httpGetWithWorkspace(EconomyRes.getYearDetail,{year:nowyear},{});
     $scope.yearchoose = nowyear;
     yearDetailPromise.then(function(rc){
+           /*for(var rgqd = 0; rgqd<rc.data.realGdpQuarterDetail.length;rgqd++){
+            if (rgqd == 0&&rc.data.realGdpQuarterDetail[rgqd]== 0) {
+                $scope.alreadycomplete = 0;
+                $scope.currentGDP = 0;
+                $scope.currentSeason = '当前';
+            }else if (rc.data.realGdpQuarterDetail[rgqd] == 0) {
+                $scope.alreadycomplete = (rc.data.realGdpQuarterDetail[rgqd-1]/1100).toFixed(2)*100;
+                $scope.currentGDP = rc.data.realGdpQuarterDetail[rgqd-1];
+                if (rgqd == 1) {
+                    $scope.currentSeason = '一';
+                }else if (rgqd == 2) {
+                    $scope.currentSeason = '二';
+                }else if (rgqd == 3 ) {
+                    $scope.currentSeason = '三';
+                }
+                
+            }else if (rc.data.realGdpQuarterDetail[rgqd] !=0&&rgqd==3) {
+                $scope.alreadycomplete = (rc.data.realGdpQuarterDetail[rgqd]/1100).toFixed(2)*100;
+                $scope.currentGDP = rc.data.realGdpQuarterDetail[rgqd];
+                $scope.currentSeason = '四';
+            }
+        }*/
+        (function yerachanged(){
+            var i = 0;
+            while(i<rc.data.realGdpQuarterDetail.length){
+                  if (i == 0&&rc.data.realGdpQuarterDetail[i]== 0) {
+                $scope.alreadycomplete = 0;
+                $scope.currentGDP = 0;
+                $scope.currentSeason = '当前';
+                break;
+            }else if (rc.data.realGdpQuarterDetail[i] == 0) {
+                $scope.alreadycomplete = (rc.data.realGdpQuarterDetail[i-1]/1100).toFixed(2)*100;
+                $scope.currentGDP = rc.data.realGdpQuarterDetail[i-1];
+                if (i == 1) {
+                    $scope.currentSeason = '一';
+                }else if (i == 2) {
+                    $scope.currentSeason = '二';
+                }else if (i == 3 ) {
+                    $scope.currentSeason = '三';
+                }
+                break;
+            }else if (rc.data.realGdpQuarterDetail[i] !=0&&i==3) {
+                $scope.alreadycomplete = (rc.data.realGdpQuarterDetail[i]/1100).toFixed(2)*100;
+                $scope.currentGDP = rc.data.realGdpQuarterDetail[i];
+                $scope.currentSeason = '四';
+                break;
+            }
+            i++;
+            }
+        }());
       $scope.gdpquarterrealvalue = rc.data.realGdpQuarterDetail;
       $scope.gdpquarterforcastvalue = rc.data.forecastGdpQuterDetail;
       $scope.gdpquartergrowratevalue = rc.data.growRate; 
@@ -286,6 +346,34 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
     $scope.changeyear=function(param){
         var yearDetailPromise = ResTool.httpGetWithWorkspace(EconomyRes.getYearDetail,{year:param},{});
         yearDetailPromise.then(function(rc){
+            (function yerachanged(){
+            var i = 0;
+            while(i<rc.data.realGdpQuarterDetail.length){
+                  if (i == 0&&rc.data.realGdpQuarterDetail[i]== 0) {
+                $scope.alreadycomplete = 0;
+                $scope.currentGDP = 0;
+                $scope.currentSeason = '当前';
+                break;
+            }else if (rc.data.realGdpQuarterDetail[i] == 0) {
+                $scope.alreadycomplete = (rc.data.realGdpQuarterDetail[i-1]/1100).toFixed(2)*100;
+                $scope.currentGDP = rc.data.realGdpQuarterDetail[i-1];
+                if (i == 1) {
+                    $scope.currentSeason = '一';
+                }else if (i == 2) {
+                    $scope.currentSeason = '二';
+                }else if (i == 3 ) {
+                    $scope.currentSeason = '三';
+                }
+                break;
+            }else if (rc.data.realGdpQuarterDetail[i] !=0&&i==3) {
+                $scope.alreadycomplete = (rc.data.realGdpQuarterDetail[i]/1100).toFixed(2)*100;
+                $scope.currentGDP = rc.data.realGdpQuarterDetail[i];
+                $scope.currentSeason = '四';
+                break;
+            }
+            i++;
+            }
+        }());
         $scope.yearchoose = param;
         $scope.monthGDPChart.series[0].data=rc.data.realGdpQuarterDetail;
         $scope.monthGDPChart.series[1].data=rc.data.forecastGdpQuterDetail;
@@ -376,7 +464,15 @@ app.controller('industryGdp', ['$scope','$stateParams','ResTool','EconomyRes', f
                         }
                        
                     }
-                }]
+                }],
+                labels: {
+                    rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '8px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
             },
             yAxis: {
                 min: 0,
@@ -448,14 +544,21 @@ app.controller('industryGdp', ['$scope','$stateParams','ResTool','EconomyRes', f
             subtitle: {
                 text: '第一产业本年度GDP分析'
             },
-            xAxis: {
-                categories: [
-                    '第一季度',
-                    '',
-                    '第三季度',
-                    ''
+           xAxis: {
+                categories:[
+                '第一季度',
+                '第二季度',
+                '第三季度',
+                '第四季度'],
 
-                ]
+                labels: {
+                    rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '8px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
             },
             yAxis: [{
                 min: 0,
@@ -529,14 +632,21 @@ app.controller('industryGdp', ['$scope','$stateParams','ResTool','EconomyRes', f
             subtitle: {
                 text: '第二产业本年度GDP分析'
             },
-            xAxis: {
-                categories: [
-                    '第一季度',
-                    '',
-                    '第三季度',
-                    ''
+           xAxis: {
+                categories:[
+                '第一季度',
+                '第二季度',
+                '第三季度',
+                '第四季度'],
 
-                ]
+                labels: {
+                    rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '8px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
             },
             yAxis: [{
                 min: 0,
@@ -611,14 +721,20 @@ app.controller('industryGdp', ['$scope','$stateParams','ResTool','EconomyRes', f
                 text: '第三产业本年度GDP分析'
             },
             xAxis: {
-                
-                categories: [
-                    '第一季度',
-                    '',
-                    '第三季度',
-                    ''
+                categories:[
+                '第一季度',
+                '第二季度',
+                '第三季度',
+                '第四季度'],
 
-                ]
+                labels: {
+                    rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '8px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
             },
             yAxis: [{
                 min: 0,
