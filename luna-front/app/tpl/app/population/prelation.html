@@ -246,15 +246,17 @@
                                     </div>
                                     <div style="width:369px;height:1px;margin:15px auto;padding:0px;background-color:#FFFFFF;overflow:hidden;"></div>
                                     <div class="btn-group dropdown">
-                                        <button class="btn btn-success" data-toggle="dropdown" aria-expanded="false" style="width:120px;margin-left:15px">年份选择<span class="caret"></span></button>
+                                        <button class="btn btn-success" data-toggle="dropdown" aria-expanded="false" style="width:120px;margin-left:25px">年份选择<span class="caret"></span></button>
                                         <ul class="dropdown-menu">
                                             <li ng-repeat="bttn in buttonMap4"><a ng-model="predictionModal" style="margin-left: 0px;margin-bottom:1px" btn-radio="bttn.radio" ng-click="btn_click3(bttn)">{{bttn.label}}</a></li>
                                         </ul>
-                                        <div class="col-md-12 cgq_marginaround1em" style="margin-left:0px;">
+                                       
+                                        <div class="col-md-12 cgq_marginaround1em" style="margin-left:10px;">
+                                         <div style="height:20px"></div>
                                             <button ng-click="showPopulationDetail2()"  class="btn m-b-xs btn-primary cgq-fixed-buttonwidth" style="width:120px">详细数据列表</button>
                                         </div>
                                     </div>
-                                    <div style="height:474px"></div>
+                                    <div style="height:454px"></div>
                                     <div class="bg-white fc-datatable" style="width:1200px;margin-left:-16px" ng-if="datashow2">
                                         <div class="panel panel-default paddingmargin0em">
                                             <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
