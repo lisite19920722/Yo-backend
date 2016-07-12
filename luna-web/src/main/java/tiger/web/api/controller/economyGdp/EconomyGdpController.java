@@ -33,8 +33,8 @@ public class EconomyGdpController {
         return new BaseResult(yearmap);
     }
 
-    @LoginRequired
-    @Permission(permission = {PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
+//    @LoginRequired
+//    @Permission(permission = {PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @RequestMapping(value="/gdpDetail/{year}",method = RequestMethod.GET)
     public BaseResult getGdpDatil(@PathVariable("year") Long year)
     {
