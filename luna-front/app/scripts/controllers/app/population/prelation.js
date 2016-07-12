@@ -13,6 +13,12 @@ app.controller('PrelationCtrl', ['$scope','$stateParams','PopulationRes','ResToo
       $scope.datashow1= !$scope.datashow1;
     };
 
+         $scope.showPopulationDetail2 = function(){
+      $scope.datashow2= !$scope.datashow2;
+    };
+       
+    
+
 
     var promise = ResTool.httpGetWithWorkspace(PopulationRes.getLaborGdpRelationPreData,{},{});
     promise.then(function(rc) {
@@ -357,7 +363,7 @@ $scope.populationChart.title.text="太仓市2016至2025年劳动力总人口预�
         }, {
             name: '关联度',
             type: 'spline',
-            color: '#AA4643',
+            color: '#8968CD',
             yAxis: 2,
             //xie
             data: [0.83, 0.82, 0.808,0.81, 0.819, 0.821, 0.841, 0.8425, 0.85, 0.85],
@@ -407,7 +413,7 @@ $scope.populationChart.title.text="太仓市2016至2025年劳动力总人口预�
         }, {
             name: '关联度',
             type: 'spline',
-            color: '#AA4643',
+            color: '#8968CD',
             yAxis: 2,
             //xie
             data: [0.855, 0.842, 0.8324,0.8291, 0.8212, 0.8135, 0.8051, 0.8025, 0.8115, 0.8156],
@@ -458,7 +464,7 @@ $scope.populationChart.title.text="太仓市2016至2025年劳动力总人口预�
         }, {
             name: '关联度',
             type: 'spline',
-            color: '#AA4643',
+            color: '#8968CD',
             yAxis: 2,
             //xie
             data: [0.8195, 0.822, 0.8224,0.8191, 0.8212, 0.8125, 0.8251, 0.8285, 0.8315, 0.8356],
@@ -485,13 +491,43 @@ $scope.populationChart.title.text="太仓市2016至2025年劳动力总人口预�
         }];
    }
 };
+//比重图
 $scope.btn_click3=function(btn){
    $scope.change3(btn);
 };
+
+//以下都是默认值
+//设置年份
+    $scope.myyear="2020";
+//产业人口比例
+    $scope.populationrate=[(fpop[4]/popData1[4]*100).toFixed(1),(spop[4]/popData1[4]*100).toFixed(1),(tpop[4]/popData1[4]*100).toFixed(1)];
+    //产业人口数量
+    $scope.population=[fpop[4],spop[4],tpop[4]];
+    //产业产值比例  
+    $scope.valuerate=[(fgdp[4]/gdp1[4]*100).toFixed(1),(sgdp[4]/gdp1[4]*100).toFixed(1),(tgdp[4]/gdp1[4]*100).toFixed(1)]; 
+    //产业产值
+     $scope.value=[fgdp[4],sgdp[4],tgdp[4]];
+     //设置表头
+        $scope.header=["第一产业","第二产业","第三产业"];
+
 $scope.change3=function(btn){
    if(btn.name===2020){
-    document.getElementById("b").innerHTML="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp结合两者的平均比重，即第一、二、三产业就业人口比重分别为"+(fpop[4]/popData1[4]*100).toFixed(1)+"%、"+(spop[4]/popData1[4]*100).toFixed(1)+"%和"+(tpop[4]/popData1[4]*100).toFixed(1)+"%。产值比重分别是"+(fgdp[4]/gdp1[4]*100).toFixed(1)
-    +"%、"+(sgdp[4]/gdp1[4]*100).toFixed(1)+"%和"+(tgdp[4]/gdp1[4]*100).toFixed(1)+"%。一般情况下，随着经济发展和人均国民收入提高，第二、三产业人口将提高，第三产业人口将占绝对优势。";
+
+    //设置年份
+    $scope.myyear="2020";
+
+    //产业人口比例
+    $scope.populationrate=[(fpop[4]/popData1[4]*100).toFixed(1),(spop[4]/popData1[4]*100).toFixed(1),(tpop[4]/popData1[4]*100).toFixed(1)];
+    //产业人口数量
+    $scope.population=[fpop[4],spop[4],tpop[4]];
+    //产业产值比例  
+    $scope.valuerate=[(fgdp[4]/gdp1[4]*100).toFixed(1),(sgdp[4]/gdp1[4]*100).toFixed(1),(tgdp[4]/gdp1[4]*100).toFixed(1)]; 
+    //产业产值
+     $scope.value=[fgdp[4],sgdp[4],tgdp[4]];
+
+
+    document.getElementById("b").innerHTML="第一、二、三产业就业人口比重分别为"+(fpop[4]/popData1[4]*100).toFixed(1)+"%、"+(spop[4]/popData1[4]*100).toFixed(1)+"%和"+(tpop[4]/popData1[4]*100).toFixed(1)+"%。产值比重分别是"+(fgdp[4]/gdp1[4]*100).toFixed(1)
+    +"%、"+(sgdp[4]/gdp1[4]*100).toFixed(1)+"%和"+(tgdp[4]/gdp1[4]*100).toFixed(1)+"%。";
     $scope.populationPie.options.title.text="太仓市2020年产业就业人口比重分析预测";
     $scope.industryPie.options.title.text="太仓市2020年产业产值比重分析预测";
     $scope.populationPie.series=[{
@@ -512,9 +548,20 @@ $scope.change3=function(btn){
             ]
         }];
    }
+   
    if(btn.name===2025){
-    document.getElementById("b").innerHTML="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp结合两者的平均比重，即第一、二、三产业就业人口比重分别为"+(fpop[9]/popData1[9]*100).toFixed(1)+"%、"+(spop[9]/popData1[9]*100).toFixed(1)+"%和"+(tpop[9]/popData1[9]*100).toFixed(1)+"%。产值比重分别是"+(fgdp[9]/gdp1[9]*100).toFixed(1)
-    +"%、"+(sgdp[9]/gdp1[9]*100).toFixed(1)+"%和"+(tgdp[9]/gdp1[9]*100).toFixed(1)+"%。一般情况下，随着经济发展和人均国民收入提高，第二、三产业人口将提高，第三产业人口将占绝对优势。";
+        //设置年份
+    $scope.myyear="2025";
+     //产业人口增长率
+    $scope.populationrate=[(fpop[9]/popData1[9]*100).toFixed(1),(spop[9]/popData1[9]*100).toFixed(1),(tpop[9]/popData1[9]*100).toFixed(1)];
+    //产业人口数量
+    $scope.population=[fpop[9],spop[9],tpop[9]];
+    //产业产值比例  
+    $scope.valuerate=[(fgdp[9]/gdp1[9]*100).toFixed(1),(sgdp[9]/gdp1[9]*100).toFixed(1),(tgdp[9]/gdp1[9]*100).toFixed(1)]; 
+    //产业产值
+     $scope.value=[fgdp[9],sgdp[9],tgdp[9]];
+    document.getElementById("b").innerHTML="第一、二、三产业就业人口比重分别为"+(fpop[9]/popData1[9]*100).toFixed(1)+"%、"+(spop[9]/popData1[9]*100).toFixed(1)+"%和"+(tpop[9]/popData1[9]*100).toFixed(1)+"%。产值比重分别是"+(fgdp[9]/gdp1[9]*100).toFixed(1)
+    +"%、"+(sgdp[9]/gdp1[9]*100).toFixed(1)+"%和"+(tgdp[9]/gdp1[9]*100).toFixed(1)+"%。";
     $scope.populationPie.options.title.text="太仓市2025年产业就业人口比重分析预测";
     $scope.industryPie.options.title.text="太仓市2025年产业产值比重分析预测";
     $scope.populationPie.series=[{
@@ -536,8 +583,20 @@ $scope.change3=function(btn){
         }];
    }
    if(btn.name===2030){
-    document.getElementById("b").innerHTML="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp结合两者的平均比重，即第一、二、三产业就业人口比重分别为"+(fpop[14]/popData2[4]*100).toFixed(1)+"%、"+(spop[14]/popData2[4]*100).toFixed(1)+"%和"+(tpop[14]/popData2[4]*100).toFixed(1)+"%。产值比重分别是"+(fgdp[14]/gdp2[4]*100).toFixed(1)
-    +"%、"+(sgdp[14]/gdp2[4]*100).toFixed(1)+"%和"+(tgdp[14]/gdp2[4]*100).toFixed(1)+"%。一般情况下，随着经济发展和人均国民收入提高，第二、三产业人口将提高，第三产业人口将占绝对优势。";
+        //设置年份
+    $scope.myyear="2030";
+     //产业人口比例
+    $scope.populationrate=[(fpop[14]/popData2[4]*100).toFixed(1),(spop[14]/popData2[4]*100).toFixed(1),(tpop[14]/popData2[4]*100).toFixed(1)];
+    //产业人口数量
+    $scope.population=[fpop[4],spop[4],tpop[4]];
+    //产业产值比例  
+    $scope.valuerate=[(fgdp[14]/gdp2[4]*100).toFixed(1),(sgdp[14]/gdp2[4]*100).toFixed(1),(tgdp[14]/gdp2[4]*100).toFixed(1)]; 
+    //产业产值
+     $scope.value=[fgdp[14],sgdp[14],tgdp[14]];
+
+
+    document.getElementById("b").innerHTML="第一、二、三产业就业人口比重分别为"+(fpop[14]/popData2[4]*100).toFixed(1)+"%、"+(spop[14]/popData2[4]*100).toFixed(1)+"%和"+(tpop[14]/popData2[4]*100).toFixed(1)+"%。产值比重分别是"+(fgdp[14]/gdp2[4]*100).toFixed(1)
+    +"%、"+(sgdp[14]/gdp2[4]*100).toFixed(1)+"%和"+(tgdp[14]/gdp2[4]*100).toFixed(1)+"%。";
     $scope.populationPie.options.title.text="太仓市2030年产业就业人口比重分析预测";
     $scope.industryPie.options.title.text="太仓市2030年产业产值比重分析预测";
     $scope.populationPie.series=[{
@@ -559,8 +618,18 @@ $scope.change3=function(btn){
         }];
    }
    if(btn.name===2035){
-    document.getElementById("b").innerHTML="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp结合两者的平均比重，即第一、二、三产业就业人口比重分别为"+(fpop[19]/popData2[9]*100).toFixed(1)+"%、"+(spop[19]/popData2[9]*100).toFixed(1)+"%和"+(tpop[19]/popData2[9]*100).toFixed(1)+"%。产值比重分别是"+(fgdp[19]/gdp2[9]*100).toFixed(1)
-    +"%、"+(sgdp[19]/gdp2[9]*100).toFixed(1)+"%和"+(tgdp[19]/gdp2[9]*100).toFixed(1)+"%。一般情况下，随着经济发展和人均国民收入提高，第二、三产业人口将提高，第三产业人口将占绝对优势。";
+        //设置年份
+    $scope.myyear="2035";
+     //产业人口比例
+    $scope.populationrate=[(fpop[19]/popData2[9]*100).toFixed(1),(spop[19]/popData2[9]*100).toFixed(1),(tpop[19]/popData2[9]*100).toFixed(1)];
+    //产业人口数量
+    $scope.population=[fpop[19],spop[19],tpop[19]];
+    //产业产值比例  
+    $scope.valuerate=[(fgdp[19]/gdp2[9]*100).toFixed(1),(sgdp[19]/gdp2[9]*100).toFixed(1),(tgdp[19]/gdp2[9]*100).toFixed(1)]; 
+    //产业产值
+     $scope.value=[fgdp[19],sgdp[19],tgdp[19]];
+    document.getElementById("b").innerHTML="第一、二、三产业就业人口比重分别为"+(fpop[19]/popData2[9]*100).toFixed(1)+"%、"+(spop[19]/popData2[9]*100).toFixed(1)+"%和"+(tpop[19]/popData2[9]*100).toFixed(1)+"%。产值比重分别是"+(fgdp[19]/gdp2[9]*100).toFixed(1)
+    +"%、"+(sgdp[19]/gdp2[9]*100).toFixed(1)+"%和"+(tgdp[19]/gdp2[9]*100).toFixed(1)+"%。";
     $scope.populationPie.options.title.text="太仓市2035年产业就业人口比重分析预测";
     $scope.industryPie.options.title.text="太仓市2035年产业产值比重分析预测";
     $scope.populationPie.series=[{
@@ -582,8 +651,18 @@ $scope.change3=function(btn){
         }];
    }
    if(btn.name===2040){
-    document.getElementById("b").innerHTML="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp结合两者的平均比重，即第一、二、三产业就业人口比重分别为"+(fpop[24]/popData3[4]*100).toFixed(1)+"%、"+(spop[24]/popData3[4]*100).toFixed(1)+"%和"+(tpop[24]/popData3[4]*100).toFixed(1)+"%。产值比重分别是"+(fgdp[24]/gdp3[4]*100).toFixed(1)
-    +"%、"+(sgdp[24]/gdp3[4]*100).toFixed(1)+"%和"+(tgdp[24]/gdp3[4]*100).toFixed(1)+"%。一般情况下，随着经济发展和人均国民收入提高，第二、三产业人口将提高，第三产业人口将占绝对优势。";
+        //设置年份
+    $scope.myyear="2040";
+     //产业人口比例
+    $scope.populationrate=[(fpop[24]/popData3[4]*100).toFixed(1),(spop[24]/popData3[4]*100).toFixed(1),(tpop[24]/popData3[4]*100).toFixed(1)];
+    //产业人口数量
+    $scope.population=[fpop[24],spop[24],tpop[24]];
+    //产业产值比例  
+    $scope.valuerate=[(fgdp[24]/gdp3[4]*100).toFixed(1),(sgdp[24]/gdp3[4]*100).toFixed(1),(tgdp[24]/gdp3[4]*100).toFixed(1)]; 
+    //产业产值
+     $scope.value=[fgdp[24],sgdp[24],tgdp[24]];
+    document.getElementById("b").innerHTML="第一、二、三产业就业人口比重分别为"+(fpop[24]/popData3[4]*100).toFixed(1)+"%、"+(spop[24]/popData3[4]*100).toFixed(1)+"%和"+(tpop[24]/popData3[4]*100).toFixed(1)+"%。产值比重分别是"+(fgdp[24]/gdp3[4]*100).toFixed(1)
+    +"%、"+(sgdp[24]/gdp3[4]*100).toFixed(1)+"%和"+(tgdp[24]/gdp3[4]*100).toFixed(1)+"%。";
     $scope.populationPie.options.title.text="太仓市2040年产业就业人口比重分析预测";
     $scope.industryPie.options.title.text="太仓市2040年产业产值比重分析预测";
     $scope.populationPie.series=[{
@@ -605,8 +684,18 @@ $scope.change3=function(btn){
         }];
    }
    if(btn.name===2045){
-    document.getElementById("b").innerHTML="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp结合两者的平均比重，即第一、二、三产业就业人口比重分别为"+(fpop[29]/popData3[9]*100).toFixed(1)+"%、"+(spop[29]/popData3[9]*100).toFixed(1)+"%和"+(tpop[29]/popData3[9]*100).toFixed(1)+"%。产值比重分别是"+(fgdp[29]/gdp3[9]*100).toFixed(1)
-    +"%、"+(sgdp[29]/gdp3[9]*100).toFixed(1)+"%和"+(tgdp[29]/gdp3[9]*100).toFixed(1)+"%。一般情况下，随着经济发展和人均国民收入提高，第二、三产业人口将提高，第三产业人口将占绝对优势。";
+        //设置年份
+    $scope.myyear="2045";
+     //产业人口比例
+    $scope.populationrate=[(fpop[29]/popData3[9]*100).toFixed(1),(spop[29]/popData3[9]*100).toFixed(1),(tpop[29]/popData3[9]*100).toFixed(1)];
+    //产业人口数量
+    $scope.population=[fpop[29],spop[29],tpop[29]];
+    //产业产值比例  
+    $scope.valuerate=[(fgdp[29]/gdp3[9]*100).toFixed(1),(sgdp[29]/gdp3[9]*100).toFixed(1),(tgdp[29]/gdp3[9]*100).toFixed(1)]; 
+    //产业产值
+     $scope.value=[fgdp[29],sgdp[29],tgdp[29]];
+    document.getElementById("b").innerHTML="第一、二、三产业就业人口比重分别为"+(fpop[29]/popData3[9]*100).toFixed(1)+"%、"+(spop[29]/popData3[9]*100).toFixed(1)+"%和"+(tpop[29]/popData3[9]*100).toFixed(1)+"%。产值比重分别是"+(fgdp[29]/gdp3[9]*100).toFixed(1)
+    +"%、"+(sgdp[29]/gdp3[9]*100).toFixed(1)+"%和"+(tgdp[29]/gdp3[9]*100).toFixed(1)+"%。";
     $scope.populationPie.options.title.text="太仓市2045年产业就业人口比重分析预测";
     $scope.industryPie.options.title.text="太仓市2045年产业产值比重分析预测";
     $scope.populationPie.series=[{
@@ -1574,7 +1663,7 @@ options:{ chart: {
             title: {
                 text: '关联度',
                 style: {
-                    color: '#AA4643'
+                    color: '#8968CD'
                 }
             },
             labels: {
@@ -1582,7 +1671,7 @@ options:{ chart: {
                     return this.value ;
                 },
                 style: {
-                    color: '#AA4643'
+                    color: '#8968CD'
                 }
             },
             opposite: true,
@@ -1614,7 +1703,7 @@ options:{ chart: {
         }, {
             name: '关联度',
             type: 'spline',
-            color: '#AA4643',
+            color: '#8968CD',
             yAxis: 2,
             //xie
             data: [0.83, 0.82, 0.808,0.81, 0.819, 0.821, 0.841, 0.8425, 0.85, 0.85],
@@ -1778,6 +1867,7 @@ $scope.populationChart ={
             }
         }]
 };
+
 $scope.populationPie={
 options: {
                               colors:piecolor,
