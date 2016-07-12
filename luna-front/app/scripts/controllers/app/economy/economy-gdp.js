@@ -96,7 +96,7 @@ app.controller('EconomyGdpCtrl', ['$scope','$stateParams','ResTool','EconomyRes'
                 plotLines:[{
                 color:'red',
                 dashStyle:'DashDot',
-                value:1150,
+                value:1130,
                 width:2,
                 label:{
                     text:'本年度GDP目标',
@@ -165,6 +165,7 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
        $scope.monthGDPChart.series[1].type=param;
        $scope.monthGDPChart.series[2].type='spline';
        };
+
     var yearDetailPromise = ResTool.httpGetWithWorkspace(EconomyRes.getYearDetail,{year:nowyear},{});
     $scope.yearchoose = nowyear;
     yearDetailPromise.then(function(rc){
@@ -280,7 +281,7 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
                  plotLines:[{
                 color:'red',
                 dashStyle:'DashDot',
-                value:1150,
+                value:$scope.aimgdp,
                 width:2,
                 label:{
                     text:'本年度GDP目标',
@@ -346,6 +347,13 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
     $scope.changeyear=function(param){
         var yearDetailPromise = ResTool.httpGetWithWorkspace(EconomyRes.getYearDetail,{year:param},{});
         yearDetailPromise.then(function(rc){
+            if (param == 2016 ) {
+              $scope.aimgdp = 1130;
+            }else if (param == 2015) {
+                $scope.aimgdp = 1090;
+            }else if (param == 2014) {
+                $scope.aimgdp = 1070;
+            }
             (function yerachanged(){
             var i = 0;
             while(i<rc.data.realGdpQuarterDetail.length){
@@ -355,7 +363,7 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
                 $scope.currentSeason = '当前';
                 break;
             }else if (rc.data.realGdpQuarterDetail[i] == 0) {
-                $scope.alreadycomplete = (rc.data.realGdpQuarterDetail[i-1]/1100).toFixed(2)*100;
+                $scope.alreadycomplete = (rc.data.realGdpQuarterDetail[i-1]/$scope.aimgdp).toFixed(2)*100;
                 $scope.currentGDP = rc.data.realGdpQuarterDetail[i-1];
                 if (i == 1) {
                     $scope.currentSeason = '一';
@@ -366,7 +374,7 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
                 }
                 break;
             }else if (rc.data.realGdpQuarterDetail[i] !=0&&i==3) {
-                $scope.alreadycomplete = (rc.data.realGdpQuarterDetail[i]/1100).toFixed(2)*100;
+                $scope.alreadycomplete = (rc.data.realGdpQuarterDetail[i]/$scope.aimgdp).toFixed(2)*100;
                 $scope.currentGDP = rc.data.realGdpQuarterDetail[i];
                 $scope.currentSeason = '四';
                 break;
@@ -395,6 +403,9 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
       });
    }   
 }]);
+
+
+
 
 app.controller('industryGdp', ['$scope','$stateParams','ResTool','EconomyRes', function($scope,$stateParams,ResTool,EconomyRes){
      var IndustryPromise = ResTool.httpGetWithWorkspace(EconomyRes.getIndustryDetail,{},{});

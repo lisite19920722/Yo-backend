@@ -39,25 +39,25 @@ $scope.range2=function(){
     return $scope.selectedRange3;
   };
   var changeloandata=function(newValue,oldValue,scope){
-       $scope.loandata[11]=Math.round($scope.loandata[11]*(1+(newValue-oldValue)/100)*100)/100;
-       $scope.transdata[11]=Math.round($scope.transdata[11]*(1+(newValue-oldValue)/500)*100)/100;
-       $scope.elecdata[11]=Math.round($scope.elecdata[11]*(1+(newValue-oldValue)/250)*100)/100;
+       $scope.loandata[10]=Math.round($scope.loandata[11]*(1+(newValue-oldValue)/100)*100)/100;
+       $scope.transdata[10]=Math.round($scope.transdata[11]*(1+(newValue-oldValue)/500)*100)/100;
+       $scope.elecdata[10]=Math.round($scope.elecdata[11]*(1+(newValue-oldValue)/250)*100)/100;
        $scope.keqiangdata[3]=Math.round($scope.keqiangdata[3]*(1+(newValue-oldValue)/800)*100)/100;
        $scope.selectedRange2=Math.round(($scope.selectedRange2+($scope.selectedRange*(newValue-oldValue)/200)));
        $scope.selectedRange3=Math.round(($scope.selectedRange3+($scope.selectedRange*(newValue-oldValue)/150)));
   };
   var changeloandata2=function(newValue,oldValue,scope){
-       $scope.loandata[11]=Math.round($scope.loandata[11]*(1+(newValue-oldValue)/100)*100)/100;
-       $scope.transdata[11]=Math.round($scope.transdata[11]*(1+(newValue-oldValue)/500)*100)/100;
-       $scope.elecdata[11]=Math.round($scope.elecdata[11]*(1+(newValue-oldValue)/250)*100)/100;
+       $scope.loandata[10]=Math.round($scope.loandata[11]*(1+(newValue-oldValue)/100)*100)/100;
+       $scope.transdata[10]=Math.round($scope.transdata[11]*(1+(newValue-oldValue)/500)*100)/100;
+       $scope.elecdata[10]=Math.round($scope.elecdata[11]*(1+(newValue-oldValue)/250)*100)/100;
        $scope.keqiangdata[3]=Math.round($scope.keqiangdata[3]*(1+(newValue-oldValue)/800)*100)/100;
        $scope.selectedRange=Math.round(($scope.selectedRange+($scope.selectedRange2*(newValue-oldValue)/200)));
        $scope.selectedRange3=Math.round(($scope.selectedRange3+($scope.selectedRange2*(newValue-oldValue)/150)));
   };
   var changeloandata3=function(newValue,oldValue,scope){
-       $scope.loandata[11]=Math.round($scope.loandata[11]*(1+(newValue-oldValue)/100)*100)/100;
-       $scope.transdata[11]=Math.round($scope.transdata[11]*(1+(newValue-oldValue)/500)*100)/100;
-       $scope.elecdata[11]=Math.round($scope.elecdata[11]*(1+(newValue-oldValue)/250)*100)/100;
+       $scope.loandata[10]=Math.round($scope.loandata[11]*(1+(newValue-oldValue)/100)*100)/100;
+       $scope.transdata[10]=Math.round($scope.transdata[11]*(1+(newValue-oldValue)/500)*100)/100;
+       $scope.elecdata[10]=Math.round($scope.elecdata[11]*(1+(newValue-oldValue)/250)*100)/100;
        $scope.keqiangdata[3]=Math.round($scope.keqiangdata[3]*(1+(newValue-oldValue)/800)*100)/100;
        $scope.selectedRange2=Math.round(($scope.selectedRange2+($scope.selectedRange3*(newValue-oldValue)/200)));
        $scope.selectedRange=Math.round(($scope.selectedRange+($scope.selectedRange3*(newValue-oldValue)/150)));
@@ -68,9 +68,9 @@ $scope.range2=function(){
     $scope.selectedRange3=0;
    
   }
-  // $scope.$watch($scope.range,changeloandata);
-  // $scope.$watch($scope.range2,changeloandata2);
-  // $scope.$watch($scope.range3,changeloandata3);
+  $scope.$watch($scope.range,changeloandata);
+  $scope.$watch($scope.range2,changeloandata2);
+  $scope.$watch($scope.range3,changeloandata3);
   $scope.keqiangindex={
      options: 
     {
@@ -313,6 +313,88 @@ $scope.elecChart = {
 
   })
  
+ $scope.keqiangchangeyear = function(param){
+   var promise = ResTool.httpGetWithWorkspace(EconomykeqiangRes.getYearDetail,{year:param},{});
+   promise.then(function(rc){
+        $scope.industrypower = rc.data.industryPowerGrowRate;
+        $scope.newload = rc.data.loadGrowRate;
+        $scope.freightvolum = rc.data.freightVolumeGrowthRate;
+        $scope.keqiangindex={
+         options: 
+        {
+            chart: 
+            {
+                type:'spline'
+            },
+        },
+         credits:{
+                    enabled:false,
+                },
+        title: 
+        {
+            text: '2015年度“克强指数”走势',
+            style:{
+            fontWeight:'bold'
+          }
+           
+        },
+        xAxis: 
+        {
+            categories: ['一月','二月', '三月', '四月','五月','六月','七月','八月','九月','十月','十一月','十二月']
+        },
+        yAxis: 
+        { plotLines:[{
+                color:'red',
+                dashStyle:'solid',
+                value:7.2,
+                width:2,
+                label:{
+                    text:'本年度GDP增长率预测值',
+                    align:'right',
+                    x:10,
+                     style: {
+                            fontSize: '8px',
+                            fontWeight: 200
+                        }
+                }
+                }],
+            title: 
+            {
+                text: '增长率％'
+            },
+            
+            
+            },
+        tooltip: 
+        {
+            valueSuffix: ''
+        },
+        legend: 
+        {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series:[{
+            name: '工业用电量',
+            color:"rgb(205,130,61)",
+            data: $scope.industrypower
+            },
+            {
+            name: '新增贷款',
+            color:"rgb(51,181,88)",
+            data: $scope.newload
+            },
+            {
+            name: '货运量',
+            color:"rgb(62,160,200)",
+            data: $scope.freightvolum
+            }]
+       };
+
+   })
+ }
 
 
 }]);
