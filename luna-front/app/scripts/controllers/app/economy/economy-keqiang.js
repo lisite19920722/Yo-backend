@@ -1,14 +1,21 @@
 'use strict';
 
-app.controller('EconomyKeqiangCtrl', ['$scope','$stateParams', function($scope, $stateParams) {
+app.controller('EconomyKeqiangCtrl', ['$scope','$stateParams','ResTool','EconomykeqiangRes', function($scope, $stateParams,ResTool,EconomykeqiangRes) {
   
   (function() {
     document.body.scrollIntoView();
   })();  
     //alert(rc.data);
     //$scope.forecastvalue=rc.data[0].gdpForecastValue;
-    
-  $scope.colorpicker = {
+  var now = new Date();
+    var nowyear = now.getFullYear();
+  var yearKeQiangHeader = {};
+  var yearKeQiangPromise = ResTool.httpGetWithWorkspace(EconomykeqiangRes.getYearDetail,{year:2015},yearKeQiangHeader);
+  yearKeQiangPromise.then(function(rc){
+    $scope.industrypower = rc.data.industryPowerGrowRate;
+    $scope.newload = rc.data.loadGrowRate;
+    $scope.freightvolum = rc.data.freightVolumeGrowthRate;
+   $scope.colorpicker = {
         options: {
             orientation: 'horizontal',
             min: 0,
@@ -85,7 +92,7 @@ $scope.range2=function(){
     },
     xAxis: 
     {
-        categories: ['二月', '三月', '四月','五月','六月','七月','八月','九月','十月','十一月','十二月']
+        categories: ['一月','二月', '三月', '四月','五月','六月','七月','八月','九月','十月','十一月','十二月']
     },
     yAxis: 
     { plotLines:[{
@@ -124,17 +131,17 @@ $scope.range2=function(){
     series:[{
         name: '工业用电量',
         color:"rgb(205,130,61)",
-        data: [ 8.3, 6.0, 6.4,6.4,6.6,7.0,7.3,6.5,6.2,6.9,7.4]
+        data: $scope.industrypower
         },
         {
         name: '新增贷款',
         color:"rgb(51,181,88)",
-        data: [7.1, 8.0, 6.2,5.3,7.2,6.2,5.9,6.3,7.2,5.3,8.7]
+        data: $scope.newload
         },
         {
         name: '货运量',
         color:"rgb(62,160,200)",
-        data: [6.3, 7.2, 7.7,6.7,8.2,7.3,8.5,6.3,7.7,7.9,6.2]
+        data: $scope.freightvolum
         }]
 };
 
@@ -303,6 +310,9 @@ $scope.elecChart = {
     }
 
 };
+
+  })
+ 
 
 
 }]);

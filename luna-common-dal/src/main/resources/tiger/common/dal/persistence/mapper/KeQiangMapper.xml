@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="tiger.common.dal.persistence.mapper.KeQiangMapper">
+    <resultMap id="BaseResultMap" type="tiger.common.dal.persistence.EconomyKeQiang.KeQiangDetailDO">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+        <result column="modify_time" property="modify_time" jdbcType="TIMESTAMP" />
+        <result column="gdpGrowthRate" property="gdpGrowthRate" jdbcType="FLOAT" />
+        <result column="gdpForecastGrowthRate" property="gdpForecastGrowthRate" jdbcType="FLOAT" />
+        <result column="industryPowerGrowthRate" property="industryPowerGrowthRate" jdbcType="FLOAT" />
+        <result column="industryPowerValue" property="industryPowerValue" jdbcType="FLOAT" />
+        <result column="industryPowerForecastValue" property="industryPowerForecastValue" jdbcType="FLOAT" />
+        <result column="loadGrowthRate" property="loadGrowthRate" jdbcType="FLOAT" />
+        <result column="loadValue" property="loadValue" jdbcType="FLOAT" />
+        <result column="loadForecastValue" property="loadForecastValue" jdbcType="FLOAT" />
+        <result column="freightVolumeGrowthRate" property="freightVolumeGrowthRate" jdbcType="FLOAT" />
+        <result column="freightVolume" property="freightVolume" jdbcType="FLOAT" />
+        <result column="freightForecastVolume" property="freightForecastVolume" jdbcType="FLOAT" />
+        <result column="year" property="year" jdbcType="BIGINT" />
+        <result column="month" property="month" jdbcType="BIGINT" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,create_time, modify_time,gdpGrowthRate,gdpForecastGrowthRate,industryPowerGrowthRate,industryPowerValue,industryPowerForecastValue,loadGrowthRate,loadValue,loadForecastValue,freightVolumeGrowthRate,freightVolume,freightForecastVolume,year,month
+    </sql>
+    <select id="getyearKeqiang" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from keqiang_forecast_data
+        where year = #{year,jdbcType=BIGINT}
+    </select>
+</mapper>
