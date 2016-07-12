@@ -2,8 +2,6 @@
     <div class="subview3_title">民生分析预测BI</div>
 </div>
 
-
-
 <div class="wrapper">
     <div class="details-content">
 
@@ -15,7 +13,7 @@
                 </div>
                 <div class="panel-body"  style="padding-top:22px">
                     <div class="row" >
-                        <div class="col-md-8 chart-panel" style="width:250px">
+                        <div class="col-md-8 chart-panel" >
                             <highchart style="height:500px;" config="jobf"></highchart>
                         </div>
                         <div class="col-md-4">
@@ -40,12 +38,12 @@
                                 
                             </div>
                            
-                            <div class="pull-left">
+                            <div class="pull-left" style="margin-left:30px">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x text-info"></i>
                                     <i class="icon-bulb fa-stack-1x text-white fa-spin icon-bulb-position"></i>
                                 </span>
-                                <span class="h4">一句话解读</span>
+                                <span class="h4" >一句话解读</span>
                                 <br />
                                 <div style="margin-right:10px">
 
@@ -66,7 +64,8 @@
                                 </div>
                             </div>
                             <div style="width:369px;height:1px;margin:15px auto;padding:0px;background-color:#FFFFFF;overflow:hidden;"></div>
-                            <div class="btn-group dropdown">
+                          <br>
+                            <div class="btn-group dropdown" style="margin-left:13px">
                                 <button class="btn btn-success" data-toggle="dropdown" aria-expanded="false">年份选择<span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <li><a ng-repeat="bttn in buttonMap3" ng-model="predictionModal" style="width:150px;margin-left: 4px;margin-bottom:2px;margin-right:1px" btn-radio="bttn.radio" ng-click="btn_click3(bttn)">{{bttn.label}}</a></li>
