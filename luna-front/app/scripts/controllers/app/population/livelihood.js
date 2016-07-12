@@ -408,6 +408,12 @@ $scope.buttonMap1 = [{
 
 
 
+
+
+
+
+
+//就业人数分析预测表
 var jobfcolor=new Array('#7cb5ec','#000000');
  $scope.jobf ={
       options:{
@@ -422,8 +428,8 @@ var jobfcolor=new Array('#7cb5ec','#000000');
             layout: 'vertical',
             align: 'left',
             verticalAlign: 'top',
-            x: 150,
-            y: 100,
+            x: 100,
+            y: 45,
             floating: true,
             borderWidth: 1,
             backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
@@ -433,7 +439,7 @@ var jobfcolor=new Array('#7cb5ec','#000000');
         },
         yAxis: {
             title: {
-                text: '人数'
+                text: '人数（万人）'
             }
         },
         tooltip: {
@@ -463,6 +469,22 @@ var jobfcolor=new Array('#7cb5ec','#000000');
            }
         }]
 };  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var jobtcolor=new Array('#7cb5ec','#000000','#90ED7D','#F7A35C');
 $scope.jobt ={
        options:{
