@@ -2250,7 +2250,7 @@ $scope.sumpopulation={
       $scope.growth=rate3;
        //人口总量
       $scope.sumpeople=sum3;
-       $scope.sumyear="2036-205";
+       $scope.sumyear="2036-2045";
         document.getElementById('a').innerHTML="2045年的人口增长率0.13%相比2036年的0.13%有了小幅度的增长。";
          document.getElementById('sumconclusion').innerHTML="总体来看，太仓市的人口总量处于平稳状态，无增长趋势。";
      $scope.sumpopulation.options.xAxis[0].categories=['2036','2037','2038','2039','2040','2041','2042','2043','2044','2045'];
