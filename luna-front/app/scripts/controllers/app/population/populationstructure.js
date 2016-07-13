@@ -7,16 +7,39 @@ app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRe
     $scope.data = null;
     var popData;
 
+
+
+
+
+//是否显示人口结构数据详情函数
+  $scope.showPopulationDetail = function(){
+      $scope.totalshow= !$scope.totalshow;
+    };
+  //是否显示人口总量数据详情
+$scope.showPopulationDetail1 = function(){
+      $scope.totalshow1= !$scope.totalshow1;
+    };
+    $scope.showPopulationDetail2 = function(){
+      $scope.totalshow2= !$scope.totalshow2;
+    };
+
   
+    //列表中的数据
+    
+
+        
+
     var promise = ResTool.httpGetWithWorkspace(PopulationRes.getPopulationStructurePreData,{},{});
     promise.then(function(rc) {
+
 
 
     popData=rc.data;
      
 
     //2015年的数据
-    var popData13=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测男性数据
+    var popData13=[0,0,0,0,0,0,0,0,0,0,0]; 
+    
     var popData14=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测女性数据
     var sumMale6=0;//初始化男性总数
     var sumFemale6=0;//初始化女性总数
@@ -26,38 +49,50 @@ app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRe
       if(popData[i].preYear===2015){
         if(popData[i].sexType_id===1){ //当前男性
           curMale.push(-popData[i].preResidentPopulation);
+          //2015年男性总人数
            sumMale6+=popData[i].preResidentPopulation;
            if(popData[i].ageType_id<6&&popData[i].ageType_id>=0){
+            //2015年0-5岁男性总人数
                  popData13[0]+=popData[i].preResidentPopulation;
             }
            if(popData[i].ageType_id<12&&popData[i].ageType_id>=6){
+            //2015年6-11岁男性总人数
                  popData13[1]+=popData[i].preResidentPopulation;
             }
            if(popData[i].ageType_id<18&&popData[i].ageType_id>=12){
+            //2015年12-17岁男性总人数
                  popData13[2]+=popData[i].preResidentPopulation;
             }
           if(popData[i].ageType_id<24&&popData[i].ageType_id>=18){
+            //2015年18-23岁男性总人数
                  popData13[3]+=popData[i].preResidentPopulation;
             }
           if(popData[i].ageType_id<30&&popData[i].ageType_id>=24){
+            //2015年24-29岁男性总人数
                  popData13[4]+=popData[i].preResidentPopulation;
             }
           if(popData[i].ageType_id<36&&popData[i].ageType_id>=30){
+            //2015年30-35岁男性总人数
                  popData13[5]+=popData[i].preResidentPopulation;
             }
           if(popData[i].ageType_id<42&&popData[i].ageType_id>=36){
+            //2015年36-41岁男性总人数
                  popData13[6]+=popData[i].preResidentPopulation;
             }
           if(popData[i].ageType_id<48&&popData[i].ageType_id>=42){
+            //2015年42-47岁男性总人数
                  popData13[7]+=popData[i].preResidentPopulation;
             }
           if(popData[i].ageType_id<54&&popData[i].ageType_id>=48){
+            //2015年48-53岁男性总人数
                  popData13[8]+=popData[i].preResidentPopulation;
             }
           if(popData[i].ageType_id<60&&popData[i].ageType_id>=54){
+            //2015年54-59岁男性总人数
                  popData13[9]+=popData[i].preResidentPopulation;
             }
           if(popData[i].ageType_id>=60){
+            //2015年60岁以上男性总人数
                  popData13[10]+=popData[i].preResidentPopulation;
             }
       }
@@ -123,6 +158,9 @@ app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRe
     popData14[8]=parseFloat(((popData14[8]/(sumMale6+sumFemale6))*100).toFixed(2));
     popData14[9]=parseFloat(((popData14[9]/(sumMale6+sumFemale6))*100).toFixed(2));
     popData14[10]=parseFloat(((popData14[10]/(sumMale6+sumFemale6))*100).toFixed(2));
+
+    //計算各年60歲以上人口比例
+
 
 
 
@@ -812,6 +850,15 @@ app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRe
     popData12[10]=parseFloat(((popData12[10]/(sumMale5+sumFemale5))*100).toFixed(2));
 
 
+//2015年
+  $scope.years = ["年龄","0-5岁", "6-11岁","12-17岁", "18-23岁", "24-29岁", "30-35岁", "36-41岁", "42-47岁", "48-53岁", "54-59岁", "60岁以上"];
+      $scope.male15= ["男性",popData13[0]+"%", popData13[1]+"%", popData13[2]+"%",  popData13[3]+"%",  popData13[4]+"%",  popData13[5]+"%",  popData13[6]+"%",  popData13[7]+"%",  popData13[8]+"%",  popData13[9]+"%",  popData13[10]+"%"];
+     $scope.female15= ["女性",popData14[0]+"%", popData14[1]+"%", popData14[2]+"%",  popData14[3]+"%",  popData14[4]+"%",  popData14[5]+"%",  popData14[6]+"%",  popData14[7]+"%",  popData14[8]+"%",  popData14[9]+"%",  popData14[10]+"%"];
+
+//2020
+       $scope.years = ["年龄","0-5岁", "6-11岁","12-17岁", "18-23岁", "24-29岁", "30-35岁", "36-41岁", "42-47岁", "48-53岁", "54-59岁", "60岁以上"];
+         $scope.male20= [popData1[0]+"%", popData1[1]+"%", popData1[2]+"%",  popData1[3]+"%",  popData1[4]+"%",  popData1[5]+"%",  popData1[6]+"%",  popData1[7]+"%",  popData1[8]+"%",  popData1[9]+"%",  popData1[10]+"%"];
+     $scope.female20= [popData2[0]+"%", popData2[1]+"%", popData2[2]+"%",  popData2[3]+"%",  popData2[4]+"%",  popData2[5]+"%",  popData2[6]+"%",  popData2[7]+"%",  popData2[8]+"%",  popData2[9]+"%",  popData2[10]+"%"];
 
 
 
@@ -825,17 +872,16 @@ app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRe
 
 
 
-
-
-  var columnColors = new Array( '#87CEFA','#929bce','#0787C8', '#465296');
-  var pieColors = new Array('#3795BC', '#FB9705');  //'#0787C8', '#1FC22B'
+  var columnColors = new Array( '#7CB5EC','#009FCC ','#C1CDCD ','#888888');
+  var pieColors = new Array('#009FCC ', '#7CB5EC');  //'#0787C8', '#1FC22B'
+  var pieColors1= new Array('#44444 ', '#888888'); 
 
 
   //var promise1 = qService.tokenhttpGetWithWorkspace(forecastFactory.query,{tableName:'birthrateData'});
   //  promise1.then(function(rc1) {
 
 
-  
+  //地图开头
   
 
 var map = new AMap.Map('conMap');
@@ -865,6 +911,9 @@ AMap.plugin(['AMap.ToolBar','AMap.Scale'],function(){
  marker1.setMap(map);
     // 设置鼠标划过点标记显示的文字提示
     marker1.setTitle('');
+
+
+
 var infow=[];
 infow.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#CC0033;font-size:18px'>浮桥镇</div>")
     // 设置label标签
@@ -1020,6 +1069,12 @@ infow.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;border
         content: infow.join('')
     });
 
+
+//城镇名称$scope.years = ["年龄","0-5岁", "6-11岁","12-17岁", "18-23岁", "24-29岁", "30-35岁", "36-41岁", "42-47岁", "48-53岁", "54-59岁", "60岁以上"];
+$scope.townsname=["浮桥镇","浏河镇", "太仓城区","城厢镇", "沙溪镇", "双凤镇", "璜泾镇", "科教新城", "新区", "港区"];
+$scope.birthrate=["6.12‰","6.3‰", "6.34‰","9.5‰", "6.53‰", "7.62‰", "5.91‰", "13.28‰", "6.84‰", "5.56‰"];
+$scope.deathrate=["10.78‰","9.09‰", "8.22‰","5.59‰", "4.76‰", "9.07‰", "9.98‰", "7.33‰", "8.68‰", "7.44‰"];
+$scope.populationrate=["-4.66‰","-2.79‰", "-1.88‰","3.91‰", "1.77‰", "-1.45‰", "-4.07‰", "5.95‰", "-1.84‰", "-1.88‰"];
 //显示信息窗体(可单击位置显示隐藏的信息窗体)
 var info1=[];
    info1.push("<h4><strong>浮桥镇人口自然增长率</strong></h4>");//121.20748,31.622211
@@ -1186,9 +1241,12 @@ var points =[
     {"lng":121.276413,"lat":31.515122,"count":50},
     {"lng":121.106514,"lat":31.649675,"count":15},
     {"lng":121.070907,"lat":31.556999,"count":16},
-   // {"lng":121.118541,"lat":31.592205,"count":16},  //金浪镇
+  
     {"lng":121.190549,"lat":31.467665,"count":16}
 ];
+
+
+  //地图结尾
 /* map.plugin(["AMap.Heatmap"], function() {
         //初始化heatmap对象
         heatmap = new AMap.Heatmap(map, {
@@ -1223,73 +1281,92 @@ var points =[
  
   $scope.buttonMap = [{
         name: 2020,
-        label: 2020 + "年人口结构预测",
+        label: 2020 + "",
        
       }, {
         name: 2025,
-        label: 2025 + "年人口结构预测",
+        label: 2025 + "",
        
       },
        {
         name: 2030,
-        label: 2030 + "年人口结构预测",
+        label: 2030 + "",
        
       },
        {
         name: 2035,
-        label: 2035 + "年人口结构预测",
+        label: 2035 + "",
        
       },
        {
         name: 2040,
-        label: 2040 + "年人口结构预测",
+        label: 2040 + "",
         
       }, {
         name: 2045,
-        label: 2045 + "年人口结构预测",
+        label: 2045 + "",
         
       }];
 
     $scope.buttonMap1 = [{
         name: 2025,
-        label: 2025 + "年人口总量预测",
+        label: 2025 + "",
         radio: "Left"
       }, {
         name: 2035,
-        label: 2035 + "年人口总量预测",
+        label: 2035 + "",
         radio: "Middle"
       }, {
         name: 2045,
-        label: 2045 + "年人口总量预测",
+        label: 2045 + "",
         radio: "Right"
       }];
+        $scope.pyear="2020";
   $scope.btn_click=function(btn){
     $scope.change(btn);
   };
+
+  //默认为2020年的表格
+  $scope.manpre=popData1;
+  $scope.womanpre=popData2;
+
+
   $scope.change=function(btn){
   //  var columnColors = new Array('#7CADDF', '#327EBD', '#195489', '#1FC22B', '#FB9705', '#F26200');
+  
      if(btn.name===2020){
-        document.getElementById('abc').innerHTML='&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp太仓市人口结构呈现不断老龄化趋势；其中，60岁及以上人口比例从2015的31.02% 增加到2020的32.08%。';
+        document.getElementById('abc').innerHTML='数据分析：60岁及以上人口比例从2015的31.02% 增加到2020的32.08%。';
+        document.getElementById('conclusion').innerHTML='结论：太仓市人口结构呈现不断老龄化趋势。';
+         document.getElementById('populationPreYear').innerHTML='2020';       
+           document.getElementById('populationPreYear1').innerHTML='2020';
+ document.getElementById('oldManProportion').innerHTML='32.08';
+ document.getElementById('sexRatio').innerHTML='105.11：100';
+ $scope.pyear="2020";
+
+ //20年的男性人口给
+
+
         $scope.age_ration.options.colors=columnColors;
-        $scope.age_ration.options.title.text="太仓市人口结构预测2015/2020年龄层比例图";
+        $scope.age_ration.options.title.text="太仓市2015/2020年人口结构图";
         $scope.age_ration.series=[{
-            name: '当前男性比例',
+            name: '2015年男性比例',
             data: popData13,
             stack: 'male'
         },{
-            name: '当前女性比例',
-            data: popData14,
+          //  popData13代表的是2015年男性的数量
+            name: '2015年女性比例',
+            data: popData13,
             stack: 'male'
         },{
-            name: '预测男性比例',
+            name: '2020年男性比例',
             data: popData1,
             stack: 'female'
         },{
-            name: '预测女性比例',
+            name: '2020年女性比例',
             data: popData2,
             stack: 'female'
         }];
-        $scope.population_prediction_year.options.title.text="太仓市2020年常住人口结构图";
+        $scope.population_prediction_year.options.title.text="太仓市2020年人口结构预测图";
         $scope.population_prediction_year.series=[{
                 name: '男性',
                 data: male20
@@ -1297,29 +1374,37 @@ var points =[
                 name: '女性',
                 data: female20
             }]
+
+             $scope.manpre=$scope.age_ration.series[2].data;
+  $scope.womanpre=$scope.age_ration.series[3].data;
           }
       if(btn.name===2025){
-        document.getElementById('abc').innerHTML='&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp太仓市人口结构呈现不断老龄化趋势；其中，60岁及以上人口比例从2015的31.02% 增加到2025的33.66%。';
+        document.getElementById('abc').innerHTML='数据分析：60岁及以上人口比例从2015的31.02% 增加到2025的33.66%。';
+         document.getElementById('conclusion').innerHTML='结论：太仓市人口结构呈现不断老龄化趋势。';
+          document.getElementById('populationPreYear').innerHTML='2025';          document.getElementById('populationPreYear1').innerHTML='2025';
+document.getElementById('oldManProportion').innerHTML='33.66';document.getElementById('sexRatio').innerHTML='104.82：100';
         $scope.age_ration.options.colors=columnColors;
-        $scope.age_ration.options.title.text="太仓市人口结构预测2015/2025年龄层比例图";
+         $scope.pyear="2025";
+        $scope.age_ration.options.title.text="太仓市2015/2025人口结构图";
         $scope.age_ration.series=[{
-            name: '当前男性比例',
+            name: '2015年男性比例',
             data: popData13,
             stack: 'male'
         },{
-            name: '当前女性比例',
+            name: '2015年女性比例',
             data: popData14,
             stack: 'male'
         },{
-            name: '预测男性比例',
+            name: '2025年男性比例',
             data: popData3,
             stack: 'female'
         },{
-            name: '预测女性比例',
+            name: '2025年女性比例',
             data: popData4,
             stack: 'female'
         }];
-        $scope.population_prediction_year.options.title.text="太仓市2025年常住人口结构图";
+
+        $scope.population_prediction_year.options.title.text="太仓市2025年人口结构预测图";
         $scope.population_prediction_year.series=[{
                 name: '男性',
                 data: male25
@@ -1327,29 +1412,36 @@ var points =[
                 name: '女性',
                 data: female25
             }]
+                $scope.manpre=popData3;
+  $scope.womanpre=popData4;
      }
       if(btn.name===2030){
-        document.getElementById('abc').innerHTML='&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp太仓市人口结构呈现不断老龄化趋势；其中，60岁及以上人口比例从2015的31.02% 增加到2030的33.67%。';
+        document.getElementById('abc').innerHTML='数据分析：60岁及以上人口比例从2015的31.02% 增加到2030的33.67%。';
+         document.getElementById('conclusion').innerHTML='结论：太仓市人口结构呈现不断老龄化趋势。';
+          document.getElementById('populationPreYear').innerHTML='2030';          document.getElementById('populationPreYear1').innerHTML='2030';
+document.getElementById('oldManProportion').innerHTML='33.67';
+ $scope.pyear="2030";
+document.getElementById('sexRatio').innerHTML='104.75：100';
         $scope.age_ration.options.colors=columnColors;
-        $scope.age_ration.options.title.text="太仓市人口结构预测2015/2030年龄层比例图";
+        $scope.age_ration.options.title.text="太仓市2015/2030人口结构图";
         $scope.age_ration.series=[{
-            name: '当前男性比例',
+            name: '2015年男性比例',
             data: popData13,
             stack: 'male'
         },{
-            name: '当前女性比例',
+            name: '2015年女性比例',
             data: popData14,
             stack: 'male'
         },{
-            name: '预测男性比例',
+            name: '2030年男性比例',
             data: popData5,
             stack: 'female'
         },{
-            name: '预测女性比例',
+            name: '2030年女性比例',
             data: popData6,
             stack: 'female'
         }];
-        $scope.population_prediction_year.options.title.text="太仓市2030年常住人口结构图";
+        $scope.population_prediction_year.options.title.text="太仓市2030年人口结构预测图";
         $scope.population_prediction_year.series=[{
                 name: '男性',
                 data: male30
@@ -1357,29 +1449,38 @@ var points =[
                 name: '女性',
                 data: female30
             }]
+                $scope.manpre=$scope.age_ration.series[2].data;
+  $scope.womanpre=$scope.age_ration.series[3].data;
      }
       if(btn.name===2040){
-        document.getElementById('abc').innerHTML='&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp太仓市人口结构呈现不断老龄化趋势；其中，60岁及以上人口比例从2015的31.02% 增加到2040的32.05%。';
+        document.getElementById('abc').innerHTML='数据分析：60岁及以上人口比例从2015的31.02% 增加到2040的32.05%。';
+         document.getElementById('conclusion').innerHTML='结论：太仓市人口结构呈现不断老龄化趋势。';
+         document.getElementById('populationPreYear').innerHTML='2040';         document.getElementById('populationPreYear1').innerHTML='2040';
+document.getElementById('oldManProportion').innerHTML='32.05';
+ $scope.pyear="2040";
+document.getElementById('sexRatio').innerHTML='104.68：100';
         $scope.age_ration.options.colors=columnColors;
-        $scope.age_ration.options.title.text="太仓市人口结构预测2015/2040年龄层比例图";
+        $scope.age_ration.options.title.text="太仓市2015/2040人口结构图";
         $scope.age_ration.series=[{
-            name: '当前男性比例',
+            name: '2015年男性比例',
             data: popData13,
             stack: 'male'
         },{
-            name: '当前女性比例',
+            name: '2015年女性比例',
             data: popData14,
             stack: 'male'
         },{
-            name: '预测男性比例',
+            name: '2040年男性比例',
             data: popData9,
             stack: 'female'
         },{
-            name: '预测女性比例',
+            name: '2040年女性比例',
             data: popData10,
             stack: 'female'
         }];
-        $scope.population_prediction_year.options.title.text="太仓市2040年常住人口结构图";
+            $scope.manpre=$scope.age_ration.series[2].data;
+  $scope.womanpre=$scope.age_ration.series[3].data;
+        $scope.population_prediction_year.options.title.text="太仓市2040年人口结构预测图";
         $scope.population_prediction_year.series=[{
                 name: '男性',
                 data: male40
@@ -1387,29 +1488,39 @@ var points =[
                 name: '女性',
                 data: female40
             }]
+                $scope.manpre=$scope.age_ration.series[2].data;
+  $scope.womanpre=$scope.age_ration.series[3].data;
      }
      if(btn.name===2035){
-        document.getElementById('abc').innerHTML='&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp太仓市人口结构呈现不断老龄化趋势；其中，60岁及以上人口比例从2015的31.02% 增加到2035的33.92%。';
+        document.getElementById('abc').innerHTML='数据分析：60岁及以上人口比例从2015的31.02% 增加到2035的33.92%。';
+         document.getElementById('conclusion').innerHTML='结论：太仓市人口结构呈现不断老龄化趋势。';
+          document.getElementById('populationPreYear').innerHTML='2035';
+           $scope.pyear="2035";
+                    document.getElementById('populationPreYear1').innerHTML='2035';
+                    document.getElementById('sexRatio').innerHTML='104.56：100';
+document.getElementById('oldManProportion').innerHTML='33.92';
         $scope.age_ration.options.colors=columnColors;
-        $scope.age_ration.options.title.text="太仓市人口结构预测2015/2035年龄层比例图";
+        $scope.age_ration.options.title.text="太仓市2015/2035人口结构图";
         $scope.age_ration.series=[{
-            name: '当前男性比例',
+            name: '2015年男性比例',
             data: popData13,
             stack: 'male'
         }, {
-            name: '当前女性比例',
+            name: '2015年女性比例',
             data: popData14,
             stack: 'male'
         }, {
-            name: '预测男性比例',
+            name: '2035年男性比例',
             data: popData7,
             stack: 'female'
         },{
-            name: '预测女性比例',
+            name: '2035年女性比例',
             data: popData8,
             stack: 'female'
         }];
-         $scope.population_prediction_year.options.title.text="太仓市2035年常住人口结构图";
+            $scope.manpre=$scope.age_ration.series[2].data;
+  $scope.womanpre=$scope.age_ration.series[3].data;
+         $scope.population_prediction_year.options.title.text="太仓市2035年人口结构预测图";
         $scope.population_prediction_year.series=[{
                 name: '男性',
                 data: male35
@@ -1417,29 +1528,39 @@ var points =[
                 name: '女性',
                 data: female35
             }]
+                $scope.manpre=$scope.age_ration.series[2].data;
+  $scope.womanpre=$scope.age_ration.series[3].data;
      }
      if(btn.name===2045){
-        document.getElementById('abc').innerHTML='&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp太仓市人口结构呈现不断老龄化趋势；其中，60岁及以上人口比例从2015的31.02% 减少到2045的30.51%。';
+        document.getElementById('abc').innerHTML='数据分析：60岁及以上人口比例从2015的31.02% 减少到2045的30.51%。';
+         document.getElementById('conclusion').innerHTML='结论：太仓市人口结构老龄化趋势有所放缓。';
+          document.getElementById('populationPreYear').innerHTML='2045';
+          document.getElementById('populationPreYear1').innerHTML='2045';
+          document.getElementById('oldManProportion').innerHTML='30.51';
+          document.getElementById('sexRatio').innerHTML='103.31：100';
+           $scope.pyear="2045";
         $scope.age_ration.options.colors=columnColors;
-        $scope.age_ration.options.title.text="太仓市人口结构预测2015/2045年龄层比例图";
+        $scope.age_ration.options.title.text="太仓市2015/2045人口结构图";
         $scope.age_ration.series=[{
-            name: '当前男性比例',
+            name: '2015年男性比例',
             data: popData13,
             stack: 'male'
         },{
-            name: '当前女性比例',
+            name: '2015年前女性比例',
             data: popData14,
             stack: 'male'
         },{
-            name: '预测男性比例',
+            name: '2045年男性比例',
             data: popData11,
             stack: 'female'
         },{
-            name: '预测女性比例',
+            name: '2045女性比例',
             data: popData12,
             stack: 'female'
         }];
-        $scope.population_prediction_year.options.title.text="太仓市2045年常住人口结构图";
+            $scope.manpre=$scope.age_ration.series[2].data;
+  $scope.womanpre=$scope.age_ration.series[3].data;
+        $scope.population_prediction_year.options.title.text="太仓市2045年人口结构预测图";
         $scope.population_prediction_year.series=[{
                 name: '男性',
                 data: male45
@@ -1458,7 +1579,7 @@ var points =[
         },
 
         title: {
-            text: '太仓市人口结构预测2015/2020年龄层比例图',
+            text: '太仓市2015/2025人口结构图',
             floationg: 'true'
         },
         credits:{
@@ -1506,19 +1627,19 @@ var points =[
       },
 
         series: [{
-            name: '当前男性比例',
+            name: '2015年男性比例',
             data: popData13,
             stack: 'male'
         },{
-            name: '当前女性比例',
+            name: '2015年女性比例',
             data: popData14,
             stack: 'male'
         },{
-            name: '预测男性比例',
+            name: '2020年男性比例',
             data: popData1,
             stack: 'female'
         },{
-            name: '预测女性比例',
+            name: '2020年女性比例',
             data: popData2,
             stack: 'female'
         }]
@@ -1552,7 +1673,7 @@ $scope.population_year={
                 type: 'bar'
             },
             title: {
-                text: '太仓市2015年常住人口结构图'
+                text: '太仓市2015年人口结构图'
             },
         legend:{
         
@@ -1564,7 +1685,7 @@ $scope.population_year={
                 categories: categories,
                 reversed: false,
                 labels: {
-                    step: 5
+                    step: 10
                 }
             }, { // mirror axis on right side
                 opposite: true,
@@ -1572,7 +1693,7 @@ $scope.population_year={
                 categories: categories,
                 linkedTo: 0,
                 labels: {
-                    step: 5
+                    step: 10
                 }
             }],
             yAxis: {
@@ -1614,12 +1735,12 @@ $scope.population_year={
     };
     $scope.population_prediction_year={
         options:{
-            colors:pieColors,
+            colors:pieColors1,
         chart: {
                 type: 'bar'
             },
             title: {
-                text: '太仓市2020年常住人口预测结构图'
+                text: '太仓市2020年人口结构预测图'
             },
             legend:{
         
@@ -1631,7 +1752,7 @@ $scope.population_year={
                 categories: categories,
                 reversed: false,
                 labels: {
-                    step: 5
+                    step: 10
                 }
             }, { // mirror axis on right side
                 opposite: true,
@@ -1639,7 +1760,7 @@ $scope.population_year={
                 categories: categories,
                 linkedTo: 0,
                 labels: {
-                    step: 5
+                    step: 10
                 }
             }],
             yAxis: {
@@ -1964,7 +2085,7 @@ $scope.sumpopulation={
             zoomType: 'xy'
         },
         title: {
-            text: '太仓市2016年到2025年常住人口总量预测趋势图'
+            text: '太仓市2016年到2025年人口总量预测趋势图'
         },
         legend:{
         
@@ -2000,17 +2121,18 @@ $scope.sumpopulation={
             }
         }, { // Secondary yAxis
             title: {
-                text: '人口总量',
+                text: '人口总量（人）',
                 style: {
-                    color: Highcharts.getOptions().colors[0]
+                    color: Highcharts.getOptions().colors[1]
                 },
                 
                  //tickPositions: [0, 100000, 200000, 300000,400000,500000,600000,700000,800000,900000] 
             },
             labels: {
-                format: '{value} 人',
+
+                format: '{value}',
                 style: {
-                    color: Highcharts.getOptions().colors[0]
+                    color: Highcharts.getOptions().colors[1]
                 },
 
             },
@@ -2038,7 +2160,7 @@ $scope.sumpopulation={
         }, {
             name: '人口增长率',
             type: 'spline',
-             color: "#434348",
+             color: "#858585",
             data: rate1,
             marker:{
                 symbol:"circle"
@@ -2051,11 +2173,22 @@ $scope.sumpopulation={
       $scope.btn_click1=function(btn){
     $scope.change1(btn);
   };
+   //默认人口总量是2016-2025
+      $scope.sumpeople=sum1;
+      //默认人口增长率是2016-2025
+      $scope.growth=rate1;
+   $scope.sumyear="2016-2025";
   $scope.change1=function(btn){
     if(btn.name===2025){
-        document.getElementById('a').innerHTML="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 总体来看，太仓市的人口总量处于平稳状态，呈增长趋势，随着二胎政策的全面开放，促进了人口数量的增加。";
+      $scope.sumyear="2016-2025";
+      //人口总量
+      $scope.sumpeople=sum1;
+      //人口增长率
+      $scope.growth=rate1;
+      document.getElementById('a').innerHTML="2016年的人口增长率0.25%相比2025年的0.23%有了小幅度的降低。";
+         document.getElementById('sumconclusion').innerHTML="总体来看，太仓市的人口总量处于平稳状态，呈增长趋势，随着二胎政策的全面开放，促进了人口数量的增加。";
     $scope.sumpopulation.options.xAxis[0].categories=['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'];
-    $scope.sumpopulation.options.title.text="太仓市2016年到2025年常住人口总量预测趋势图";
+    $scope.sumpopulation.options.title.text="太仓市2016-2025年人口总量预测趋势图";
     $scope.sumpopulation.series=[{
             name: '人口总量',
             type: 'column',
@@ -2069,7 +2202,7 @@ $scope.sumpopulation={
         }, {
             name: '人口增长率',
             type: 'spline',
-             color: "#434348",
+             color: "#858585",
             data: rate1,
             marker:{
                 symbol:"circle"
@@ -2080,9 +2213,15 @@ $scope.sumpopulation={
         }];
      }
      if(btn.name===2035){
-        document.getElementById('a').innerHTML="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 总体来看，太仓市的人口总量处于平稳状态，呈增长趋势，随着二胎政策的全面开放，促进了人口数量的增加。2035年的人口增长率1.17%相比2026年的0.86%有了小幅度的增长。";
+       //人口增长率
+      $scope.growth=rate2;
+       //人口总量
+      $scope.sumpeople=sum2;
+       $scope.sumyear="2026-2035";
+        document.getElementById('a').innerHTML="2026年的人口增长率0.19%相比2035年的0.11%有了小幅度的增长。";
+         document.getElementById('sumconclusion').innerHTML="总体来看，太仓市的人口总量处于平稳状态，呈增长趋势。";
         $scope.sumpopulation.options.xAxis[0].categories=['2026','2027','2028','2029','2030','2031','2032','2033','2034','2035'];
-        $scope.sumpopulation.options.title.text="太仓市2026年到2035年常住人口总量预测趋势图";
+        $scope.sumpopulation.options.title.text="太仓市2026-2035年人口总量预测趋势图";
     $scope.sumpopulation.series=[{
             name: '人口总量',
             type: 'column',
@@ -2096,7 +2235,7 @@ $scope.sumpopulation={
         }, {
             name: '人口增长率',
             type: 'spline',
-            color: "#434348",
+            color: "#858585",
             data: rate2,
             marker:{
                 symbol:"circle"
@@ -2107,9 +2246,15 @@ $scope.sumpopulation={
         }];
      }
      if(btn.name===2045){
-    document.getElementById('a').innerHTML="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 总体来看，太仓市的人口总量处于平稳状态，呈增长趋势，随着二胎政策的全面开放，促进了人口数量的增加。2045年的人口增长率1.54%相比2036年的1.22%有了小幅度的增长。";
+       //人口增长率
+      $scope.growth=rate3;
+       //人口总量
+      $scope.sumpeople=sum3;
+       $scope.sumyear="2036-205";
+        document.getElementById('a').innerHTML="2045年的人口增长率0.13%相比2036年的0.13%有了小幅度的增长。";
+         document.getElementById('sumconclusion').innerHTML="总体来看，太仓市的人口总量处于平稳状态，无增长趋势。";
      $scope.sumpopulation.options.xAxis[0].categories=['2036','2037','2038','2039','2040','2041','2042','2043','2044','2045'];
-        $scope.sumpopulation.options.title.text="太仓市2036年到2045年常住人口总量预测趋势图";
+        $scope.sumpopulation.options.title.text="太仓市2036-2045年人口总量预测趋势图";
     $scope.sumpopulation.series=[{
             name: '人口总量',
             type: 'column',
@@ -2123,7 +2268,7 @@ $scope.sumpopulation={
         }, {
             name: '人口增长率',
             type: 'spline',
-            color: "#434348",
+            color: "#858585",
             data: rate3,
             marker:{
                 symbol:"circle"
