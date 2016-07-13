@@ -21,7 +21,14 @@ app.controller('LivelihoodCtrl', ['$scope','PopulationRes','ResTool',function($s
     $scope.preHighschool = rc.data[10];
 
     $scope.townName = ['城区','城厢镇','双凤镇','沙溪镇','浏河镇','浮桥镇','璜泾镇','新区','港区','科教新城'];
+
+
     
+
+    //“人口与就业”表控制是否打开表格的开关函数
+     $scope.showPopulationDetail = function(){
+      $scope.totalshow= !$scope.totalshow;
+    };
 
 
     $scope.firstTenYear  = ['2016', '2017', '2018', '2019', '2020', '2021','2022', '2023', '2024', '2025'];
