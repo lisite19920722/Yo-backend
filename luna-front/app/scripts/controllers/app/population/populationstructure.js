@@ -2186,7 +2186,7 @@ $scope.sumpopulation={
       //人口增长率
       $scope.growth=rate1;
       document.getElementById('a').innerHTML="2016年的人口增长率0.25%相比2025年的0.23%有了小幅度的降低。";
-         document.getElementById('sumconclusion').innerHTML="总体来看，太仓市的人口总量处于平稳状态，呈增长趋势，随着二胎政策的全面开放，促进了人口数量的增加。";
+         document.getElementById('sumconclusion').innerHTML="总体来看，太仓市的人口总量处于平稳状态，呈增长趋势。二胎政策的全面开放，促进了人口数量的增加。";
     $scope.sumpopulation.options.xAxis[0].categories=['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'];
     $scope.sumpopulation.options.title.text="太仓市2016-2025年人口总量预测趋势图";
     $scope.sumpopulation.series=[{
