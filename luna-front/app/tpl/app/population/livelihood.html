@@ -6,30 +6,22 @@
 
         <!--第一个大的莫块人口与就业开始-->
         <div class="zzh-container" style="width:1200px" >
-
          <!--人口就业分析结束结束-->
             <div class="panel panel-primary" style="margin-top: 50px;">
                 <div class="topbar">
                     <h4 class="cgq_title">人口与就业</h4>
                 </div>
-
   <!--人口就业分析48图开始-->
                <!--  <div class="panel-body"  style="padding-top:22px">-->
                     <div class="row" >
-
 <!--就业分析预测左边模块开始-->
             <div class="col-md-8 chart-panel" >
  <highchart style="width:100%;height:500px;" config="jobf"></highchart>
             </div>
             <!--就业分析预测左边模块结束-->
-
-
-
 <!--就业分析预测右边模块开始-->
-               <div class="col-md-4">
-                   
+               <div class="col-md-4">     
                             <div class="ioc-panel-desc">
-
                                <!--绿色方块开始-->
                                <div class="col-md-12" style="padding-top:0.5em;padding-left:0px">
                                 <div class="block panel padder-v cgq_bg-lightgreen item cgq_marginaround1em cgq_contentwidth">
@@ -47,13 +39,10 @@
                           </div> 
                       </div>
                       <!--黄色方块结束-->
-
                         <!--一句话解读方块开始-->
-
                          <div class="pull-left">
                           <div style="height:20px"></div>
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x text-info"></i>
+                                             <span class="fa-stack fa-lg" style="margin-left:5px">                                            <i class="fa fa-circle fa-stack-2x text-info"></i>
                                             <i class="icon-bulb fa-stack-1x text-white fa-spin icon-bulb-position"></i>
                                         </span>
                                         <span class="h4">一句话解读</span>
@@ -62,12 +51,10 @@
                                             <small class="block m-t-xs">
                                                 <i class="fa fa-circle" style="width:6%;float:left;margin-top:0.2em;"></i><div style="width:94%;float:left;margin-bottom:0.4em;"><span id="abc">数据分析：最近几年，太仓就业形势良好，在劳动力人口平稳增长的背景下，就业人口也呈平稳增长态势。</span></div>
                                             </small>
-                                           
                                             <small class="block m-t-xs">
                                                 <i class="fa fa-circle" style="width:6%;float:left;margin-top:0.2em;"></i><div style="width:94%;float:left;margin-bottom:0.4em;"><span> 就业人数分析预测采用的是灰色预测模型。</span></div>
                                             </small> </div>
-                                        </div>
-                                    
+                                        </div>                                    
                           <!--一句话解读方块结束-->
                                             <!--年份选择按钮开始-->
                           <div class="btn-group dropdown">
@@ -76,8 +63,7 @@
                    <ul class="dropdown-menu">
                     <li><a ng-repeat="bttn in buttonMap3" ng-model="predictionModal" style="width:150px;margin-left: 4px;margin-bottom:2px;margin-right:1px" btn-radio="bttn.radio" ng-click="btn_click3(bttn)">{{bttn.label}}</a></li>
                 </ul>
-            </div>
-                                  <!--年份选择按钮结束-->
+            </div>                                  <!--年份选择按钮结束-->
     <!--详细数据按钮开始-->
    <div class="col-md-12 cgq_marginaround1em" style="margin-left:-5px;">
     <div style="height:15px"></div>
@@ -95,37 +81,27 @@
                 <!--人口就业分析48图结束结束结束-->
 
 
-<!--表格开始-->
+<!--第一个表格开始-->
 
                                 <div class="bg-white fc-datatable"  ng-if="totalshow" style="border:0px">
-                                 <div class="panel-heading"><center>2015年数据详情</center></div>
+                                 <div class="panel-heading"><center><strong>{{employyear}}年数据详情</strong></center></div>
                                  <div class="panel panel-default paddingmargin0em" >
-
-                                    <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
-                                      
-                                       <tr class="ng-scope ng-isolate-scope">
-                                           <th ng-repeat="year in years">{{year}}</th>
-                                       </tr>
-
-                                       <tr class="ng-scope ng-isolate-scope">
-                                           <td ng-repeat="num in male15">{{num}}</td>
-                                       </tr>
-                                       <tr class="ng-scope ng-isolate-scope">
-                                           <td ng-repeat="num in female15">{{num}}</td>
-                                       </tr>
-                                   </table>
                                    <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
-                                       <div class="panel-heading"><center>{{pyear}}年数据详情</center></div>
                                        <tr class="ng-scope ng-isolate-scope">
-                                           <th ng-repeat="year in years">{{year}}</th>
+                                           <td>年份</td>
+                                           <td ng-repeat="num in jobf.options.xAxis.categories track by $index"> {{num}}</td>
                                        </tr>
                                        <tr class="ng-scope ng-isolate-scope">
-                                           <td>男性</td>
-                                           <td ng-repeat="num in manpre track by $index"> {{num}}%</td>
+                                        <td >劳动力人口</td>
+                                        <td ng-repeat="num in jobf.series[0].data track by $index">{{num}}</td>
+                                    </tr>
+                                     <tr class="ng-scope ng-isolate-scope">
+                                           <td>就业人口</td>
+                                           <td ng-repeat="num in jobf.series[1].data track by $index"> {{num}}</td>
                                        </tr>
                                        <tr class="ng-scope ng-isolate-scope">
-                                        <td >女性</td>
-                                        <td ng-repeat="num in womanpre track by $index">{{num}}%</td>
+                                        <td >就业率</td>
+                                        <td ng-repeat="num in rate track by $index">{{num}}%</td>
                                     </tr>
                                 </table>
                             </div>
@@ -148,7 +124,7 @@
                     <div class="col-md-4">
                          <div class="pull-left">
                           <div style="height:15px;"></div>
-                                        <span class="fa-stack fa-lg">
+                                             <span class="fa-stack fa-lg" style="margin-left:5px">
                                             <i class="fa fa-circle fa-stack-2x text-info"></i>
                                             <i class="icon-bulb fa-stack-1x text-white fa-spin icon-bulb-position"></i>
                                         </span>
@@ -167,7 +143,7 @@
                                         </div>
                           <div style="width:369px;height:1px;margin:15px auto;padding:0px;background-color:#FFFFFF;overflow:hidden;"></div>
                         <div class="btn-group dropdown" style="margin-left:11px">
-                            <button class="btn btn-success" data-toggle="dropdown" aria-expanded="false">年份选择<span class="caret"></span></button>
+                            <button class="btn btn-success" data-toggle="dropdown"  aria-expanded="false">年份选择<span class="caret"></span></button>
                             <ul class="dropdown-menu">
                                 <li><a ng-repeat="bttn in buttonMap1" ng-model="predictionModal" style="width:150px;margin-left: 4px;margin-bottom:2px;margin-right:1px" btn-radio="bttn.radio" ng-click="btn_click1(bttn)">{{bttn.label}}</a></li>
                             </ul>
@@ -180,7 +156,41 @@
                     </div>
                       <!--就业结构文字模块结束-->
             </div>
-              <!--就业结构表结束=-->
+              <!--就业结构图结束=-->
+
+
+              <!--第二个表格开始-->
+
+                                <div class="bg-white fc-datatable"  ng-if="totalshow1" style="border:0px">
+                                 <div class="panel-heading"><center><strong>{{employyear1}}年数据详情</strong></center></div>
+                                 <div class="panel panel-default paddingmargin0em" >
+                                   <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
+                                       <tr class="ng-scope ng-isolate-scope">
+                                           <td>年份</td>
+                                           <td ng-repeat="num in jobt.options.xAxis.categories track by $index"> {{num}}</td>
+                                       </tr>
+                                       <tr class="ng-scope ng-isolate-scope">
+                                        <td >就业人数</td>
+                                        <td ng-repeat="num in jobt.series[0].data track by $index">{{num}}</td>
+                                    </tr>
+                                     <tr class="ng-scope ng-isolate-scope">
+                                           <td>第一产业人口比</td>
+                                           <td ng-repeat="num in jobt.series[1].data track by $index"> {{num}}%</td>
+                                       </tr>
+                                       <tr class="ng-scope ng-isolate-scope">
+                                        <td >第二产业人口比</td>
+                                        <td ng-repeat="num in jobt.series[2].data track by $index">{{num}}%</td>
+                                    </tr>
+                                      <tr class="ng-scope ng-isolate-scope">
+                                        <td >第三产业人口比</td>
+                                        <td ng-repeat="num in jobt.series[3].data track by $index">{{num}}%</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+  <!--表格结束-->
+
+
     </div>
             <!--第一个大的莫块结束-->
             <!--第二个大的莫块开始-->
@@ -201,8 +211,7 @@
                            
                             <div class="pull-left">
                                 <div style="height:15px;"></div>
-                                <span class="fa-stack fa-lg">
-
+                                    <span class="fa-stack fa-lg" style="margin-left:5px">
                                     <i class="fa fa-circle fa-stack-2x text-info"></i>
                                     <i class="icon-bulb fa-stack-1x text-white fa-spin icon-bulb-position"></i>
                                 </span>
@@ -235,7 +244,7 @@
 
                            <div class="col-md-12 cgq_marginaround1em" style="margin-left:-5px;">
     <div style="height:15px"></div>
-                <button ng-click="showPopulationDetail()2" style="width:90px" class="btn m-b-xs btn-primary cgq-fixed-buttonwidth">详细数据</button>
+                <button ng-click="showPopulationDetail2()" style="width:90px" class="btn m-b-xs btn-primary cgq-fixed-buttonwidth">详细数据</button>
             </div>
     <!--详细数据按钮结束-->
 
@@ -249,39 +258,35 @@
             </div>
             <!--12模块结束，下面开始表格模块我-->
 
-<!--表格开始-->
-<div class="bg-white fc-datatable"  >
-   <div class="panel panel-default paddingmargin0em">
+ <!--养老保险表格开始-->
 
-      <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
-         <div class="panel-heading"><center>2015年数据详情</center></div>
-         <tr class="ng-scope ng-isolate-scope">
-           <th ng-repeat="year in years">{{year}}</th>
-       </tr>
+                                <div class="bg-white fc-datatable"  ng-if="totalshow2" style="border:0px">
+                                 <div class="panel-heading"><center><strong>{{employyear2}}年数据详情</strong></center></div>
+                                 <div class="panel panel-default paddingmargin0em" >
+                                   <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
+                                       <tr class="ng-scope ng-isolate-scope">
+                                           <td>年份</td>
+                                           <td ng-repeat="num in money.options.xAxis[0].categories track by $index"> {{num}}</td>
+                                       </tr>
+                                       <tr class="ng-scope ng-isolate-scope">
+                                        <td >养老保险结余</td>
+                                        <td ng-repeat="num in money.series[0].data track by $index">{{num}}</td>
+                                    </tr>
+                                     <tr class="ng-scope ng-isolate-scope">
+                                        <td >老年人口比例</td>
+                                        <td ng-repeat="num in money.series[1].data track by $index">{{num}}%</td>
+                                    </tr>
+                                       <tr class="ng-scope ng-isolate-scope">
+                                        <td >就业人口比例</td>
+                                        <td ng-repeat="num in money.series[2].data track by $index">{{num}}%</td>
+                                    </tr>
+                                      
+                                </table>
+                            </div>
+                        </div>
+  <!--表格结束-->
 
-       <tr class="ng-scope ng-isolate-scope">
-           <td ng-repeat="num in male15">{{num}}</td>
-       </tr>
-       <tr class="ng-scope ng-isolate-scope">
-           <td ng-repeat="num in female15">{{num}}</td>
-       </tr>
-   </table>
-   <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
-     <div class="panel-heading"><center>{{pyear}}年数据详情</center></div>
-     <tr class="ng-scope ng-isolate-scope">
-       <th ng-repeat="year in years">{{year}}</th>
-   </tr>
-   <tr class="ng-scope ng-isolate-scope">
-       <td>男性</td>
-       <td ng-repeat="num in manpre track by $index"> {{num}}%</td>
-   </tr>
-   <tr class="ng-scope ng-isolate-scope">
-    <td >女性</td>
-    <td ng-repeat="num in womanpre track by $index">{{num}}%</td>
-</tr>
-</table>
-</div>
-</div>
+
 <!--表格结束-->
             </div>
 </div>
@@ -299,19 +304,15 @@
         </div>
 
  <div class="row" >
-   
  <div class="col-md-8 chart-panel">
  <highchart id="school" config="school" style="width:95%;height:485px"></highchart>
               </div>
-
-
-
-
     <div class="col-md-4">
       
-              <hr />
+           
               <div class="pull-left">
-                <span class="fa-stack fa-lg">
+              <div style="height:15px"></div>
+                <span class="fa-stack fa-lg" style="margin-left:5px">
                   <i class="fa fa-circle fa-stack-2x text-info"></i>
                   <i class="icon-bulb fa-stack-1x text-white fa-spin icon-bulb-position"></i>
               </span>
@@ -331,8 +332,8 @@
              
           </div>
           <div style="width:369px;height:1px;margin:15px auto;padding:0px;background-color:#FFFFFF;overflow:hidden;"></div>
-          <hr />
-          <div class="btn-group dropdown">
+          
+          <div class="btn-group dropdown" style="margin-left:11px;" >
             <button class="btn btn-success" data-toggle="dropdown" aria-expanded="false">年份选择<span class="caret"></span></button>
             <ul class="dropdown-menu">
               <li><a ng-repeat="bttn in buttonMap8" ng-model="predictionModal" style="width:150px;margin-left: 4px;margin-bottom:2px;margin-right:1px" btn-radio="bttn.radio" ng-click="btn_click8(bttn)">{{bttn.label}}</a></li>
@@ -340,15 +341,39 @@
       </div>
          <!--详细数据按钮开始-->
 
-                           <div class="col-md-12 cgq_marginaround1em" style="margin-left:-15px;">
+                           <div class="col-md-12 cgq_marginaround1em" style="margin-left:-5px;">
     <div style="height:15px"></div>
-                <button ng-click="showPopulationDetail()3" style="width:90px" class="btn m-b-xs btn-primary cgq-fixed-buttonwidth">详细数据</button>
+                <button ng-click="showPopulationDetail3()" style="width:90px" class="btn m-b-xs btn-primary cgq-fixed-buttonwidth">详细数据</button>
             </div>
     <!--详细数据按钮结束-->
     </div>
  </div>
+<!--学校数量表格开始-->
 
-
+                                <div class="bg-white fc-datatable"  ng-if="totalshow3" style="border:0px">
+                                 <div class="panel-heading"><center><strong>{{employyear3}}年数据详情</strong></center></div>
+                                 <div class="panel panel-default paddingmargin0em" >
+                                   <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
+                                       <tr class="ng-scope ng-isolate-scope">
+                                           <td>年份</td>
+                                           <td ng-repeat="num in money.options.xAxis[0].categories track by $index"> {{num}}</td>
+                                       </tr>
+                                         <tr class="ng-scope ng-isolate-scope">
+                                        <td >小学数量</td>
+                                        <td ng-repeat="num in school.series[0].data  track by $index">{{num}}</td>
+                                    </tr>     <tr class="ng-scope ng-isolate-scope">
+                                        <td >初中数量</td>
+                                        <td ng-repeat="num in school.series[1].data  track by $index">{{num}}</td>
+                                    </tr>
+                                       <tr class="ng-scope ng-isolate-scope">
+                                        <td >高中数量</td>
+                                        <td ng-repeat="num in school.series[2].data  track by $index">{{num}}</td>
+                                    </tr>
+                                      
+                                </table>
+                            </div>
+                        </div>
+  <!--表格结束-->
            
 </div>
 </div>
