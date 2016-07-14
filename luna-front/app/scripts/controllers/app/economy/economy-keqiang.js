@@ -39,25 +39,25 @@ $scope.range2=function(){
     return $scope.selectedRange3;
   };
   var changeloandata=function(newValue,oldValue,scope){
-       $scope.loandata[10]=Math.round($scope.loandata[11]*(1+(newValue-oldValue)/100)*100)/100;
-       $scope.transdata[10]=Math.round($scope.transdata[11]*(1+(newValue-oldValue)/500)*100)/100;
-       $scope.elecdata[10]=Math.round($scope.elecdata[11]*(1+(newValue-oldValue)/250)*100)/100;
+       $scope.loandata[10]=Math.round($scope.loandata[10]*(1+(newValue-oldValue)/100)*100)/100;
+       $scope.transdata[10]=Math.round($scope.transdata[10]*(1+(newValue-oldValue)/500)*100)/100;
+       $scope.elecdata[10]=Math.round($scope.elecdata[10]*(1+(newValue-oldValue)/250)*100)/100;
        $scope.keqiangdata[3]=Math.round($scope.keqiangdata[3]*(1+(newValue-oldValue)/800)*100)/100;
        $scope.selectedRange2=Math.round(($scope.selectedRange2+($scope.selectedRange*(newValue-oldValue)/200)));
        $scope.selectedRange3=Math.round(($scope.selectedRange3+($scope.selectedRange*(newValue-oldValue)/150)));
   };
   var changeloandata2=function(newValue,oldValue,scope){
-       $scope.loandata[10]=Math.round($scope.loandata[11]*(1+(newValue-oldValue)/100)*100)/100;
-       $scope.transdata[10]=Math.round($scope.transdata[11]*(1+(newValue-oldValue)/500)*100)/100;
-       $scope.elecdata[10]=Math.round($scope.elecdata[11]*(1+(newValue-oldValue)/250)*100)/100;
+       $scope.loandata[10]=Math.round($scope.loandata[10]*(1+(newValue-oldValue)/100)*100)/100;
+       $scope.transdata[10]=Math.round($scope.transdata[10]*(1+(newValue-oldValue)/500)*100)/100;
+       $scope.elecdata[10]=Math.round($scope.elecdata[10]*(1+(newValue-oldValue)/250)*100)/100;
        $scope.keqiangdata[3]=Math.round($scope.keqiangdata[3]*(1+(newValue-oldValue)/800)*100)/100;
        $scope.selectedRange=Math.round(($scope.selectedRange+($scope.selectedRange2*(newValue-oldValue)/200)));
        $scope.selectedRange3=Math.round(($scope.selectedRange3+($scope.selectedRange2*(newValue-oldValue)/150)));
   };
   var changeloandata3=function(newValue,oldValue,scope){
-       $scope.loandata[10]=Math.round($scope.loandata[11]*(1+(newValue-oldValue)/100)*100)/100;
-       $scope.transdata[10]=Math.round($scope.transdata[11]*(1+(newValue-oldValue)/500)*100)/100;
-       $scope.elecdata[10]=Math.round($scope.elecdata[11]*(1+(newValue-oldValue)/250)*100)/100;
+       $scope.loandata[10]=Math.round($scope.loandata[10]*(1+(newValue-oldValue)/100)*100)/100;
+       $scope.transdata[10]=Math.round($scope.transdata[10]*(1+(newValue-oldValue)/500)*100)/100;
+       $scope.elecdata[10]=Math.round($scope.elecdata[10]*(1+(newValue-oldValue)/250)*100)/100;
        $scope.keqiangdata[3]=Math.round($scope.keqiangdata[3]*(1+(newValue-oldValue)/800)*100)/100;
        $scope.selectedRange2=Math.round(($scope.selectedRange2+($scope.selectedRange3*(newValue-oldValue)/200)));
        $scope.selectedRange=Math.round(($scope.selectedRange+($scope.selectedRange3*(newValue-oldValue)/150)));
@@ -225,7 +225,7 @@ $scope.loanChart = {
             },
     series: [{
         name: '真实值',
-        data: [592.17, 600.36,599.20,596.49,593.61,588.74,581.46,579.25,584.85,591.95,612.09]
+        data: [592.17, 600.36,599.20,596.49,0,0,0,0,0,0,0]
     },{
         name: '预测值',
         type:'spline',
@@ -236,6 +236,21 @@ $scope.loanChart = {
     },
     xAxis: {
         categories: [ '二月', '三月', '四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+        plotBands:[{
+                from: 3.5,
+                to:12.5,
+                color:'rgba(68, 170, 213, .2)',
+                label: {
+                        
+                        text: '预测区',
+                        verticalAlign: 'top',
+                        style: {
+                            fontSize: '12px',
+                            fontWeight: 600
+                        }
+                       
+                    }
+                }]
         
     },
     yAxis: {
@@ -259,7 +274,7 @@ $scope.transChart = {
             },
     series: [{
         name: '真实值',
-        data: [188,166, 192,184,202,196,180,173,196,193,180]
+        data: [188,166, 192,184,0,0,0,0,0,0,0]
     },{
         name: '预测值',
         type:'spline',
@@ -270,6 +285,21 @@ $scope.transChart = {
     },
     xAxis: {
         categories: [ '二月', '三月', '四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+        plotBands:[{
+                from: 3.5,
+                to:12.5,
+                color:'rgba(68, 170, 213, .2)',
+                label: {
+                        
+                        text: '预测区',
+                        verticalAlign: 'top',
+                        style: {
+                            fontSize: '12px',
+                            fontWeight: 600
+                        }
+                       
+                    }
+                }]
     },
     loading: false,
     yAxis: {
@@ -290,7 +320,7 @@ $scope.elecChart = {
             },
     series: [{
         name: '真实值',
-        data: [ 7.9, 6.3, 6.0,5.9,6.3,7.2,7.1,6.2,6.4,6.5,7.0]
+        data: [ 7.9, 6.3, 6.0,5.9,0,0,0,0,0,0,0]
     },{
         name: '预测值',
         type:'spline',
@@ -298,6 +328,21 @@ $scope.elecChart = {
     }],
     xAxis: {
         categories: ['二月', '三月', '四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+        plotBands:[{
+                from: 3.5,
+                to:12.5,
+                color:'rgba(68, 170, 213, .2)',
+                label: {
+                        
+                        text: '预测区',
+                        verticalAlign: 'top',
+                        style: {
+                            fontSize: '12px',
+                            fontWeight: 600
+                        }
+                       
+                    }
+                }]
     },
     title: {
         text: '工业用电量'
