@@ -335,6 +335,7 @@ var splinecolors=new Array('#3CB371','#000000','#87CEFA' );
         radio: "Right"
       }];
  $scope.sumyear="2016-2025";
+  $scope.gdpgrow="1061亿元";
   $scope.displayslider=true;
 $scope.btn_click=function(btn){
    $scope.change(btn);
@@ -344,6 +345,7 @@ $scope.change=function(btn){
      $scope.displayslider=true;
      tmp = 1;
      $scope.sumyear="2016-2025";
+     $scope.gdpgrow="1061亿元";
 $scope.populationChart.xAxis.categories=[2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
 $scope.populationChart.title.text="太仓市2016至2025年劳动力总人口预测值";
      $scope.GDPChart.xAxis.categories=[2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
@@ -392,6 +394,8 @@ $scope.populationChart.title.text="太仓市2016至2025年劳动力总人口预�
         }];
    }
    if(btn.name===2035){
+    $scope.gdpgrow="1729.7亿元";
+
     $scope.displayslider=false;
      $scope.sumyear="2026-2035";
      tmp = 2;
@@ -443,6 +447,8 @@ $scope.populationChart.title.text="太仓市2016至2025年劳动力总人口预�
         }];
    }
    if(btn.name===2045){
+    $scope.gdpgrow="3711.14亿元";
+
      $scope.displayslider=false;
      $scope.sumyear="2036-2045";
      tmp = 3;
@@ -501,6 +507,14 @@ $scope.btn_click3=function(btn){
 };
 
 //以下都是默认值
+
+   //设置5年人口变化率
+      $scope.fp1="0.1";
+      $scope.fp2="-4.6";
+      $scope.fp3="4.5";
+         $scope.fv1="1.5";
+      $scope.fv2="-1.5";
+      $scope.fv3="0.0";
 //设置年份
     $scope.myyear="2020";
 //产业人口比例
@@ -516,9 +530,24 @@ $scope.btn_click3=function(btn){
 
 $scope.change3=function(btn){
    if(btn.name===2020){
+    //设置5年人口变化率
+      $scope.fp1="0.1";
+      $scope.fp2="-4.6";
+      $scope.fp3="4.5";
+         $scope.fv1="1.5";
+      $scope.fv2="-1.5";
+      $scope.fv3="0.0";
+
 
     //设置年份
     $scope.myyear="2020";
+        //默认设置5年人口变化率
+      $scope.fp1="-0.3";
+      $scope.fp2="-5.9";
+      $scope.fp3="6.2";
+      $scope.fv1="0.8";
+      $scope.fv2="-4.7";
+      $scope.fv3="5.8";
 
     //产业人口比例
     $scope.populationrate=[(fpop[4]/popData1[4]*100).toFixed(1),(spop[4]/popData1[4]*100).toFixed(1),(tpop[4]/popData1[4]*100).toFixed(1)];
@@ -542,6 +571,7 @@ $scope.change3=function(btn){
                 ['第三产业人口',tpop[4]/10000]
                 ]
         }];
+
     $scope.industryPie.series=[{
             type: 'pie',
             name: '',
@@ -554,6 +584,13 @@ $scope.change3=function(btn){
    }
    
    if(btn.name===2025){
+     //设置5年人口变化率
+      $scope.fp1="-0.3";
+      $scope.fp2="-5.9";
+      $scope.fp3="6.2";
+         $scope.fv1="0.8";
+      $scope.fv2="-4.7";
+      $scope.fv3="5.8";
         //设置年份
     $scope.myyear="2025";
      //产业人口增长率
@@ -587,6 +624,12 @@ $scope.change3=function(btn){
         }];
    }
    if(btn.name===2030){
+      $scope.fp1="-0.1";
+      $scope.fp2="-5.6";
+      $scope.fp3="5.7";
+         $scope.fv1="-0.3";
+      $scope.fv2="-3.4";
+      $scope.fv3="3.7";
         //设置年份
     $scope.myyear="2030";
      //产业人口比例
@@ -622,6 +665,13 @@ $scope.change3=function(btn){
         }];
    }
    if(btn.name===2035){
+
+    $scope.fp1="0.0";
+      $scope.fp2="-3.9";
+      $scope.fp3="3.9";
+         $scope.fv1="-0.1";
+      $scope.fv2="-0.1";
+      $scope.fv3="0.2";
         //设置年份
     $scope.myyear="2035";
      //产业人口比例
@@ -656,6 +706,14 @@ $scope.change3=function(btn){
    }
    if(btn.name===2040){
         //设置年份
+
+      $scope.fp1="0.2";
+      $scope.fp2="-8.5";
+      $scope.fp3="8.3";
+         $scope.fv1="-0.2";
+      $scope.fv2="-9";
+      $scope.fv3="9.2"; 
+
     $scope.myyear="2040";
      //产业人口比例
     $scope.populationrate=[(fpop[24]/popData3[4]*100).toFixed(1),(spop[24]/popData3[4]*100).toFixed(1),(tpop[24]/popData3[4]*100).toFixed(1)];
@@ -689,6 +747,14 @@ $scope.change3=function(btn){
    }
    if(btn.name===2045){
         //设置年份
+
+         $scope.fp1="-0.2";
+      $scope.fp2="-4.9";
+      $scope.fp3="5.1";
+         $scope.fv1="-0.2";
+      $scope.fv2="-4.9";
+      $scope.fv3="5.1"; 
+
     $scope.myyear="2045";
      //产业人口比例
     $scope.populationrate=[(fpop[29]/popData3[9]*100).toFixed(1),(spop[29]/popData3[9]*100).toFixed(1),(tpop[29]/popData3[9]*100).toFixed(1)];
