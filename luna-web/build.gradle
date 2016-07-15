@@ -14,8 +14,8 @@ apply plugin: 'spring-boot'
 apply plugin: 'war'
 
 war {
-    baseName = 'tiger'
-    version = '0.1.0'
+    baseName = 'luna'
+    version = '6.6.6'
 }
 
 configurations {
