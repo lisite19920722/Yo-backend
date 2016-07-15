@@ -68,7 +68,7 @@ app.controller('PowerIndustrySoloCtrl',
 			    	}, {
 			    	    name: '行业产值同比增长率',
 			    	    data: $scope.yearData.gdps,
-			    	    color:'#8B7E80',
+			    	    color:'#DAA520',
 			    	}]
 				};
 			},function(error) {
@@ -145,7 +145,7 @@ app.controller('PowerIndustrySoloCtrl',
 				    }, {
 				        name: '行业产值增长率',
 				        data: $scope.seasonData.gdps,
-				        color:'#8B7E80',
+				        color:'#DAA520',
 				    }]
 				};
 				$scope.IndustryGdpChartBySeasonPie={
@@ -208,7 +208,7 @@ app.controller('PowerIndustrySoloCtrl',
 				            ['第三季度',   $scope.seasonData.gdps[2]],
 				            ['第四季度',   $scope.seasonData.gdps[3]],
 				        ],
-				        color:'#8B7E80',
+				        color:'#DAA520',
 				    }]
 				};
 				$scope.IndustryPowerChartBySeasonPie = {
