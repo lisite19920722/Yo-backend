@@ -335,11 +335,13 @@ var splinecolors=new Array('#3CB371','#000000','#87CEFA' );
         radio: "Right"
       }];
  $scope.sumyear="2016-2025";
+  $scope.displayslider=true;
 $scope.btn_click=function(btn){
    $scope.change(btn);
 };
 $scope.change=function(btn){
    if(btn.name===2025){
+     $scope.displayslider=true;
      tmp = 1;
      $scope.sumyear="2016-2025";
 $scope.populationChart.xAxis.categories=[2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
@@ -390,6 +392,7 @@ $scope.populationChart.title.text="太仓市2016至2025年劳动力总人口预�
         }];
    }
    if(btn.name===2035){
+    $scope.displayslider=false;
      $scope.sumyear="2026-2035";
      tmp = 2;
      $scope.predictChart.options.title.text="太仓市2026至2035年劳动力人口与经济关联分析预测";
@@ -440,6 +443,7 @@ $scope.populationChart.title.text="太仓市2016至2025年劳动力总人口预�
         }];
    }
    if(btn.name===2045){
+     $scope.displayslider=false;
      $scope.sumyear="2036-2045";
      tmp = 3;
     $scope.predictChart.options.title.text="太仓市2036至2045年劳动力人口与经济关联分析预测";
