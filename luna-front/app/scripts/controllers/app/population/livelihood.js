@@ -10,6 +10,10 @@ app.controller('LivelihoodCtrl', ['$scope','PopulationRes','ResTool',function($s
 
     $scope.preLaborPopulation = rc.data[0];
     $scope.preEmployedPopulation = rc.data[1];
+ 
+
+
+
     $scope.preFirstPopulation = rc.data[2];
     $scope.preSecondPopulation = rc.data[3];
     $scope.preThirdPopulation = rc.data[4];
@@ -19,6 +23,8 @@ app.controller('LivelihoodCtrl', ['$scope','PopulationRes','ResTool',function($s
     $scope.prePrimarySchool = rc.data[8];
     $scope.preMiddleSchool = rc.data[9];
     $scope.preHighschool = rc.data[10];
+      $scope.rate=[81.07,83.43,81.00,82.53,85.63,82.25,83.20,81.95,81.83,77.70];
+
 
     $scope.townName = ['城区','城厢镇','双凤镇','沙溪镇','浏河镇','浮桥镇','璜泾镇','新区','港区','科教新城'];
 
@@ -29,6 +35,16 @@ app.controller('LivelihoodCtrl', ['$scope','PopulationRes','ResTool',function($s
      $scope.showPopulationDetail = function(){
       $scope.totalshow= !$scope.totalshow;
     };
+    $scope.showPopulationDetail1 = function(){
+      $scope.totalshow1= !$scope.totalshow1;
+    };
+$scope.showPopulationDetail2 = function(){
+      $scope.totalshow2= !$scope.totalshow2;
+    };
+$scope.showPopulationDetail3 = function(){
+      $scope.totalshow3= !$scope.totalshow3;
+    };
+
 
 
     $scope.firstTenYear  = ['2016', '2017', '2018', '2019', '2020', '2021','2022', '2023', '2024', '2025'];
@@ -47,11 +63,17 @@ $scope.buttonMap3 = [{
         name: 2045,
         label: 2045 + "年"
       }];
+       $scope.employyear="2016-2025";
+        $scope.employyear1="2016-2025";
  $scope.btn_click3=function(bttn){
      $scope.change3(bttn);
   };    
  $scope.change3=function(bttn){
    if(bttn.name===2025){
+
+       $scope.rate=[81.07,83.43,81.00,82.53,85.63,82.25,83.20,81.95,81.83,77.70];
+  
+    $scope.employyear="2016-2025";
     $scope.jobf.options.title.text="太仓市2016至2025年就业人数分析预测";
     $scope.jobf.options.xAxis.categories=$scope.firstTenYear;
     $scope.jobf.series=[{
@@ -69,6 +91,8 @@ $scope.buttonMap3 = [{
         }];
    }
    if(bttn.name===2035){
+     $scope.rate=[76.03,82.68,82.82,77.34,76.68,75.76,72.78,71.47,73.19,73.35];
+     $scope.employyear="2026-2035";
     $scope.jobf.options.title.text="太仓市2026至2035年就业人数分析预测";
     $scope.jobf.options.xAxis.categories=$scope.secondTenYear;
      $scope.jobf.series=[{
@@ -86,6 +110,8 @@ $scope.buttonMap3 = [{
         }];
    }
    if(bttn.name===2045){
+     $scope.rate=[70.03,71.57,73.58,69.34,76.33,72.88,78.12,75.38,73.40,74.54];
+     $scope.employyear="2036-2045";
     $scope.jobf.options.title.text="太仓市2036至2045年就业人数分析预测";
     $scope.jobf.options.xAxis.categories=$scope.thirdTenYear;
      $scope.jobf.series=[{
@@ -108,64 +134,7 @@ $scope.buttonMap3 = [{
     $scope.totalshow= !$scope.totalshow;
   };
 
-// $scope.tchrGrntList=[{
-//     name:'小学'
-// },{
-//     name:'中学'
-// },{
-//     name:'高中'
-// }];
 
-// $scope.tchrGrntKindChange=function(tchrGrntOne){
-// if(tchrGrntOne.name==="小学"){
-//     $scope.school.options.title.text="各城镇小学学校数量";
-//     $scope.school.series=[{
-//             name: '小学',
-//             data: $scope.prePrimarySchool[0]
-
-//         }, {
-//             name: '初中',
-//             data: $scope.prePrimarySchool[1]
-
-//         }, {
-//             name: '高中',
-//             data: $scope.prePrimarySchool[2]
-
-//         }];
-// }
-// if(tchrGrntOne.name==="中学"){
-//     $scope.school.options.title.text="各城镇中学学校数量";
-//     $scope.school.series=[{
-//             name: '小学',
-//             data: $scope.preMiddleSchool[0]
-
-//         }, {
-//             name: '2030年',
-//             data: $scope.preMiddleSchool[1]
-
-//         }, {
-//             name: '2040年',
-//             data: $scope.preMiddleSchool[2]
-
-//         }];
-// }
-// if(tchrGrntOne.name==="高中"){
-//     $scope.school.options.title.text="各城镇高中学校数量";
-//     $scope.school.series=[{
-//             name: '2020年',
-//             data: $scope.preHighschool[0]
-
-//         }, {
-//             name: '2030年',
-//             data: $scope.preHighschool[1]
-
-//         }, {
-//             name: '2040年',
-//             data: $scope.preHighschool[2]
-
-//         }];
-// }
-// };
 
 
 $scope.buttonMap8 = [{
@@ -186,8 +155,10 @@ $scope.buttonMap8 = [{
  $scope.btn_click8=function(bttn){
      $scope.change8(bttn);
   };    
+   $scope.employyear3="2016-2025";
  $scope.change8=function(bttn){
     if(bttn.name===2025){
+        $scope.employyear3="2016-2025";
         $scope.school.options.title.text="太仓市各城镇2025年学校数量分析预测";
     $scope.school.series=[{
             name: '小学',
@@ -205,6 +176,7 @@ $scope.buttonMap8 = [{
 
     }
     if(bttn.name===2035){
+         $scope.employyear3="2026-2035";
         $scope.school.options.title.text="太仓市各城镇2035年学校数量分析预测";
     $scope.school.series=[{
             name: '小学',
@@ -221,6 +193,7 @@ $scope.buttonMap8 = [{
         }];
     }
     if(bttn.name===2045){
+         $scope.employyear3="2036-2045";
        $scope.school.options.title.text="太仓市各城镇2045年学校数量分析预测";
     $scope.school.series=[{
             name: '小学',
@@ -254,12 +227,13 @@ $scope.buttonMap8 = [{
         label: 2045 + "年",
         radio: "Right"
       }];
-       
+        $scope.insuranceyear="2016-2025";
   $scope.btn_click5=function(bttn){
      $scope.change5(bttn);
   };    
  $scope.change5=function(bttn){
     if(bttn.name===2025){
+        $scope.insuranceyear="2016-2025";
         $scope.money.options.title.text="太仓市2016至2025年城镇基本养老保险分析预测";
         $scope.money.options.xAxis[0].categories=$scope.firstTenYear;
         $scope.money.series[0].data=$scope.preInsurance[0];
@@ -268,6 +242,7 @@ $scope.buttonMap8 = [{
 
     }
     if(bttn.name===2035){
+     $scope.insuranceyear="2026-2035";
         $scope.money.options.title.text="太仓市2026至2035年城镇基本养老保险分析预测";
         $scope.money.options.xAxis[0].categories=$scope.secondTenYear;
         $scope.money.series[0].data=$scope.preInsurance[1];
@@ -275,6 +250,7 @@ $scope.buttonMap8 = [{
         $scope.money.series[2].data=$scope.preLaborRate[1];
     }
     if(bttn.name===2045){
+         $scope.insuranceyear="2036-2045";
         $scope.money.options.title.text="太仓市2036至2045年城镇基本养老保险分析预测";
         $scope.money.options.xAxis[0].categories=$scope.thirdTenYear;
         $scope.money.series[0].data=$scope.preInsurance[2];
@@ -286,6 +262,7 @@ $scope.buttonMap8 = [{
 
        
 $scope.buttonMap1 = [{
+   
         name: 2025,
         label: 2025 + "年",
         radio: "Middle"
@@ -305,6 +282,7 @@ $scope.buttonMap1 = [{
   };    
  $scope.change1=function(bttn){
      if(bttn.name===2025){
+         $scope.employyear1="2016-2025";
         $scope.jobt.options.title.text="太仓市2016至2025年就业结构变化分析预测";
         $scope.jobt.options.xAxis.categories=$scope.firstTenYear;
         $scope.jobt.series=[{
@@ -340,6 +318,7 @@ $scope.buttonMap1 = [{
         }];
      }
      if(bttn.name===2035){
+         $scope.employyear1="2026-2035";
         $scope.jobt.options.title.text="太仓市2026至2035年就业结构变化分析预测";
         $scope.jobt.options.xAxis.categories=$scope.secondTenYear;
         $scope.jobt.series=[{
@@ -376,6 +355,7 @@ $scope.buttonMap1 = [{
         }];
      }
      if(bttn.name===2045){
+         $scope.employyear1="2036-2045";
         $scope.jobt.options.title.text="太仓市2036至2045年就业结构变化分析预测";
         $scope.jobt.options.xAxis.categories=$scope.thirdTenYear;
         $scope.jobt.series=[{
