@@ -108,11 +108,11 @@
               <td ng-repeat="num in jobf.options.xAxis.categories track by $index"> {{num}}</td>
             </tr>
             <tr class="ng-scope ng-isolate-scope">
-              <td >劳动力人口</td>
+              <td >劳动力人口（万）</td>
               <td ng-repeat="num in jobf.series[0].data track by $index">{{num}}</td>
             </tr>
             <tr class="ng-scope ng-isolate-scope">
-              <td>就业人口</td>
+              <td>就业人口（万）</td>
               <td ng-repeat="num in jobf.series[1].data track by $index"> {{num}}</td>
             </tr>
             <tr class="ng-scope ng-isolate-scope">
@@ -197,7 +197,7 @@
                 <td ng-repeat="num in jobt.options.xAxis.categories track by $index"> {{num}}</td>
               </tr>
               <tr class="ng-scope ng-isolate-scope">
-                <td >就业人数</td>
+                <td >就业人数（万）</td>
                 <td ng-repeat="num in jobt.series[0].data track by $index">{{num}}</td>
               </tr>
               <tr class="ng-scope ng-isolate-scope">
@@ -306,7 +306,7 @@
                 <td ng-repeat="num in money.options.xAxis[0].categories track by $index"> {{num}}</td>
               </tr>
               <tr class="ng-scope ng-isolate-scope">
-                <td >养老保险结余</td>
+                <td >养老保险结余（亿）</td>
                 <td ng-repeat="num in money.series[0].data track by $index">{{num}}</td>
               </tr>
               <tr class="ng-scope ng-isolate-scope">
@@ -405,15 +405,15 @@
                 <td ng-repeat="num in money.options.xAxis[0].categories track by $index"> {{num}}</td>
               </tr>
               <tr class="ng-scope ng-isolate-scope">
-                <td >小学数量</td>
+                <td >小学数量（所）</td>
                 <td ng-repeat="num in school.series[0].data  track by $index">{{num}}</td>
               </tr>     
               <tr class="ng-scope ng-isolate-scope">
-                <td >初中数量</td>
+                <td >初中数量（所）</td>
                 <td ng-repeat="num in school.series[1].data  track by $index">{{num}}</td>
               </tr>
               <tr class="ng-scope ng-isolate-scope">
-                <td >高中数量</td>
+                <td >高中数量（所）</td>
                 <td ng-repeat="num in school.series[2].data  track by $index">{{num}}</td>
               </tr>
 
