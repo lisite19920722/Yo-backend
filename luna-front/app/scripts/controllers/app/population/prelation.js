@@ -111,7 +111,7 @@ var piecolor=new Array('#7CB5EC','#929dce','#90ED7D');
      $scope.colorpicker = {
         options: {
             orientation: 'horizontal',
-            min: 0,
+            min: -100,
             max: 100,
             range: 'min'
         }
