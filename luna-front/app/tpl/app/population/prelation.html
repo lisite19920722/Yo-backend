@@ -10,6 +10,8 @@
 
 
 
+          
+        
         <!--第一个模块开始-->
         <div class="zzh-container" style="width:1200px" >
           <div class="panel panel-primary" style="margin-top: 50px;">
@@ -122,7 +124,7 @@
             </ul>
         </div><br><br>
         <div class="col-md-12 cgq_marginaround1em" style="margin-left:-14px;">
-            <button ng-click="showPopulationDetail1()"  class="btn m-b-xs btn-primary cgq-fixed-buttonwidth">详细数据列表</button>
+            <button ng-click="showPopulationDetail1()"  class="btn m-b-xs btn-primary cgq-fixed-buttonwidth">详细数据</button>
         </div>
     </div>
     <!--84图的4模块结束-->
@@ -285,23 +287,46 @@
                         <div style="margin-left:7px">
                          
                             <!--绿色方块开始-->
-            <div class="col-md-12" style="padding-top:0.5em;margin-left:-15px">
-             <div   style="background:#929dce;width:115px;height:30px;text-align:center;line-height:30px;font-size:15px;color:#FFFFFF;font-weight:bold" style="margin-left:-5px;">产业人口变化率</div>
-              <div class="block panel padder-v cgq_bg-lightgreen item cgq_marginaround1em cgq_contentwidth" style="margin-left:-2px">
-                <span class="text-white font-thin h1 block"><span id="oldManProportion">81.07</span>%</span>
-                <span class="text-xs"><span id="populationPreYear1">2016</span>年太仓市就业率</span>
-              </div>
+            <div class="col-md-12" style="padding-top:0.5em;margin-left:-15px;">
+             <div   style="background:#929dce;width:115px;height:30px;text-align:center;line-height:30px;font-size:15px;color:#FFFFFF;font-weight:bold" style="margin-left:-5px;">5年产业人口变化率</div>
+              <div class="block panel padder-v cgq_bg-lightgreen item cgq_marginaround1em cgq_contentwidth" style="margin-left:-2px;padding-bottom:40px">
+
+
+
+             <div class="pull-left" style="margin-left:110px">  <span style="font-size:10px" class="text-white font-thin h1 "><span id="oldManProportion">第一产业：</span></span>
+<span class="text-xs">{{fp1}}<span>%</span></span><span class="glyphicon glyphicon-arrow-up" ng-if="fp1>0"></span>
+</div> <br>
+
+
+
+      <div class="pull-left" style="margin-left:110px"> <span style="font-size:10px" class="text-white font-thin h1 "><span id="oldManProportion">第二产业：</span></span>
+<span class="text-xs">{{fp2}}<span>%</span></span><span class="glyphicon glyphicon-arrow-up" ng-if="fp2>0"></span></div><br>
+
+
+     <div class="pull-left" style="margin-left:110px"> <span style="font-size:10px" class="text-white font-thin h1 "><span id="oldManProportion">第三产业：</span></span>
+<span class="text-xs">{{fp3}}<span>%</span></span></span><span class="glyphicon glyphicon-arrow-up" ng-if="fp3>0"></span></div></div>
+
             </div>
             <!--绿色方块结束=-->
                           <br>
-                         
                               <!--黄色方块开始-->
             <div class="col-md-12 " style="padding-top:0.5em;margin-left:-15px">
-               <div   style="background:#929dce;width:115px;height:30px;text-align:center;line-height:30px;font-size:15px;color:#FFFFFF;font-weight:bold" style="margin-left:-5px;">产业产值变化率</div>
-              <div class="block panel padder-v cgq_bg-lightyellow item cgq_marginaround1em cgq_contentwidth" style="margin-left:-2px">
-                <span class="text-white font-thin h1 block">41.1万</span>
-                <span class="text-xs">2016年太仓市就业人数</span>
-              </div> 
+               <div   style="background:#929dce;width:115px;height:30px;text-align:center;line-height:30px;font-size:15px;color:#FFFFFF;font-weight:bold" style="margin-left:-5px;">5年产业产值变化率</div>
+
+
+ <div class="block panel padder-v cgq_bg-lightyellow item cgq_marginaround1em cgq_contentwidth"  style="margin-left:-2px;padding-bottom:40px">
+                <div class="pull-left" style="margin-left:110px">  <span style="font-size:10px" class="text-white font-thin h1 "><span id="oldManProportion">第一产业：</span></span>
+<span class="text-xs">{{fv1}}<span>%</span></span><span class="glyphicon glyphicon-arrow-up" ng-if="fv1>0"></span></div><br>
+
+
+
+     <div class="pull-left" style="margin-left:110px"> <span style="font-size:10px" class="text-white font-thin h1 "><span id="oldManProportion">第二产业：</span></span>
+<span class="text-xs">{{fv2}}<span>%</span></span><span class="glyphicon glyphicon-arrow-up" ng-if="fv2>0"></span></div><br>
+     
+
+     <div class="pull-left" style="margin-left:110px"> <span style="font-size:10px" class="text-white font-thin h1 "><span id="oldManProportion">第三产业：</span></span>
+<span class="text-xs">{{fv3}}<span>%</span></span><span class="glyphicon glyphicon-arrow-up" ng-if="fv3>0"></span></div></div>
+
             </div>
             <!--黄色方块结束-->
                             </div>
