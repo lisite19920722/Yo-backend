@@ -32,12 +32,24 @@
 
                 <!--84图的4模块开始-->
                 <div class="col-md-4 desc-content">
+
+  <!--黄色方块开始-->
+            <div class="col-md-12 " style="padding-top:0.5em;margin-left:-23px">
+              <div class="block panel padder-v cgq_bg-lightyellow item cgq_marginaround1em cgq_contentwidth">
+                <span class="text-white font-thin h1 block">{{gdpgrow}}</span>
+                <span class="text-xs">{{sumyear}}年太仓市GDP增长值</span>
+              </div> 
+            </div>
+            <!--黄色方块结束-->
+
+
+
                   <!--开启调节按钮-->
-                        <div ng-if="displayslider" class="ioc-panel-desc">
+                        <div ng-if="displayslider" class="ioc-panel-desc" style="margin-top:130px">
 
                        <div   style="background:#929dce;width:115px;height:30px;text-align:center;line-height:30px;font-size:15px;color:#FFFFFF;font-weight:bold" style="margin-left:-5px;">指标调节</div>
                         <p class="ioc-panel-desc-body" style="margin-right:10px">
-                            </br>可手动调节2016年GDP预计指标来计算得到2016年所需要的劳动力人口。
+                            </br>可手动调节2016年GDP预计指标来计算得到2016年所需要的劳动力人口:
                         </p>
                         </div>
                   <!--  <div class="row">
@@ -73,7 +85,6 @@
 
  <span ng-if="displayslider">2016年GDP预计指标 </span>
 <input ng-if="displayslider" style="width:70px" type="text" name="gdp" ng-model="GDPChart.series[0].data[0]" disabled="true"><span ng-if="displayslider">亿元</span>
-
                 <div class="row">
                     <div class="progress-box col-md-3">
                         <div  style="margin-top:11px" >
@@ -95,7 +106,7 @@
 
         <div class="pull-left">
         <br>
-            <span class="fa-stack fa-lg">
+            <span style="margin-left:-4px" class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x text-info"></i>
                 <i class="icon-bulb fa-stack-1x text-white fa-spin icon-bulb-position"></i>
             </span>
