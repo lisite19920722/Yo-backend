@@ -306,7 +306,7 @@ app.controller('EconomyTaxDetailCtrl', ['$scope','$stateParams','ResTool','Econo
           break;
          }else if (rc.data.realTaxMonthDetail[rtmd] == 0) {
           $scope.currentMonth = rtmd+1;
-          $scope.currentCompleteTaxPercent = (rc.data.realTaxMonthDetail[rtmd-1]/100.64).toFixed(2)*100;
+          $scope.currentCompleteTaxPercent = (rc.data.realTaxMonthDetail[rtmd-1]/105.64).toFixed(2)*100;
           $scope.currentCompleteTax = rc.data.realTaxMonthDetail[rtmd-1];
           break;
          }
@@ -547,12 +547,12 @@ app.controller('EconomyTaxDetailCtrl', ['$scope','$stateParams','ResTool','Econo
           break;
          }else if (rc.data.realTaxMonthDetail[rtmd] == 0) {
           $scope.currentMonth = rtmd+1;
-          $scope.currentCompleteTaxPercent = (rc.data.realTaxMonthDetail[rtmd-1]/100.64).toFixed(2)*100;
+          $scope.currentCompleteTaxPercent = (rc.data.realTaxMonthDetail[rtmd-1]/105.04).toFixed(2)*100;
           $scope.currentCompleteTax = rc.data.realTaxMonthDetail[rtmd-1];
           break;
          }else if (rtmd == 10&& rc.data.realTaxMonthDetail[rtmd] !=0) {
            $scope.currentMonth = rtmd+2;
-          $scope.currentCompleteTaxPercent = (rc.data.realTaxMonthDetail[rtmd]/100.64).toFixed(2)*100;
+          $scope.currentCompleteTaxPercent = (rc.data.realTaxMonthDetail[rtmd]/105.04).toFixed(2)*100;
           $scope.currentCompleteTax = rc.data.realTaxMonthDetail[rtmd];
           break;
          }
@@ -789,7 +789,7 @@ app.controller('EconomyTaxDetailCtrl', ['$scope','$stateParams','ResTool','Econo
        if (param == 2015) {
           $scope.aimtax = 95.2;
        }else if (param == 2016) {
-        $scope.aimtax = 100.04;
+        $scope.aimtax = 105.04;
        }else if (param == 2014) {
         $scope.aimtax = 85.9;
        }

@@ -5,7 +5,7 @@
     <div class="wrapper  container"  style="padding:0px;margin-top:1em;margin-bottom:2em">
         <div class="panel panel-primary">
             <div class="topbar">
-                <h4 class="cgq_title">2015年太仓市克强指数</h4>
+                <h4 class="cgq_title">{{currentyear}}年太仓市克强指数</h4>
             </div>
             <div class="row">
                 <div class="col-md-8" style="border-right:1px solid;padding-top:10px;padding-bottom:10px">
@@ -14,7 +14,7 @@
                 <div class="col-md-4" >
                     
                     <button class="btn btn-info" style="margin-top:10px">指标含义</button>
-                    <div style="margin-top:10px;width:98%;;font-size:17px">
+                    <div style="margin-top:10px;width:98%;;font-size:14px">
                         <span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="width:100%">
                             "克强指数"的由来，源于李克强总理2007年任职辽宁省省委书记时，使用耗电量,铁路货运量和贷款发放量三个指标分析当时辽宁省经济状况,英国《经济学人》自2010年底正式推出这一指数后,受到花旗银行在内的众多国际机构认可。
                         </span>
@@ -31,10 +31,13 @@
                             <small class="block m-t-xs">{{totaldata.oneword}}</small>
                         </div>
                     </article>
-                    <div style="margin-top:10px;width:100%;font-size:17px">
-                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true">
-                            本模型沿用花旗银行编制的“克强指数”标准，即：货运占比25%，银行贷款占比35%，用电占比40%。
-                        </span>
+                    <div style="margin-top:10px;width:100%;font-size:14px">
+                        <div style="display: flex;flex-direction: row;justify-content: flex-start;margin-top: 2%;margin-left: 35px">
+                                    <i class="fa fa-circle" style="margin-top: 1%"></i>
+                                        <div style="margin-left: 2%">
+                                          <span>克强指数数据分析:本年度克强指数三大指标增长率在年度GDP增长率周围波动，经济总体呈现健康稳定状态</span>
+                                        </div>
+                         </div>
                     </div>
                     <div class="btn-group " style = "margin-top:15px">
                             <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -43,6 +46,7 @@
                             <ul class="dropdown-menu">
                                 <li><a ng-click="keqiangchangeyear('2014')">2014</a></li>
                                 <li><a ng-click="keqiangchangeyear('2015')">2015</a></li>
+                                <li><a ng-click="keqiangchangeyear('2016')">2016</a></li>
                             </ul>
                     </div>
                 </div>
@@ -64,8 +68,8 @@
                                 <th style="background-color:#16aad8;color:#ffffff;text-align:center">本年克强指数拟合GDP增长率</th>
                             </tr>
                             <tr>
-                                <td >1137.52亿元</td>
-                                <td >6.6%</td>
+                                <td >1149.52亿元</td>
+                                <td >6.9%</td>
                             </tr>
                         </table>
                     </div>
@@ -138,7 +142,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-info" ng-click="reset()">重置调节</button>
+                        <button class="btn btn-info" ng-click="reset()">双击重置调节</button>
                     </div>
                 </div>
             </div>
