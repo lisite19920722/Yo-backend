@@ -32,7 +32,7 @@ app.controller('AirCtrl', ['$scope','ResTool','EnvironmentRes','$timeout',functi
 	var airConditionGetHeaders = {
 		'apikey':'8a2ea9c51525a5332967ae13c1454deb',
 	};
-	var airConditionGetPromise = ResTool.httpGetWithWorkspace(EnvironmentRes.getAirCondition, airConditionGetParams, airConditionGetHeaders);
+	var airConditionGetPromise = ResTool.httpGet(EnvironmentRes.getAirCondition, airConditionGetParams, airConditionGetHeaders);
 	airConditionGetPromise.then(function(data){
 	 	//--------------------------盒子1----------------------------
 	 	//盒子1中右上方日期$scope.airConditionTomorrow

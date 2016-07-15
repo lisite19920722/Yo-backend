@@ -93,7 +93,7 @@ app.controller('PowerTotalCtrl',
 				}, {
 				name: 'GDP同比增长率',
 				data: $scope.totaldata.gdprate,
-				color:'#8B7E80',
+				color:'#DAA520',
 			}]
 		};
 	}, function(error) {

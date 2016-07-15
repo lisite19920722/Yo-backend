@@ -72,7 +72,7 @@ app.controller('PowerEnterpriseAverageCtrl',
 			}, {
 			    name: '企业产值同比增长率',
 			    data: $scope.enterpriseAverageData.gdprate,
-			    color:'#8B7E80',
+			    color:'#DAA520',
 			}]
 		};
 	});
