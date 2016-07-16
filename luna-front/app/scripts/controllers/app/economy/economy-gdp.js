@@ -88,6 +88,11 @@ app.controller('EconomyGdpCtrl', ['$scope','$stateParams','ResTool','EconomyRes'
                     }
                 }
             },
+            plotOptions:{
+                series:{
+                    pointWidth:1
+                }
+            },
             yAxis: [{
                 min: 0,
                 title: {
@@ -140,6 +145,7 @@ app.controller('EconomyGdpCtrl', ['$scope','$stateParams','ResTool','EconomyRes'
                 data: $scope.gdprealvalue
 
             }, {
+                color:'#708090',
                 type: 'column',
                 name: '预测数据',
                 data: $scope.gdpforecastvalue
@@ -147,6 +153,7 @@ app.controller('EconomyGdpCtrl', ['$scope','$stateParams','ResTool','EconomyRes'
             },
             {   
                 yAxis: 1,
+                color:'#90ED7D',
                 type:'spline',
                 name: '同比增长率',
                 data: $scope.gdpgrowratevalue
@@ -347,7 +354,7 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
                 data: $scope.gdpquarterrealvalue
 
             }, {
-                color:'#434348',
+                color:'#708090',
                 type: 'column',
                 name: '预测数据',
                 data: $scope.gdpquarterforcastvalue
@@ -657,7 +664,7 @@ app.controller('industryGdp', ['$scope','$stateParams','ResTool','EconomyRes', f
                 data: $scope.thisyearfirstindustryvalue
 
             }, {
-                color:'#434348',
+                color:'#708090',
                 type: 'column',
                 name: '预测数据',
                 data: $scope.thisyearfirstindustryfcvalue
@@ -745,7 +752,7 @@ app.controller('industryGdp', ['$scope','$stateParams','ResTool','EconomyRes', f
                 data: $scope.thisyearsecondindustryvalue
 
             }, {
-                color:'#434348',
+                color:'#708090',
                 type: 'column',
                 name: '预测数据',
                 data: $scope.thisyearsecondindustryfcvalue
@@ -833,7 +840,7 @@ app.controller('industryGdp', ['$scope','$stateParams','ResTool','EconomyRes', f
                 data: $scope.thisyearthirdindustryvalue
 
             }, {
-                color:'#434348',
+                color:'#708090',
                 type: 'column',
                 name: '预测数据',
                 data: $scope.thisyearthirdindustryfcvalue

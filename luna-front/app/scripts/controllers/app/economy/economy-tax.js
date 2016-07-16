@@ -124,7 +124,7 @@ app.controller('EconomyTaxCtrl', ['$scope','$stateParams','ResTool','EconomyTaxR
                 data: $scope.taxrealvalue
 
             }, {
-                color:'#434348',
+                color:'#708090',
                 name: '预测值',
                 data: $scope.taxForecastdate
 
@@ -409,7 +409,7 @@ app.controller('EconomyTaxDetailCtrl', ['$scope','$stateParams','ResTool','Econo
             data: $scope.taxrealvalue
 
         }, {
-            color:'#434348',
+            color:'#708090',
             name: '预测值',
             data: $scope.taxDetailForecastvalue
 
@@ -665,7 +665,7 @@ app.controller('EconomyTaxDetailCtrl', ['$scope','$stateParams','ResTool','Econo
                     data: $scope.taxrealvalue
 
                 }, {
-                    color:'#434348',
+                    color:'#708090',
                     name: '预测值',
                     data: $scope.taxDetailForecastvalue
 
@@ -959,7 +959,7 @@ app.controller('EconomyTaxDetailCtrl', ['$scope','$stateParams','ResTool','Econo
                     data: $scope.taxrealvalue
 
                 }, {
-                    color:'#434348',
+                    color:'#708090',
                     name: '预测值',
                     data: $scope.taxDetailForecastvalue
 

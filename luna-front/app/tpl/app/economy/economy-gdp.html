@@ -9,19 +9,19 @@
             </div>
             <div class ="row">
                 <div class ="col-md-8" style = "border-right:1px solid #428bca;padding-top:10px;padding-bottom:10px;height:450px">
-                    <highchart   id ="chart1" config ="yearGDPChart"  style = "margin-left:15px"></highchart>
+                    <highchart   id ="chart1" config ="yearGDPChart"></highchart>
                 </div>
                 <div class = "col-md-4 wrapleft" >
                     <!--－－－－－－－－－－－－－－－－－－－－－－－－－－－－年度gdp关键数据展示面板－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
-                    <div class = "yearGdpIntro">
+                    <div class = "yearGdpIntro" style="width: 90%">
                         <div ng-init = "d3_3 = [60,40]" ui-jq = "sparkline" ui-options = "[60,40], {type:'pie', height:40, sliceColors:['#fad733','#fff']}" class = "sparkline inline yearGdpIntroI">
                             <i class = "fa fa-area-chart fa-4x"></i>
                         </div>
                         <div class = "yearGdpIntroText">
                             <dl>
-                                <dt>本年度GDP预测值:</dt>
+                                <dt style="font-size: 2px">本年度GDP预测值:</dt>
                                 <dd>{{currentYearForecast}}亿元</dd>
-                                <dt>预测误差范围:</dt>
+                                <dt style="font-size: 2px">预测误差范围:</dt>
                                 <dd>3%</dd>
                             </dl>
                         </div>
@@ -171,16 +171,16 @@
                         </div>
                         <div class = "yearGdpIntroText">
                             <dl>
-                                <dt>本年度GDP预测值:</dt>
+                                <dt style="font-size: 2px">本年度GDP预测值:</dt>
                                 <dd>{{nowYearForcast}}亿元</dd>
-                                <dt>预测误差范围:3%</dt>
+                                <dt style="font-size: 2px">预测误差范围:3%</dt>
                             </dl>
                         </div>
                         <div class = "seasonGdpIntoText">
                             <dl>
-                                <dt>至第{{currentSeason}}季度结束，实际GDP为</dt>
+                                <dt style="font-size: 2px">至第{{currentSeason}}季度结束，实际GDP为</dt>
                                 <dd>{{currentGDP}}亿元</dd>
-                                <dt>已完成年度GDP目标{{alreadycomplete}}%</dt>
+                                <dt style="font-size: 2px">已完成年度GDP目标{{alreadycomplete}}%</dt>
                             </dl>
                         </div>
                     </div>
@@ -298,9 +298,9 @@
                             </div>
                             <div class = "yearGdpIntroText">
                                 <dl>
-                                    <dt>本年全行业预测值:</dt>
+                                    <dt style="font-size: 2px">本年全行业预测值:</dt>
                                     <dd>1149.9亿元</dd>
-                                    <dt>预测误差范围:</dt>
+                                    <dt style="font-size: 2px">预测误差范围:</dt>
                                     <dd>3%</dd>
                                 </dl>
                             </div>
