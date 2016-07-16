@@ -216,7 +216,7 @@ $scope.loanChart = {
         name: '真实值',
         data: [592.17, 600.36,599.20,596.49,0,0,0,0,0,0,0]
     },{
-        color:'rgba(0,0,0,.7)',
+        color:'#708090',
         name: '预测值',
         type:'spline',
         data: $scope.loandata
@@ -267,7 +267,7 @@ $scope.transChart = {
         name: '真实值',
         data: [188,166, 192,184,0,0,0,0,0,0,0]
     },{
-        color:'rgba(0,0,0,.7)',
+        color:'#708090',
         name: '预测值',
         type:'spline',
         data: $scope.transdata
@@ -315,7 +315,7 @@ $scope.elecChart = {
         name: '真实值',
         data: [ 7.9, 6.3, 6.0,5.9,0,0,0,0,0,0,0]
     },{
-      color:'rgba(0,0,0,.7)',
+      color:'#708090',
         name: '预测值',
         type:'spline',
         data: $scope.elecdata
@@ -513,6 +513,7 @@ $scope.loanChart = {
         name: '真实值',
         data: [592.17, 600.36,599.20,596.49,0,0,0,0,0,0,0]
     },{
+       color:'#708090',
         name: '预测值',
         type:'spline',
         data: $scope.loandata
@@ -562,6 +563,7 @@ $scope.transChart = {
         name: '真实值',
         data: [188,166, 192,184,0,0,0,0,0,0,0]
     },{
+      color:'#708090',
         name: '预测值',
         type:'spline',
         data: $scope.transdata
@@ -608,6 +610,7 @@ $scope.elecChart = {
         name: '真实值',
         data: [ 7.9, 6.3, 6.0,5.9,0,0,0,0,0,0,0]
     },{
+      color:'#708090',
         name: '预测值',
         type:'spline',
         data: $scope.elecdata
