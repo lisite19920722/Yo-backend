@@ -663,7 +663,7 @@ $scope.jobt ={
             }
         }]
 };
-var schoolcolor=new Array('#7cb5ec','#000000','#90ed7d');
+var schoolcolor=new Array('#7cb5ec','#9370DB','#8B7500');
 $scope.school={
     options:{ 
         colors:schoolcolor, 
