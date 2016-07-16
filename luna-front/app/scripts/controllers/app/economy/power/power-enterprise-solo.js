@@ -314,6 +314,18 @@ app.controller('PowerEnterpriseSoloCtrl',
 			var getYearPromise = ResTool.httpGetWithWorkspace(PowerRes.getEnterpriseYear, $scope.getIndustryYearParams, {});
 			getYearPromise.then(function(data) {
 				$scope.yearData = data.data;
+				(function() {
+					for (var i = 0; i < $scope.yearData.gdps.length; i++) {
+						if($scope.yearData.gdps[i] == 0) {
+							$scope.yearData.gdps[i] = null;
+						}
+					}
+					for (var i = 0; i < $scope.yearData.powers.length; i++) {
+						if($scope.yearData.powers[i] == 0) {
+							$scope.yearData.powers[i] = null;
+						}
+					}
+				})();
 				$scope.SingleVocationChartByYear={
 					credits:{
 			    	    enabled:false // 禁用版权信息

@@ -6,7 +6,7 @@ module.exports = function (grunt) {
 
     // Configurable paths for the application
     var appConfig = {
-        app: require('./bower.json').appPath || 'app',
+        app: require('./app/bower.json').appPath || 'app',
         dist: 'dist'
     };
 
@@ -50,8 +50,8 @@ module.exports = function (grunt) {
                     middleware: function (connect) {
                         return [
                             connect().use(
-                                '/bower_components',
-                                connect.static('./bower_components')
+                                '/app/bower_components',
+                                connect.static('./app/bower_components')
                             ),
                             connect().use(
                                 '/<%= tiger.app %>/styles',
