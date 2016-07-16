@@ -975,7 +975,7 @@ infow2.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;borde
         })
     });
    var infow3=[];
-infow3.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#CC0033;font-size:18px'>太仓城区</div>")
+infow3.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#CC0033;font-size:18px'>娄东街道</div>")
     // 设置label标签
     marker3.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
         offset: new AMap.Pixel(20, 20),//修改label相对于maker的位置
@@ -1071,7 +1071,7 @@ infow.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;border
 
 
 //城镇名称$scope.years = ["年龄","0-5岁", "6-11岁","12-17岁", "18-23岁", "24-29岁", "30-35岁", "36-41岁", "42-47岁", "48-53岁", "54-59岁", "60岁以上"];
-$scope.townsname=["浮桥镇","浏河镇", "太仓城区","城厢镇", "沙溪镇", "双凤镇", "璜泾镇", "科教新城", "新区", "港区"];
+$scope.townsname=["浮桥镇","浏河镇", "娄东街道","城厢镇", "沙溪镇", "双凤镇", "璜泾镇", "科教新城", "新区", "港区"];
 $scope.birthrate=["6.12‰","6.3‰", "6.34‰","9.5‰", "6.53‰", "7.62‰", "5.91‰", "13.28‰", "6.84‰", "5.56‰"];
 $scope.deathrate=["10.78‰","9.09‰", "8.22‰","5.59‰", "4.76‰", "9.07‰", "9.98‰", "7.33‰", "8.68‰", "7.44‰"];
 $scope.populationrate=["-4.66‰","-2.79‰", "-1.88‰","3.91‰", "1.77‰", "-1.45‰", "-4.07‰", "5.95‰", "-1.84‰", "-1.88‰"];
@@ -1109,7 +1109,7 @@ var clickHandle2 = AMap.event.addListener(marker2, 'click', function() {
 })
 
 var info3=[];
-   info3.push("<h4><strong>太仓城区人口自然增长率</strong></h4>");
+   info3.push("<h4><strong>娄东街道人口自然增长率</strong></h4>");
     info3.push("<table class='table table-bordered table-striped'>");
     info3.push("<tr><td style='font-size:15px;text-align:center'>出生率</td><td style='text-align:center'>6.34‰</td ></tr>");
     info3.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>8.22‰</td ></tr>");
@@ -2185,7 +2185,7 @@ $scope.sumpopulation={
       $scope.sumpeople=sum1;
       //人口增长率
       $scope.growth=rate1;
-      document.getElementById('a').innerHTML="2016年的人口增长率0.25%相比2025年的0.23%有了小幅度的降低。";
+      document.getElementById('a').innerHTML="2025年的人口增长率0.25%相比2016年的0.25%有了小幅度的降低。";
          document.getElementById('sumconclusion').innerHTML="总体来看，太仓市的人口总量处于平稳状态，呈增长趋势。二胎政策的全面开放，促进了人口数量的增加。";
     $scope.sumpopulation.options.xAxis[0].categories=['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'];
     $scope.sumpopulation.options.title.text="太仓市2016-2025年人口总量预测趋势图";
@@ -2218,7 +2218,7 @@ $scope.sumpopulation={
        //人口总量
       $scope.sumpeople=sum2;
        $scope.sumyear="2026-2035";
-        document.getElementById('a').innerHTML="2026年的人口增长率0.19%相比2035年的0.11%有了小幅度的增长。";
+        document.getElementById('a').innerHTML="2035年的人口增长率0.11%相比2026年的0.19%有了小幅度的下降。";
          document.getElementById('sumconclusion').innerHTML="总体来看，太仓市的人口总量处于平稳状态，呈增长趋势。";
         $scope.sumpopulation.options.xAxis[0].categories=['2026','2027','2028','2029','2030','2031','2032','2033','2034','2035'];
         $scope.sumpopulation.options.title.text="太仓市2026-2035年人口总量预测趋势图";
@@ -2251,7 +2251,7 @@ $scope.sumpopulation={
        //人口总量
       $scope.sumpeople=sum3;
        $scope.sumyear="2036-2045";
-        document.getElementById('a').innerHTML="2045年的人口增长率0.13%相比2036年的0.13%有了小幅度的增长。";
+        document.getElementById('a').innerHTML="2045年的人口增长率0.13%相比2036年的0.13%保持稳定不变。";
          document.getElementById('sumconclusion').innerHTML="总体来看，太仓市的人口总量处于平稳状态，无增长趋势。";
      $scope.sumpopulation.options.xAxis[0].categories=['2036','2037','2038','2039','2040','2041','2042','2043','2044','2045'];
         $scope.sumpopulation.options.title.text="太仓市2036-2045年人口总量预测趋势图";

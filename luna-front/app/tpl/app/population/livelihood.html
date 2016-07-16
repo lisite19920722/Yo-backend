@@ -251,10 +251,10 @@
               <br />
               <div class="media-body clear" style="width:100%;margin-left:9px;padding-right:26px" >
                 <small class="block m-t-xs">
-                  <i class="fa fa-circle" style="width:6%;float:left;margin-top:0.2em;"></i><div style="width:94%;float:left;margin-bottom:0.4em;"><span id="abc">数据分析：最近几年，太仓就业形势良好，在劳动力人口平稳增长的背景下，就业人口也呈平稳增长态势。</span></div>
+                  <i class="fa fa-circle" style="width:6%;float:left;margin-top:0.2em;"></i><div style="width:94%;float:left;margin-bottom:0.4em;">数据分析：<span id="insurance1">{{insurance1}}</span></div>
                 </small>
                 <small class="block m-t-xs">
-                  <i class="fa fa-circle" style="width:6%;float:left;margin-top:0.2em;"></i><div style="width:94%;float:left;margin-bottom:0.4em;"><span id="conclusion">详情分析：{{selectSite}}</span></div>
+                  <i class="fa fa-circle" style="width:6%;float:left;margin-top:0.2em;"></i><div style="width:94%;float:left;margin-bottom:0.4em;">结论：<span id="insurance2">{{insurance2}}</span></div>
                 </small>
                 <small class="block m-t-xs">
                   <i class="fa fa-circle" style="width:6%;float:left;margin-top:0.2em;"></i><div style="width:94%;float:left;margin-bottom:0.4em;"><span>人口与城镇基本养老保险分析预测采用的是灰色预测模型法。</span></div>
@@ -359,12 +359,12 @@
               </span>
               <span class="h4">一句话解读</span>
               <br />
-              <div class="media-body clear" style="width:100%;margin-left:9px;padding-right:26px" >
+           <div class="media-body clear" style="width:100%;margin-left:9px;padding-right:26px" >
                 <small class="block m-t-xs">
-                  <i class="fa fa-circle" style="width:6%;float:left;margin-top:0.2em;"></i><div style="width:94%;float:left;margin-bottom:0.4em;"><span id="abc">数据分析：最近几年，太仓就业形势良好，在劳动力人口平稳增长的背景下，就业人口也呈平稳增长态势。</span></div>
+                  <i class="fa fa-circle" style="width:6%;float:left;margin-top:0.2em;"></i><div style="width:94%;float:left;margin-bottom:0.4em;">数据分析：<span id="school1">{{school1}}</span></div>
                 </small>
                 <small class="block m-t-xs">
-                  <i class="fa fa-circle" style="width:6%;float:left;margin-top:0.2em;"></i><div style="width:94%;float:left;margin-bottom:0.4em;"><span id="conclusion">详情分析：{{selectSite}}</span></div>
+                  <i class="fa fa-circle" style="width:6%;float:left;margin-top:0.2em;"></i><div style="width:94%;float:left;margin-bottom:0.4em;">结论：<span id="school2">{{school2}}</span></div>
                 </small>
                 <small class="block m-t-xs">
                   <i class="fa fa-circle" style="width:6%;float:left;margin-top:0.2em;"></i><div style="width:94%;float:left;margin-bottom:0.4em;"><span>人口与城镇基本养老保险分析预测采用的是灰色预测模型法。</span></div>
@@ -402,7 +402,7 @@
             <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
               <tr class="ng-scope ng-isolate-scope">
                 <td>年份</td>
-                <td ng-repeat="num in money.options.xAxis[0].categories track by $index"> {{num}}</td>
+                <td ng-repeat="num in townName track by $index"> {{num}}</td>
               </tr>
               <tr class="ng-scope ng-isolate-scope">
                 <td >小学数量（所）</td>

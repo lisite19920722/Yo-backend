@@ -26,7 +26,7 @@ app.controller('LivelihoodCtrl', ['$scope','PopulationRes','ResTool',function($s
       $scope.rate=[81.07,83.43,81.00,82.53,85.63,82.25,83.20,81.95,81.83,77.70];
 
 
-    $scope.townName = ['城区','城厢镇','双凤镇','沙溪镇','浏河镇','浮桥镇','璜泾镇','新区','港区','科教新城'];
+    $scope.townName = ['娄东街道','城厢镇','双凤镇','沙溪镇','浏河镇','浮桥镇','璜泾镇','新区','港区','科教新城'];
 
 
     
@@ -156,8 +156,12 @@ $scope.buttonMap8 = [{
      $scope.change8(bttn);
   };    
    $scope.employyear3="2016-2025";
+    $scope.school1="太仓市小学数量46所，初中17所，高中5所。";
+         $scope.school2="随着二胎政策的放开，小学数量有所增加。";
  $scope.change8=function(bttn){
     if(bttn.name===2025){
+       $scope.school1="太仓市小学数量46所，初中17所，高中5所。";
+         $scope.school2="随着二胎政策的放开，小学数量有所增加。";
         $scope.employyear3="2016-2025";
         $scope.school.options.title.text="太仓市各城镇2025年学校数量分析预测";
     $scope.school.series=[{
@@ -176,6 +180,8 @@ $scope.buttonMap8 = [{
 
     }
     if(bttn.name===2035){
+              $scope.school1="太仓市小学数量49所，初中26所，高中10所。";
+         $scope.school2="随着二胎政策的继续全面放开，中学数量有所增加。";
          $scope.employyear3="2026-2035";
         $scope.school.options.title.text="太仓市各城镇2035年学校数量分析预测";
     $scope.school.series=[{
@@ -193,6 +199,8 @@ $scope.buttonMap8 = [{
         }];
     }
     if(bttn.name===2045){
+         $scope.school1="太仓市小学数量31所，初中31所，高中13所。";
+         $scope.school2="随着二胎政策的继续全面放开，太仓市人口增长，中小学数量都有所增加。";
          $scope.employyear3="2036-2045";
        $scope.school.options.title.text="太仓市各城镇2045年学校数量分析预测";
     $scope.school.series=[{
@@ -228,11 +236,15 @@ $scope.buttonMap8 = [{
         radio: "Right"
       }];
         $scope.insuranceyear="2016-2025";
+         $scope.insurance1="2016到2025年间老龄人口由31.16%增长到33.92%，养老保险结余由30.9亿元下降到30.5。";
+         $scope.insurance2="太仓市老龄化加剧，社会负担持续增加。";
   $scope.btn_click5=function(bttn){
      $scope.change5(bttn);
   };    
  $scope.change5=function(bttn){
     if(bttn.name===2025){
+        $scope.insurance1="2016到2025年间老龄人口由31.16%增长到33.92%，养老保险结余由30.9亿元下降到30.5。";
+         $scope.insurance2="太仓市老龄化加剧，社会负担持续增加。";
         $scope.insuranceyear="2016-2025";
         $scope.money.options.title.text="太仓市2016至2025年城镇基本养老保险分析预测";
         $scope.money.options.xAxis[0].categories=$scope.firstTenYear;
@@ -242,6 +254,8 @@ $scope.buttonMap8 = [{
 
     }
     if(bttn.name===2035){
+         $scope.insurance1="2026到2035年间老龄人口由33.46%增长到33.92%，养老保险结余由30.5亿元下降到30.9。";
+         $scope.insurance2="随着二胎政策的开放，太仓市老龄化有所减缓。";
      $scope.insuranceyear="2026-2035";
         $scope.money.options.title.text="太仓市2026至2035年城镇基本养老保险分析预测";
         $scope.money.options.xAxis[0].categories=$scope.secondTenYear;
@@ -250,6 +264,8 @@ $scope.buttonMap8 = [{
         $scope.money.series[2].data=$scope.preLaborRate[1];
     }
     if(bttn.name===2045){
+         $scope.insurance1="2036到2045年间老龄人口由33.57%下降到30.51%，养老保险结余由30.5亿元下降到45.8。";
+         $scope.insurance2="太仓市老龄人比例有所下降，养老保险节余大幅度增长。";
          $scope.insuranceyear="2036-2045";
         $scope.money.options.title.text="太仓市2036至2045年城镇基本养老保险分析预测";
         $scope.money.options.xAxis[0].categories=$scope.thirdTenYear;
