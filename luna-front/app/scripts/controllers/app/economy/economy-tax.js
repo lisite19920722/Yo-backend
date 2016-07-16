@@ -16,7 +16,13 @@ app.controller('EconomyTaxCtrl', ['$scope','$stateParams','ResTool','EconomyTaxR
         }
     };
   TaxPromise.then(function(rc){
+    for(var i = 0;i<rc.data.realYearTax.length;i++){
+      if (rc.data.realYearTax[i] == 0) {
+        rc.data.realYearTax[i] = null;
+      }
+    }
     $scope.taxrealvalue = rc.data.realYearTax;
+
     $scope.taxForecastdate = rc.data.forecastYearTax;
     $scope.ratedate = rc.data.yearGrowUp;
     $scope.yearArray = ['2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018'];
@@ -293,6 +299,11 @@ app.controller('EconomyTaxDetailCtrl', ['$scope','$stateParams','ResTool','Econo
    $('#cover4').addClass('cover');
    var DetailPromise = ResTool.httpGetWithWorkspace(EconomyTaxRes.getYearTaxDetail,{year:year},{});
    DetailPromise.then(function(rc){
+    for(var i = 0;i<rc.data.realTaxMonthDetail.length;i++){
+      if (rc.data.realTaxMonthDetail[i] == 0) {
+        rc.data.realTaxMonthDetail[i] = null;
+      }
+    }
     $scope.taxrealvalue = rc.data.realTaxMonthDetail;
     $scope.taxDetailForecastvalue = rc.data.forecastTaxMonthDetail;
     $scope.taxDetailGrowUp = rc.data.monthGrowUp;
@@ -534,6 +545,11 @@ app.controller('EconomyTaxDetailCtrl', ['$scope','$stateParams','ResTool','Econo
           $('#monthfour').attr('disabled',false);
       var monthDetailPromise = ResTool.httpGetWithWorkspace(EconomyTaxRes.getYearTaxDetail,{year:year},{});
       monthDetailPromise.then(function(rc){
+        for(var i = 0;i<rc.data.realTaxMonthDetail.length;i++){
+      if (rc.data.realTaxMonthDetail[i] == 0) {
+        rc.data.realTaxMonthDetail[i] = null;
+      }
+    }
          $scope.monthTaxChart.series[0].data = rc.data.realTaxMonthDetail;
          $scope.monthTaxChart.series[1].data = rc.data.forecastTaxMonthDetail;
          $scope.monthTaxChart.series[2].data = rc.data.monthGrowUp;
