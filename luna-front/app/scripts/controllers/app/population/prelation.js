@@ -635,7 +635,7 @@ $scope.change3=function(btn){
      //产业人口比例
     $scope.populationrate=[(fpop[14]/popData2[4]*100).toFixed(1),(spop[14]/popData2[4]*100).toFixed(1),(tpop[14]/popData2[4]*100).toFixed(1)];
     //产业人口数量
-    $scope.population=[fpop[4],spop[4],tpop[4]];
+    $scope.population=[fpop[14],spop[14],tpop[14]];
     //产业产值比例  
     $scope.valuerate=[(fgdp[14]/gdp2[4]*100).toFixed(1),(sgdp[14]/gdp2[4]*100).toFixed(1),(tgdp[14]/gdp2[4]*100).toFixed(1)]; 
     //产业产值
