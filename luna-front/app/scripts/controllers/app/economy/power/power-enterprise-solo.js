@@ -400,6 +400,18 @@ app.controller('PowerEnterpriseSoloCtrl',
 			var getSeasonPromise = ResTool.httpGetWithWorkspace(PowerRes.getEnterpriseSeason, $scope.getIndustrySeasonParams, {});
 			getSeasonPromise.then(function(data) {
 				$scope.seasonData = data.data;
+				(function() {
+					for (var i = 0; i < $scope.seasonData.gdps.length; i++) {
+						if($scope.seasonData.gdps[i] == 0) {
+							$scope.seasonData.gdps[i] = null;
+						}
+					}
+					for (var i = 0; i < $scope.seasonData.powers.length; i++) {
+						if($scope.seasonData.powers[i] == 0) {
+							$scope.seasonData.powers[i] = null;
+						}
+					}
+				})();
 				$scope.SingleVocationChart={
 					credits:{
 			    	    enabled:false // 禁用版权信息
