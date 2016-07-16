@@ -92,7 +92,7 @@ $scope.buttonMap3 = [{
    }
    if(bttn.name===2035){
      $scope.rate=[76.03,82.68,82.82,77.34,76.68,75.76,72.78,71.47,73.19,73.35];
-     $scope.employyear="2026-2035";
+     $scope.employyear="2035";
     $scope.jobf.options.title.text="太仓市2026至2035年就业人数分析预测";
     $scope.jobf.options.xAxis.categories=$scope.secondTenYear;
      $scope.jobf.series=[{
@@ -111,7 +111,7 @@ $scope.buttonMap3 = [{
    }
    if(bttn.name===2045){
      $scope.rate=[70.03,71.57,73.58,69.34,76.33,72.88,78.12,75.38,73.40,74.54];
-     $scope.employyear="2036-2045";
+     $scope.employyear="2045";
     $scope.jobf.options.title.text="太仓市2036至2045年就业人数分析预测";
     $scope.jobf.options.xAxis.categories=$scope.thirdTenYear;
      $scope.jobf.series=[{
@@ -155,13 +155,13 @@ $scope.buttonMap8 = [{
  $scope.btn_click8=function(bttn){
      $scope.change8(bttn);
   };    
-   $scope.employyear3="2016-2025";
+   $scope.employyear3="2025";
     $scope.school1="太仓市小学数量46所，初中17所，高中5所。";
-         $scope.school2="随着二胎政策的放开，小学数量有所增加。";
+         $scope.school2="随着二胎政策的全面放开，太仓市人口增长，中小学数量有所增加。";
  $scope.change8=function(bttn){
     if(bttn.name===2025){
        $scope.school1="太仓市小学数量46所，初中17所，高中5所。";
-         $scope.school2="随着二胎政策的放开，小学数量有所增加。";
+         $scope.school2="随着二胎政策的全面放开，太仓市人口增长，中小学数量有所增加。";
         $scope.employyear3="2016-2025";
         $scope.school.options.title.text="太仓市各城镇2025年学校数量分析预测";
     $scope.school.series=[{
@@ -181,7 +181,7 @@ $scope.buttonMap8 = [{
     }
     if(bttn.name===2035){
               $scope.school1="太仓市小学数量47所，初中26所，高中10所。";
-         $scope.school2="随着二胎政策的继续全面放开，中学数量有所增加。";
+         $scope.school2="随着二胎政策的全面放开，太仓市人口增长，中小学数量有所增加。";
          $scope.employyear3="2026-2035";
         $scope.school.options.title.text="太仓市各城镇2035年学校数量分析预测";
     $scope.school.series=[{
@@ -200,7 +200,7 @@ $scope.buttonMap8 = [{
     }
     if(bttn.name===2045){
          $scope.school1="太仓市小学数量47所，初中28所，高中12所。";
-         $scope.school2="随着二胎政策的继续全面放开，太仓市人口增长，中小学数量都有所增加。";
+         $scope.school2="2035-2045年太仓市人口数量趋于稳定，中小学数量基本不变。";
          $scope.employyear3="2036-2045";
        $scope.school.options.title.text="太仓市各城镇2045年学校数量分析预测";
     $scope.school.series=[{
