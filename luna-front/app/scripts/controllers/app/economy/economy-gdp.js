@@ -165,7 +165,7 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
        $scope.monthGDPChart.series[1].type=param;
        $scope.monthGDPChart.series[2].type='spline';
        };
-
+    
     var yearDetailPromise = ResTool.httpGetWithWorkspace(EconomyRes.getYearDetail,{year:nowyear},{});
     $scope.yearchoose = nowyear;
     yearDetailPromise.then(function(rc){
@@ -191,6 +191,11 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
                 $scope.currentSeason = '四';
             }
         }*/
+        for(var rgqd = 0; rgqd<rc.data.realGdpQuarterDetail.length;rgqd++){
+            if (rc.data.realGdpQuarterDetail[rgqd] == 0) {
+                rc.data.realGdpQuarterDetail[rgqd] = null;
+            }
+        }
         (function yerachanged(){
             var i = 0;
             while(i<rc.data.realGdpQuarterDetail.length){
@@ -220,12 +225,22 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
             }
         }());
       $scope.gdpquarterrealvalue = rc.data.realGdpQuarterDetail;
+      for(var i = 0;i<$scope.gdpquarterrealvalue.length;i++){
+        if ($scope.gdpquarterrealvalue[i] == null) {
+           $scope.gdpquarterrealvalue[i] = '--';
+        }
+      }
       $scope.gdpquarterforcastvalue = rc.data.forecastGdpQuterDetail;
       $scope.gdpquartergrowratevalue = rc.data.growRate; 
       $scope.nowYearForcast = rc.data.forecastGdpQuterDetail[3];
         $scope.monthcheckdeviation=function(){
         $scope.monthdeviation = !$scope.monthdeviation;
         $scope.montherrorRate = rc.data.quarterError;
+        for(var i = 0;i<$scope.montherrorRate.length;i++){
+        if ($scope.montherrorRate[i] == 0) {
+           $scope.montherrorRate[i] = '--';
+        }
+      }
     }  
       $scope.monthcheckforecast = function(){
             $scope.monthforecast = !$scope.monthforecast;
@@ -347,6 +362,11 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
     $scope.changeyear=function(param){
         var yearDetailPromise = ResTool.httpGetWithWorkspace(EconomyRes.getYearDetail,{year:param},{});
         yearDetailPromise.then(function(rc){
+            for(var rgqd = 0; rgqd<rc.data.realGdpQuarterDetail.length;rgqd++){
+            if (rc.data.realGdpQuarterDetail[rgqd] == 0) {
+                rc.data.realGdpQuarterDetail[rgqd] = null;
+            }
+        }
             if (param == 2016 ) {
               $scope.aimgdp = 1130;
             }else if (param == 2015) {
@@ -390,9 +410,19 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
         $scope.gdpquarterrealvalue = rc.data.realGdpQuarterDetail;
         $scope.gdpquarterforcastvalue = rc.data.forecastGdpQuterDetail;
         $scope.montherrorRate = rc.data.quarterError;
+        for(var i = 0;i<$scope.montherrorRate.length;i++){
+        if ($scope.montherrorRate[i] == 0) {
+           $scope.montherrorRate[i] = '--';
+        }
+      }
         $scope.monthcheckdeviation=function(){
         $scope.monthdeviation = !$scope.monthdeviation;
         $scope.montherrorRate = rc.data.quarterError;
+        for(var i = 0;i<$scope.montherrorRate.length;i++){
+        if ($scope.montherrorRate[i] == 0) {
+           $scope.montherrorRate[i] = '--';
+        }
+      }
         } 
 
         $scope.monthcheckforecast = function(){
