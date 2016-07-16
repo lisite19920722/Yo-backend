@@ -169,6 +169,7 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
     var yearDetailPromise = ResTool.httpGetWithWorkspace(EconomyRes.getYearDetail,{year:nowyear},{});
     $scope.yearchoose = nowyear;
     yearDetailPromise.then(function(rc){
+
            /*for(var rgqd = 0; rgqd<rc.data.realGdpQuarterDetail.length;rgqd++){
             if (rgqd == 0&&rc.data.realGdpQuarterDetail[rgqd]== 0) {
                 $scope.alreadycomplete = 0;
@@ -199,12 +200,12 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
         (function yerachanged(){
             var i = 0;
             while(i<rc.data.realGdpQuarterDetail.length){
-                  if (i == 0&&rc.data.realGdpQuarterDetail[i]== 0) {
+                  if (i == 0&&rc.data.realGdpQuarterDetail[i]== null) {
                 $scope.alreadycomplete = 0;
                 $scope.currentGDP = 0;
                 $scope.currentSeason = '当前';
                 break;
-            }else if (rc.data.realGdpQuarterDetail[i] == 0) {
+            }else if (rc.data.realGdpQuarterDetail[i] == null) {
                 $scope.alreadycomplete = (rc.data.realGdpQuarterDetail[i-1]/1100).toFixed(2)*100;
                 $scope.currentGDP = rc.data.realGdpQuarterDetail[i-1];
                 if (i == 1) {
@@ -215,7 +216,7 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
                     $scope.currentSeason = '三';
                 }
                 break;
-            }else if (rc.data.realGdpQuarterDetail[i] !=0&&i==3) {
+            }else if (rc.data.realGdpQuarterDetail[i] !=null&&i==3) {
                 $scope.alreadycomplete = (rc.data.realGdpQuarterDetail[i]/1100).toFixed(2)*100;
                 $scope.currentGDP = rc.data.realGdpQuarterDetail[i];
                 $scope.currentSeason = '四';
@@ -225,6 +226,10 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
             }
         }());
       $scope.gdpquarterrealvalue = rc.data.realGdpQuarterDetail;
+
+       $scope.currentSeason = '一';
+       $scope.currentGDP = rc.data.realGdpQuarterDetail[0];
+       $scope.alreadycomplete = (rc.data.realGdpQuarterDetail[0]/1140).toFixed(2)*100;
       for(var i = 0;i<$scope.gdpquarterrealvalue.length;i++){
         if ($scope.gdpquarterrealvalue[i] == null) {
            $scope.gdpquarterrealvalue[i] = '--';
@@ -360,6 +365,8 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
      
    });
     $scope.changeyear=function(param){
+        $scope.monthdeviation = false;
+        $scope.monthforecast = false;
         var yearDetailPromise = ResTool.httpGetWithWorkspace(EconomyRes.getYearDetail,{year:param},{});
         yearDetailPromise.then(function(rc){
             for(var rgqd = 0; rgqd<rc.data.realGdpQuarterDetail.length;rgqd++){
@@ -402,10 +409,13 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
             i++;
             }
         }());
+            if (param == 2016) {
+                $scope.currentSeason = '一';
+                $scope.currentGDP = rc.data.realGdpQuarterDetail[0];
+                $scope.alreadycomplete = (rc.data.realGdpQuarterDetail[0]/1140).toFixed(2)*100;
+            }
         $scope.yearchoose = param;
-        $scope.monthGDPChart.series[0].data=rc.data.realGdpQuarterDetail;
-        $scope.monthGDPChart.series[1].data=rc.data.forecastGdpQuterDetail;
-        $scope.monthGDPChart.series[2].data=rc.data.growRate; 
+        
         $scope.nowYearForcast = rc.data.forecastGdpQuterDetail[3];
         $scope.gdpquarterrealvalue = rc.data.realGdpQuarterDetail;
         $scope.gdpquarterforcastvalue = rc.data.forecastGdpQuterDetail;
@@ -429,7 +439,15 @@ app.controller('EconomyGdpDetail', ['$scope','$stateParams','ResTool','EconomyRe
             $scope.monthforecast = !$scope.monthforecast;
             $scope.gdpquarterrealvalue = rc.data.realGdpQuarterDetail;
             $scope.gdpquarterforcastvalue = rc.data.forecastGdpQuterDetail;
+            for(var i = 0;i<$scope.gdpquarterrealvalue.length;i++){
+        if ($scope.gdpquarterrealvalue[i] == null) {
+           $scope.gdpquarterrealvalue[i] = '--';
         }
+      }
+        }
+        $scope.monthGDPChart.series[0].data=rc.data.realGdpQuarterDetail;
+        $scope.monthGDPChart.series[1].data=rc.data.forecastGdpQuterDetail;
+        $scope.monthGDPChart.series[2].data=rc.data.growRate; 
       });
    }   
 }]);

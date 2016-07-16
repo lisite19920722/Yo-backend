@@ -297,6 +297,7 @@ app.controller('EconomyTaxDetailCtrl', ['$scope','$stateParams','ResTool','Econo
    $('#cover2').addClass('cover');
    $('#cover3').addClass('cover');
    $('#cover4').addClass('cover');
+   $scope.panelyear = year;
    var DetailPromise = ResTool.httpGetWithWorkspace(EconomyTaxRes.getYearTaxDetail,{year:year},{});
    DetailPromise.then(function(rc){
     for(var i = 0;i<rc.data.realTaxMonthDetail.length;i++){
@@ -310,12 +311,12 @@ app.controller('EconomyTaxDetailCtrl', ['$scope','$stateParams','ResTool','Econo
 
     var rtmd = 0;
     while(rtmd<rc.data.realTaxMonthDetail.length){
-         if (rtmd == 0&& rc.data.realTaxMonthDetail[rtmd] == 0) {
+         if (rtmd == 0&& rc.data.realTaxMonthDetail[rtmd] == null) {
           $scope.currentMonth = '当前';
           $scope.currentCompleteTaxPercent = 0;
           $scope.currentCompleteTax = 0;
           break;
-         }else if (rc.data.realTaxMonthDetail[rtmd] == 0) {
+         }else if (rc.data.realTaxMonthDetail[rtmd] == null) {
           $scope.currentMonth = rtmd+1;
           $scope.currentCompleteTaxPercent = (rc.data.realTaxMonthDetail[rtmd-1]/105.64).toFixed(2)*100;
           $scope.currentCompleteTax = rc.data.realTaxMonthDetail[rtmd-1];
@@ -801,11 +802,12 @@ app.controller('EconomyTaxDetailCtrl', ['$scope','$stateParams','ResTool','Econo
           $scope.monthselectedRange2 = 0;
           $scope.monthselectedRange3 = 0;
           $scope.monthselectedRange4 = 0;
+          $scope.panelyear = param;
        var yearChangeDetailPromise = ResTool.httpGetWithWorkspace(EconomyTaxRes.getYearTaxDetail,{year:param},{});
        if (param == 2015) {
           $scope.aimtax = 95.2;
        }else if (param == 2016) {
-        $scope.aimtax = 105.04;
+        $scope.aimtax = 102.04;
        }else if (param == 2014) {
         $scope.aimtax = 85.9;
        }
