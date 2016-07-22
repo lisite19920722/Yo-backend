@@ -135,6 +135,7 @@ $scope.showPopulationDetail1 = function(){
       }
     }
     }
+    /*
     popData13[0]=parseFloat(((popData13[0]/(sumMale6+sumFemale6))*100).toFixed(2));
     popData13[1]=parseFloat(((popData13[1]/(sumMale6+sumFemale6))*100).toFixed(2));
     popData13[2]=parseFloat(((popData13[2]/(sumMale6+sumFemale6))*100).toFixed(2));
@@ -160,7 +161,7 @@ $scope.showPopulationDetail1 = function(){
     popData14[10]=parseFloat(((popData14[10]/(sumMale6+sumFemale6))*100).toFixed(2));
 
     //計算各年60歲以上人口比例
-
+*/
 
 
 
@@ -254,6 +255,7 @@ $scope.showPopulationDetail1 = function(){
       }
     }
     }
+    /*
     popData1[0]=parseFloat(((popData1[0]/(sumMale+sumFemale))*100).toFixed(2));
     popData1[1]=parseFloat(((popData1[1]/(sumMale+sumFemale))*100).toFixed(2));
     popData1[2]=parseFloat(((popData1[2]/(sumMale+sumFemale))*100).toFixed(2));
@@ -280,7 +282,7 @@ $scope.showPopulationDetail1 = function(){
 
 
 
-
+*/ 
 
  
  //2025年的数据
@@ -368,6 +370,7 @@ $scope.showPopulationDetail1 = function(){
       }
     }
     }
+    /*
     popData3[0]=parseFloat(((popData3[0]/(sumMale1+sumFemale1))*100).toFixed(2));
     popData3[1]=parseFloat(((popData3[1]/(sumMale1+sumFemale1))*100).toFixed(2));
     popData3[2]=parseFloat(((popData3[2]/(sumMale1+sumFemale1))*100).toFixed(2));
@@ -395,7 +398,7 @@ $scope.showPopulationDetail1 = function(){
 
 
 
-
+*/
 
 
   //2030年的数据
@@ -483,6 +486,7 @@ $scope.showPopulationDetail1 = function(){
       }
     }
     }
+    /*
     popData5[0]=parseFloat(((popData5[0]/(sumMale2+sumFemale2))*100).toFixed(2));
     popData5[1]=parseFloat(((popData5[1]/(sumMale2+sumFemale2))*100).toFixed(2));
     popData5[2]=parseFloat(((popData5[2]/(sumMale2+sumFemale2))*100).toFixed(2));
@@ -509,7 +513,7 @@ $scope.showPopulationDetail1 = function(){
 
 
 
-
+*/
 
 
    //2035年的数据
@@ -597,6 +601,7 @@ $scope.showPopulationDetail1 = function(){
       }
     }
     }
+    /*
     popData7[0]=parseFloat(((popData7[0]/(sumMale3+sumFemale3))*100).toFixed(2));
     popData7[1]=parseFloat(((popData7[1]/(sumMale3+sumFemale3))*100).toFixed(2));
     popData7[2]=parseFloat(((popData7[2]/(sumMale3+sumFemale3))*100).toFixed(2));
@@ -621,7 +626,7 @@ $scope.showPopulationDetail1 = function(){
     popData8[9]=parseFloat(((popData8[9]/(sumMale3+sumFemale3))*100).toFixed(2));
     popData8[10]=parseFloat(((popData8[10]/(sumMale3+sumFemale3))*100).toFixed(2));
 
-
+*/
 
 
 
@@ -711,6 +716,7 @@ $scope.showPopulationDetail1 = function(){
       }
     }
     }
+    /*
     popData9[0]=parseFloat(((popData9[0]/(sumMale4+sumFemale4))*100).toFixed(2));
     popData9[1]=parseFloat(((popData9[1]/(sumMale4+sumFemale4))*100).toFixed(2));
     popData9[2]=parseFloat(((popData9[2]/(sumMale4+sumFemale4))*100).toFixed(2));
@@ -738,7 +744,7 @@ $scope.showPopulationDetail1 = function(){
 
 
 
-
+*/
 
    //2045年的数据
     var popData11=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测男性数据
@@ -825,6 +831,7 @@ $scope.showPopulationDetail1 = function(){
       }
     }
     }
+    /*
     popData11[0]=parseFloat(((popData11[0]/(sumMale5+sumFemale5))*100).toFixed(2));
     popData11[1]=parseFloat(((popData11[1]/(sumMale5+sumFemale5))*100).toFixed(2));
     popData11[2]=parseFloat(((popData11[2]/(sumMale5+sumFemale5))*100).toFixed(2));
@@ -849,7 +856,7 @@ $scope.showPopulationDetail1 = function(){
     popData12[9]=parseFloat(((popData12[9]/(sumMale5+sumFemale5))*100).toFixed(2));
     popData12[10]=parseFloat(((popData12[10]/(sumMale5+sumFemale5))*100).toFixed(2));
 
-
+*/
 //2015年
   $scope.years = ["年龄","0-5岁", "6-11岁","12-17岁", "18-23岁", "24-29岁", "30-35岁", "36-41岁", "42-47岁", "48-53岁", "54-59岁", "60岁以上"];
       $scope.male15= ["男性",popData13[0]+"%", popData13[1]+"%", popData13[2]+"%",  popData13[3]+"%",  popData13[4]+"%",  popData13[5]+"%",  popData13[6]+"%",  popData13[7]+"%",  popData13[8]+"%",  popData13[9]+"%",  popData13[10]+"%"];
@@ -1607,15 +1614,15 @@ document.getElementById('oldManProportion').innerHTML='33.92';
             allowDecimals: false,
             min: 0,
             title: {
-                text: '人口比例(%)'
+                text: '人口数量(人)'
             }
         },
 
         tooltip: {
             formatter: function() {
                 return ' <b>'+ this.x +'</b><br/>'+
-                    this.series.name +': '+ this.y +'%'+'<br/>'+
-                    '总共: '+ this.point.stackTotal+'%';
+                    this.series.name +': '+ this.y +'<br/>'+
+                    '总共: '+ this.point.stackTotal;
             }
         },
 
