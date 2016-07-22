@@ -108,14 +108,7 @@ app.controller('PrelationCtrl', ['$scope','$stateParams','PopulationRes','ResToo
 
 
 var piecolor=new Array('#7CB5EC','#929dce','#90ED7D');
-     $scope.colorpicker = {
-        options: {
-            orientation: 'horizontal',
-            min: -85,
-            max: 100,
-            range: 'min'
-        }
-    };
+    
         // 路径配置
         require.config({
             paths: {
@@ -1632,52 +1625,71 @@ $scope.change2=function(btn){
    }
 };
 
-$scope.selectedRange=0;
-$scope.selectedRange1=0;
-$scope.r=function(){
-    return $scope.selectedRange;
-};
-function h(newValue,oldValue,scope){
-    for(var i = 0;i < popData1.length; i++){
-  if(tmp === 1){
-    gdp1[i]=Math.round((newValue*0.03)*400+tgdp1[i]);
-     popData1[i]=((newValue*0.03)*100000+tmpData1[i]);
-  }
-  else if(tmp === 2){
-    gdp2[i]=Math.round((newValue*0.03)*400+tgdp1[i]);
-       popData2[i]=((newValue*0.03)*100000+tmpData2[i]);
-    }
-    else{
-      gdp3[i]=Math.round((newValue*0.03)*400+tgdp1[i]);
-       popData3[i]=((newValue*0.03)*100000+tmpData3[i]);
-    }
-}
-}
-$scope.$watch($scope.r,h);
 
+
+
+
+
+
+
+
+
+
+//下面这段是滚动条的东西
+
+
+ $scope.colorpicker = {
+        options: {
+            orientation: 'horizontal',
+            min: -15,
+            max: 20,
+            value:5,
+            range: 'min'
+        }
+    };
+
+  //gdp1[i]=((newValue-1150)*/1150+1)*oldValue;
+$scope.selectedRange1=0;
+$scope.input1=0;
+
+//rr是获取selectedRange1返回值的函数
 $scope.rr=function(){
     return $scope.selectedRange1;
 };
+$scope.rr1=function(){
+    return $scope.input1;
+};
+
 function hh(newValue,oldValue,scope){
 for(var i = 0;i < gdp1.length; i++){
+  //temp=1代表是2016到2025年的数据，
     if(tmp === 1){
    gdp1[i]=Math.round((newValue*0.03)*400+tgdp1[i]);
    popData1[i]=((newValue*0.03)*100000+tmpData1[i]);
 
  }
  else if(tmp === 2){
+    //temp=1代表是2026到2035年的数据
     gdp2[i]=(newValue*0.03)*400+tgdp2[i];
     popData2[i]=((newValue*0.03)*100000+tmpData1[i]);
 
   }
 else{
+    //temp=1代表是2036到2045年的数据
       gdp3[i]=(newValue*0.03)*400+tgdp3[i];
       popData3[i]=((newValue*0.03)*100000+tmpData1[i]);
 
   }
   }
 }
+//如果rr发生变化
 $scope.$watch($scope.rr,hh);
+$scope.$watch($scope.rr,hh);
+//滚动条函数的结束
+
+
+
+
          $scope.predictChart ={
 options:{ chart: {
             zoomType: 'xy'
