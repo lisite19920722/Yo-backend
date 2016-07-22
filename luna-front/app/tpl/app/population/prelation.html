@@ -38,7 +38,7 @@
   <!--黄色方块开始-->
             <div class="col-md-12 " style="padding-top:0.5em;margin-left:-23px">
               <div class="block panel padder-v cgq_bg-lightyellow item cgq_marginaround1em cgq_contentwidth">
-                <span class="text-white font-thin h1 block">{{gdpgrow}}</span>
+                <span class="text-white font-thin h1 block">{{gdpgrow}}亿元</span>
                 <span class="text-xs">{{sumyear}}年太仓市GDP增长值</span>
               </div> 
             </div>
@@ -61,30 +61,29 @@
 <br>
         <div  class="row">
 
-              <div class="col-md-11">
+              <div class="col-md-9">
               
 
-
  <span ng-if="displayslider">2016年GDP期望值 </span>
-<input ng-if="displayslider" style="width:70px" type="text" name="gdp" ng-model="GDPChart.series[0].data[0]" ><span ng-if="displayslider">亿元</span>
+<input ng-if="displayslider" style="width:70px" type="text" name="gdp" ng-model="GDPChart.series[0].data[0]" disabled="true"><span ng-if="displayslider">亿元</span>
                 <div class="row">
                     <div class="progress-box col-md-3">
                         <div  style="margin-top:11px" >
-                            <div ng-show="displayslider" ui-slider="colorpicker.options" min="2000" max="3000" ng-model="selectedRange1" style="width:240px"> </div>
+                            <div ng-show="displayslider" ui-slider="colorpicker.options" min="2000" max="3000" ng-model="selectedRange1" style="width:220px"> </div>
                         </div>
                     </div>
                 </div>
             </div>
-  <div class="col-md-1">
+  <div class="col-md-3">
               
+            </div>
             </div>
 
 
 
 
 
-          
-        </div>
+       
 
         <div class="pull-left">
         <br>
@@ -268,22 +267,22 @@
                          
                             <!--绿色方块开始-->
             <div class="col-md-12" style="padding-top:0.5em;margin-left:-15px;">
-             <div   style="background:#929dce;width:115px;height:30px;text-align:center;line-height:30px;font-size:15px;color:#FFFFFF;font-weight:bold" style="margin-left:-5px;">5年产业人口变化率</div>
+             <div   style="background:#929dce;width:115px;height:30px;text-align:center;line-height:30px;font-size:15px;color:#FFFFFF;font-weight:bold" style="margin-left:-5px;">5年产业人口变化</div>
               <div class="block panel padder-v cgq_bg-lightgreen item cgq_marginaround1em cgq_contentwidth" style="margin-left:-2px;padding-bottom:40px">
 
 
 
-             <div class="pull-left" style="margin-left:110px">  <span style="font-size:10px" class="text-white font-thin h1 "><span id="oldManProportion">第一产业：</span></span>
+             <div class="pull-left" style="margin-left:110px">  <span style="font-size:10px" class=" font-thin h1 "><span id="oldManProportion">第一产业：</span></span>
 <span class="text-xs">{{fp1}}<span>%</span></span><span class="glyphicon glyphicon-arrow-up" ng-if="fp1>0"></span>
 </div> <br>
 
 
 
-      <div class="pull-left" style="margin-left:110px"> <span style="font-size:10px" class="text-white font-thin h1 "><span id="oldManProportion">第二产业：</span></span>
+      <div class="pull-left" style="margin-left:110px"> <span style="font-size:10px" class=" font-thin h1 "><span id="oldManProportion">第二产业：</span></span>
 <span class="text-xs">{{fp2}}<span>%</span></span><span class="glyphicon glyphicon-arrow-up" ng-if="fp2>0"></span></div><br>
 
 
-     <div class="pull-left" style="margin-left:110px"> <span style="font-size:10px" class="text-white font-thin h1 "><span id="oldManProportion">第三产业：</span></span>
+     <div class="pull-left" style="margin-left:110px"> <span style="font-size:10px" class=" font-thin h1 "><span id="oldManProportion">第三产业：</span></span>
 <span class="text-xs">{{fp3}}<span>%</span></span></span><span class="glyphicon glyphicon-arrow-up" ng-if="fp3>0"></span></div></div>
 
             </div>
@@ -295,16 +294,16 @@
 
 
  <div class="block panel padder-v cgq_bg-lightyellow item cgq_marginaround1em cgq_contentwidth"  style="margin-left:-2px;padding-bottom:40px">
-                <div class="pull-left" style="margin-left:110px">  <span style="font-size:10px" class="text-white font-thin h1 "><span id="oldManProportion">第一产业：</span></span>
+                <div class="pull-left" style="margin-left:110px">  <span style="font-size:10px" class=" font-thin h1 "><span id="oldManProportion">第一产业：</span></span>
 <span class="text-xs">{{fv1}}<span>%</span></span><span class="glyphicon glyphicon-arrow-up" ng-if="fv1>0"></span></div><br>
 
 
 
-     <div class="pull-left" style="margin-left:110px"> <span style="font-size:10px" class="text-white font-thin h1 "><span id="oldManProportion">第二产业：</span></span>
+     <div class="pull-left" style="margin-left:110px"> <span style="font-size:10px" class=" font-thin h1 "><span id="oldManProportion">第二产业：</span></span>
 <span class="text-xs">{{fv2}}<span>%</span></span><span class="glyphicon glyphicon-arrow-up" ng-if="fv2>0"></span></div><br>
      
 
-     <div class="pull-left" style="margin-left:110px"> <span style="font-size:10px" class="text-white font-thin h1 "><span id="oldManProportion">第三产业：</span></span>
+     <div class="pull-left" style="margin-left:110px"> <span style="font-size:10px" class="font-thin h1 "><span id="oldManProportion">第三产业：</span></span>
 <span class="text-xs">{{fv3}}<span>%</span></span><span class="glyphicon glyphicon-arrow-up" ng-if="fv3>0"></span></div></div>
 
             </div>

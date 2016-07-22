@@ -1356,20 +1356,20 @@ var points =[
         $scope.age_ration.options.colors=columnColors;
         $scope.age_ration.options.title.text="太仓市2015/2020年人口结构图";
         $scope.age_ration.series=[{
-            name: '2015年男性比例',
+            name: '2015年男性人口',
             data: popData13,
             stack: 'male'
         },{
           //  popData13代表的是2015年男性的数量
-            name: '2015年女性比例',
+            name: '2015年女性人口',
             data: popData13,
             stack: 'male'
         },{
-            name: '2020年男性比例',
+            name: '2020年男性人口',
             data: popData1,
             stack: 'female'
         },{
-            name: '2020年女性比例',
+            name: '2020年女性人口',
             data: popData2,
             stack: 'female'
         }];
@@ -1394,19 +1394,19 @@ document.getElementById('oldManProportion').innerHTML='33.66';document.getElemen
          $scope.pyear="2025";
         $scope.age_ration.options.title.text="太仓市2015/2025人口结构图";
         $scope.age_ration.series=[{
-            name: '2015年男性比例',
+            name: '2015年男性人口',
             data: popData13,
             stack: 'male'
         },{
-            name: '2015年女性比例',
+            name: '2015年女性人口',
             data: popData14,
             stack: 'male'
         },{
-            name: '2025年男性比例',
+            name: '2025年男性人口',
             data: popData3,
             stack: 'female'
         },{
-            name: '2025年女性比例',
+            name: '2025年女性人口',
             data: popData4,
             stack: 'female'
         }];
@@ -1432,19 +1432,19 @@ document.getElementById('sexRatio').innerHTML='104.75：100';
         $scope.age_ration.options.colors=columnColors;
         $scope.age_ration.options.title.text="太仓市2015/2030人口结构图";
         $scope.age_ration.series=[{
-            name: '2015年男性比例',
+            name: '2015年男性人口',
             data: popData13,
             stack: 'male'
         },{
-            name: '2015年女性比例',
+            name: '2015年女性人口',
             data: popData14,
             stack: 'male'
         },{
-            name: '2030年男性比例',
+            name: '2030年男性人口',
             data: popData5,
             stack: 'female'
         },{
-            name: '2030年女性比例',
+            name: '2030年女性人口',
             data: popData6,
             stack: 'female'
         }];
@@ -1469,19 +1469,19 @@ document.getElementById('sexRatio').innerHTML='104.68：100';
         $scope.age_ration.options.colors=columnColors;
         $scope.age_ration.options.title.text="太仓市2015/2040人口结构图";
         $scope.age_ration.series=[{
-            name: '2015年男性比例',
+            name: '2015年男性人口',
             data: popData13,
             stack: 'male'
         },{
-            name: '2015年女性比例',
+            name: '2015年女性人口',
             data: popData14,
             stack: 'male'
         },{
-            name: '2040年男性比例',
+            name: '2040年男性人口',
             data: popData9,
             stack: 'female'
         },{
-            name: '2040年女性比例',
+            name: '2040年女性人口',
             data: popData10,
             stack: 'female'
         }];
@@ -1509,19 +1509,19 @@ document.getElementById('oldManProportion').innerHTML='33.92';
         $scope.age_ration.options.colors=columnColors;
         $scope.age_ration.options.title.text="太仓市2015/2035人口结构图";
         $scope.age_ration.series=[{
-            name: '2015年男性比例',
+            name: '2015年男性人口',
             data: popData13,
             stack: 'male'
         }, {
-            name: '2015年女性比例',
+            name: '2015年女性人口',
             data: popData14,
             stack: 'male'
         }, {
-            name: '2035年男性比例',
+            name: '2035年男性人口',
             data: popData7,
             stack: 'female'
         },{
-            name: '2035年女性比例',
+            name: '2035年女性人口',
             data: popData8,
             stack: 'female'
         }];
@@ -1549,19 +1549,19 @@ document.getElementById('oldManProportion').innerHTML='33.92';
         $scope.age_ration.options.colors=columnColors;
         $scope.age_ration.options.title.text="太仓市2015/2045人口结构图";
         $scope.age_ration.series=[{
-            name: '2015年男性比例',
+            name: '2015年男性人口',
             data: popData13,
             stack: 'male'
         },{
-            name: '2015年前女性比例',
+            name: '2015年女性人口',
             data: popData14,
             stack: 'male'
         },{
-            name: '2045年男性比例',
+            name: '2045年男性人口',
             data: popData11,
             stack: 'female'
         },{
-            name: '2045女性比例',
+            name: '2045女性人口',
             data: popData12,
             stack: 'female'
         }];
@@ -1634,19 +1634,19 @@ document.getElementById('oldManProportion').innerHTML='33.92';
       },
 
         series: [{
-            name: '2015年男性比例',
+            name: '2015年男性人口',
             data: popData13,
             stack: 'male'
         },{
-            name: '2015年女性比例',
+            name: '2015年女性人口',
             data: popData14,
             stack: 'male'
         },{
-            name: '2020年男性比例',
+            name: '2020年男性人口',
             data: popData1,
             stack: 'female'
         },{
-            name: '2020年女性比例',
+            name: '2020年女性人口',
             data: popData2,
             stack: 'female'
         }]

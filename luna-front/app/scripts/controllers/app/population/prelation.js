@@ -328,17 +328,18 @@ var splinecolors=new Array('#3CB371','#000000','#87CEFA' );
         radio: "Right"
       }];
  $scope.sumyear="2016-2025";
-  $scope.gdpgrow="1061亿元";
+ $scope.gdpgrow=((gdp1[9]-gdp1[0]).toFixed(1));
   $scope.displayslider=true;
 $scope.btn_click=function(btn){
    $scope.change(btn);
 };
 $scope.change=function(btn){
    if(btn.name===2025){
+      $scope.gdpgrow="378.8";
      $scope.displayslider=true;
      tmp = 1;
      $scope.sumyear="2016-2025";
-     $scope.gdpgrow="1061亿元";
+  
 $scope.populationChart.xAxis.categories=[2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
 $scope.populationChart.title.text="太仓市2016至2025年劳动力总人口预测值";
      $scope.GDPChart.xAxis.categories=[2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
@@ -387,7 +388,7 @@ $scope.populationChart.title.text="太仓市2016至2025年劳动力总人口预�
         }];
    }
    if(btn.name===2035){
-    $scope.gdpgrow="1729.7亿元";
+     $scope.gdpgrow=((gdp2[9]-gdp2[0]).toFixed(1));
 
     $scope.displayslider=false;
      $scope.sumyear="2026-2035";
@@ -440,7 +441,7 @@ $scope.populationChart.title.text="太仓市2016至2025年劳动力总人口预�
         }];
    }
    if(btn.name===2045){
-    $scope.gdpgrow="3711.14亿元";
+     $scope.gdpgrow=((gdp3[9]-gdp3[0]).toFixed(1));
 
      $scope.displayslider=false;
      $scope.sumyear="2036-2045";
