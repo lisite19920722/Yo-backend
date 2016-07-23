@@ -236,17 +236,17 @@ $scope.buttonMap8 = [{
         radio: "Right"
       }];
         $scope.insuranceyear="2016-2025";
-         $scope.insurance1="2016到2025年间老龄人口由31.16%增长到33.92%，养老保险结余由30.9亿元下降到30.5亿元。";
+         $scope.insurance1="2016到2025年间老龄人口由31.16%增长到33.92%，养老保险基金由30.9亿元下降到30.5亿元。";
          $scope.insurance2="太仓市老龄化加剧，社会负担持续增加。";
   $scope.btn_click5=function(bttn){
      $scope.change5(bttn);
   };    
  $scope.change5=function(bttn){
     if(bttn.name===2025){
-        $scope.insurance1="2016到2025年间老龄人口由31.16%增长到33.92%，养老保险结余由30.9亿元下降到30.5亿元。";
+        $scope.insurance1="2016到2025年间老龄人口由31.16%增长到33.92%，养老保险基金由30.9亿元下降到30.5亿元。";
          $scope.insurance2="太仓市老龄化加剧，社会负担持续增加。";
         $scope.insuranceyear="2016-2025";
-        $scope.money.options.title.text="太仓市2016至2025年城镇基本养老保险分析预测";
+        $scope.money.options.title.text="太仓市2016至2025年城镇养老保险基金分析预测";
         $scope.money.options.xAxis[0].categories=$scope.firstTenYear;
         $scope.money.series[0].data=$scope.preInsurance[0];
         $scope.money.series[1].data=$scope.preOldRate[0];
@@ -254,10 +254,10 @@ $scope.buttonMap8 = [{
 
     }
     if(bttn.name===2035){
-         $scope.insurance1="2026到2035年间老龄人口由33.46%增长到33.92%，养老保险结余由30.5亿元下降到30.9亿元。";
+         $scope.insurance1="2026到2035年间老龄人口由33.46%增长到33.92%，养老保险基金由30.5亿元下降到30.9亿元。";
          $scope.insurance2="随着二胎政策的开放，太仓市老龄化有所减缓。";
      $scope.insuranceyear="2026-2035";
-        $scope.money.options.title.text="太仓市2026至2035年城镇基本养老保险分析预测";
+        $scope.money.options.title.text="太仓市2026至2035年城镇养老保险基金分析预测";
         $scope.money.options.xAxis[0].categories=$scope.secondTenYear;
         $scope.money.series[0].data=$scope.preInsurance[1];
         $scope.money.series[1].data=$scope.preOldRate[1];
@@ -265,9 +265,9 @@ $scope.buttonMap8 = [{
     }
     if(bttn.name===2045){
          $scope.insurance1="2036到2045年间老龄人口由33.57%下降到30.51%，养老保险结余由30.5亿元下降到45.8亿元。";
-         $scope.insurance2="太仓市老龄人比例有所下降，养老保险节余大幅度增长。";
+         $scope.insurance2="太仓市老龄人比例有所下降，养老保险基金大幅度增长。";
          $scope.insuranceyear="2036-2045";
-        $scope.money.options.title.text="太仓市2036至2045年城镇基本养老保险分析预测";
+        $scope.money.options.title.text="太仓市2036至2045年城镇养老保险基金分析预测";
         $scope.money.options.xAxis[0].categories=$scope.thirdTenYear;
         $scope.money.series[0].data=$scope.preInsurance[2];
         $scope.money.series[1].data=$scope.preOldRate[2];
@@ -582,7 +582,7 @@ $scope.jobt ={
             zoomType: 'xy'
         },
         title: {
-            text: '太仓市2016至2025年城镇基本养老保险分析预测'
+            text: '太仓市2016至2025年城镇养老保险基金分析预测'
         },
         credits:{
             enabled:false
@@ -594,7 +594,7 @@ $scope.jobt ={
         yAxis: [ { // Secondary yAxis
             gridLineWidth: 1,
             title: {
-                text: '保险结余',
+                text: '保险基金',
                 style: {
                     color: Highcharts.getOptions().colors[0]
                 }
@@ -632,7 +632,7 @@ $scope.jobt ={
         }
     },
         series: [{
-            name: '养老保险结余',
+            name: '养老保险基金',
             type: 'column',
             yAxis: 0,
             data: $scope.preInsurance[0],
