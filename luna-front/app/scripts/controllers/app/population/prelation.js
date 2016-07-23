@@ -108,14 +108,7 @@ app.controller('PrelationCtrl', ['$scope','$stateParams','PopulationRes','ResToo
 
 
 var piecolor=new Array('#7CB5EC','#929dce','#90ED7D');
-     $scope.colorpicker = {
-        options: {
-            orientation: 'horizontal',
-            min: -85,
-            max: 100,
-            range: 'min'
-        }
-    };
+    
         // 路径配置
         require.config({
             paths: {
@@ -335,17 +328,18 @@ var splinecolors=new Array('#3CB371','#000000','#87CEFA' );
         radio: "Right"
       }];
  $scope.sumyear="2016-2025";
-  $scope.gdpgrow="1061亿元";
+ $scope.gdpgrow=((gdp1[9]-gdp1[0]).toFixed(1));
   $scope.displayslider=true;
 $scope.btn_click=function(btn){
    $scope.change(btn);
 };
 $scope.change=function(btn){
    if(btn.name===2025){
+      $scope.gdpgrow="378.8";
      $scope.displayslider=true;
      tmp = 1;
      $scope.sumyear="2016-2025";
-     $scope.gdpgrow="1061亿元";
+  
 $scope.populationChart.xAxis.categories=[2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
 $scope.populationChart.title.text="太仓市2016至2025年劳动力总人口预测值";
      $scope.GDPChart.xAxis.categories=[2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
@@ -370,7 +364,7 @@ $scope.populationChart.title.text="太仓市2016至2025年劳动力总人口预�
             color: '#8968CD',
             yAxis: 2,
             //xie
-            data: [0.83, 0.82, 0.808,0.81, 0.819, 0.821, 0.841, 0.8425, 0.85, 0.85],
+            data: [0.825, 0.827, 0.829,0.826, 0.829, 0.831, 0.836, 0.834, 0.836, 0.838],
             marker: {
                 enabled: true,
                 symbol:"circle"
@@ -394,7 +388,7 @@ $scope.populationChart.title.text="太仓市2016至2025年劳动力总人口预�
         }];
    }
    if(btn.name===2035){
-    $scope.gdpgrow="1729.7亿元";
+     $scope.gdpgrow=((gdp2[9]-gdp2[0]).toFixed(1));
 
     $scope.displayslider=false;
      $scope.sumyear="2026-2035";
@@ -423,7 +417,7 @@ $scope.populationChart.title.text="太仓市2016至2025年劳动力总人口预�
             color: '#8968CD',
             yAxis: 2,
             //xie
-            data: [0.855, 0.842, 0.8324,0.8291, 0.8212, 0.8135, 0.8051, 0.8025, 0.8115, 0.8156],
+            data: [0.839, 0.837, 0.836,0.838, 0.839, 0.8338, 0.835, 0.836, 0.837, 0.838],
             marker: {
                 enabled: true,
                 symbol:"circle"
@@ -447,7 +441,7 @@ $scope.populationChart.title.text="太仓市2016至2025年劳动力总人口预�
         }];
    }
    if(btn.name===2045){
-    $scope.gdpgrow="3711.14亿元";
+     $scope.gdpgrow=((gdp3[9]-gdp3[0]).toFixed(1));
 
      $scope.displayslider=false;
      $scope.sumyear="2036-2045";
@@ -477,7 +471,7 @@ $scope.populationChart.title.text="太仓市2016至2025年劳动力总人口预�
             color: '#8968CD',
             yAxis: 2,
             //xie
-            data: [0.8195, 0.822, 0.8224,0.8191, 0.8212, 0.8125, 0.8251, 0.8285, 0.8315, 0.8356],
+            data: [0.837, 0.838, 0.839,0.841, 0.838, 0.835, 0.837, 0.839, 0.841, 0.843],
             marker: {
                 enabled: true,
                 symbol:"circle"
@@ -1632,52 +1626,71 @@ $scope.change2=function(btn){
    }
 };
 
-$scope.selectedRange=0;
-$scope.selectedRange1=0;
-$scope.r=function(){
-    return $scope.selectedRange;
-};
-function h(newValue,oldValue,scope){
-    for(var i = 0;i < popData1.length; i++){
-  if(tmp === 1){
-    gdp1[i]=Math.round((newValue*0.03)*400+tgdp1[i]);
-     popData1[i]=((newValue*0.03)*100000+tmpData1[i]);
-  }
-  else if(tmp === 2){
-    gdp2[i]=Math.round((newValue*0.03)*400+tgdp1[i]);
-       popData2[i]=((newValue*0.03)*100000+tmpData2[i]);
-    }
-    else{
-      gdp3[i]=Math.round((newValue*0.03)*400+tgdp1[i]);
-       popData3[i]=((newValue*0.03)*100000+tmpData3[i]);
-    }
-}
-}
-$scope.$watch($scope.r,h);
 
+
+
+
+
+
+
+
+
+
+//下面这段是滚动条的东西
+
+
+ $scope.colorpicker = {
+        options: {
+            orientation: 'horizontal',
+            min: -15,
+            max: 20,
+            value:5,
+            range: 'min'
+        }
+    };
+
+  //gdp1[i]=((newValue-1150)*/1150+1)*oldValue;
+$scope.selectedRange1=0;
+$scope.input1=0;
+
+//rr是获取selectedRange1返回值的函数
 $scope.rr=function(){
     return $scope.selectedRange1;
 };
+$scope.rr1=function(){
+    return $scope.input1;
+};
+
 function hh(newValue,oldValue,scope){
 for(var i = 0;i < gdp1.length; i++){
+  //temp=1代表是2016到2025年的数据，
     if(tmp === 1){
    gdp1[i]=Math.round((newValue*0.03)*400+tgdp1[i]);
    popData1[i]=((newValue*0.03)*100000+tmpData1[i]);
 
  }
  else if(tmp === 2){
+    //temp=1代表是2026到2035年的数据
     gdp2[i]=(newValue*0.03)*400+tgdp2[i];
     popData2[i]=((newValue*0.03)*100000+tmpData1[i]);
 
   }
 else{
+    //temp=1代表是2036到2045年的数据
       gdp3[i]=(newValue*0.03)*400+tgdp3[i];
       popData3[i]=((newValue*0.03)*100000+tmpData1[i]);
 
   }
   }
 }
+//如果rr发生变化
 $scope.$watch($scope.rr,hh);
+$scope.$watch($scope.rr,hh);
+//滚动条函数的结束
+
+
+
+
          $scope.predictChart ={
 options:{ chart: {
             zoomType: 'xy'
@@ -1776,7 +1789,7 @@ options:{ chart: {
             color: '#8968CD',
             yAxis: 2,
             //xie
-            data: [0.83, 0.82, 0.808,0.81, 0.819, 0.821, 0.841, 0.8425, 0.85, 0.85],
+            data: [0.825, 0.827, 0.829,0.826, 0.829, 0.831, 0.836, 0.834, 0.836, 0.838],
             marker: {
                 enabled: true,
                 symbol:"circle"

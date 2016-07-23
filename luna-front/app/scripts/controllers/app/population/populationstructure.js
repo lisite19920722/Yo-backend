@@ -135,6 +135,7 @@ $scope.showPopulationDetail1 = function(){
       }
     }
     }
+    /*
     popData13[0]=parseFloat(((popData13[0]/(sumMale6+sumFemale6))*100).toFixed(2));
     popData13[1]=parseFloat(((popData13[1]/(sumMale6+sumFemale6))*100).toFixed(2));
     popData13[2]=parseFloat(((popData13[2]/(sumMale6+sumFemale6))*100).toFixed(2));
@@ -160,7 +161,7 @@ $scope.showPopulationDetail1 = function(){
     popData14[10]=parseFloat(((popData14[10]/(sumMale6+sumFemale6))*100).toFixed(2));
 
     //計算各年60歲以上人口比例
-
+*/
 
 
 
@@ -254,6 +255,7 @@ $scope.showPopulationDetail1 = function(){
       }
     }
     }
+    /*
     popData1[0]=parseFloat(((popData1[0]/(sumMale+sumFemale))*100).toFixed(2));
     popData1[1]=parseFloat(((popData1[1]/(sumMale+sumFemale))*100).toFixed(2));
     popData1[2]=parseFloat(((popData1[2]/(sumMale+sumFemale))*100).toFixed(2));
@@ -280,7 +282,7 @@ $scope.showPopulationDetail1 = function(){
 
 
 
-
+*/ 
 
  
  //2025年的数据
@@ -368,6 +370,7 @@ $scope.showPopulationDetail1 = function(){
       }
     }
     }
+    /*
     popData3[0]=parseFloat(((popData3[0]/(sumMale1+sumFemale1))*100).toFixed(2));
     popData3[1]=parseFloat(((popData3[1]/(sumMale1+sumFemale1))*100).toFixed(2));
     popData3[2]=parseFloat(((popData3[2]/(sumMale1+sumFemale1))*100).toFixed(2));
@@ -395,7 +398,7 @@ $scope.showPopulationDetail1 = function(){
 
 
 
-
+*/
 
 
   //2030年的数据
@@ -483,6 +486,7 @@ $scope.showPopulationDetail1 = function(){
       }
     }
     }
+    /*
     popData5[0]=parseFloat(((popData5[0]/(sumMale2+sumFemale2))*100).toFixed(2));
     popData5[1]=parseFloat(((popData5[1]/(sumMale2+sumFemale2))*100).toFixed(2));
     popData5[2]=parseFloat(((popData5[2]/(sumMale2+sumFemale2))*100).toFixed(2));
@@ -509,7 +513,7 @@ $scope.showPopulationDetail1 = function(){
 
 
 
-
+*/
 
 
    //2035年的数据
@@ -597,6 +601,7 @@ $scope.showPopulationDetail1 = function(){
       }
     }
     }
+    /*
     popData7[0]=parseFloat(((popData7[0]/(sumMale3+sumFemale3))*100).toFixed(2));
     popData7[1]=parseFloat(((popData7[1]/(sumMale3+sumFemale3))*100).toFixed(2));
     popData7[2]=parseFloat(((popData7[2]/(sumMale3+sumFemale3))*100).toFixed(2));
@@ -621,7 +626,7 @@ $scope.showPopulationDetail1 = function(){
     popData8[9]=parseFloat(((popData8[9]/(sumMale3+sumFemale3))*100).toFixed(2));
     popData8[10]=parseFloat(((popData8[10]/(sumMale3+sumFemale3))*100).toFixed(2));
 
-
+*/
 
 
 
@@ -711,6 +716,7 @@ $scope.showPopulationDetail1 = function(){
       }
     }
     }
+    /*
     popData9[0]=parseFloat(((popData9[0]/(sumMale4+sumFemale4))*100).toFixed(2));
     popData9[1]=parseFloat(((popData9[1]/(sumMale4+sumFemale4))*100).toFixed(2));
     popData9[2]=parseFloat(((popData9[2]/(sumMale4+sumFemale4))*100).toFixed(2));
@@ -738,7 +744,7 @@ $scope.showPopulationDetail1 = function(){
 
 
 
-
+*/
 
    //2045年的数据
     var popData11=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测男性数据
@@ -825,6 +831,7 @@ $scope.showPopulationDetail1 = function(){
       }
     }
     }
+    /*
     popData11[0]=parseFloat(((popData11[0]/(sumMale5+sumFemale5))*100).toFixed(2));
     popData11[1]=parseFloat(((popData11[1]/(sumMale5+sumFemale5))*100).toFixed(2));
     popData11[2]=parseFloat(((popData11[2]/(sumMale5+sumFemale5))*100).toFixed(2));
@@ -849,7 +856,7 @@ $scope.showPopulationDetail1 = function(){
     popData12[9]=parseFloat(((popData12[9]/(sumMale5+sumFemale5))*100).toFixed(2));
     popData12[10]=parseFloat(((popData12[10]/(sumMale5+sumFemale5))*100).toFixed(2));
 
-
+*/
 //2015年
   $scope.years = ["年龄","0-5岁", "6-11岁","12-17岁", "18-23岁", "24-29岁", "30-35岁", "36-41岁", "42-47岁", "48-53岁", "54-59岁", "60岁以上"];
       $scope.male15= ["男性",popData13[0]+"%", popData13[1]+"%", popData13[2]+"%",  popData13[3]+"%",  popData13[4]+"%",  popData13[5]+"%",  popData13[6]+"%",  popData13[7]+"%",  popData13[8]+"%",  popData13[9]+"%",  popData13[10]+"%"];
@@ -1349,20 +1356,20 @@ var points =[
         $scope.age_ration.options.colors=columnColors;
         $scope.age_ration.options.title.text="太仓市2015/2020年人口结构图";
         $scope.age_ration.series=[{
-            name: '2015年男性比例',
+            name: '2015年男性人口',
             data: popData13,
             stack: 'male'
         },{
           //  popData13代表的是2015年男性的数量
-            name: '2015年女性比例',
+            name: '2015年女性人口',
             data: popData13,
             stack: 'male'
         },{
-            name: '2020年男性比例',
+            name: '2020年男性人口',
             data: popData1,
             stack: 'female'
         },{
-            name: '2020年女性比例',
+            name: '2020年女性人口',
             data: popData2,
             stack: 'female'
         }];
@@ -1387,19 +1394,19 @@ document.getElementById('oldManProportion').innerHTML='33.66';document.getElemen
          $scope.pyear="2025";
         $scope.age_ration.options.title.text="太仓市2015/2025人口结构图";
         $scope.age_ration.series=[{
-            name: '2015年男性比例',
+            name: '2015年男性人口',
             data: popData13,
             stack: 'male'
         },{
-            name: '2015年女性比例',
+            name: '2015年女性人口',
             data: popData14,
             stack: 'male'
         },{
-            name: '2025年男性比例',
+            name: '2025年男性人口',
             data: popData3,
             stack: 'female'
         },{
-            name: '2025年女性比例',
+            name: '2025年女性人口',
             data: popData4,
             stack: 'female'
         }];
@@ -1425,19 +1432,19 @@ document.getElementById('sexRatio').innerHTML='104.75：100';
         $scope.age_ration.options.colors=columnColors;
         $scope.age_ration.options.title.text="太仓市2015/2030人口结构图";
         $scope.age_ration.series=[{
-            name: '2015年男性比例',
+            name: '2015年男性人口',
             data: popData13,
             stack: 'male'
         },{
-            name: '2015年女性比例',
+            name: '2015年女性人口',
             data: popData14,
             stack: 'male'
         },{
-            name: '2030年男性比例',
+            name: '2030年男性人口',
             data: popData5,
             stack: 'female'
         },{
-            name: '2030年女性比例',
+            name: '2030年女性人口',
             data: popData6,
             stack: 'female'
         }];
@@ -1462,19 +1469,19 @@ document.getElementById('sexRatio').innerHTML='104.68：100';
         $scope.age_ration.options.colors=columnColors;
         $scope.age_ration.options.title.text="太仓市2015/2040人口结构图";
         $scope.age_ration.series=[{
-            name: '2015年男性比例',
+            name: '2015年男性人口',
             data: popData13,
             stack: 'male'
         },{
-            name: '2015年女性比例',
+            name: '2015年女性人口',
             data: popData14,
             stack: 'male'
         },{
-            name: '2040年男性比例',
+            name: '2040年男性人口',
             data: popData9,
             stack: 'female'
         },{
-            name: '2040年女性比例',
+            name: '2040年女性人口',
             data: popData10,
             stack: 'female'
         }];
@@ -1502,19 +1509,19 @@ document.getElementById('oldManProportion').innerHTML='33.92';
         $scope.age_ration.options.colors=columnColors;
         $scope.age_ration.options.title.text="太仓市2015/2035人口结构图";
         $scope.age_ration.series=[{
-            name: '2015年男性比例',
+            name: '2015年男性人口',
             data: popData13,
             stack: 'male'
         }, {
-            name: '2015年女性比例',
+            name: '2015年女性人口',
             data: popData14,
             stack: 'male'
         }, {
-            name: '2035年男性比例',
+            name: '2035年男性人口',
             data: popData7,
             stack: 'female'
         },{
-            name: '2035年女性比例',
+            name: '2035年女性人口',
             data: popData8,
             stack: 'female'
         }];
@@ -1542,19 +1549,19 @@ document.getElementById('oldManProportion').innerHTML='33.92';
         $scope.age_ration.options.colors=columnColors;
         $scope.age_ration.options.title.text="太仓市2015/2045人口结构图";
         $scope.age_ration.series=[{
-            name: '2015年男性比例',
+            name: '2015年男性人口',
             data: popData13,
             stack: 'male'
         },{
-            name: '2015年前女性比例',
+            name: '2015年女性人口',
             data: popData14,
             stack: 'male'
         },{
-            name: '2045年男性比例',
+            name: '2045年男性人口',
             data: popData11,
             stack: 'female'
         },{
-            name: '2045女性比例',
+            name: '2045女性人口',
             data: popData12,
             stack: 'female'
         }];
@@ -1607,15 +1614,15 @@ document.getElementById('oldManProportion').innerHTML='33.92';
             allowDecimals: false,
             min: 0,
             title: {
-                text: '人口比例(%)'
+                text: '人口数量(人)'
             }
         },
 
         tooltip: {
             formatter: function() {
                 return ' <b>'+ this.x +'</b><br/>'+
-                    this.series.name +': '+ this.y +'%'+'<br/>'+
-                    '总共: '+ this.point.stackTotal+'%';
+                    this.series.name +': '+ this.y +'<br/>'+
+                    '总共: '+ this.point.stackTotal;
             }
         },
 
@@ -1627,19 +1634,19 @@ document.getElementById('oldManProportion').innerHTML='33.92';
       },
 
         series: [{
-            name: '2015年男性比例',
+            name: '2015年男性人口',
             data: popData13,
             stack: 'male'
         },{
-            name: '2015年女性比例',
+            name: '2015年女性人口',
             data: popData14,
             stack: 'male'
         },{
-            name: '2020年男性比例',
+            name: '2020年男性人口',
             data: popData1,
             stack: 'female'
         },{
-            name: '2020年女性比例',
+            name: '2020年女性人口',
             data: popData2,
             stack: 'female'
         }]
