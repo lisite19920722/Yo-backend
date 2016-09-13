@@ -78,7 +78,7 @@ app.controller('WaterCtrl', ['$scope','ResTool','EnvironmentRes','$http',functio
                 {
                     name: '太仓市佳煌针织印染有限公司',
                     // data: $scope.list11
-                    data: [5122, 2919, 4323, 1767, 2310, 4559, 1929],        
+                    data: [4963, 4619, 5012, 4660, 4893, 4559, 4711],        
                     color:"#7cb5ec"
                 }, {
                     name: '洛克伍德染料有限公司',
@@ -112,13 +112,13 @@ app.controller('WaterCtrl', ['$scope','ResTool','EnvironmentRes','$http',functio
             tabledata:
             [
                 {yearvalue:'日期',JLfactory:'太仓市佳煌针织印染有限公司（吨）' ,Afactory:'洛克伍德燃料有限公司（吨）',Bfactory:'太仓虹盛印染厂（吨）',Cfactory:'太仓市金佳漂染厂（吨）',Dfactory:'江苏长乐纤维科技有限公司（吨）'},
-                {yearvalue:$scope.box1Date[0], JLfactory:5122,Afactory:1595,Bfactory:1016,Cfactory:649,Dfactory:1654},
-                {yearvalue:$scope.box1Date[1], JLfactory:2919,Afactory:1200,Bfactory:830,Cfactory:966,Dfactory:1556},
-                {yearvalue:$scope.box1Date[2], JLfactory:4323,Afactory:1914,Bfactory:902,Cfactory:1078,Dfactory:1865},
-                {yearvalue:$scope.box1Date[3], JLfactory:1767,Afactory:1444,Bfactory:1134,Cfactory:902,Dfactory:2567},
-                {yearvalue:$scope.box1Date[4], JLfactory:2310,Afactory:1568,Bfactory:616,Cfactory:2037,Dfactory:2015},
+                {yearvalue:$scope.box1Date[0], JLfactory:4963,Afactory:1595,Bfactory:1016,Cfactory:649,Dfactory:1654},
+                {yearvalue:$scope.box1Date[1], JLfactory:4619,Afactory:1200,Bfactory:830,Cfactory:966,Dfactory:1556},
+                {yearvalue:$scope.box1Date[2], JLfactory:5012,Afactory:1914,Bfactory:902,Cfactory:1078,Dfactory:1865},
+                {yearvalue:$scope.box1Date[3], JLfactory:4660,Afactory:1444,Bfactory:1134,Cfactory:902,Dfactory:2567},
+                {yearvalue:$scope.box1Date[4], JLfactory:4893,Afactory:1568,Bfactory:616,Cfactory:2037,Dfactory:2015},
                 {yearvalue:$scope.box1Date[5], JLfactory:4559,Afactory:1862,Bfactory:349,Cfactory:1813,Dfactory:1892},
-                {yearvalue:$scope.box1Date[6], JLfactory:1929,Afactory:1717,Bfactory:508,Cfactory:1489,Dfactory:1568}
+                {yearvalue:$scope.box1Date[6], JLfactory:4711,Afactory:1717,Bfactory:508,Cfactory:1489,Dfactory:1568}
             ]
         };
         // $scope.totaldata = { 

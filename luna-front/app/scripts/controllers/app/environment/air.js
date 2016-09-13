@@ -310,7 +310,7 @@ app.controller('AirCtrl', ['$scope','ResTool','EnvironmentRes','$timeout',functi
 					},
 					yAxis: {
 							title: {
-									text: '空气质量指数(AQI)值'
+									text: '空气质量指数(AQI)日均值'
 							}
 					},
 					legend: {
