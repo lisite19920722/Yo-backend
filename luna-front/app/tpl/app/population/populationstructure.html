@@ -121,7 +121,7 @@
                             <div class="panel panel-default paddingmargin0em">
 
                                 <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
-                                    <div class="panel-heading"><center>2015年数据详情</center></div>
+                                    <div class="panel-heading"><center>2015年户籍人口结构表</center></div>
                                     <tr class="ng-scope ng-isolate-scope">
                                         <th ng-repeat="year in years"><center>{{year}}</center></th>
                                     </tr>
@@ -134,7 +134,7 @@
                                     </tr>
                                 </table>
                                 <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
-                                    <div class="panel-heading"><center>{{pyear}}年数据详情</center></div>
+                                    <div class="panel-heading"><center>{{pyear}}户籍人口结构预测表</center></div>
                                     <tr class="ng-scope ng-isolate-scope">
                                         <th ng-repeat="year in years"><center>{{year}}</center></th>
                                     </tr>
@@ -252,7 +252,7 @@
                         <div class="bg-white fc-datatable" ng-if="totalshow1" style="border:0px;">
                             <div class="panel panel-default paddingmargin0em"> 
                                 <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
-                                    <div class="panel-heading"><center>{{sumyear}}年数据详情</center></div>
+                                    <div class="panel-heading"><center>{{sumyear}}常住人口总量预测表</center></div>
                                     <tr class="ng-scope ng-isolate-scope">
                                         <td>年份</td>
                                         <td ng-repeat="year in sumpopulation.options.xAxis[0].categories">{{year}}</td>
@@ -283,7 +283,7 @@
             <div class="panel panel-primary" style="margin-top: 50px;">
                 
                 <div class="topbar">
-                    <h4 class="cgq_title">当前各乡镇常住人口自然增长率分析</h4>
+                    <h4 class="cgq_title">当前各乡镇常住年度人口自然增长率分析</h4>
                 </div>
 
                 <div class="panel-body" style="padding-top:0px;padding-bottom:0px;">
@@ -345,7 +345,7 @@
                         <div class="bg-white fc-datatable" ng-if="totalshow2" style="border:0px;">
                             <div class="panel panel-default paddingmargin0em">  
                                 <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
-                                    <div  class="panel-heading"><strong><center>2015年各城镇数据详情</center></strong></div>
+                                    <div  class="panel-heading"><strong><center>2015年各城镇人口详情表</center></strong></div>
                                     <tr class="ng-scope ng-isolate-scope">
                                         <td>城镇名称</td>
                                         <td ng-repeat="year in townsname">{{year}}</td>
