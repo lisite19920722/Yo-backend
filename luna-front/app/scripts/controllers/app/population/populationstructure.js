@@ -2113,26 +2113,7 @@ $scope.sumpopulation={
                 }
              }
         }],
-        yAxis: [
-         { // Secondary yAxis
-            title: {
-                text: '人口总量（人）',
-                style: {
-                    color: Highcharts.getOptions().colors[1]
-                },
-                
-                 //tickPositions: [0, 100000, 200000, 300000,400000,500000,600000,700000,800000,900000] 
-            },
-            labels: {
-
-                format: '{value}',
-                style: {
-                    color: Highcharts.getOptions().colors[1]
-                }
-
-            }
-        },
-        { // Primary yAxis
+        yAxis: [{ // Primary yAxis
             labels: {
                 format: '{value}%',
                 style: {
@@ -2145,12 +2126,26 @@ $scope.sumpopulation={
                     color: Highcharts.getOptions().colors[1]
                 }
             },
-             opposite: true,
-            tickPositions: [0, 0.1, 0.2, 0.3,0.4,0.5,0.6,0.7,0.8,0.9]
-        }, 
+            opposite: true
+        }, { // Secondary yAxis
+            title: {
+                text: '人口总量（人）',
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                },
+                
+                 tickPositions: [0, 100000, 200000, 300000,400000,500000,600000,700000,800000,900000] 
+            },
+            labels: {
 
-            
-        ],
+                format: '{value}',
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                },
+
+            },
+            // opposite: true
+        }],
         tooltip: {
             shared: true
         },
@@ -2160,6 +2155,16 @@ $scope.sumpopulation={
        
       },
         series: [{
+            name: '人口总量',
+            type: 'column',
+            yAxis: 1,
+            color: "#7CB5EC",
+            data: sum1,
+            tooltip: {
+                valueSuffix: '人'
+            }
+
+        }, {
             name: '人口增长率',
             type: 'spline',
              color: "#858585",
@@ -2170,19 +2175,7 @@ $scope.sumpopulation={
             tooltip: {
                 valueSuffix: '%'
             }
-        },
-   {
-            name: '人口总量',
-            type: 'column',
-            yAxis: 1,
-            color: "#7CB5EC",
-            data: sum1,
-            tooltip: {
-                valueSuffix: '人'
-            }
-
-        }
-        ]
+        }]
       };
       $scope.btn_click1=function(btn){
     $scope.change1(btn);

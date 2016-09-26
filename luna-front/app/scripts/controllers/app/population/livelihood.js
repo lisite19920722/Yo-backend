@@ -517,7 +517,8 @@ $scope.jobt ={
                 style: {
                     color: Highcharts.getOptions().colors[1]
                 }
-            }
+            },
+                  opposite: true
         }, { // Secondary yAxis
             title: {
                 text: '就业人数',
@@ -530,8 +531,8 @@ $scope.jobt ={
                 style: {
                     color: Highcharts.getOptions().colors[0]
                 }
-            },
-            opposite: true
+            }
+          
         }],
         tooltip: {
             valueSuffix: '%'
@@ -671,7 +672,7 @@ $scope.school={
             type: 'column'
         },
         title: {
-            text: '太仓市各乡镇2025年学校数量分析预测'
+            text: '太仓市各乡镇2025年年度学校数量分析预测'
         },
         credits:{
             enabled:false
