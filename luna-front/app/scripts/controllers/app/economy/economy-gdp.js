@@ -42,7 +42,8 @@ app.controller('EconomyGdpCtrl', ['$scope','$stateParams','ResTool','EconomyRes'
                     '2015',
                     '2016',
                     '2017',
-                    '2018'
+                    '2018',
+                    '2019'
                     
                 ];
        $scope.yearGDPChart={

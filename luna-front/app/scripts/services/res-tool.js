@@ -52,6 +52,7 @@ angular.module('luna')
      */
     function addWorkspaceId(headers) {
       headers[WORKSPACE_ID] = $sessionStorage[CURR_WORKSPACE].id || null;
+      console.log($sessionStorage[CURR_WORKSPACE].id);
       return headers;
     }
 
