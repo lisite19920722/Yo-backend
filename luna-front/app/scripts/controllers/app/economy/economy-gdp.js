@@ -30,8 +30,6 @@ app.controller('EconomyGdpCtrl', ['$scope','$stateParams','ResTool','EconomyRes'
         $scope.forecast=!$scope.forecast;
       };
         $scope.xAxis= [
-                    
-                    '2007',
                     '2008',
                     '2009',
                     '2010',
@@ -42,7 +40,8 @@ app.controller('EconomyGdpCtrl', ['$scope','$stateParams','ResTool','EconomyRes'
                     '2015',
                     '2016',
                     '2017',
-                    '2018'
+                    '2018',
+                    '2019'
                     
                 ];
        $scope.yearGDPChart={

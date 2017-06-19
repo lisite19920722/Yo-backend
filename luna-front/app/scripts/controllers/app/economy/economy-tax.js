@@ -25,7 +25,7 @@ app.controller('EconomyTaxCtrl', ['$scope','$stateParams','ResTool','EconomyTaxR
 
     $scope.taxForecastdate = rc.data.forecastYearTax;
     $scope.ratedate = rc.data.yearGrowUp;
-    $scope.yearArray = ['2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018'];
+    $scope.yearArray = ['2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019'];
     $scope.yearTaxChart = {
         options: {
           chart: {

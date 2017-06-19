@@ -1,8 +1,8 @@
 'use strict';
 
-app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRes','ResTool',function($scope, $stateParams,PopulationRes,ResTool) {
+app.controller('PopulationStructureCtrl', ['$scope', '$stateParams', 'PopulationRes', 'ResTool', function($scope, $stateParams, PopulationRes, ResTool) {
     (function() {
-      document.body.scrollIntoView();
+        document.body.scrollIntoView();
     })();
     $scope.data = null;
     var popData;
@@ -11,131 +11,131 @@ app.controller('PopulationStructureCtrl', ['$scope','$stateParams','PopulationRe
 
 
 
-//是否显示人口结构数据详情函数
-  $scope.showPopulationDetail = function(){
-      $scope.totalshow= !$scope.totalshow;
+    //是否显示人口结构数据详情函数
+    $scope.showPopulationDetail = function() {
+        $scope.totalshow = !$scope.totalshow;
     };
-  //是否显示人口总量数据详情
-$scope.showPopulationDetail1 = function(){
-      $scope.totalshow1= !$scope.totalshow1;
+    //是否显示人口总量数据详情
+    $scope.showPopulationDetail1 = function() {
+        $scope.totalshow1 = !$scope.totalshow1;
     };
-    $scope.showPopulationDetail2 = function(){
-      $scope.totalshow2= !$scope.totalshow2;
+    $scope.showPopulationDetail2 = function() {
+        $scope.totalshow2 = !$scope.totalshow2;
     };
 
-  
+
     //列表中的数据
-    
 
-        
 
-    var promise = ResTool.httpGetWithWorkspace(PopulationRes.getPopulationStructurePreData,{},{});
+
+
+    var promise = ResTool.httpGetWithWorkspace(PopulationRes.getPopulationStructurePreData, {}, {});
     promise.then(function(rc) {
 
 
 
-    popData=rc.data;
-     
+        popData = rc.data;
 
-    //2015年的数据
-    var popData13=[0,0,0,0,0,0,0,0,0,0,0]; 
-    
-    var popData14=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测女性数据
-    var sumMale6=0;//初始化男性总数
-    var sumFemale6=0;//初始化女性总数
-    var curMale=[];
-    var curMale1=[];
-    for(var i=0;i<popData.length;i++){
-      if(popData[i].preYear===2015){
-        if(popData[i].sexType_id===1){ //当前男性
-          curMale.push(-popData[i].preResidentPopulation);
-          //2015年男性总人数
-           sumMale6+=popData[i].preResidentPopulation;
-           if(popData[i].ageType_id<6&&popData[i].ageType_id>=0){
-            //2015年0-5岁男性总人数
-                 popData13[0]+=popData[i].preResidentPopulation;
+
+        //2015年的数据
+        var popData13 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+        var popData14 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //初始化预测女性数据
+        var sumMale6 = 0; //初始化男性总数
+        var sumFemale6 = 0; //初始化女性总数
+        var curMale = [];
+        var curMale1 = [];
+        for (var i = 0; i < popData.length; i++) {
+            if (popData[i].preYear === 2015) {
+                if (popData[i].sexType_id === 1) { //当前男性
+                    curMale.push(-popData[i].preResidentPopulation);
+                    //2015年男性总人数
+                    sumMale6 += popData[i].preResidentPopulation;
+                    if (popData[i].ageType_id < 6 && popData[i].ageType_id >= 0) {
+                        //2015年0-5岁男性总人数
+                        popData13[0] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 12 && popData[i].ageType_id >= 6) {
+                        //2015年6-11岁男性总人数
+                        popData13[1] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 18 && popData[i].ageType_id >= 12) {
+                        //2015年12-17岁男性总人数
+                        popData13[2] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 24 && popData[i].ageType_id >= 18) {
+                        //2015年18-23岁男性总人数
+                        popData13[3] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 30 && popData[i].ageType_id >= 24) {
+                        //2015年24-29岁男性总人数
+                        popData13[4] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 36 && popData[i].ageType_id >= 30) {
+                        //2015年30-35岁男性总人数
+                        popData13[5] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 42 && popData[i].ageType_id >= 36) {
+                        //2015年36-41岁男性总人数
+                        popData13[6] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 48 && popData[i].ageType_id >= 42) {
+                        //2015年42-47岁男性总人数
+                        popData13[7] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 54 && popData[i].ageType_id >= 48) {
+                        //2015年48-53岁男性总人数
+                        popData13[8] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 60 && popData[i].ageType_id >= 54) {
+                        //2015年54-59岁男性总人数
+                        popData13[9] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id >= 60) {
+                        //2015年60岁以上男性总人数
+                        popData13[10] += popData[i].preResidentPopulation;
+                    }
+                }
+                if (popData[i].sexType_id === 2) { //预测女性
+                    curMale1.push(popData[i].preResidentPopulation);
+                    sumFemale6 += popData[i].preResidentPopulation;
+                    if (popData[i].ageType_id < 6 && popData[i].ageType_id >= 0) {
+                        popData14[0] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 12 && popData[i].ageType_id >= 6) {
+                        popData14[1] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 18 && popData[i].ageType_id >= 12) {
+                        popData14[2] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 24 && popData[i].ageType_id >= 18) {
+                        popData14[3] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 30 && popData[i].ageType_id >= 24) {
+                        popData14[4] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 36 && popData[i].ageType_id >= 30) {
+                        popData14[5] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 42 && popData[i].ageType_id >= 36) {
+                        popData14[6] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 48 && popData[i].ageType_id >= 42) {
+                        popData14[7] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 54 && popData[i].ageType_id >= 48) {
+                        popData14[8] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 60 && popData[i].ageType_id >= 54) {
+                        popData14[9] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id >= 60) {
+                        popData14[10] += popData[i].preResidentPopulation;
+                    }
+                }
             }
-           if(popData[i].ageType_id<12&&popData[i].ageType_id>=6){
-            //2015年6-11岁男性总人数
-                 popData13[1]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<18&&popData[i].ageType_id>=12){
-            //2015年12-17岁男性总人数
-                 popData13[2]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<24&&popData[i].ageType_id>=18){
-            //2015年18-23岁男性总人数
-                 popData13[3]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<30&&popData[i].ageType_id>=24){
-            //2015年24-29岁男性总人数
-                 popData13[4]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<36&&popData[i].ageType_id>=30){
-            //2015年30-35岁男性总人数
-                 popData13[5]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<42&&popData[i].ageType_id>=36){
-            //2015年36-41岁男性总人数
-                 popData13[6]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<48&&popData[i].ageType_id>=42){
-            //2015年42-47岁男性总人数
-                 popData13[7]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<54&&popData[i].ageType_id>=48){
-            //2015年48-53岁男性总人数
-                 popData13[8]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<60&&popData[i].ageType_id>=54){
-            //2015年54-59岁男性总人数
-                 popData13[9]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id>=60){
-            //2015年60岁以上男性总人数
-                 popData13[10]+=popData[i].preResidentPopulation;
-            }
-      }
-      if(popData[i].sexType_id===2){  //预测女性
-        curMale1.push(popData[i].preResidentPopulation);
-           sumFemale6+=popData[i].preResidentPopulation;
-           if(popData[i].ageType_id<6&&popData[i].ageType_id>=0){
-                 popData14[0]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<12&&popData[i].ageType_id>=6){
-                 popData14[1]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<18&&popData[i].ageType_id>=12){
-                 popData14[2]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<24&&popData[i].ageType_id>=18){
-                 popData14[3]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<30&&popData[i].ageType_id>=24){
-                 popData14[4]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<36&&popData[i].ageType_id>=30){
-                 popData14[5]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<42&&popData[i].ageType_id>=36){
-                 popData14[6]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<48&&popData[i].ageType_id>=42){
-                 popData14[7]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<54&&popData[i].ageType_id>=48){
-                 popData14[8]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<60&&popData[i].ageType_id>=54){
-                 popData14[9]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id>=60){
-                 popData14[10]+=popData[i].preResidentPopulation;
-            }
-      }
-    }
-    }
-    /*
+        }
+        /*
     popData13[0]=parseFloat(((popData13[0]/(sumMale6+sumFemale6))*100).toFixed(2));
     popData13[1]=parseFloat(((popData13[1]/(sumMale6+sumFemale6))*100).toFixed(2));
     popData13[2]=parseFloat(((popData13[2]/(sumMale6+sumFemale6))*100).toFixed(2));
@@ -169,93 +169,93 @@ $scope.showPopulationDetail1 = function(){
 
 
 
- 
-//2020年的数据
-    var popData1=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测男性数据
-    var popData2=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测女性数据
-    var sumMale=0;//初始化男性总数
-    var sumFemale=0;//初始化女性总数
-    var male20=[];
-    var female20=[];
-    for(var i=0;i<popData.length;i++){
-      if(popData[i].preYear===2020){
-        if(popData[i].sexType_id===1){ //预测男性
-          male20.push(-popData[i].preResidentPopulation);
-           sumMale+=popData[i].preResidentPopulation;
-           if(popData[i].ageType_id<6&&popData[i].ageType_id>=0){
-                 popData1[0]+=popData[i].preResidentPopulation;
+
+        //2020年的数据
+        var popData1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //初始化预测男性数据
+        var popData2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //初始化预测女性数据
+        var sumMale = 0; //初始化男性总数
+        var sumFemale = 0; //初始化女性总数
+        var male20 = [];
+        var female20 = [];
+        for (var i = 0; i < popData.length; i++) {
+            if (popData[i].preYear === 2020) {
+                if (popData[i].sexType_id === 1) { //预测男性
+                    male20.push(-popData[i].preResidentPopulation);
+                    sumMale += popData[i].preResidentPopulation;
+                    if (popData[i].ageType_id < 6 && popData[i].ageType_id >= 0) {
+                        popData1[0] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 12 && popData[i].ageType_id >= 6) {
+                        popData1[1] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 18 && popData[i].ageType_id >= 12) {
+                        popData1[2] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 24 && popData[i].ageType_id >= 18) {
+                        popData1[3] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 30 && popData[i].ageType_id >= 24) {
+                        popData1[4] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 36 && popData[i].ageType_id >= 30) {
+                        popData1[5] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 42 && popData[i].ageType_id >= 36) {
+                        popData1[6] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 48 && popData[i].ageType_id >= 42) {
+                        popData1[7] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 54 && popData[i].ageType_id >= 48) {
+                        popData1[8] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 60 && popData[i].ageType_id >= 54) {
+                        popData1[9] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id >= 60) {
+                        popData1[10] += popData[i].preResidentPopulation;
+                    }
+                }
+                if (popData[i].sexType_id === 2) { //预测女性
+                    female20.push(popData[i].preResidentPopulation);
+                    sumFemale += popData[i].preResidentPopulation;
+                    if (popData[i].ageType_id < 6 && popData[i].ageType_id >= 0) {
+                        popData2[0] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 12 && popData[i].ageType_id >= 6) {
+                        popData2[1] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 18 && popData[i].ageType_id >= 12) {
+                        popData2[2] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 24 && popData[i].ageType_id >= 18) {
+                        popData2[3] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 30 && popData[i].ageType_id >= 24) {
+                        popData2[4] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 36 && popData[i].ageType_id >= 30) {
+                        popData2[5] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 42 && popData[i].ageType_id >= 36) {
+                        popData2[6] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 48 && popData[i].ageType_id >= 42) {
+                        popData2[7] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 54 && popData[i].ageType_id >= 48) {
+                        popData2[8] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 60 && popData[i].ageType_id >= 54) {
+                        popData2[9] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id >= 60) {
+                        popData2[10] += popData[i].preResidentPopulation;
+                    }
+                }
             }
-           if(popData[i].ageType_id<12&&popData[i].ageType_id>=6){
-                 popData1[1]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<18&&popData[i].ageType_id>=12){
-                 popData1[2]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<24&&popData[i].ageType_id>=18){
-                 popData1[3]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<30&&popData[i].ageType_id>=24){
-                 popData1[4]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<36&&popData[i].ageType_id>=30){
-                 popData1[5]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<42&&popData[i].ageType_id>=36){
-                 popData1[6]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<48&&popData[i].ageType_id>=42){
-                 popData1[7]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<54&&popData[i].ageType_id>=48){
-                 popData1[8]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<60&&popData[i].ageType_id>=54){
-                 popData1[9]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id>=60){
-                 popData1[10]+=popData[i].preResidentPopulation;
-            }
-      }
-      if(popData[i].sexType_id===2){  //预测女性
-        female20.push(popData[i].preResidentPopulation);
-           sumFemale+=popData[i].preResidentPopulation;
-           if(popData[i].ageType_id<6&&popData[i].ageType_id>=0){
-                 popData2[0]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<12&&popData[i].ageType_id>=6){
-                 popData2[1]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<18&&popData[i].ageType_id>=12){
-                 popData2[2]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<24&&popData[i].ageType_id>=18){
-                 popData2[3]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<30&&popData[i].ageType_id>=24){
-                 popData2[4]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<36&&popData[i].ageType_id>=30){
-                 popData2[5]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<42&&popData[i].ageType_id>=36){
-                 popData2[6]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<48&&popData[i].ageType_id>=42){
-                 popData2[7]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<54&&popData[i].ageType_id>=48){
-                 popData2[8]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<60&&popData[i].ageType_id>=54){
-                 popData2[9]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id>=60){
-                 popData2[10]+=popData[i].preResidentPopulation;
-            }
-      }
-    }
-    }
-    /*
+        }
+        /*
     popData1[0]=parseFloat(((popData1[0]/(sumMale+sumFemale))*100).toFixed(2));
     popData1[1]=parseFloat(((popData1[1]/(sumMale+sumFemale))*100).toFixed(2));
     popData1[2]=parseFloat(((popData1[2]/(sumMale+sumFemale))*100).toFixed(2));
@@ -282,95 +282,95 @@ $scope.showPopulationDetail1 = function(){
 
 
 
-*/ 
+*/
 
- 
- //2025年的数据
-    var popData3=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测男性数据
-    var popData4=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测女性数据
-    var sumMale1=0;//初始化男性总数
-    var sumFemale1=0;//初始化女性总数
-    var male25=[];
-    var female25=[];
-    for(var i=0;i<popData.length;i++){
-      if(popData[i].preYear===2025){ 
-        if(popData[i].sexType_id===1){ //预测男性
-          male25.push(-popData[i].preResidentPopulation);
-           sumMale1+=popData[i].preResidentPopulation;
-           if(popData[i].ageType_id<6&&popData[i].ageType_id>=0){
-                 popData3[0]+=popData[i].preResidentPopulation;
+
+        //2025年的数据
+        var popData3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //初始化预测男性数据
+        var popData4 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //初始化预测女性数据
+        var sumMale1 = 0; //初始化男性总数
+        var sumFemale1 = 0; //初始化女性总数
+        var male25 = [];
+        var female25 = [];
+        for (var i = 0; i < popData.length; i++) {
+            if (popData[i].preYear === 2025) {
+                if (popData[i].sexType_id === 1) { //预测男性
+                    male25.push(-popData[i].preResidentPopulation);
+                    sumMale1 += popData[i].preResidentPopulation;
+                    if (popData[i].ageType_id < 6 && popData[i].ageType_id >= 0) {
+                        popData3[0] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 12 && popData[i].ageType_id >= 6) {
+                        popData3[1] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 18 && popData[i].ageType_id >= 12) {
+                        popData3[2] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 24 && popData[i].ageType_id >= 18) {
+                        popData3[3] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 30 && popData[i].ageType_id >= 24) {
+                        popData3[4] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 36 && popData[i].ageType_id >= 30) {
+                        popData3[5] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 42 && popData[i].ageType_id >= 36) {
+                        popData3[6] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 48 && popData[i].ageType_id >= 42) {
+                        popData3[7] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 54 && popData[i].ageType_id >= 48) {
+                        popData3[8] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 60 && popData[i].ageType_id >= 54) {
+                        popData3[9] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id >= 60) {
+                        popData3[10] += popData[i].preResidentPopulation;
+                    }
+                }
+                if (popData[i].sexType_id === 2) { //预测女性
+                    female25.push(popData[i].preResidentPopulation);
+                    sumFemale1 += popData[i].preResidentPopulation;
+                    if (popData[i].ageType_id < 6 && popData[i].ageType_id >= 0) {
+                        popData4[0] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 12 && popData[i].ageType_id >= 6) {
+                        popData4[1] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 18 && popData[i].ageType_id >= 12) {
+                        popData4[2] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 24 && popData[i].ageType_id >= 18) {
+                        popData4[3] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 30 && popData[i].ageType_id >= 24) {
+                        popData4[4] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 36 && popData[i].ageType_id >= 30) {
+                        popData4[5] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 42 && popData[i].ageType_id >= 36) {
+                        popData4[6] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 48 && popData[i].ageType_id >= 42) {
+                        popData4[7] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 54 && popData[i].ageType_id >= 48) {
+                        popData4[8] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 60 && popData[i].ageType_id >= 54) {
+                        popData4[9] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id >= 60) {
+                        popData4[10] += popData[i].preResidentPopulation;
+                    }
+                }
             }
-           if(popData[i].ageType_id<12&&popData[i].ageType_id>=6){
-                 popData3[1]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<18&&popData[i].ageType_id>=12){
-                 popData3[2]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<24&&popData[i].ageType_id>=18){
-                 popData3[3]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<30&&popData[i].ageType_id>=24){
-                 popData3[4]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<36&&popData[i].ageType_id>=30){
-                 popData3[5]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<42&&popData[i].ageType_id>=36){
-                 popData3[6]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<48&&popData[i].ageType_id>=42){
-                 popData3[7]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<54&&popData[i].ageType_id>=48){
-                 popData3[8]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<60&&popData[i].ageType_id>=54){
-                 popData3[9]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id>=60){
-                 popData3[10]+=popData[i].preResidentPopulation;
-            }
-      }
-      if(popData[i].sexType_id===2){  //预测女性
-           female25.push(popData[i].preResidentPopulation);
-           sumFemale1+=popData[i].preResidentPopulation;
-           if(popData[i].ageType_id<6&&popData[i].ageType_id>=0){
-                 popData4[0]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<12&&popData[i].ageType_id>=6){
-                 popData4[1]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<18&&popData[i].ageType_id>=12){
-                 popData4[2]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<24&&popData[i].ageType_id>=18){
-                 popData4[3]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<30&&popData[i].ageType_id>=24){
-                 popData4[4]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<36&&popData[i].ageType_id>=30){
-                 popData4[5]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<42&&popData[i].ageType_id>=36){
-                 popData4[6]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<48&&popData[i].ageType_id>=42){
-                 popData4[7]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<54&&popData[i].ageType_id>=48){
-                 popData4[8]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<60&&popData[i].ageType_id>=54){
-                 popData4[9]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id>=60){
-                 popData4[10]+=popData[i].preResidentPopulation;
-            }
-      }
-    }
-    }
-    /*
+        }
+        /*
     popData3[0]=parseFloat(((popData3[0]/(sumMale1+sumFemale1))*100).toFixed(2));
     popData3[1]=parseFloat(((popData3[1]/(sumMale1+sumFemale1))*100).toFixed(2));
     popData3[2]=parseFloat(((popData3[2]/(sumMale1+sumFemale1))*100).toFixed(2));
@@ -401,92 +401,92 @@ $scope.showPopulationDetail1 = function(){
 */
 
 
-  //2030年的数据
-    var popData5=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测男性数据
-    var popData6=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测女性数据
-    var sumMale2=0;//初始化男性总数
-    var sumFemale2=0;//初始化女性总数
-    var male30=[];
-    var female30=[];
-    for(var i=0;i<popData.length;i++){
-      if(popData[i].preYear===2030){
-        if(popData[i].sexType_id===1){ //预测男性
-           male30.push(-popData[i].preResidentPopulation);
-           sumMale2+=popData[i].preResidentPopulation;
-           if(popData[i].ageType_id<6&&popData[i].ageType_id>=0){
-                 popData5[0]+=popData[i].preResidentPopulation;
+        //2030年的数据
+        var popData5 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //初始化预测男性数据
+        var popData6 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //初始化预测女性数据
+        var sumMale2 = 0; //初始化男性总数
+        var sumFemale2 = 0; //初始化女性总数
+        var male30 = [];
+        var female30 = [];
+        for (var i = 0; i < popData.length; i++) {
+            if (popData[i].preYear === 2030) {
+                if (popData[i].sexType_id === 1) { //预测男性
+                    male30.push(-popData[i].preResidentPopulation);
+                    sumMale2 += popData[i].preResidentPopulation;
+                    if (popData[i].ageType_id < 6 && popData[i].ageType_id >= 0) {
+                        popData5[0] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 12 && popData[i].ageType_id >= 6) {
+                        popData5[1] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 18 && popData[i].ageType_id >= 12) {
+                        popData5[2] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 24 && popData[i].ageType_id >= 18) {
+                        popData5[3] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 30 && popData[i].ageType_id >= 24) {
+                        popData5[4] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 36 && popData[i].ageType_id >= 30) {
+                        popData5[5] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 42 && popData[i].ageType_id >= 36) {
+                        popData5[6] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 48 && popData[i].ageType_id >= 42) {
+                        popData5[7] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 54 && popData[i].ageType_id >= 48) {
+                        popData5[8] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 60 && popData[i].ageType_id >= 54) {
+                        popData5[9] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id >= 60) {
+                        popData5[10] += popData[i].preResidentPopulation;
+                    }
+                }
+                if (popData[i].sexType_id === 2) { //预测女性
+                    female30.push(popData[i].preResidentPopulation);
+                    sumFemale2 += popData[i].preResidentPopulation;
+                    if (popData[i].ageType_id < 6 && popData[i].ageType_id >= 0) {
+                        popData6[0] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 12 && popData[i].ageType_id >= 6) {
+                        popData6[1] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 18 && popData[i].ageType_id >= 12) {
+                        popData6[2] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 24 && popData[i].ageType_id >= 18) {
+                        popData6[3] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 30 && popData[i].ageType_id >= 24) {
+                        popData6[4] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 36 && popData[i].ageType_id >= 30) {
+                        popData6[5] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 42 && popData[i].ageType_id >= 36) {
+                        popData6[6] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 48 && popData[i].ageType_id >= 42) {
+                        popData6[7] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 54 && popData[i].ageType_id >= 48) {
+                        popData6[8] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 60 && popData[i].ageType_id >= 54) {
+                        popData6[9] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id >= 60) {
+                        popData6[10] += popData[i].preResidentPopulation;
+                    }
+                }
             }
-           if(popData[i].ageType_id<12&&popData[i].ageType_id>=6){
-                 popData5[1]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<18&&popData[i].ageType_id>=12){
-                 popData5[2]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<24&&popData[i].ageType_id>=18){
-                 popData5[3]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<30&&popData[i].ageType_id>=24){
-                 popData5[4]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<36&&popData[i].ageType_id>=30){
-                 popData5[5]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<42&&popData[i].ageType_id>=36){
-                 popData5[6]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<48&&popData[i].ageType_id>=42){
-                 popData5[7]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<54&&popData[i].ageType_id>=48){
-                 popData5[8]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<60&&popData[i].ageType_id>=54){
-                 popData5[9]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id>=60){
-                 popData5[10]+=popData[i].preResidentPopulation;
-            }
-      }
-      if(popData[i].sexType_id===2){  //预测女性
-           female30.push(popData[i].preResidentPopulation);
-           sumFemale2+=popData[i].preResidentPopulation;
-           if(popData[i].ageType_id<6&&popData[i].ageType_id>=0){
-                 popData6[0]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<12&&popData[i].ageType_id>=6){
-                 popData6[1]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<18&&popData[i].ageType_id>=12){
-                 popData6[2]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<24&&popData[i].ageType_id>=18){
-                 popData6[3]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<30&&popData[i].ageType_id>=24){
-                 popData6[4]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<36&&popData[i].ageType_id>=30){
-                 popData6[5]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<42&&popData[i].ageType_id>=36){
-                 popData6[6]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<48&&popData[i].ageType_id>=42){
-                 popData6[7]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<54&&popData[i].ageType_id>=48){
-                 popData6[8]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<60&&popData[i].ageType_id>=54){
-                 popData6[9]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id>=60){
-                 popData6[10]+=popData[i].preResidentPopulation;
-            }
-      }
-    }
-    }
-    /*
+        }
+        /*
     popData5[0]=parseFloat(((popData5[0]/(sumMale2+sumFemale2))*100).toFixed(2));
     popData5[1]=parseFloat(((popData5[1]/(sumMale2+sumFemale2))*100).toFixed(2));
     popData5[2]=parseFloat(((popData5[2]/(sumMale2+sumFemale2))*100).toFixed(2));
@@ -516,92 +516,92 @@ $scope.showPopulationDetail1 = function(){
 */
 
 
-   //2035年的数据
-    var popData7=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测男性数据
-    var popData8=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测女性数据
-    var sumMale3=0;//初始化男性总数
-    var sumFemale3=0;//初始化女性总数
-    var male35=[];
-    var female35=[];
-    for(var i=0;i<popData.length;i++){
-      if(popData[i].preYear===2035){
-        if(popData[i].sexType_id===1){ //预测男性
-           male35.push(-popData[i].preResidentPopulation);
-           sumMale3+=popData[i].preResidentPopulation;
-           if(popData[i].ageType_id<6&&popData[i].ageType_id>=0){
-                 popData7[0]+=popData[i].preResidentPopulation;
+        //2035年的数据
+        var popData7 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //初始化预测男性数据
+        var popData8 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //初始化预测女性数据
+        var sumMale3 = 0; //初始化男性总数
+        var sumFemale3 = 0; //初始化女性总数
+        var male35 = [];
+        var female35 = [];
+        for (var i = 0; i < popData.length; i++) {
+            if (popData[i].preYear === 2035) {
+                if (popData[i].sexType_id === 1) { //预测男性
+                    male35.push(-popData[i].preResidentPopulation);
+                    sumMale3 += popData[i].preResidentPopulation;
+                    if (popData[i].ageType_id < 6 && popData[i].ageType_id >= 0) {
+                        popData7[0] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 12 && popData[i].ageType_id >= 6) {
+                        popData7[1] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 18 && popData[i].ageType_id >= 12) {
+                        popData7[2] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 24 && popData[i].ageType_id >= 18) {
+                        popData7[3] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 30 && popData[i].ageType_id >= 24) {
+                        popData7[4] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 36 && popData[i].ageType_id >= 30) {
+                        popData7[5] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 42 && popData[i].ageType_id >= 36) {
+                        popData7[6] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 48 && popData[i].ageType_id >= 42) {
+                        popData7[7] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 54 && popData[i].ageType_id >= 48) {
+                        popData7[8] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 60 && popData[i].ageType_id >= 54) {
+                        popData7[9] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id >= 60) {
+                        popData7[10] += popData[i].preResidentPopulation;
+                    }
+                }
+                if (popData[i].sexType_id === 2) { //预测女性
+                    female35.push(popData[i].preResidentPopulation);
+                    sumFemale3 += popData[i].preResidentPopulation;
+                    if (popData[i].ageType_id < 6 && popData[i].ageType_id >= 0) {
+                        popData8[0] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 12 && popData[i].ageType_id >= 6) {
+                        popData8[1] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 18 && popData[i].ageType_id >= 12) {
+                        popData8[2] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 24 && popData[i].ageType_id >= 18) {
+                        popData8[3] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 30 && popData[i].ageType_id >= 24) {
+                        popData8[4] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 36 && popData[i].ageType_id >= 30) {
+                        popData8[5] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 42 && popData[i].ageType_id >= 36) {
+                        popData8[6] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 48 && popData[i].ageType_id >= 42) {
+                        popData8[7] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 54 && popData[i].ageType_id >= 48) {
+                        popData8[8] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 60 && popData[i].ageType_id >= 54) {
+                        popData8[9] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id >= 60) {
+                        popData8[10] += popData[i].preResidentPopulation;
+                    }
+                }
             }
-           if(popData[i].ageType_id<12&&popData[i].ageType_id>=6){
-                 popData7[1]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<18&&popData[i].ageType_id>=12){
-                 popData7[2]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<24&&popData[i].ageType_id>=18){
-                 popData7[3]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<30&&popData[i].ageType_id>=24){
-                 popData7[4]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<36&&popData[i].ageType_id>=30){
-                 popData7[5]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<42&&popData[i].ageType_id>=36){
-                 popData7[6]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<48&&popData[i].ageType_id>=42){
-                 popData7[7]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<54&&popData[i].ageType_id>=48){
-                 popData7[8]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<60&&popData[i].ageType_id>=54){
-                 popData7[9]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id>=60){
-                 popData7[10]+=popData[i].preResidentPopulation;
-            }
-      }
-      if(popData[i].sexType_id===2){  //预测女性
-           female35.push(popData[i].preResidentPopulation);
-           sumFemale3+=popData[i].preResidentPopulation;
-           if(popData[i].ageType_id<6&&popData[i].ageType_id>=0){
-                 popData8[0]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<12&&popData[i].ageType_id>=6){
-                 popData8[1]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<18&&popData[i].ageType_id>=12){
-                 popData8[2]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<24&&popData[i].ageType_id>=18){
-                 popData8[3]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<30&&popData[i].ageType_id>=24){
-                 popData8[4]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<36&&popData[i].ageType_id>=30){
-                 popData8[5]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<42&&popData[i].ageType_id>=36){
-                 popData8[6]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<48&&popData[i].ageType_id>=42){
-                 popData8[7]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<54&&popData[i].ageType_id>=48){
-                 popData8[8]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<60&&popData[i].ageType_id>=54){
-                 popData8[9]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id>=60){
-                 popData8[10]+=popData[i].preResidentPopulation;
-            }
-      }
-    }
-    }
-    /*
+        }
+        /*
     popData7[0]=parseFloat(((popData7[0]/(sumMale3+sumFemale3))*100).toFixed(2));
     popData7[1]=parseFloat(((popData7[1]/(sumMale3+sumFemale3))*100).toFixed(2));
     popData7[2]=parseFloat(((popData7[2]/(sumMale3+sumFemale3))*100).toFixed(2));
@@ -631,92 +631,92 @@ $scope.showPopulationDetail1 = function(){
 
 
 
-   //2040年的数据
-    var popData9=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测男性数据
-    var popData10=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测女性数据
-    var sumMale4=0;//初始化男性总数
-    var sumFemale4=0;//初始化女性总数
-    var male40=[];
-    var female40=[];
-    for(var i=0;i<popData.length;i++){
-      if(popData[i].preYear===2040){
-        if(popData[i].sexType_id===1){ //预测男性
-          male40.push(-popData[i].preResidentPopulation);
-           sumMale4+=popData[i].preResidentPopulation;
-           if(popData[i].ageType_id<6&&popData[i].ageType_id>=0){
-                 popData9[0]+=popData[i].preResidentPopulation;
+        //2040年的数据
+        var popData9 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //初始化预测男性数据
+        var popData10 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //初始化预测女性数据
+        var sumMale4 = 0; //初始化男性总数
+        var sumFemale4 = 0; //初始化女性总数
+        var male40 = [];
+        var female40 = [];
+        for (var i = 0; i < popData.length; i++) {
+            if (popData[i].preYear === 2040) {
+                if (popData[i].sexType_id === 1) { //预测男性
+                    male40.push(-popData[i].preResidentPopulation);
+                    sumMale4 += popData[i].preResidentPopulation;
+                    if (popData[i].ageType_id < 6 && popData[i].ageType_id >= 0) {
+                        popData9[0] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 12 && popData[i].ageType_id >= 6) {
+                        popData9[1] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 18 && popData[i].ageType_id >= 12) {
+                        popData9[2] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 24 && popData[i].ageType_id >= 18) {
+                        popData9[3] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 30 && popData[i].ageType_id >= 24) {
+                        popData9[4] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 36 && popData[i].ageType_id >= 30) {
+                        popData9[5] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 42 && popData[i].ageType_id >= 36) {
+                        popData9[6] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 48 && popData[i].ageType_id >= 42) {
+                        popData9[7] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 54 && popData[i].ageType_id >= 48) {
+                        popData9[8] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 60 && popData[i].ageType_id >= 54) {
+                        popData9[9] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id >= 60) {
+                        popData9[10] += popData[i].preResidentPopulation;
+                    }
+                }
+                if (popData[i].sexType_id === 2) { //预测女性
+                    female40.push(popData[i].preResidentPopulation);
+                    sumFemale4 += popData[i].preResidentPopulation;
+                    if (popData[i].ageType_id < 6 && popData[i].ageType_id >= 0) {
+                        popData10[0] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 12 && popData[i].ageType_id >= 6) {
+                        popData10[1] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 18 && popData[i].ageType_id >= 12) {
+                        popData10[2] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 24 && popData[i].ageType_id >= 18) {
+                        popData10[3] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 30 && popData[i].ageType_id >= 24) {
+                        popData10[4] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 36 && popData[i].ageType_id >= 30) {
+                        popData10[5] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 42 && popData[i].ageType_id >= 36) {
+                        popData10[6] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 48 && popData[i].ageType_id >= 42) {
+                        popData10[7] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 54 && popData[i].ageType_id >= 48) {
+                        popData10[8] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 60 && popData[i].ageType_id >= 54) {
+                        popData10[9] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id >= 60) {
+                        popData10[10] += popData[i].preResidentPopulation;
+                    }
+                }
             }
-           if(popData[i].ageType_id<12&&popData[i].ageType_id>=6){
-                 popData9[1]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<18&&popData[i].ageType_id>=12){
-                 popData9[2]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<24&&popData[i].ageType_id>=18){
-                 popData9[3]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<30&&popData[i].ageType_id>=24){
-                 popData9[4]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<36&&popData[i].ageType_id>=30){
-                 popData9[5]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<42&&popData[i].ageType_id>=36){
-                 popData9[6]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<48&&popData[i].ageType_id>=42){
-                 popData9[7]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<54&&popData[i].ageType_id>=48){
-                 popData9[8]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<60&&popData[i].ageType_id>=54){
-                 popData9[9]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id>=60){
-                 popData9[10]+=popData[i].preResidentPopulation;
-            }
-      }
-      if(popData[i].sexType_id===2){  //预测女性
-           female40.push(popData[i].preResidentPopulation);
-           sumFemale4+=popData[i].preResidentPopulation;
-           if(popData[i].ageType_id<6&&popData[i].ageType_id>=0){
-                 popData10[0]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<12&&popData[i].ageType_id>=6){
-                 popData10[1]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<18&&popData[i].ageType_id>=12){
-                 popData10[2]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<24&&popData[i].ageType_id>=18){
-                 popData10[3]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<30&&popData[i].ageType_id>=24){
-                 popData10[4]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<36&&popData[i].ageType_id>=30){
-                 popData10[5]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<42&&popData[i].ageType_id>=36){
-                 popData10[6]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<48&&popData[i].ageType_id>=42){
-                 popData10[7]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<54&&popData[i].ageType_id>=48){
-                 popData10[8]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<60&&popData[i].ageType_id>=54){
-                 popData10[9]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id>=60){
-                 popData10[10]+=popData[i].preResidentPopulation;
-            }
-      }
-    }
-    }
-    /*
+        }
+        /*
     popData9[0]=parseFloat(((popData9[0]/(sumMale4+sumFemale4))*100).toFixed(2));
     popData9[1]=parseFloat(((popData9[1]/(sumMale4+sumFemale4))*100).toFixed(2));
     popData9[2]=parseFloat(((popData9[2]/(sumMale4+sumFemale4))*100).toFixed(2));
@@ -746,92 +746,92 @@ $scope.showPopulationDetail1 = function(){
 
 */
 
-   //2045年的数据
-    var popData11=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测男性数据
-    var popData12=[0,0,0,0,0,0,0,0,0,0,0];  //初始化预测女性数据
-    var sumMale5=0;//初始化男性总数
-    var sumFemale5=0;//初始化女性总数
-    var male45=[];
-    var female45=[];
-    for(var i=0;i<popData.length;i++){
-      if(popData[i].preYear===2045){
-        if(popData[i].sexType_id===1){ //预测男性
-           male45.push(-popData[i].preResidentPopulation);
-           sumMale5+=popData[i].preResidentPopulation;
-           if(popData[i].ageType_id<6&&popData[i].ageType_id>=0){
-                 popData11[0]+=popData[i].preResidentPopulation;
+        //2045年的数据
+        var popData11 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //初始化预测男性数据
+        var popData12 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //初始化预测女性数据
+        var sumMale5 = 0; //初始化男性总数
+        var sumFemale5 = 0; //初始化女性总数
+        var male45 = [];
+        var female45 = [];
+        for (var i = 0; i < popData.length; i++) {
+            if (popData[i].preYear === 2045) {
+                if (popData[i].sexType_id === 1) { //预测男性
+                    male45.push(-popData[i].preResidentPopulation);
+                    sumMale5 += popData[i].preResidentPopulation;
+                    if (popData[i].ageType_id < 6 && popData[i].ageType_id >= 0) {
+                        popData11[0] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 12 && popData[i].ageType_id >= 6) {
+                        popData11[1] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 18 && popData[i].ageType_id >= 12) {
+                        popData11[2] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 24 && popData[i].ageType_id >= 18) {
+                        popData11[3] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 30 && popData[i].ageType_id >= 24) {
+                        popData11[4] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 36 && popData[i].ageType_id >= 30) {
+                        popData11[5] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 42 && popData[i].ageType_id >= 36) {
+                        popData11[6] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 48 && popData[i].ageType_id >= 42) {
+                        popData11[7] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 54 && popData[i].ageType_id >= 48) {
+                        popData11[8] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 60 && popData[i].ageType_id >= 54) {
+                        popData11[9] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id >= 60) {
+                        popData11[10] += popData[i].preResidentPopulation;
+                    }
+                }
+                if (popData[i].sexType_id === 2) { //预测女性
+                    female45.push(popData[i].preResidentPopulation);
+                    sumFemale5 += popData[i].preResidentPopulation;
+                    if (popData[i].ageType_id < 6 && popData[i].ageType_id >= 0) {
+                        popData12[0] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 12 && popData[i].ageType_id >= 6) {
+                        popData12[1] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 18 && popData[i].ageType_id >= 12) {
+                        popData12[2] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 24 && popData[i].ageType_id >= 18) {
+                        popData12[3] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 30 && popData[i].ageType_id >= 24) {
+                        popData12[4] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 36 && popData[i].ageType_id >= 30) {
+                        popData12[5] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 42 && popData[i].ageType_id >= 36) {
+                        popData12[6] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 48 && popData[i].ageType_id >= 42) {
+                        popData12[7] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 54 && popData[i].ageType_id >= 48) {
+                        popData12[8] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id < 60 && popData[i].ageType_id >= 54) {
+                        popData12[9] += popData[i].preResidentPopulation;
+                    }
+                    if (popData[i].ageType_id >= 60) {
+                        popData12[10] += popData[i].preResidentPopulation;
+                    }
+                }
             }
-           if(popData[i].ageType_id<12&&popData[i].ageType_id>=6){
-                 popData11[1]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<18&&popData[i].ageType_id>=12){
-                 popData11[2]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<24&&popData[i].ageType_id>=18){
-                 popData11[3]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<30&&popData[i].ageType_id>=24){
-                 popData11[4]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<36&&popData[i].ageType_id>=30){
-                 popData11[5]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<42&&popData[i].ageType_id>=36){
-                 popData11[6]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<48&&popData[i].ageType_id>=42){
-                 popData11[7]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<54&&popData[i].ageType_id>=48){
-                 popData11[8]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<60&&popData[i].ageType_id>=54){
-                 popData11[9]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id>=60){
-                 popData11[10]+=popData[i].preResidentPopulation;
-            }
-      }
-      if(popData[i].sexType_id===2){  //预测女性
-           female45.push(popData[i].preResidentPopulation);
-           sumFemale5+=popData[i].preResidentPopulation;
-           if(popData[i].ageType_id<6&&popData[i].ageType_id>=0){
-                 popData12[0]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<12&&popData[i].ageType_id>=6){
-                 popData12[1]+=popData[i].preResidentPopulation;
-            }
-           if(popData[i].ageType_id<18&&popData[i].ageType_id>=12){
-                 popData12[2]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<24&&popData[i].ageType_id>=18){
-                 popData12[3]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<30&&popData[i].ageType_id>=24){
-                 popData12[4]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<36&&popData[i].ageType_id>=30){
-                 popData12[5]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<42&&popData[i].ageType_id>=36){
-                 popData12[6]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<48&&popData[i].ageType_id>=42){
-                 popData12[7]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<54&&popData[i].ageType_id>=48){
-                 popData12[8]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id<60&&popData[i].ageType_id>=54){
-                 popData12[9]+=popData[i].preResidentPopulation;
-            }
-          if(popData[i].ageType_id>=60){
-                 popData12[10]+=popData[i].preResidentPopulation;
-            }
-      }
-    }
-    }
-    /*
+        }
+        /*
     popData11[0]=parseFloat(((popData11[0]/(sumMale5+sumFemale5))*100).toFixed(2));
     popData11[1]=parseFloat(((popData11[1]/(sumMale5+sumFemale5))*100).toFixed(2));
     popData11[2]=parseFloat(((popData11[2]/(sumMale5+sumFemale5))*100).toFixed(2));
@@ -857,17 +857,15 @@ $scope.showPopulationDetail1 = function(){
     popData12[10]=parseFloat(((popData12[10]/(sumMale5+sumFemale5))*100).toFixed(2));
 
 */
-//2015年
-  $scope.years = ["年龄","0-5岁", "6-11岁","12-17岁", "18-23岁", "24-29岁", "30-35岁", "36-41岁", "42-47岁", "48-53岁", "54-59岁", "60岁以上"];
-      $scope.male15= ["男性",popData13[0]+"%", popData13[1]+"%", popData13[2]+"%",  popData13[3]+"%",  popData13[4]+"%",  popData13[5]+"%",  popData13[6]+"%",  popData13[7]+"%",  popData13[8]+"%",  popData13[9]+"%",  popData13[10]+"%"];
-     $scope.female15= ["女性",popData14[0]+"%", popData14[1]+"%", popData14[2]+"%",  popData14[3]+"%",  popData14[4]+"%",  popData14[5]+"%",  popData14[6]+"%",  popData14[7]+"%",  popData14[8]+"%",  popData14[9]+"%",  popData14[10]+"%"];
+        //2015年
+        $scope.years = ["年龄", "0-5岁", "6-11岁", "12-17岁", "18-23岁", "24-29岁", "30-35岁", "36-41岁", "42-47岁", "48-53岁", "54-59岁", "60岁以上"];
+        $scope.male15 = ["男性", popData13[0] , popData13[1] , popData13[2] , popData13[3] , popData13[4] , popData13[5] , popData13[6] , popData13[7] , popData13[8] , popData13[9] , popData13[10] ];
+        $scope.female15 = ["女性", popData14[0] , popData14[1] , popData14[2] , popData14[3] , popData14[4] , popData14[5] , popData14[6] , popData14[7] , popData14[8] , popData14[9] , popData14[10] ];
 
-//2020
-       $scope.years = ["年龄","0-5岁", "6-11岁","12-17岁", "18-23岁", "24-29岁", "30-35岁", "36-41岁", "42-47岁", "48-53岁", "54-59岁", "60岁以上"];
-         $scope.male20= [popData1[0]+"%", popData1[1]+"%", popData1[2]+"%",  popData1[3]+"%",  popData1[4]+"%",  popData1[5]+"%",  popData1[6]+"%",  popData1[7]+"%",  popData1[8]+"%",  popData1[9]+"%",  popData1[10]+"%"];
-     $scope.female20= [popData2[0]+"%", popData2[1]+"%", popData2[2]+"%",  popData2[3]+"%",  popData2[4]+"%",  popData2[5]+"%",  popData2[6]+"%",  popData2[7]+"%",  popData2[8]+"%",  popData2[9]+"%",  popData2[10]+"%"];
-
-
+        //2020
+        $scope.years = ["年龄", "0-5岁", "6-11岁", "12-17岁", "18-23岁", "24-29岁", "30-35岁", "36-41岁", "42-47岁", "48-53岁", "54-59岁", "60岁以上"];
+        $scope.male20 = [popData1[0] , popData1[1] , popData1[2] , popData1[3] , popData1[4] , popData1[5] , popData1[6] , popData1[7] , popData1[8] , popData1[9] , popData1[10] ];
+        $scope.female20 = [popData2[0] , popData2[1] , popData2[2] , popData2[3] , popData2[4] , popData2[5] , popData2[6] , popData2[7] , popData2[8] , popData2[9] , popData2[10] ];
 
 
 
@@ -879,784 +877,787 @@ $scope.showPopulationDetail1 = function(){
 
 
 
-  var columnColors = new Array( '#7CB5EC','#009FCC ','#C1CDCD ','#888888');
-  var pieColors = new Array('#009FCC ', '#7CB5EC');  //'#0787C8', '#1FC22B'
-  var pieColors1= new Array('#44444 ', '#888888'); 
 
 
-  //var promise1 = qService.tokenhttpGetWithWorkspace(forecastFactory.query,{tableName:'birthrateData'});
-  //  promise1.then(function(rc1) {
+        var columnColors = new Array('#7CB5EC', '#009FCC ', '#C1CDCD ', '#888888');
+        var pieColors = new Array('#009FCC ', '#7CB5EC'); //'#0787C8', '#1FC22B'
+        var pieColors1 = new Array('#44444 ', '#888888');
 
 
-  //地图开头
-  
-
-var map = new AMap.Map('conMap');
-map.setZoom(12);
-map.setCenter([121.10, 31.45]);
+        //var promise1 = qService.tokenhttpGetWithWorkspace(forecastFactory.query,{tableName:'birthrateData'});
+        //  promise1.then(function(rc1) {
 
 
- 
-AMap.plugin(['AMap.ToolBar','AMap.Scale'],function(){
-    var toolBar = new AMap.ToolBar();
-    var scale = new AMap.Scale();
-    map.addControl(toolBar);
-    map.addControl(scale);
-});
+        //地图开头
+
+
+        var map = new AMap.Map('conMap');
+        map.setZoom(12);
+        map.setCenter([121.10, 31.45]);
 
 
 
-
- var marker1 = new AMap.Marker({
-        position: [121.20748, 31.622211],   //浮桥镇  121.20748,31.622211
-        map:map,
-        icon: new AMap.Icon({            
-          size: new AMap.Size(40, 50),  //图标大小
-          image: "/images/marker_sprite.png",
-        })        
-    });
- marker1.setMap(map);
-    // 设置鼠标划过点标记显示的文字提示
-    marker1.setTitle('');
-
-
-
-var infow=[];
-infow.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#CC0033;font-size:18px'>浮桥镇</div>")
-    // 设置label标签
-    marker1.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
-        offset: new AMap.Pixel(20, 20),//修改label相对于maker的位置
-        content: infow.join('')
-    });
- var marker5 = new AMap.Marker({
-        position: [121.070907, 31.556999],   //沙溪镇
-        map:map,
-        icon: new AMap.Icon({            
-          size: new AMap.Size(40, 50),  //图标大小
-          image: "/images/marker_sprite.png",
-        })
-    });
- var infow5=[];
-infow5.push("<div style='background-color:#FFFFFF;border:2px solid #66cc66;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#66cc66;font-size:18px'>沙溪镇</div>")
-    // 设置label标签
-    marker5.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
-        offset: new AMap.Pixel(20, 20),//修改label相对于maker的位置
-        content: infow5.join('')
-    });
- var marker4 = new AMap.Marker({            //城厢镇
-        position: [121.1124,31.456376],
-        map:map,
-        icon: new AMap.Icon({            
-          size: new AMap.Size(40, 50),  //图标大小
-          image: "/images/marker_sprite.png",
-        })
-    });
-  var infow4=[];
-infow4.push("<div style='background-color:#FFFFFF;border:2px solid #66cc66;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#66cc66;font-size:18px'>城厢镇</div>")
-    // 设置label标签
-    marker4.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
-        offset: new AMap.Pixel(20, 20),//修改label相对于maker的位置
-        content: infow4.join('')
-    });
-  var marker2 = new AMap.Marker({
-        position: [121.276413, 31.515122], //浏河镇
-        map:map,
-        icon: new AMap.Icon({            
-          size: new AMap.Size(40, 50),  //图标大小
-          image: "/images/marker_sprite.png",
-        })
-    });
-   var infow2=[];
-infow2.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#CC0033;font-size:18px'>浏河镇</div>")
-    // 设置label标签
-    marker2.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
-        offset: new AMap.Pixel(20, 20),//修改label相对于maker的位置
-        content: infow2.join('')
-    });
-   var marker3 = new AMap.Marker({
-        position: [121.10, 31.45],  //太仓市
-        map:map,
-        icon: new AMap.Icon({            
-          size: new AMap.Size(40, 50),  //图标大小
-          image: "/images/marker_sprite.png",
-        })
-    });
-   var infow3=[];
-infow3.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#CC0033;font-size:18px'>娄东街道</div>")
-    // 设置label标签
-    marker3.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
-        offset: new AMap.Pixel(20, 20),//修改label相对于maker的位置
-        content: infow3.join('')
-    });
-   var marker6 = new AMap.Marker({
-        position: [121.036167,31.519103],  //双凤镇
-        map:map,
-        icon: new AMap.Icon({            
-          size: new AMap.Size(40, 50),  //图标大小
-          image: "/images/marker_sprite.png",
-        })
-    });
-   var infow6=[];
-infow6.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#CC0033;font-size:18px'>双凤镇</div>")
-    // 设置label标签
-    marker6.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
-        offset: new AMap.Pixel(20, 20),//修改label相对于maker的位置
-        content: infow6.join('')
-    });
-   var marker7 = new AMap.Marker({
-        position: [121.106514, 31.649675],  //璜泾镇
-        map:map,
-        icon: new AMap.Icon({            
-          size: new AMap.Size(40, 50),  //图标大小
-          image: "/images/marker_sprite.png",
-        })
-    });
-   var infow7=[];
-infow7.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#CC0033;font-size:18px'>璜泾镇</div>")
-    // 设置label标签
-    marker7.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
-        offset: new AMap.Pixel(20, 20),//修改label相对于maker的位置
-        content: infow7.join('')
-    });
-
-var marker8 = new AMap.Marker({
-        position: [121.126845,31.434877],   //科教新城  121.20748,31.622211
-        map:map,
-        icon: new AMap.Icon({            
-          size: new AMap.Size(40, 50),  //图标大小
-          image: "/images/marker_sprite.png",
-        })        
-    });
- marker8.setMap(map);
-    // 设置鼠标划过点标记显示的文字提示
-    marker8.setTitle('');
-var infow=[];
-infow.push("<div style='background-color:#FFFFFF;border:2px solid #66cc66;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#66cc66;font-size:18px'>科教新城</div>")
-    // 设置label标签
-    marker8.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
-        offset: new AMap.Pixel(20, 20),//修改label相对于maker的位置
-        content: infow.join('')
-    });
-
-var marker9 = new AMap.Marker({
-        position: [121.132514,31.479037],   //新区  121.20748,31.622211
-        map:map,
-        icon: new AMap.Icon({            
-          size: new AMap.Size(40, 50),  //图标大小
-          image: "/images/marker_sprite.png",
-        })        
-    });
- marker9.setMap(map);
-    // 设置鼠标划过点标记显示的文字提示
-    marker9.setTitle('');
-var infow=[];
-infow.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#CC0033;font-size:18px'>新区</div>")
-    // 设置label标签
-    marker9.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
-        offset: new AMap.Pixel(20, 20),//修改label相对于maker的位置
-        content: infow.join('')
-    });
-
-var marker10 = new AMap.Marker({
-        position: [121.212609,31.600756],   //港区  121.20748,31.622211
-        map:map,
-        icon: new AMap.Icon({            
-          size: new AMap.Size(40, 50),  //图标大小
-          image: "/images/marker_sprite.png",
-        })        
-    });
- marker10.setMap(map);
-    // 设置鼠标划过点标记显示的文字提示
-    marker10.setTitle('');
-var infow=[];
-infow.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#CC0033;font-size:18px'>港区</div>")
-    // 设置label标签
-    marker10.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
-        offset: new AMap.Pixel(20, 20),//修改label相对于maker的位置
-        content: infow.join('')
-    });
-
-
-//城镇名称$scope.years = ["年龄","0-5岁", "6-11岁","12-17岁", "18-23岁", "24-29岁", "30-35岁", "36-41岁", "42-47岁", "48-53岁", "54-59岁", "60岁以上"];
-$scope.townsname=["浮桥镇","浏河镇", "娄东街道","城厢镇", "沙溪镇", "双凤镇", "璜泾镇", "科教新城", "新区", "港区"];
-$scope.birthrate=["6.12‰","6.3‰", "6.34‰","9.5‰", "6.53‰", "7.62‰", "5.91‰", "13.28‰", "6.84‰", "5.56‰"];
-$scope.deathrate=["10.78‰","9.09‰", "8.22‰","5.59‰", "4.76‰", "9.07‰", "9.98‰", "7.33‰", "8.68‰", "7.44‰"];
-$scope.populationrate=["-4.66‰","-2.79‰", "-1.88‰","3.91‰", "1.77‰", "-1.45‰", "-4.07‰", "5.95‰", "-1.84‰", "-1.88‰"];
-//显示信息窗体(可单击位置显示隐藏的信息窗体)
-var info1=[];
-   info1.push("<h4><strong>浮桥镇人口自然增长率</strong></h4>");//121.20748,31.622211
-    info1.push("<table class='table table-bordered table-striped'>");
-    info1.push("<tr><td style='font-size:15px;text-align:center'>出生率</td><td style='text-align:center'>6.12‰</td></tr>");
-    info1.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>10.78‰</td></tr>");
-    info1.push("<tr><td style='font-size:15px;text-align:center'>人口自然增长率</td><td style='text-align:center'>-4.66‰</td></tr>");
-    info1.push("</table>");
-var infowindow1 = new AMap.InfoWindow({
-     content: info1.join(''),
-     offset: new AMap.Pixel(0, -30),
-     size:new AMap.Size(300,0)
-})
-var clickHandle1 = AMap.event.addListener(marker1, 'click', function() {
-    infowindow1.open(map, marker1.getPosition())
-})
-
-var info2=[];
-   info2.push("<h4><strong>浏河镇人口自然增长率</strong></h4>");
-    info2.push("<table class='table table-bordered table-striped'>");
-    info2.push("<tr><td style='font-size:15px;width:150px;text-align:center'>出生率</td><td style='text-align:center'>6.3‰</td></tr>");
-    info2.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>9.09‰</td></tr>");
-    info2.push("<tr><td style='font-size:15px;text-align:center'>人口自然增长率</td><td style='text-align:center'>-2.79‰</td></tr>");
-    info2.push("</table>");
-var infowindow2 = new AMap.InfoWindow({
-     content: info2.join(''),
-     offset: new AMap.Pixel(0, -30),
-     size:new AMap.Size(300,0)
-})
-var clickHandle2 = AMap.event.addListener(marker2, 'click', function() {
-    infowindow2.open(map, marker2.getPosition())
-})
-
-var info3=[];
-   info3.push("<h4><strong>娄东街道人口自然增长率</strong></h4>");
-    info3.push("<table class='table table-bordered table-striped'>");
-    info3.push("<tr><td style='font-size:15px;text-align:center'>出生率</td><td style='text-align:center'>6.34‰</td ></tr>");
-    info3.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>8.22‰</td ></tr>");
-    info3.push("<tr><td style='font-size:15px;text-align:center'>人口自然增长率</td><td style='text-align:center'>-1.88‰</td></tr>");
-    info3.push("</table>");
-var infowindow3 = new AMap.InfoWindow({
-     content: info3.join(''),
-     offset: new AMap.Pixel(0, -30),
-     size:new AMap.Size(300,0)
-})
-infowindow3.open(map, marker3.getPosition());
-var clickHandle3 = AMap.event.addListener(marker3, 'click', function() {
-    infowindow3.open(map, marker3.getPosition())
-})
-
-var info4=[];
-    info4.push("<h4><strong>城厢镇人口自然增长率</strong></h4>");
-    info4.push("<table class='table table-bordered table-striped'>");
-    info4.push("<tr><td style='font-size:15px;text-align:center'>出生率</td><td style='text-align:center'>9.5‰</td></tr>");
-    info4.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>5.59‰</td></tr>");
-    info4.push("<tr><td style='font-size:15px;text-align:center'>人口自然增长率</td><td style='text-align:center'>3.91‰</td></tr>");
-    info4.push("</table>");
-var infowindow4 = new AMap.InfoWindow({
-     content: info4.join(''),
-     offset: new AMap.Pixel(0, -30),
-     size:new AMap.Size(300,0)
-})
-var clickHandle4 = AMap.event.addListener(marker4, 'click', function() {
-    infowindow4.open(map, marker4.getPosition())
-})
-
-var info5=[];
-   info5.push("<h4><strong>沙溪镇人口自然增长率</strong></h4>");
-    info5.push("<table class='table table-bordered table-striped'>");
-    info5.push("<tr><td style='font-size:15px;text-align:center'>出生率</td><td style='text-align:center'>6.53‰</td></tr>");
-    info5.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>4.76‰</td></tr>");
-    info5.push("<tr><td style='font-size:15px;text-align:center'>人口自然增长率</td><td style='text-align:center'>1.77‰</td></tr>");
-    info5.push("</table>");
-var infowindow5 = new AMap.InfoWindow({
-     content: info5.join(''),
-     offset: new AMap.Pixel(0, -30),
-     size:new AMap.Size(300,0)
-})
-var clickHandle5 = AMap.event.addListener(marker5, 'click', function() {
-    infowindow5.open(map, marker5.getPosition())
-})
-
-var info6=[];
-   info6.push("<h4><strong>双凤镇人口自然增长率</strong></h4>");
-    info6.push("<table class='table table-bordered table-striped'>");
-    info6.push("<tr><td style='font-size:15px;text-align:center'>出生率</td><td style='text-align:center'>7.62‰</td></tr>");
-    info6.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>9.07‰</td></tr>");
-    info6.push("<tr><td style='font-size:15px;text-align:center'>人口自然增长率</td><td style='text-align:center'>-1.45‰</td></tr>");
-    info6.push("</table>");
-var infowindow6 = new AMap.InfoWindow({
-     content: info6.join(''),
-     offset: new AMap.Pixel(0, -30),
-     size:new AMap.Size(300,0)
-})
-var clickHandle6 = AMap.event.addListener(marker6, 'click', function() {
-    infowindow6.open(map, marker6.getPosition())
-})
-var info7=[];
-    info7.push("<h4><strong>璜泾镇人口自然增长率</strong></h4>");
-    info7.push("<table class='table table-bordered table-striped'>");
-    info7.push("<tr><td style='font-size:15px;text-align:center'>出生率</td><td style='text-align:center'>5.91‰</td></tr>");
-    info7.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>9.98‰</td></tr>");
-    info7.push("<tr><td style='font-size:15px;text-align:center'>人口自然增长率</td><td style='text-align:center'>-4.07‰</td></tr>");
-    info7.push("</table>");
-var infowindow7 = new AMap.InfoWindow({
-     content: info7.join(''),
-     offset: new AMap.Pixel(0, -30),
-     size:new AMap.Size(300,0)
-})
-var clickHandle7 = AMap.event.addListener(marker7, 'click', function() {
-    infowindow7.open(map, marker7.getPosition())
-})
-var info8=[];
-    info8.push("<h4><strong>科教新城人口自然增长率</strong></h4>");
-    info8.push("<table class='table table-bordered table-striped'>");
-    info8.push("<tr><td style='font-size:15px;text-align:center'>出生率</td><td style='text-align:center'>13.28‰</td></tr>");
-    info8.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>7.33‰</td></tr>");
-    info8.push("<tr><td style='font-size:15px;text-align:center'>人口自然增长率</td><td style='text-align:center'>5.95‰</td></tr>");
-    info8.push("</table>");
-var infowindow8 = new AMap.InfoWindow({
-     content: info8.join(''),
-     offset: new AMap.Pixel(0, -30),
-     size:new AMap.Size(300,0)
-})
-var clickHandle8 = AMap.event.addListener(marker8, 'click', function() {
-    infowindow8.open(map, marker8.getPosition())
-})
-var info9=[];
-    info9.push("<h4><strong>新区人口自然增长率</strong></h4>");
-    info9.push("<table class='table table-bordered table-striped'>");
-    info9.push("<tr><td style='font-size:15px;text-align:center'>出生率</td><td style='text-align:center'>6.84‰</td></tr>");
-    info9.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>8.68‰</td></tr>");
-    info9.push("<tr><td style='font-size:15px;text-align:center'>人口自然增长率</td><td style='text-align:center'>-1.84‰</td></tr>");
-    info9.push("</table>");
-var infowindow9 = new AMap.InfoWindow({
-     content: info9.join(''),
-     offset: new AMap.Pixel(0, -30),
-     size:new AMap.Size(300,0)
-})
-var clickHandle9 = AMap.event.addListener(marker9, 'click', function() {
-    infowindow9.open(map, marker9.getPosition())
-})
-var info10=[];
-    info10.push("<h4><strong>港区人口自然增长率</strong></h4>");
-    info10.push("<table class='table table-bordered table-striped'>");
-    info10.push("<tr><td style='font-size:15px;text-align:center'>出生率</td><td style='text-align:center'>5.56‰</td></tr>");
-    info10.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>7.44‰</td></tr>");
-    info10.push("<tr><td style='font-size:15px;text-align:center'>人口自然增长率</td><td style='text-align:center'>-1.88‰</td></tr>");
-    info10.push("</table>");
-var infowindow10 = new AMap.InfoWindow({
-     content: info10.join(''),
-     offset: new AMap.Pixel(0, -30),
-     size:new AMap.Size(300,0)
-})
-var clickHandle10 = AMap.event.addListener(marker10, 'click', function() {
-    infowindow10.open(map, marker10.getPosition())
-})
-//var heatmap;
-var points =[
-    {"lng":121.10,"lat":31.45,"count":30},
-    {"lng":121.046329,"lat":31.471813,"count":90},
-    {"lng":121.135737,"lat":31.491485,"count":12},
-    {"lng":121.134911,"lat":31.491627,"count":100},
-    {"lng":121.276413,"lat":31.515122,"count":50},
-    {"lng":121.106514,"lat":31.649675,"count":15},
-    {"lng":121.070907,"lat":31.556999,"count":16},
-  
-    {"lng":121.190549,"lat":31.467665,"count":16}
-];
-
-
-  //地图结尾
-/* map.plugin(["AMap.Heatmap"], function() {
-        //初始化heatmap对象
-        heatmap = new AMap.Heatmap(map, {
-            radius: 50, //给定半径
-            opacity: [0, 0.8],
-         
-            gradient:{
-             0.5: 'blue',
-             0.65: 'rgb(117,211,248)',
-             0.7: 'rgb(0, 255, 0)',
-             0.9: '#ffea00',
-             1.0: 'red'
-             
-             }
+        AMap.plugin(['AMap.ToolBar', 'AMap.Scale'], function() {
+            var toolBar = new AMap.ToolBar();
+            var scale = new AMap.Scale();
+            map.addControl(toolBar);
+            map.addControl(scale);
         });
-        //设置数据集：该数据为北京部分“公园”数据
-        heatmap.setDataSet({
-            data: points,
-            max: 100
+
+
+
+
+        var marker1 = new AMap.Marker({
+            position: [121.20748, 31.622211], //浮桥镇  121.20748,31.622211
+            map: map,
+            icon: new AMap.Icon({
+                size: new AMap.Size(40, 50), //图标大小
+                image: "/images/marker_sprite.png",
+            })
         });
-    });
-    //判断浏览区是否支持canvas
-    function isSupportCanvas() {
-        var elem = document.createElement('canvas');
-        return !!(elem.getContext && elem.getContext('2d'));
-    }
-
- */
-
-//});
-
- 
-  $scope.buttonMap = [{
-        name: 2020,
-        label: 2020 + "",
-       
-      }, {
-        name: 2025,
-        label: 2025 + "",
-       
-      },
-       {
-        name: 2030,
-        label: 2030 + "",
-       
-      },
-       {
-        name: 2035,
-        label: 2035 + "",
-       
-      },
-       {
-        name: 2040,
-        label: 2040 + "",
-        
-      }, {
-        name: 2045,
-        label: 2045 + "",
-        
-      }];
-
-    $scope.buttonMap1 = [{
-        name: 2025,
-        label: 2025 + "",
-        radio: "Left"
-      }, {
-        name: 2035,
-        label: 2035 + "",
-        radio: "Middle"
-      }, {
-        name: 2045,
-        label: 2045 + "",
-        radio: "Right"
-      }];
-        $scope.pyear="2020";
-  $scope.btn_click=function(btn){
-    $scope.change(btn);
-  };
-
-  //默认为2020年的表格
-  $scope.manpre=popData1;
-  $scope.womanpre=popData2;
+        marker1.setMap(map);
+        // 设置鼠标划过点标记显示的文字提示
+        marker1.setTitle('');
 
 
-  $scope.change=function(btn){
-  //  var columnColors = new Array('#7CADDF', '#327EBD', '#195489', '#1FC22B', '#FB9705', '#F26200');
-  
-     if(btn.name===2020){
-        document.getElementById('abc').innerHTML='数据分析：60岁及以上人口比例从2015的31.02% 增加到2020的32.08%。';
-        document.getElementById('conclusion').innerHTML='结论：太仓市人口结构呈现不断老龄化趋势。';
-         document.getElementById('populationPreYear').innerHTML='2020';       
-           document.getElementById('populationPreYear1').innerHTML='2020';
- document.getElementById('oldManProportion').innerHTML='32.08';
- document.getElementById('sexRatio').innerHTML='105.11：100';
- $scope.pyear="2020";
 
- //20年的男性人口给
+        var infow = [];
+        infow.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#CC0033;font-size:18px'>浮桥镇</div>")
+            // 设置label标签
+        marker1.setLabel({ //label默认蓝框白底左上角显示，样式className为：amap-marker-label
+            offset: new AMap.Pixel(20, 20), //修改label相对于maker的位置
+            content: infow.join('')
+        });
+        var marker5 = new AMap.Marker({
+            position: [121.070907, 31.556999], //沙溪镇
+            map: map,
+            icon: new AMap.Icon({
+                size: new AMap.Size(40, 50), //图标大小
+                image: "/images/marker_sprite.png",
+            })
+        });
+        var infow5 = [];
+        infow5.push("<div style='background-color:#FFFFFF;border:2px solid #66cc66;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#66cc66;font-size:18px'>沙溪镇</div>")
+            // 设置label标签
+        marker5.setLabel({ //label默认蓝框白底左上角显示，样式className为：amap-marker-label
+            offset: new AMap.Pixel(20, 20), //修改label相对于maker的位置
+            content: infow5.join('')
+        });
+        var marker4 = new AMap.Marker({ //城厢镇
+            position: [121.1124, 31.456376],
+            map: map,
+            icon: new AMap.Icon({
+                size: new AMap.Size(40, 50), //图标大小
+                image: "/images/marker_sprite.png",
+            })
+        });
+        var infow4 = [];
+        infow4.push("<div style='background-color:#FFFFFF;border:2px solid #66cc66;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#66cc66;font-size:18px'>城厢镇</div>")
+            // 设置label标签
+        marker4.setLabel({ //label默认蓝框白底左上角显示，样式className为：amap-marker-label
+            offset: new AMap.Pixel(20, 20), //修改label相对于maker的位置
+            content: infow4.join('')
+        });
+        var marker2 = new AMap.Marker({
+            position: [121.276413, 31.515122], //浏河镇
+            map: map,
+            icon: new AMap.Icon({
+                size: new AMap.Size(40, 50), //图标大小
+                image: "/images/marker_sprite.png",
+            })
+        });
+        var infow2 = [];
+        infow2.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#CC0033;font-size:18px'>浏河镇</div>")
+            // 设置label标签
+        marker2.setLabel({ //label默认蓝框白底左上角显示，样式className为：amap-marker-label
+            offset: new AMap.Pixel(20, 20), //修改label相对于maker的位置
+            content: infow2.join('')
+        });
+        var marker3 = new AMap.Marker({
+            position: [121.10, 31.45], //太仓市
+            map: map,
+            icon: new AMap.Icon({
+                size: new AMap.Size(40, 50), //图标大小
+                image: "/images/marker_sprite.png",
+            })
+        });
+        var infow3 = [];
+        infow3.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#CC0033;font-size:18px'>娄东街道</div>")
+            // 设置label标签
+        marker3.setLabel({ //label默认蓝框白底左上角显示，样式className为：amap-marker-label
+            offset: new AMap.Pixel(20, 20), //修改label相对于maker的位置
+            content: infow3.join('')
+        });
+        var marker6 = new AMap.Marker({
+            position: [121.036167, 31.519103], //双凤镇
+            map: map,
+            icon: new AMap.Icon({
+                size: new AMap.Size(40, 50), //图标大小
+                image: "/images/marker_sprite.png",
+            })
+        });
+        var infow6 = [];
+        infow6.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#CC0033;font-size:18px'>双凤镇</div>")
+            // 设置label标签
+        marker6.setLabel({ //label默认蓝框白底左上角显示，样式className为：amap-marker-label
+            offset: new AMap.Pixel(20, 20), //修改label相对于maker的位置
+            content: infow6.join('')
+        });
+        var marker7 = new AMap.Marker({
+            position: [121.106514, 31.649675], //璜泾镇
+            map: map,
+            icon: new AMap.Icon({
+                size: new AMap.Size(40, 50), //图标大小
+                image: "/images/marker_sprite.png",
+            })
+        });
+        var infow7 = [];
+        infow7.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#CC0033;font-size:18px'>璜泾镇</div>")
+            // 设置label标签
+        marker7.setLabel({ //label默认蓝框白底左上角显示，样式className为：amap-marker-label
+            offset: new AMap.Pixel(20, 20), //修改label相对于maker的位置
+            content: infow7.join('')
+        });
+
+        var marker8 = new AMap.Marker({
+            position: [121.126845, 31.434877], //科教新城  121.20748,31.622211
+            map: map,
+            icon: new AMap.Icon({
+                size: new AMap.Size(40, 50), //图标大小
+                image: "/images/marker_sprite.png",
+            })
+        });
+        marker8.setMap(map);
+        // 设置鼠标划过点标记显示的文字提示
+        marker8.setTitle('');
+        var infow = [];
+        infow.push("<div style='background-color:#FFFFFF;border:2px solid #66cc66;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#66cc66;font-size:18px'>科教新城</div>")
+            // 设置label标签
+        marker8.setLabel({ //label默认蓝框白底左上角显示，样式className为：amap-marker-label
+            offset: new AMap.Pixel(20, 20), //修改label相对于maker的位置
+            content: infow.join('')
+        });
+
+        var marker9 = new AMap.Marker({
+            position: [121.132514, 31.479037], //新区  121.20748,31.622211
+            map: map,
+            icon: new AMap.Icon({
+                size: new AMap.Size(40, 50), //图标大小
+                image: "/images/marker_sprite.png",
+            })
+        });
+        marker9.setMap(map);
+        // 设置鼠标划过点标记显示的文字提示
+        marker9.setTitle('');
+        var infow = [];
+        infow.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#CC0033;font-size:18px'>新区</div>")
+            // 设置label标签
+        marker9.setLabel({ //label默认蓝框白底左上角显示，样式className为：amap-marker-label
+            offset: new AMap.Pixel(20, 20), //修改label相对于maker的位置
+            content: infow.join('')
+        });
+
+        var marker10 = new AMap.Marker({
+            position: [121.212609, 31.600756], //港区  121.20748,31.622211
+            map: map,
+            icon: new AMap.Icon({
+                size: new AMap.Size(40, 50), //图标大小
+                image: "/images/marker_sprite.png",
+            })
+        });
+        marker10.setMap(map);
+        // 设置鼠标划过点标记显示的文字提示
+        marker10.setTitle('');
+        var infow = [];
+        infow.push("<div style='background-color:#FFFFFF;border:2px solid #CC0033;border-radius:10px;padding:10px 10px;position:absolute;top:-10px;left:-5px;white-space:nowrap;color:#CC0033;font-size:18px'>港区</div>")
+            // 设置label标签
+        marker10.setLabel({ //label默认蓝框白底左上角显示，样式className为：amap-marker-label
+            offset: new AMap.Pixel(20, 20), //修改label相对于maker的位置
+            content: infow.join('')
+        });
 
 
-        $scope.age_ration.options.colors=columnColors;
-        $scope.age_ration.options.title.text="太仓市2015/2020年人口结构图";
-        $scope.age_ration.series=[{
-            name: '2015年男性人口',
-            data: popData13,
-            stack: 'male'
-        },{
-          //  popData13代表的是2015年男性的数量
-            name: '2015年女性人口',
-            data: popData13,
-            stack: 'male'
-        },{
-            name: '2020年男性人口',
-            data: popData1,
-            stack: 'female'
-        },{
-            name: '2020年女性人口',
-            data: popData2,
-            stack: 'female'
-        }];
-        $scope.population_prediction_year.options.title.text="太仓市2020年人口结构预测图";
-        $scope.population_prediction_year.series=[{
-                name: '男性',
-                data: male20
-            }, {
-                name: '女性',
-                data: female20
-            }]
+        //城镇名称$scope.years = ["年龄","0-5岁", "6-11岁","12-17岁", "18-23岁", "24-29岁", "30-35岁", "36-41岁", "42-47岁", "48-53岁", "54-59岁", "60岁以上"];
+        $scope.townsname = ["浮桥镇", "浏河镇", "娄东街道", "城厢镇", "沙溪镇", "双凤镇", "璜泾镇", "科教新城", "新区", "港区"];
+        $scope.birthrate = ["6.12‰", "6.3‰", "6.34‰", "9.5‰", "6.53‰", "7.62‰", "5.91‰", "13.28‰", "6.84‰", "5.56‰"];
+        $scope.deathrate = ["10.78‰", "9.09‰", "8.22‰", "5.59‰", "4.76‰", "9.07‰", "9.98‰", "7.33‰", "8.68‰", "7.44‰"];
+        $scope.populationrate = ["-4.66‰", "-2.79‰", "-1.88‰", "3.91‰", "1.77‰", "-1.45‰", "-4.07‰", "5.95‰", "-1.84‰", "-1.88‰"];
+        //显示信息窗体(可单击位置显示隐藏的信息窗体)
+        var info1 = [];
+        info1.push("<h4><strong>浮桥镇人口自然增长率</strong></h4>"); //121.20748,31.622211
+        info1.push("<table class='table table-bordered table-striped'>");
+        info1.push("<tr><td style='font-size:15px;text-align:center'>出生率</td><td style='text-align:center'>6.12‰</td></tr>");
+        info1.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>10.78‰</td></tr>");
+        info1.push("<tr><td style='font-size:15px;text-align:center'>人口自然增长率</td><td style='text-align:center'>-4.66‰</td></tr>");
+        info1.push("</table>");
+        var infowindow1 = new AMap.InfoWindow({
+            content: info1.join(''),
+            offset: new AMap.Pixel(0, -30),
+            size: new AMap.Size(300, 0)
+        })
+        var clickHandle1 = AMap.event.addListener(marker1, 'click', function() {
+            infowindow1.open(map, marker1.getPosition())
+        })
 
-             $scope.manpre=$scope.age_ration.series[2].data;
-  $scope.womanpre=$scope.age_ration.series[3].data;
-          }
-      if(btn.name===2025){
-        document.getElementById('abc').innerHTML='数据分析：60岁及以上人口比例从2015的31.02% 增加到2025的33.66%。';
-         document.getElementById('conclusion').innerHTML='结论：太仓市人口结构呈现不断老龄化趋势。';
-          document.getElementById('populationPreYear').innerHTML='2025';          document.getElementById('populationPreYear1').innerHTML='2025';
-document.getElementById('oldManProportion').innerHTML='33.66';document.getElementById('sexRatio').innerHTML='104.82：100';
-        $scope.age_ration.options.colors=columnColors;
-         $scope.pyear="2025";
-        $scope.age_ration.options.title.text="太仓市2015/2025人口结构图";
-        $scope.age_ration.series=[{
-            name: '2015年男性人口',
-            data: popData13,
-            stack: 'male'
-        },{
-            name: '2015年女性人口',
-            data: popData14,
-            stack: 'male'
-        },{
-            name: '2025年男性人口',
-            data: popData3,
-            stack: 'female'
-        },{
-            name: '2025年女性人口',
-            data: popData4,
-            stack: 'female'
-        }];
+        var info2 = [];
+        info2.push("<h4><strong>浏河镇人口自然增长率</strong></h4>");
+        info2.push("<table class='table table-bordered table-striped'>");
+        info2.push("<tr><td style='font-size:15px;width:150px;text-align:center'>出生率</td><td style='text-align:center'>6.3‰</td></tr>");
+        info2.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>9.09‰</td></tr>");
+        info2.push("<tr><td style='font-size:15px;text-align:center'>人口自然增长率</td><td style='text-align:center'>-2.79‰</td></tr>");
+        info2.push("</table>");
+        var infowindow2 = new AMap.InfoWindow({
+            content: info2.join(''),
+            offset: new AMap.Pixel(0, -30),
+            size: new AMap.Size(300, 0)
+        })
+        var clickHandle2 = AMap.event.addListener(marker2, 'click', function() {
+            infowindow2.open(map, marker2.getPosition())
+        })
 
-        $scope.population_prediction_year.options.title.text="太仓市2025年人口结构预测图";
-        $scope.population_prediction_year.series=[{
-                name: '男性',
-                data: male25
-            }, {
-                name: '女性',
-                data: female25
-            }]
-                $scope.manpre=popData3;
-  $scope.womanpre=popData4;
-     }
-      if(btn.name===2030){
-        document.getElementById('abc').innerHTML='数据分析：60岁及以上人口比例从2015的31.02% 增加到2030的33.67%。';
-         document.getElementById('conclusion').innerHTML='结论：太仓市人口结构呈现不断老龄化趋势。';
-          document.getElementById('populationPreYear').innerHTML='2030';          document.getElementById('populationPreYear1').innerHTML='2030';
-document.getElementById('oldManProportion').innerHTML='33.67';
- $scope.pyear="2030";
-document.getElementById('sexRatio').innerHTML='104.75：100';
-        $scope.age_ration.options.colors=columnColors;
-        $scope.age_ration.options.title.text="太仓市2015/2030人口结构图";
-        $scope.age_ration.series=[{
-            name: '2015年男性人口',
-            data: popData13,
-            stack: 'male'
-        },{
-            name: '2015年女性人口',
-            data: popData14,
-            stack: 'male'
-        },{
-            name: '2030年男性人口',
-            data: popData5,
-            stack: 'female'
-        },{
-            name: '2030年女性人口',
-            data: popData6,
-            stack: 'female'
-        }];
-        $scope.population_prediction_year.options.title.text="太仓市2030年人口结构预测图";
-        $scope.population_prediction_year.series=[{
-                name: '男性',
-                data: male30
-            }, {
-                name: '女性',
-                data: female30
-            }]
-                $scope.manpre=$scope.age_ration.series[2].data;
-  $scope.womanpre=$scope.age_ration.series[3].data;
-     }
-      if(btn.name===2040){
-        document.getElementById('abc').innerHTML='数据分析：60岁及以上人口比例从2015的31.02% 增加到2040的32.05%。';
-         document.getElementById('conclusion').innerHTML='结论：太仓市人口结构呈现不断老龄化趋势。';
-         document.getElementById('populationPreYear').innerHTML='2040';         document.getElementById('populationPreYear1').innerHTML='2040';
-document.getElementById('oldManProportion').innerHTML='32.05';
- $scope.pyear="2040";
-document.getElementById('sexRatio').innerHTML='104.68：100';
-        $scope.age_ration.options.colors=columnColors;
-        $scope.age_ration.options.title.text="太仓市2015/2040人口结构图";
-        $scope.age_ration.series=[{
-            name: '2015年男性人口',
-            data: popData13,
-            stack: 'male'
-        },{
-            name: '2015年女性人口',
-            data: popData14,
-            stack: 'male'
-        },{
-            name: '2040年男性人口',
-            data: popData9,
-            stack: 'female'
-        },{
-            name: '2040年女性人口',
-            data: popData10,
-            stack: 'female'
-        }];
-            $scope.manpre=$scope.age_ration.series[2].data;
-  $scope.womanpre=$scope.age_ration.series[3].data;
-        $scope.population_prediction_year.options.title.text="太仓市2040年人口结构预测图";
-        $scope.population_prediction_year.series=[{
-                name: '男性',
-                data: male40
-            }, {
-                name: '女性',
-                data: female40
-            }]
-                $scope.manpre=$scope.age_ration.series[2].data;
-  $scope.womanpre=$scope.age_ration.series[3].data;
-     }
-     if(btn.name===2035){
-        document.getElementById('abc').innerHTML='数据分析：60岁及以上人口比例从2015的31.02% 增加到2035的33.92%。';
-         document.getElementById('conclusion').innerHTML='结论：太仓市人口结构呈现不断老龄化趋势。';
-          document.getElementById('populationPreYear').innerHTML='2035';
-           $scope.pyear="2035";
-                    document.getElementById('populationPreYear1').innerHTML='2035';
-                    document.getElementById('sexRatio').innerHTML='104.56：100';
-document.getElementById('oldManProportion').innerHTML='33.92';
-        $scope.age_ration.options.colors=columnColors;
-        $scope.age_ration.options.title.text="太仓市2015/2035人口结构图";
-        $scope.age_ration.series=[{
-            name: '2015年男性人口',
-            data: popData13,
-            stack: 'male'
+        var info3 = [];
+        info3.push("<h4><strong>娄东街道人口自然增长率</strong></h4>");
+        info3.push("<table class='table table-bordered table-striped'>");
+        info3.push("<tr><td style='font-size:15px;text-align:center'>出生率</td><td style='text-align:center'>6.34‰</td ></tr>");
+        info3.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>8.22‰</td ></tr>");
+        info3.push("<tr><td style='font-size:15px;text-align:center'>人口自然增长率</td><td style='text-align:center'>-1.88‰</td></tr>");
+        info3.push("</table>");
+        var infowindow3 = new AMap.InfoWindow({
+            content: info3.join(''),
+            offset: new AMap.Pixel(0, -30),
+            size: new AMap.Size(300, 0)
+        })
+        infowindow3.open(map, marker3.getPosition());
+        var clickHandle3 = AMap.event.addListener(marker3, 'click', function() {
+            infowindow3.open(map, marker3.getPosition())
+        })
+
+        var info4 = [];
+        info4.push("<h4><strong>城厢镇人口自然增长率</strong></h4>");
+        info4.push("<table class='table table-bordered table-striped'>");
+        info4.push("<tr><td style='font-size:15px;text-align:center'>出生率</td><td style='text-align:center'>9.5‰</td></tr>");
+        info4.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>5.59‰</td></tr>");
+        info4.push("<tr><td style='font-size:15px;text-align:center'>人口自然增长率</td><td style='text-align:center'>3.91‰</td></tr>");
+        info4.push("</table>");
+        var infowindow4 = new AMap.InfoWindow({
+            content: info4.join(''),
+            offset: new AMap.Pixel(0, -30),
+            size: new AMap.Size(300, 0)
+        })
+        var clickHandle4 = AMap.event.addListener(marker4, 'click', function() {
+            infowindow4.open(map, marker4.getPosition())
+        })
+
+        var info5 = [];
+        info5.push("<h4><strong>沙溪镇人口自然增长率</strong></h4>");
+        info5.push("<table class='table table-bordered table-striped'>");
+        info5.push("<tr><td style='font-size:15px;text-align:center'>出生率</td><td style='text-align:center'>6.53‰</td></tr>");
+        info5.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>4.76‰</td></tr>");
+        info5.push("<tr><td style='font-size:15px;text-align:center'>人口自然增长率</td><td style='text-align:center'>1.77‰</td></tr>");
+        info5.push("</table>");
+        var infowindow5 = new AMap.InfoWindow({
+            content: info5.join(''),
+            offset: new AMap.Pixel(0, -30),
+            size: new AMap.Size(300, 0)
+        })
+        var clickHandle5 = AMap.event.addListener(marker5, 'click', function() {
+            infowindow5.open(map, marker5.getPosition())
+        })
+
+        var info6 = [];
+        info6.push("<h4><strong>双凤镇人口自然增长率</strong></h4>");
+        info6.push("<table class='table table-bordered table-striped'>");
+        info6.push("<tr><td style='font-size:15px;text-align:center'>出生率</td><td style='text-align:center'>7.62‰</td></tr>");
+        info6.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>9.07‰</td></tr>");
+        info6.push("<tr><td style='font-size:15px;text-align:center'>人口自然增长率</td><td style='text-align:center'>-1.45‰</td></tr>");
+        info6.push("</table>");
+        var infowindow6 = new AMap.InfoWindow({
+            content: info6.join(''),
+            offset: new AMap.Pixel(0, -30),
+            size: new AMap.Size(300, 0)
+        })
+        var clickHandle6 = AMap.event.addListener(marker6, 'click', function() {
+            infowindow6.open(map, marker6.getPosition())
+        })
+        var info7 = [];
+        info7.push("<h4><strong>璜泾镇人口自然增长率</strong></h4>");
+        info7.push("<table class='table table-bordered table-striped'>");
+        info7.push("<tr><td style='font-size:15px;text-align:center'>出生率</td><td style='text-align:center'>5.91‰</td></tr>");
+        info7.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>9.98‰</td></tr>");
+        info7.push("<tr><td style='font-size:15px;text-align:center'>人口自然增长率</td><td style='text-align:center'>-4.07‰</td></tr>");
+        info7.push("</table>");
+        var infowindow7 = new AMap.InfoWindow({
+            content: info7.join(''),
+            offset: new AMap.Pixel(0, -30),
+            size: new AMap.Size(300, 0)
+        })
+        var clickHandle7 = AMap.event.addListener(marker7, 'click', function() {
+            infowindow7.open(map, marker7.getPosition())
+        })
+        var info8 = [];
+        info8.push("<h4><strong>科教新城人口自然增长率</strong></h4>");
+        info8.push("<table class='table table-bordered table-striped'>");
+        info8.push("<tr><td style='font-size:15px;text-align:center'>出生率</td><td style='text-align:center'>13.28‰</td></tr>");
+        info8.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>7.33‰</td></tr>");
+        info8.push("<tr><td style='font-size:15px;text-align:center'>人口自然增长率</td><td style='text-align:center'>5.95‰</td></tr>");
+        info8.push("</table>");
+        var infowindow8 = new AMap.InfoWindow({
+            content: info8.join(''),
+            offset: new AMap.Pixel(0, -30),
+            size: new AMap.Size(300, 0)
+        })
+        var clickHandle8 = AMap.event.addListener(marker8, 'click', function() {
+            infowindow8.open(map, marker8.getPosition())
+        })
+        var info9 = [];
+        info9.push("<h4><strong>新区人口自然增长率</strong></h4>");
+        info9.push("<table class='table table-bordered table-striped'>");
+        info9.push("<tr><td style='font-size:15px;text-align:center'>出生率</td><td style='text-align:center'>6.84‰</td></tr>");
+        info9.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>8.68‰</td></tr>");
+        info9.push("<tr><td style='font-size:15px;text-align:center'>人口自然增长率</td><td style='text-align:center'>-1.84‰</td></tr>");
+        info9.push("</table>");
+        var infowindow9 = new AMap.InfoWindow({
+            content: info9.join(''),
+            offset: new AMap.Pixel(0, -30),
+            size: new AMap.Size(300, 0)
+        })
+        var clickHandle9 = AMap.event.addListener(marker9, 'click', function() {
+            infowindow9.open(map, marker9.getPosition())
+        })
+        var info10 = [];
+        info10.push("<h4><strong>港区人口自然增长率</strong></h4>");
+        info10.push("<table class='table table-bordered table-striped'>");
+        info10.push("<tr><td style='font-size:15px;text-align:center'>出生率</td><td style='text-align:center'>5.56‰</td></tr>");
+        info10.push("<tr><td style='font-size:15px;text-align:center'>死亡率</td><td style='text-align:center'>7.44‰</td></tr>");
+        info10.push("<tr><td style='font-size:15px;text-align:center'>人口自然增长率</td><td style='text-align:center'>-1.88‰</td></tr>");
+        info10.push("</table>");
+        var infowindow10 = new AMap.InfoWindow({
+            content: info10.join(''),
+            offset: new AMap.Pixel(0, -30),
+            size: new AMap.Size(300, 0)
+        })
+        var clickHandle10 = AMap.event.addListener(marker10, 'click', function() {
+                infowindow10.open(map, marker10.getPosition())
+            })
+            //var heatmap;
+        var points = [
+            { "lng": 121.10, "lat": 31.45, "count": 30 },
+            { "lng": 121.046329, "lat": 31.471813, "count": 90 },
+            { "lng": 121.135737, "lat": 31.491485, "count": 12 },
+            { "lng": 121.134911, "lat": 31.491627, "count": 100 },
+            { "lng": 121.276413, "lat": 31.515122, "count": 50 },
+            { "lng": 121.106514, "lat": 31.649675, "count": 15 },
+            { "lng": 121.070907, "lat": 31.556999, "count": 16 },
+
+            { "lng": 121.190549, "lat": 31.467665, "count": 16 }
+        ];
+
+
+        //地图结尾
+        /* map.plugin(["AMap.Heatmap"], function() {
+                //初始化heatmap对象
+                heatmap = new AMap.Heatmap(map, {
+                    radius: 50, //给定半径
+                    opacity: [0, 0.8],
+                 
+                    gradient:{
+                     0.5: 'blue',
+                     0.65: 'rgb(117,211,248)',
+                     0.7: 'rgb(0, 255, 0)',
+                     0.9: '#ffea00',
+                     1.0: 'red'
+                     
+                     }
+                });
+                //设置数据集：该数据为北京部分“公园”数据
+                heatmap.setDataSet({
+                    data: points,
+                    max: 100
+                });
+            });
+            //判断浏览区是否支持canvas
+            function isSupportCanvas() {
+                var elem = document.createElement('canvas');
+                return !!(elem.getContext && elem.getContext('2d'));
+            }
+
+         */
+
+        //});
+
+
+        $scope.buttonMap = [{
+            name: 2020,
+            label: 2020 + "",
+
         }, {
-            name: '2015年女性人口',
-            data: popData14,
-            stack: 'male'
-        }, {
-            name: '2035年男性人口',
-            data: popData7,
-            stack: 'female'
-        },{
-            name: '2035年女性人口',
-            data: popData8,
-            stack: 'female'
-        }];
-            $scope.manpre=$scope.age_ration.series[2].data;
-  $scope.womanpre=$scope.age_ration.series[3].data;
-         $scope.population_prediction_year.options.title.text="太仓市2035年人口结构预测图";
-        $scope.population_prediction_year.series=[{
-                name: '男性',
-                data: male35
-            }, {
-                name: '女性',
-                data: female35
-            }]
-                $scope.manpre=$scope.age_ration.series[2].data;
-  $scope.womanpre=$scope.age_ration.series[3].data;
-     }
-     if(btn.name===2045){
-        document.getElementById('abc').innerHTML='数据分析：60岁及以上人口比例从2015的31.02% 减少到2045的30.51%。';
-         document.getElementById('conclusion').innerHTML='结论：太仓市人口结构老龄化趋势有所放缓。';
-          document.getElementById('populationPreYear').innerHTML='2045';
-          document.getElementById('populationPreYear1').innerHTML='2045';
-          document.getElementById('oldManProportion').innerHTML='30.51';
-          document.getElementById('sexRatio').innerHTML='103.31：100';
-           $scope.pyear="2045";
-        $scope.age_ration.options.colors=columnColors;
-        $scope.age_ration.options.title.text="太仓市2015/2045人口结构图";
-        $scope.age_ration.series=[{
-            name: '2015年男性人口',
-            data: popData13,
-            stack: 'male'
-        },{
-            name: '2015年女性人口',
-            data: popData14,
-            stack: 'male'
-        },{
-            name: '2045年男性人口',
-            data: popData11,
-            stack: 'female'
-        },{
-            name: '2045女性人口',
-            data: popData12,
-            stack: 'female'
-        }];
-            $scope.manpre=$scope.age_ration.series[2].data;
-  $scope.womanpre=$scope.age_ration.series[3].data;
-        $scope.population_prediction_year.options.title.text="太仓市2045年人口结构预测图";
-        $scope.population_prediction_year.series=[{
-                name: '男性',
-                data: male45
-            }, {
-                name: '女性',
-                data: female45
-            }]
-     }
-  };
-   
-  $scope.age_ration={
-    options:{
-        colors:columnColors,
-         chart: {
-            type: 'column'
-        },
+            name: 2025,
+            label: 2025 + "",
 
-        title: {
-            text: '太仓市2015/2025人口结构图',
-            floationg: 'true'
-        },
-        credits:{
-          enabled:false
-        },
-        legend:{
-           itemDistance: 30,
-           itemStyle:{
-            fontWeight:'normal'
-           }
-         },
-        xAxis: {
-            categories: ['0-5岁', '6-11岁', '12-17岁', '18-23岁', '24-29岁','30-35岁','36-41岁','42-47岁','48-53岁','54-59岁','60岁以上'],
-            labels: {
-                rotation: -45,
-                align: 'right',
-                style: {
-                    fontSize: '13px',
-                    fontFamily: 'Verdana, sans-serif'
+        }, {
+            name: 2030,
+            label: 2030 + "",
+
+        }, {
+            name: 2035,
+            label: 2035 + "",
+
+        }, {
+            name: 2040,
+            label: 2040 + "",
+
+        }, {
+            name: 2045,
+            label: 2045 + "",
+
+        }];
+
+        $scope.buttonMap1 = [{
+            name: 2025,
+            label: 2025 + "",
+            radio: "Left"
+        }, {
+            name: 2035,
+            label: 2035 + "",
+            radio: "Middle"
+        }, {
+            name: 2045,
+            label: 2045 + "",
+            radio: "Right"
+        }];
+        $scope.pyear = "2020";
+        $scope.btn_click = function(btn) {
+            $scope.change(btn);
+        };
+
+        //默认为2020年的表格
+        $scope.manpre = popData1;
+        $scope.womanpre = popData2;
+
+
+        $scope.change = function(btn) {
+            //  var columnColors = new Array('#7CADDF', '#327EBD', '#195489', '#1FC22B', '#FB9705', '#F26200');
+
+            if (btn.name === 2020) {
+                document.getElementById('abc').innerHTML = '数据分析：60岁及以上人口比例从2015的31.02% 增加到2020的32.08%。';
+                document.getElementById('conclusion').innerHTML = '结论：太仓市人口结构呈现不断老龄化趋势。';
+                document.getElementById('populationPreYear').innerHTML = '2020';
+                document.getElementById('populationPreYear1').innerHTML = '2020';
+                document.getElementById('oldManProportion').innerHTML = '32.08';
+                document.getElementById('sexRatio').innerHTML = '105.11：100';
+                $scope.pyear = "2020";
+
+                //20年的男性人口给
+
+
+                $scope.age_ration.options.colors = columnColors;
+                $scope.age_ration.options.title.text = "太仓市2015/2020年人口结构图";
+                $scope.age_ration.series = [{
+                    name: '2015年男性人口',
+                    data: popData13,
+                    stack: 'male'
+                }, {
+                    //  popData13代表的是2015年男性的数量
+                    name: '2015年女性人口',
+                    data: popData13,
+                    stack: 'male'
+                }, {
+                    name: '2020年男性人口',
+                    data: popData1,
+                    stack: 'female'
+                }, {
+                    name: '2020年女性人口',
+                    data: popData2,
+                    stack: 'female'
+                }];
+                $scope.population_prediction_year.options.title.text = "太仓市2020年人口结构预测图";
+                $scope.population_prediction_year.series = [{
+                    name: '男性',
+                    data: male20
+                }, {
+                    name: '女性',
+                    data: female20
+                }]
+
+                $scope.manpre = $scope.age_ration.series[2].data;
+                $scope.womanpre = $scope.age_ration.series[3].data;
+            }
+            if (btn.name === 2025) {
+                document.getElementById('abc').innerHTML = '数据分析：60岁及以上人口比例从2015的31.02% 增加到2025的33.66%。';
+                document.getElementById('conclusion').innerHTML = '结论：太仓市人口结构呈现不断老龄化趋势。';
+                document.getElementById('populationPreYear').innerHTML = '2025';
+                document.getElementById('populationPreYear1').innerHTML = '2025';
+                document.getElementById('oldManProportion').innerHTML = '33.66';
+                document.getElementById('sexRatio').innerHTML = '104.82：100';
+                $scope.age_ration.options.colors = columnColors;
+                $scope.pyear = "2025";
+                $scope.age_ration.options.title.text = "太仓市2015/2025人口结构图";
+                $scope.age_ration.series = [{
+                    name: '2015年男性人口',
+                    data: popData13,
+                    stack: 'male'
+                }, {
+                    name: '2015年女性人口',
+                    data: popData14,
+                    stack: 'male'
+                }, {
+                    name: '2025年男性人口',
+                    data: popData3,
+                    stack: 'female'
+                }, {
+                    name: '2025年女性人口',
+                    data: popData4,
+                    stack: 'female'
+                }];
+
+                $scope.population_prediction_year.options.title.text = "太仓市2025年人口结构预测图";
+                $scope.population_prediction_year.series = [{
+                    name: '男性',
+                    data: male25
+                }, {
+                    name: '女性',
+                    data: female25
+                }]
+                $scope.manpre = popData3;
+                $scope.womanpre = popData4;
+            }
+            if (btn.name === 2030) {
+                document.getElementById('abc').innerHTML = '数据分析：60岁及以上人口比例从2015的31.02% 增加到2030的33.67%。';
+                document.getElementById('conclusion').innerHTML = '结论：太仓市人口结构呈现不断老龄化趋势。';
+                document.getElementById('populationPreYear').innerHTML = '2030';
+                document.getElementById('populationPreYear1').innerHTML = '2030';
+                document.getElementById('oldManProportion').innerHTML = '33.67';
+                $scope.pyear = "2030";
+                document.getElementById('sexRatio').innerHTML = '104.75：100';
+                $scope.age_ration.options.colors = columnColors;
+                $scope.age_ration.options.title.text = "太仓市2015/2030人口结构图";
+                $scope.age_ration.series = [{
+                    name: '2015年男性人口',
+                    data: popData13,
+                    stack: 'male'
+                }, {
+                    name: '2015年女性人口',
+                    data: popData14,
+                    stack: 'male'
+                }, {
+                    name: '2030年男性人口',
+                    data: popData5,
+                    stack: 'female'
+                }, {
+                    name: '2030年女性人口',
+                    data: popData6,
+                    stack: 'female'
+                }];
+                $scope.population_prediction_year.options.title.text = "太仓市2030年人口结构预测图";
+                $scope.population_prediction_year.series = [{
+                    name: '男性',
+                    data: male30
+                }, {
+                    name: '女性',
+                    data: female30
+                }]
+                $scope.manpre = $scope.age_ration.series[2].data;
+                $scope.womanpre = $scope.age_ration.series[3].data;
+            }
+            if (btn.name === 2040) {
+                document.getElementById('abc').innerHTML = '数据分析：60岁及以上人口比例从2015的31.02% 增加到2040的32.05%。';
+                document.getElementById('conclusion').innerHTML = '结论：太仓市人口结构呈现不断老龄化趋势。';
+                document.getElementById('populationPreYear').innerHTML = '2040';
+                document.getElementById('populationPreYear1').innerHTML = '2040';
+                document.getElementById('oldManProportion').innerHTML = '32.05';
+                $scope.pyear = "2040";
+                document.getElementById('sexRatio').innerHTML = '104.68：100';
+                $scope.age_ration.options.colors = columnColors;
+                $scope.age_ration.options.title.text = "太仓市2015/2040人口结构图";
+                $scope.age_ration.series = [{
+                    name: '2015年男性人口',
+                    data: popData13,
+                    stack: 'male'
+                }, {
+                    name: '2015年女性人口',
+                    data: popData14,
+                    stack: 'male'
+                }, {
+                    name: '2040年男性人口',
+                    data: popData9,
+                    stack: 'female'
+                }, {
+                    name: '2040年女性人口',
+                    data: popData10,
+                    stack: 'female'
+                }];
+                $scope.manpre = $scope.age_ration.series[2].data;
+                $scope.womanpre = $scope.age_ration.series[3].data;
+                $scope.population_prediction_year.options.title.text = "太仓市2040年人口结构预测图";
+                $scope.population_prediction_year.series = [{
+                    name: '男性',
+                    data: male40
+                }, {
+                    name: '女性',
+                    data: female40
+                }]
+                $scope.manpre = $scope.age_ration.series[2].data;
+                $scope.womanpre = $scope.age_ration.series[3].data;
+            }
+            if (btn.name === 2035) {
+                document.getElementById('abc').innerHTML = '数据分析：60岁及以上人口比例从2015的31.02% 增加到2035的33.92%。';
+                document.getElementById('conclusion').innerHTML = '结论：太仓市人口结构呈现不断老龄化趋势。';
+                document.getElementById('populationPreYear').innerHTML = '2035';
+                $scope.pyear = "2035";
+                document.getElementById('populationPreYear1').innerHTML = '2035';
+                document.getElementById('sexRatio').innerHTML = '104.56：100';
+                document.getElementById('oldManProportion').innerHTML = '33.92';
+                $scope.age_ration.options.colors = columnColors;
+                $scope.age_ration.options.title.text = "太仓市2015/2035人口结构图";
+                $scope.age_ration.series = [{
+                    name: '2015年男性人口',
+                    data: popData13,
+                    stack: 'male'
+                }, {
+                    name: '2015年女性人口',
+                    data: popData14,
+                    stack: 'male'
+                }, {
+                    name: '2035年男性人口',
+                    data: popData7,
+                    stack: 'female'
+                }, {
+                    name: '2035年女性人口',
+                    data: popData8,
+                    stack: 'female'
+                }];
+                $scope.manpre = $scope.age_ration.series[2].data;
+                $scope.womanpre = $scope.age_ration.series[3].data;
+                $scope.population_prediction_year.options.title.text = "太仓市2035年人口结构预测图";
+                $scope.population_prediction_year.series = [{
+                    name: '男性',
+                    data: male35
+                }, {
+                    name: '女性',
+                    data: female35
+                }]
+                $scope.manpre = $scope.age_ration.series[2].data;
+                $scope.womanpre = $scope.age_ration.series[3].data;
+            }
+            if (btn.name === 2045) {
+                document.getElementById('abc').innerHTML = '数据分析：60岁及以上人口比例从2015的31.02% 减少到2045的30.51%。';
+                document.getElementById('conclusion').innerHTML = '结论：太仓市人口结构老龄化趋势有所放缓。';
+                document.getElementById('populationPreYear').innerHTML = '2045';
+                document.getElementById('populationPreYear1').innerHTML = '2045';
+                document.getElementById('oldManProportion').innerHTML = '30.51';
+                document.getElementById('sexRatio').innerHTML = '103.31：100';
+                $scope.pyear = "2045";
+                $scope.age_ration.options.colors = columnColors;
+                $scope.age_ration.options.title.text = "太仓市2015/2045人口结构图";
+                $scope.age_ration.series = [{
+                    name: '2015年男性人口',
+                    data: popData13,
+                    stack: 'male'
+                }, {
+                    name: '2015年女性人口',
+                    data: popData14,
+                    stack: 'male'
+                }, {
+                    name: '2045年男性人口',
+                    data: popData11,
+                    stack: 'female'
+                }, {
+                    name: '2045女性人口',
+                    data: popData12,
+                    stack: 'female'
+                }];
+                $scope.manpre = $scope.age_ration.series[2].data;
+                $scope.womanpre = $scope.age_ration.series[3].data;
+                $scope.population_prediction_year.options.title.text = "太仓市2045年人口结构预测图";
+                $scope.population_prediction_year.series = [{
+                    name: '男性',
+                    data: male45
+                }, {
+                    name: '女性',
+                    data: female45
+                }]
+            }
+        };
+
+        $scope.age_ration = {
+            options: {
+                colors: columnColors,
+                chart: {
+                    type: 'column'
+                },
+
+                title: {
+                    text: '太仓市2015/2025人口结构图',
+                    floationg: 'true'
+                },
+                credits: {
+                    enabled: false
+                },
+                legend: {
+                    itemDistance: 30,
+                    itemStyle: {
+                        fontWeight: 'normal'
+                    }
+                },
+                xAxis: {
+                    categories: ['0-5岁', '6-11岁', '12-17岁', '18-23岁', '24-29岁', '30-35岁', '36-41岁', '42-47岁', '48-53岁', '54-59岁', '60岁以上'],
+                    labels: {
+                        rotation: -45,
+                        align: 'right',
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+
+                yAxis: {
+                    allowDecimals: false,
+                    min: 0,
+                    title: {
+                        text: '人口数量(人)'
+                    }
+                },
+
+                tooltip: {
+                    formatter: function() {
+                        return ' <b>' + this.x + '</b><br/>' +
+                            this.series.name + ': ' + this.y + '<br/>' +
+                            '总共: ' + this.point.stackTotal;
+                    }
+                },
+
+                plotOptions: {
+                    column: {
+                        stacking: 'normal'
+                    }
                 }
-             }
-        },
+            },
 
-        yAxis: {
-            allowDecimals: false,
-            min: 0,
-            title: {
-                text: '人口数量(人)'
-            }
-        },
+            series: [{
+                name: '2015年男性人口',
+                data: popData13,
+                stack: 'male'
+            }, {
+                name: '2015年女性人口',
+                data: popData14,
+                stack: 'male'
+            }, {
+                name: '2020年男性人口',
+                data: popData1,
+                stack: 'female'
+            }, {
+                name: '2020年女性人口',
+                data: popData2,
+                stack: 'female'
+            }]
 
-        tooltip: {
-            formatter: function() {
-                return ' <b>'+ this.x +'</b><br/>'+
-                    this.series.name +': '+ this.y +'<br/>'+
-                    '总共: '+ this.point.stackTotal;
-            }
-        },
-
-        plotOptions: {
-            column: {
-                stacking: 'normal'
-            }
-        }
-      },
-
-        series: [{
-            name: '2015年男性人口',
-            data: popData13,
-            stack: 'male'
-        },{
-            name: '2015年女性人口',
-            data: popData14,
-            stack: 'male'
-        },{
-            name: '2020年男性人口',
-            data: popData1,
-            stack: 'female'
-        },{
-            name: '2020年女性人口',
-            data: popData2,
-            stack: 'female'
-        }]
-
-      };
-    var categories = ['0岁', '1岁', '2岁', '3岁',
+        };
+        var categories = ['0岁', '1岁', '2岁', '3岁',
             '4岁', '5岁', '6岁', '7岁', '8岁',
             '9岁', '10岁', '11岁', '12岁', '13岁',
             '14岁', '15岁', '16岁', '17岁', '18岁',
-            '19岁','20岁', '21岁', '22岁', '23岁',
+            '19岁', '20岁', '21岁', '22岁', '23岁',
             '24岁', '25岁', '26岁', '27岁', '28岁',
             '29岁', '30岁', '31岁', '32岁', '33岁',
             '34岁', '35岁', '36岁', '37岁', '38岁',
@@ -1664,73 +1665,74 @@ document.getElementById('oldManProportion').innerHTML='33.92';
             '44岁', '45岁', '46岁', '47岁', '48岁',
             '49岁', '50岁', '51岁', '52岁', '53岁',
             '54岁', '55岁', '56岁', '57岁', '58岁',
-            '59岁','60岁', '61岁', '62岁', '63岁',
+            '59岁', '60岁', '61岁', '62岁', '63岁',
             '64岁', '65岁', '66岁', '67岁', '68岁',
             '69岁', '70岁', '71岁', '72岁', '73岁',
             '74岁', '75岁', '76岁', '77岁', '78岁',
-            '79岁','80岁', '81岁', '82岁', '83岁',
+            '79岁', '80岁', '81岁', '82岁', '83岁',
             '84岁', '85岁', '86岁', '87岁', '88岁',
             '89岁', '90岁', '91岁', '92岁', '93岁',
             '94岁', '95岁', '96岁', '97岁', '98岁',
-            '99岁','100岁+'];
-$scope.population_year={
-        options:{
-            colors:pieColors,
-        chart: {
-                type: 'bar'
-            },
-            title: {
-                text: '太仓市2015年人口结构图'
-            },
-        legend:{
-        
-           itemStyle:{
-            fontWeight:'normal'
-           }
-         },
-            xAxis: [{
-                categories: categories,
-                reversed: false,
-                labels: {
-                    step: 10
-                }
-            }, { // mirror axis on right side
-                opposite: true,
-                reversed: false,
-                categories: categories,
-                linkedTo: 0,
-                labels: {
-                    step: 10
-                }
-            }],
-            yAxis: {
-                title: {
-                    text: null
+            '99岁', '100岁+'
+        ];
+        $scope.population_year = {
+            options: {
+                colors: pieColors,
+                chart: {
+                    type: 'bar'
                 },
-                labels: {
-                    formatter: function () {
-                        return (Math.abs(this.value) / 1000) + 'K';
+                title: {
+                    text: '太仓市2015年人口结构图'
+                },
+                legend: {
+
+                    itemStyle: {
+                        fontWeight: 'normal'
                     }
                 },
-                min: -6000,
-                max: 6000
-            },
+                xAxis: [{
+                    categories: categories,
+                    reversed: false,
+                    labels: {
+                        step: 10
+                    }
+                }, { // mirror axis on right side
+                    opposite: true,
+                    reversed: false,
+                    categories: categories,
+                    linkedTo: 0,
+                    labels: {
+                        step: 10
+                    }
+                }],
+                yAxis: {
+                    title: {
+                        text: null
+                    },
+                    labels: {
+                        formatter: function() {
+                            return (Math.abs(this.value) / 1000) + 'K';
+                        }
+                    },
+                    min: -6000,
+                    max: 6000
+                },
 
-            plotOptions: {
-                series: {
-                    stacking: 'normal'
+                plotOptions: {
+                    series: {
+                        stacking: 'normal'
+                    }
+                },
+                credits: {
+                    enabled: false
+                },
+                tooltip: {
+                    formatter: function() {
+                        return ' <b>' + this.series.name + ', age ' + this.point.category + '</b><br/>' +
+                            '人口: ' + Highcharts.numberFormat(Math.abs(this.point.y), 0);
+                    }
                 }
             },
-            credits:{
-          enabled:false
-            },
-            tooltip: {
-                formatter: function () {
-                    return ' <b>' + this.series.name + ', age ' + this.point.category + '</b><br/>' +
-                        '人口: ' + Highcharts.numberFormat(Math.abs(this.point.y), 0);
-                }
-            }
-          },
 
             series: [{
                 name: '男性',
@@ -1739,65 +1741,65 @@ $scope.population_year={
                 name: '女性',
                 data: curMale1
             }]
-    };
-    $scope.population_prediction_year={
-        options:{
-            colors:pieColors1,
-        chart: {
-                type: 'bar'
-            },
-            title: {
-                text: '太仓市2020年人口结构预测图'
-            },
-            legend:{
-        
-           itemStyle:{
-            fontWeight:'normal'
-           }
-         },
-            xAxis: [{
-                categories: categories,
-                reversed: false,
-                labels: {
-                    step: 10
-                }
-            }, { // mirror axis on right side
-                opposite: true,
-                reversed: false,
-                categories: categories,
-                linkedTo: 0,
-                labels: {
-                    step: 10
-                }
-            }],
-            yAxis: {
-                title: {
-                    text: null
+        };
+        $scope.population_prediction_year = {
+            options: {
+                colors: pieColors1,
+                chart: {
+                    type: 'bar'
                 },
-                labels: {
-                    formatter: function () {
-                        return (Math.abs(this.value) / 1000) + 'K';
+                title: {
+                    text: '太仓市2020年人口结构预测图'
+                },
+                legend: {
+
+                    itemStyle: {
+                        fontWeight: 'normal'
                     }
                 },
-                min: -6000,
-                max: 6000
-            },
-             credits:{
-                   enabled:false
-            },
-            plotOptions: {
-                series: {
-                    stacking: 'normal'
-                }
-            },
+                xAxis: [{
+                    categories: categories,
+                    reversed: false,
+                    labels: {
+                        step: 10
+                    }
+                }, { // mirror axis on right side
+                    opposite: true,
+                    reversed: false,
+                    categories: categories,
+                    linkedTo: 0,
+                    labels: {
+                        step: 10
+                    }
+                }],
+                yAxis: {
+                    title: {
+                        text: null
+                    },
+                    labels: {
+                        formatter: function() {
+                            return (Math.abs(this.value) / 1000) + 'K';
+                        }
+                    },
+                    min: -6000,
+                    max: 6000
+                },
+                credits: {
+                    enabled: false
+                },
+                plotOptions: {
+                    series: {
+                        stacking: 'normal'
+                    }
+                },
 
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + ', age ' + this.point.category + '</b><br/>' +
-                        '人口: ' + Highcharts.numberFormat(Math.abs(this.point.y), 0);
+                tooltip: {
+                    formatter: function() {
+                        return '<b>' + this.series.name + ', age ' + this.point.category + '</b><br/>' +
+                            '人口: ' + Highcharts.numberFormat(Math.abs(this.point.y), 0);
+                    }
                 }
-            }
-          },
+            },
 
             series: [{
                 name: '男性',
@@ -1806,486 +1808,487 @@ $scope.population_year={
                 name: '女性',
                 data: female20
             }]
-    };
- });  
+        };
+    });
 
-var sumData;
-var promise2 = ResTool.httpGetWithWorkspace(PopulationRes.getSumPopulationData,{},{});
-    
-   // var promise = qService.tokenhttpGetWithWorkspace(forecastFactory.query,{tableName:'populationStructurePreData'});
+    var sumData;
+    var promise2 = ResTool.httpGetWithWorkspace(PopulationRes.getSumPopulationData, {}, {});
+
+    // var promise = qService.tokenhttpGetWithWorkspace(forecastFactory.query,{tableName:'populationStructurePreData'});
     promise2.then(function(rc2) {
 
 
-    var sumData=rc2.data;
-    //第二张图
-          var sum16=0;
-          var sum17=0;
-          var sum18=0;
-          var sum19=0;
-          var sum20=0;
-          var sum21=0;
-          var sum22=0;
-          var sum23=0;
-          var sum24=0;
-          var sum25=0;
-          var sum1=[];
+        var sumData = rc2.data;
+        //第二张图
+        var sum16 = 0;
+        var sum17 = 0;
+        var sum18 = 0;
+        var sum19 = 0;
+        var sum20 = 0;
+        var sum21 = 0;
+        var sum22 = 0;
+        var sum23 = 0;
+        var sum24 = 0;
+        var sum25 = 0;
+        var sum1 = [];
 
-          var rate16=0;
-          var rate17=0;
-          var rate18=0;
-          var rate19=0;
-          var rate20=0;
-          var rate21=0;
-          var rate22=0;
-          var rate23=0;
-          var rate24=0;
-          var rate25=0;
-          var rate1=[];
-   for(var i=0;i<sumData.length;i++){
-            if(sumData[i].year===2016){
-               sum16=sumData[i].sumPopulation;
-               rate16=sumData[i].popRate;
+        var rate16 = 0;
+        var rate17 = 0;
+        var rate18 = 0;
+        var rate19 = 0;
+        var rate20 = 0;
+        var rate21 = 0;
+        var rate22 = 0;
+        var rate23 = 0;
+        var rate24 = 0;
+        var rate25 = 0;
+        var rate1 = [];
+        for (var i = 0; i < sumData.length; i++) {
+            if (sumData[i].year === 2016) {
+                sum16 = sumData[i].sumPopulation;
+                rate16 = sumData[i].popRate;
             }
-            if(sumData[i].year===2017){
-               sum17=sumData[i].sumPopulation;
-               rate17=sumData[i].popRate;
+            if (sumData[i].year === 2017) {
+                sum17 = sumData[i].sumPopulation;
+                rate17 = sumData[i].popRate;
             }
-            if(sumData[i].year===2018){
-               sum18=sumData[i].sumPopulation;
-               rate18=sumData[i].popRate;
+            if (sumData[i].year === 2018) {
+                sum18 = sumData[i].sumPopulation;
+                rate18 = sumData[i].popRate;
             }
-            if(sumData[i].year===2019){
-               sum19=sumData[i].sumPopulation;
-               rate19=sumData[i].popRate;
+            if (sumData[i].year === 2019) {
+                sum19 = sumData[i].sumPopulation;
+                rate19 = sumData[i].popRate;
             }
-            if(sumData[i].year===2020){
-               sum20=sumData[i].sumPopulation;
-               rate20=sumData[i].popRate;
+            if (sumData[i].year === 2020) {
+                sum20 = sumData[i].sumPopulation;
+                rate20 = sumData[i].popRate;
             }
-            if(sumData[i].year===2021){
-               sum21=sumData[i].sumPopulation;
-               rate21=sumData[i].popRate;
+            if (sumData[i].year === 2021) {
+                sum21 = sumData[i].sumPopulation;
+                rate21 = sumData[i].popRate;
             }
-            if(sumData[i].year===2022){
-               sum22=sumData[i].sumPopulation;
-               rate22=sumData[i].popRate;
+            if (sumData[i].year === 2022) {
+                sum22 = sumData[i].sumPopulation;
+                rate22 = sumData[i].popRate;
             }
-            if(sumData[i].year===2023){
-               sum23=sumData[i].sumPopulation;
-               rate23=sumData[i].popRate;
+            if (sumData[i].year === 2023) {
+                sum23 = sumData[i].sumPopulation;
+                rate23 = sumData[i].popRate;
             }
-            if(sumData[i].year===2024){
-               sum24=sumData[i].sumPopulation;
-               rate24=sumData[i].popRate;
+            if (sumData[i].year === 2024) {
+                sum24 = sumData[i].sumPopulation;
+                rate24 = sumData[i].popRate;
             }
-            if(sumData[i].year===2025){
-               sum25=sumData[i].sumPopulation;
-               rate25=sumData[i].popRate;
+            if (sumData[i].year === 2025) {
+                sum25 = sumData[i].sumPopulation;
+                rate25 = sumData[i].popRate;
             }
-          }
-      sum1.push(sum16);
-      sum1.push(sum17);
-      sum1.push(sum18);
-      sum1.push(sum19);
-      sum1.push(sum20);
-      sum1.push(sum21);
-      sum1.push(sum22);
-      sum1.push(sum23);
-      sum1.push(sum24);
-      sum1.push(sum25);
-
-      rate1.push(rate16);
-      rate1.push(rate17);
-      rate1.push(rate18);
-      rate1.push(rate19);
-      rate1.push(rate20);
-      rate1.push(rate21);
-      rate1.push(rate22);
-      rate1.push(rate23);
-      rate1.push(rate24);
-      rate1.push(rate25);
-
-
-      
-
-          var sum26=0;
-          var sum27=0;
-          var sum28=0;
-          var sum29=0;
-          var sum30=0;
-          var sum31=0;
-          var sum32=0;
-          var sum33=0;
-          var sum34=0;
-          var sum35=0;
-          var sum2=[];
-
-          var rate26=0;
-          var rate27=0;
-          var rate28=0;
-          var rate29=0;
-          var rate30=0;
-          var rate31=0;
-          var rate32=0;
-          var rate33=0;
-          var rate34=0;
-          var rate35=0;
-          var rate2=[];
-   for(var i=0;i<sumData.length;i++){
-            if(sumData[i].year===2026){
-               sum26=sumData[i].sumPopulation;
-               rate26=sumData[i].popRate;
-            }
-            if(sumData[i].year===2027){
-               sum27=sumData[i].sumPopulation;
-               rate27=sumData[i].popRate;
-            }
-            if(sumData[i].year===2028){
-               sum28=sumData[i].sumPopulation;
-               rate28=sumData[i].popRate;
-            }
-            if(sumData[i].year===2029){
-               sum29=sumData[i].sumPopulation;
-               rate29=sumData[i].popRate;
-            }
-            if(sumData[i].year===2030){
-               sum30=sumData[i].sumPopulation;
-               rate30=sumData[i].popRate;
-            }
-            if(sumData[i].year===2031){
-               sum31=sumData[i].sumPopulation;
-               rate31=sumData[i].popRate;
-            }
-            if(sumData[i].year===2032){
-               sum32=sumData[i].sumPopulation;
-               rate32=sumData[i].popRate;
-            }
-            if(sumData[i].year===2033){
-               sum33=sumData[i].sumPopulation;
-               rate33=sumData[i].popRate;
-            }
-            if(sumData[i].year===2034){
-               sum34=sumData[i].sumPopulation;
-               rate34=sumData[i].popRate;
-            }
-            if(sumData[i].year===2035){
-               sum35=sumData[i].sumPopulation;
-               rate35=sumData[i].popRate;
-            }
-          }
-      sum2.push(sum26);
-      sum2.push(sum27);
-      sum2.push(sum28);
-      sum2.push(sum29);
-      sum2.push(sum30);
-      sum2.push(sum31);
-      sum2.push(sum32);
-      sum2.push(sum33);
-      sum2.push(sum34);
-      sum2.push(sum35);
-
-      rate2.push(rate26);
-      rate2.push(rate27);
-      rate2.push(rate28);
-      rate2.push(rate29);
-      rate2.push(rate30);
-      rate2.push(rate31);
-      rate2.push(rate32);
-      rate2.push(rate33);
-      rate2.push(rate34);
-      rate2.push(rate35);
-
-
-
-          var sum36=0;
-          var sum37=0;
-          var sum38=0;
-          var sum39=0;
-          var sum40=0;
-          var sum41=0;
-          var sum42=0;
-          var sum43=0;
-          var sum44=0;
-          var sum45=0;
-          var sum3=[];
-
-          var rate36=0;
-          var rate37=0;
-          var rate38=0;
-          var rate39=0;
-          var rate40=0;
-          var rate41=0;
-          var rate42=0;
-          var rate43=0;
-          var rate44=0;
-          var rate45=0;
-          var rate3=[];
-   for(var i=0;i<sumData.length;i++){
-            if(sumData[i].year===2036){
-               sum36=sumData[i].sumPopulation;
-               rate36=sumData[i].popRate;
-            }
-            if(sumData[i].year===2037){
-               sum37=sumData[i].sumPopulation;
-               rate37=sumData[i].popRate;
-            }
-            if(sumData[i].year===2038){
-               sum38=sumData[i].sumPopulation;
-               rate38=sumData[i].popRate;
-            }
-            if(sumData[i].year===2039){
-               sum39=sumData[i].sumPopulation;
-               rate39=sumData[i].popRate;
-            }
-            if(sumData[i].year===2040){
-               sum40=sumData[i].sumPopulation;
-               rate40=sumData[i].popRate;
-            }
-            if(sumData[i].year===2041){
-               sum41=sumData[i].sumPopulation;
-               rate41=sumData[i].popRate;
-            }
-            if(sumData[i].year===2042){
-               sum42=sumData[i].sumPopulation;
-               rate42=sumData[i].popRate;
-            }
-            if(sumData[i].year===2043){
-               sum43=sumData[i].sumPopulation;
-               rate43=sumData[i].popRate;
-            }
-            if(sumData[i].year===2044){
-               sum44=sumData[i].sumPopulation;
-               rate44=sumData[i].popRate;
-            }
-            if(sumData[i].year===2045){
-               sum45=sumData[i].sumPopulation;
-               rate45=sumData[i].popRate;
-            }
-          }
-      sum3.push(sum36);
-      sum3.push(sum37);
-      sum3.push(sum38);
-      sum3.push(sum39);
-      sum3.push(sum40);
-      sum3.push(sum41);
-      sum3.push(sum42);
-      sum3.push(sum43);
-      sum3.push(sum44);
-      sum3.push(sum45);
-
-      rate3.push(rate36);
-      rate3.push(rate37);
-      rate3.push(rate38);
-      rate3.push(rate39);
-      rate3.push(rate40);
-      rate3.push(rate41);
-      rate3.push(rate42);
-      rate3.push(rate43);
-      rate3.push(rate44);
-      rate3.push(rate45);
-
-
-$scope.sumpopulation={
-    options:{
-      //  colors:lineColors,
-      chart: {
-            zoomType: 'xy'
-        },
-        title: {
-            text: '太仓市2016年到2025年人口总量预测趋势图'
-        },
-        legend:{
-        
-           itemStyle:{
-            fontWeight:'normal'
-           }
-         },
-        xAxis: [{
-            categories: ['2016', '2017', '2018', '2019', '2020',
-                '2021', '2022', '2023', '2024', '2025'],
-            crosshair: true,
-            labels: {
-                rotation: -45,
-                align: 'right',
-                style: {
-                    fontSize: '13px',
-                    fontFamily: 'Verdana, sans-serif'
-                }
-             }
-        }],
-        yAxis: [{ // Primary yAxis
-            labels: {
-                format: '{value}%',
-                style: {
-                    color: Highcharts.getOptions().colors[1]
-                }
-            },
-            title: {
-                text: '人口增长率',
-                style: {
-                    color: Highcharts.getOptions().colors[1]
-                }
-            }
-        }, { // Secondary yAxis
-            title: {
-                text: '人口总量（人）',
-                style: {
-                    color: Highcharts.getOptions().colors[1]
-                },
-                
-                 //tickPositions: [0, 100000, 200000, 300000,400000,500000,600000,700000,800000,900000] 
-            },
-            labels: {
-
-                format: '{value}',
-                style: {
-                    color: Highcharts.getOptions().colors[1]
-                },
-
-            },
-            opposite: true,
-            tickPositions: [0, 100000, 200000, 300000,400000,500000,600000,700000,800000,900000]
-        }],
-        tooltip: {
-            shared: true
-        },
-        credits:{
-            enabled:false
         }
-       
-      },
-        series: [{
-            name: '人口总量',
-            type: 'column',
-            yAxis: 1,
-            color: "#7CB5EC",
-            data: sum1,
-            tooltip: {
-                valueSuffix: '人'
-            }
+        sum1.push(sum16);
+        sum1.push(sum17);
+        sum1.push(sum18);
+        sum1.push(sum19);
+        sum1.push(sum20);
+        sum1.push(sum21);
+        sum1.push(sum22);
+        sum1.push(sum23);
+        sum1.push(sum24);
+        sum1.push(sum25);
 
-        }, {
-            name: '人口增长率',
-            type: 'spline',
-             color: "#858585",
-            data: rate1,
-            marker:{
-                symbol:"circle"
-            },
-            tooltip: {
-                valueSuffix: '%'
-            }
-        }]
-      };
-      $scope.btn_click1=function(btn){
-    $scope.change1(btn);
-  };
-   //默认人口总量是2016-2025
-      $scope.sumpeople=sum1;
-      //默认人口增长率是2016-2025
-      $scope.growth=rate1;
-   $scope.sumyear="2016-2025";
-  $scope.change1=function(btn){
-    if(btn.name===2025){
-      $scope.sumyear="2016-2025";
-      //人口总量
-      $scope.sumpeople=sum1;
-      //人口增长率
-      $scope.growth=rate1;
-      document.getElementById('a').innerHTML="2025年的人口增长率0.25%相比2016年的0.25%有了小幅度的降低。";
-         document.getElementById('sumconclusion').innerHTML="总体来看，太仓市的人口总量处于平稳状态，呈增长趋势。二胎政策的全面开放，促进了人口数量的增加。";
-    $scope.sumpopulation.options.xAxis[0].categories=['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'];
-    $scope.sumpopulation.options.title.text="太仓市2016-2025年人口总量预测趋势图";
-    $scope.sumpopulation.series=[{
-            name: '人口总量',
-            type: 'column',
-            yAxis: 1,
-            color: "#7CB5EC",
-            data: sum1,
-            tooltip: {
-                valueSuffix: '人'
-            }
+        rate1.push(rate16);
+        rate1.push(rate17);
+        rate1.push(rate18);
+        rate1.push(rate19);
+        rate1.push(rate20);
+        rate1.push(rate21);
+        rate1.push(rate22);
+        rate1.push(rate23);
+        rate1.push(rate24);
+        rate1.push(rate25);
 
-        }, {
-            name: '人口增长率',
-            type: 'spline',
-             color: "#858585",
-            data: rate1,
-            marker:{
-                symbol:"circle"
-            },
-            tooltip: {
-                valueSuffix: '%'
-            }
-        }];
-     }
-     if(btn.name===2035){
-       //人口增长率
-      $scope.growth=rate2;
-       //人口总量
-      $scope.sumpeople=sum2;
-       $scope.sumyear="2026-2035";
-        document.getElementById('a').innerHTML="2035年的人口增长率0.11%相比2026年的0.19%有了小幅度的下降。";
-         document.getElementById('sumconclusion').innerHTML="总体来看，太仓市的人口总量处于平稳状态，呈增长趋势。";
-        $scope.sumpopulation.options.xAxis[0].categories=['2026','2027','2028','2029','2030','2031','2032','2033','2034','2035'];
-        $scope.sumpopulation.options.title.text="太仓市2026-2035年人口总量预测趋势图";
-    $scope.sumpopulation.series=[{
-            name: '人口总量',
-            type: 'column',
-            yAxis: 1,
-            color: "#7CB5EC",
-            data: sum2,
-            tooltip: {
-                valueSuffix: '人'
-            }
 
-        }, {
-            name: '人口增长率',
-            type: 'spline',
-            color: "#858585",
-            data: rate2,
-            marker:{
-                symbol:"circle"
-            },
-            tooltip: {
-                valueSuffix: '%'
-            }
-        }];
-     }
-     if(btn.name===2045){
-       //人口增长率
-      $scope.growth=rate3;
-       //人口总量
-      $scope.sumpeople=sum3;
-       $scope.sumyear="2036-2045";
-        document.getElementById('a').innerHTML="2045年的人口增长率0.13%相比2036年的0.13%保持稳定不变。";
-         document.getElementById('sumconclusion').innerHTML="总体来看，太仓市的人口总量处于平稳状态，无增长趋势。";
-     $scope.sumpopulation.options.xAxis[0].categories=['2036','2037','2038','2039','2040','2041','2042','2043','2044','2045'];
-        $scope.sumpopulation.options.title.text="太仓市2036-2045年人口总量预测趋势图";
-    $scope.sumpopulation.series=[{
-            name: '人口总量',
-            type: 'column',
-            yAxis: 1,
-            color: "#7CB5EC",
-            data: sum3,
-            tooltip: {
-                valueSuffix: '人'
-            }
 
-        }, {
-            name: '人口增长率',
-            type: 'spline',
-            color: "#858585",
-            data: rate3,
-            marker:{
-                symbol:"circle"
-            },
-            tooltip: {
-                valueSuffix: '%'
+
+        var sum26 = 0;
+        var sum27 = 0;
+        var sum28 = 0;
+        var sum29 = 0;
+        var sum30 = 0;
+        var sum31 = 0;
+        var sum32 = 0;
+        var sum33 = 0;
+        var sum34 = 0;
+        var sum35 = 0;
+        var sum2 = [];
+
+        var rate26 = 0;
+        var rate27 = 0;
+        var rate28 = 0;
+        var rate29 = 0;
+        var rate30 = 0;
+        var rate31 = 0;
+        var rate32 = 0;
+        var rate33 = 0;
+        var rate34 = 0;
+        var rate35 = 0;
+        var rate2 = [];
+        for (var i = 0; i < sumData.length; i++) {
+            if (sumData[i].year === 2026) {
+                sum26 = sumData[i].sumPopulation;
+                rate26 = sumData[i].popRate;
             }
-        }];
-     }
-  };
-});
-    
+            if (sumData[i].year === 2027) {
+                sum27 = sumData[i].sumPopulation;
+                rate27 = sumData[i].popRate;
+            }
+            if (sumData[i].year === 2028) {
+                sum28 = sumData[i].sumPopulation;
+                rate28 = sumData[i].popRate;
+            }
+            if (sumData[i].year === 2029) {
+                sum29 = sumData[i].sumPopulation;
+                rate29 = sumData[i].popRate;
+            }
+            if (sumData[i].year === 2030) {
+                sum30 = sumData[i].sumPopulation;
+                rate30 = sumData[i].popRate;
+            }
+            if (sumData[i].year === 2031) {
+                sum31 = sumData[i].sumPopulation;
+                rate31 = sumData[i].popRate;
+            }
+            if (sumData[i].year === 2032) {
+                sum32 = sumData[i].sumPopulation;
+                rate32 = sumData[i].popRate;
+            }
+            if (sumData[i].year === 2033) {
+                sum33 = sumData[i].sumPopulation;
+                rate33 = sumData[i].popRate;
+            }
+            if (sumData[i].year === 2034) {
+                sum34 = sumData[i].sumPopulation;
+                rate34 = sumData[i].popRate;
+            }
+            if (sumData[i].year === 2035) {
+                sum35 = sumData[i].sumPopulation;
+                rate35 = sumData[i].popRate;
+            }
+        }
+        sum2.push(sum26);
+        sum2.push(sum27);
+        sum2.push(sum28);
+        sum2.push(sum29);
+        sum2.push(sum30);
+        sum2.push(sum31);
+        sum2.push(sum32);
+        sum2.push(sum33);
+        sum2.push(sum34);
+        sum2.push(sum35);
+
+        rate2.push(rate26);
+        rate2.push(rate27);
+        rate2.push(rate28);
+        rate2.push(rate29);
+        rate2.push(rate30);
+        rate2.push(rate31);
+        rate2.push(rate32);
+        rate2.push(rate33);
+        rate2.push(rate34);
+        rate2.push(rate35);
+
+
+
+        var sum36 = 0;
+        var sum37 = 0;
+        var sum38 = 0;
+        var sum39 = 0;
+        var sum40 = 0;
+        var sum41 = 0;
+        var sum42 = 0;
+        var sum43 = 0;
+        var sum44 = 0;
+        var sum45 = 0;
+        var sum3 = [];
+
+        var rate36 = 0;
+        var rate37 = 0;
+        var rate38 = 0;
+        var rate39 = 0;
+        var rate40 = 0;
+        var rate41 = 0;
+        var rate42 = 0;
+        var rate43 = 0;
+        var rate44 = 0;
+        var rate45 = 0;
+        var rate3 = [];
+        for (var i = 0; i < sumData.length; i++) {
+            if (sumData[i].year === 2036) {
+                sum36 = sumData[i].sumPopulation;
+                rate36 = sumData[i].popRate;
+            }
+            if (sumData[i].year === 2037) {
+                sum37 = sumData[i].sumPopulation;
+                rate37 = sumData[i].popRate;
+            }
+            if (sumData[i].year === 2038) {
+                sum38 = sumData[i].sumPopulation;
+                rate38 = sumData[i].popRate;
+            }
+            if (sumData[i].year === 2039) {
+                sum39 = sumData[i].sumPopulation;
+                rate39 = sumData[i].popRate;
+            }
+            if (sumData[i].year === 2040) {
+                sum40 = sumData[i].sumPopulation;
+                rate40 = sumData[i].popRate;
+            }
+            if (sumData[i].year === 2041) {
+                sum41 = sumData[i].sumPopulation;
+                rate41 = sumData[i].popRate;
+            }
+            if (sumData[i].year === 2042) {
+                sum42 = sumData[i].sumPopulation;
+                rate42 = sumData[i].popRate;
+            }
+            if (sumData[i].year === 2043) {
+                sum43 = sumData[i].sumPopulation;
+                rate43 = sumData[i].popRate;
+            }
+            if (sumData[i].year === 2044) {
+                sum44 = sumData[i].sumPopulation;
+                rate44 = sumData[i].popRate;
+            }
+            if (sumData[i].year === 2045) {
+                sum45 = sumData[i].sumPopulation;
+                rate45 = sumData[i].popRate;
+            }
+        }
+        sum3.push(sum36);
+        sum3.push(sum37);
+        sum3.push(sum38);
+        sum3.push(sum39);
+        sum3.push(sum40);
+        sum3.push(sum41);
+        sum3.push(sum42);
+        sum3.push(sum43);
+        sum3.push(sum44);
+        sum3.push(sum45);
+
+        rate3.push(rate36);
+        rate3.push(rate37);
+        rate3.push(rate38);
+        rate3.push(rate39);
+        rate3.push(rate40);
+        rate3.push(rate41);
+        rate3.push(rate42);
+        rate3.push(rate43);
+        rate3.push(rate44);
+        rate3.push(rate45);
+
+
+        $scope.sumpopulation = {
+            options: {
+                //  colors:lineColors,
+                chart: {
+                    zoomType: 'xy'
+                },
+                title: {
+                    text: '太仓市2016年到2025年人口总量预测趋势图'
+                },
+                legend: {
+
+                    itemStyle: {
+                        fontWeight: 'normal'
+                    }
+                },
+                xAxis: [{
+                    categories: ['2016', '2017', '2018', '2019', '2020',
+                        '2021', '2022', '2023', '2024', '2025'
+                    ],
+                    crosshair: true,
+                    labels: {
+                        rotation: -45,
+                        align: 'right',
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                }],
+                yAxis: [{ // Primary yAxis
+                    labels: {
+                        format: '{value}%',
+                        style: {
+                            color: Highcharts.getOptions().colors[1]
+                        }
+                    },
+                    title: {
+                        text: '人口增长率',
+                        style: {
+                            color: Highcharts.getOptions().colors[1]
+                        }
+                    },
+                    opposite: true
+                }, { // Secondary yAxis
+                    title: {
+                        text: '人口总量（人）',
+                        style: {
+                            color: Highcharts.getOptions().colors[1]
+                        },
+
+                        tickPositions: [0, 100000, 200000, 300000, 400000, 500000, 600000, 700000, 800000, 900000]
+                    },
+                    labels: {
+
+                        format: '{value}',
+                        style: {
+                            color: Highcharts.getOptions().colors[1]
+                        },
+
+                    },
+                    // opposite: true
+                }],
+                tooltip: {
+                    shared: true
+                },
+                credits: {
+                    enabled: false
+                }
+
+            },
+            series: [{
+                name: '人口总量',
+                type: 'column',
+                yAxis: 1,
+                color: "#7CB5EC",
+                data: sum1,
+                tooltip: {
+                    valueSuffix: '人'
+                }
+
+            }, {
+                name: '人口增长率',
+                type: 'spline',
+                color: "#858585",
+                data: rate1,
+                marker: {
+                    symbol: "circle"
+                },
+                tooltip: {
+                    valueSuffix: '%'
+                }
+            }]
+        };
+        $scope.btn_click1 = function(btn) {
+            $scope.change1(btn);
+        };
+        //默认人口总量是2016-2025
+        $scope.sumpeople = sum1;
+        //默认人口增长率是2016-2025
+        $scope.growth = rate1;
+        $scope.sumyear = "2016-2025";
+        $scope.change1 = function(btn) {
+            if (btn.name === 2025) {
+                $scope.sumyear = "2016-2025";
+                //人口总量
+                $scope.sumpeople = sum1;
+                //人口增长率
+                $scope.growth = rate1;
+                document.getElementById('a').innerHTML = "2025年的人口增长率0.25%相比2016年的0.25%有了小幅度的降低。";
+                document.getElementById('sumconclusion').innerHTML = "总体来看，太仓市的人口总量处于平稳状态，呈增长趋势。二胎政策的全面开放，促进了人口数量的增加。";
+                $scope.sumpopulation.options.xAxis[0].categories = ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'];
+                $scope.sumpopulation.options.title.text = "太仓市2016-2025年人口总量预测趋势图";
+                $scope.sumpopulation.series = [{
+                    name: '人口总量',
+                    type: 'column',
+                    yAxis: 1,
+                    color: "#7CB5EC",
+                    data: sum1,
+                    tooltip: {
+                        valueSuffix: '人'
+                    }
+
+                }, {
+                    name: '人口增长率',
+                    type: 'spline',
+                    color: "#858585",
+                    data: rate1,
+                    marker: {
+                        symbol: "circle"
+                    },
+                    tooltip: {
+                        valueSuffix: '%'
+                    }
+                }];
+            }
+            if (btn.name === 2035) {
+                //人口增长率
+                $scope.growth = rate2;
+                //人口总量
+                $scope.sumpeople = sum2;
+                $scope.sumyear = "2026-2035";
+                document.getElementById('a').innerHTML = "2035年的人口增长率0.11%相比2026年的0.19%有了小幅度的下降。";
+                document.getElementById('sumconclusion').innerHTML = "总体来看，太仓市的人口总量处于平稳状态，呈增长趋势。";
+                $scope.sumpopulation.options.xAxis[0].categories = ['2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034', '2035'];
+                $scope.sumpopulation.options.title.text = "太仓市2026-2035年人口总量预测趋势图";
+                $scope.sumpopulation.series = [{
+                    name: '人口总量',
+                    type: 'column',
+                    yAxis: 1,
+                    color: "#7CB5EC",
+                    data: sum2,
+                    tooltip: {
+                        valueSuffix: '人'
+                    }
+
+                }, {
+                    name: '人口增长率',
+                    type: 'spline',
+                    color: "#858585",
+                    data: rate2,
+                    marker: {
+                        symbol: "circle"
+                    },
+                    tooltip: {
+                        valueSuffix: '%'
+                    }
+                }];
+            }
+            if (btn.name === 2045) {
+                //人口增长率
+                $scope.growth = rate3;
+                //人口总量
+                $scope.sumpeople = sum3;
+                $scope.sumyear = "2036-2045";
+                document.getElementById('a').innerHTML = "2045年的人口增长率0.13%相比2036年的0.13%保持稳定不变。";
+                document.getElementById('sumconclusion').innerHTML = "总体来看，太仓市的人口总量处于平稳状态，无增长趋势。";
+                $scope.sumpopulation.options.xAxis[0].categories = ['2036', '2037', '2038', '2039', '2040', '2041', '2042', '2043', '2044', '2045'];
+                $scope.sumpopulation.options.title.text = "太仓市2036-2045年人口总量预测趋势图";
+                $scope.sumpopulation.series = [{
+                    name: '人口总量',
+                    type: 'column',
+                    yAxis: 1,
+                    color: "#7CB5EC",
+                    data: sum3,
+                    tooltip: {
+                        valueSuffix: '人'
+                    }
+
+                }, {
+                    name: '人口增长率',
+                    type: 'spline',
+                    color: "#858585",
+                    data: rate3,
+                    marker: {
+                        symbol: "circle"
+                    },
+                    tooltip: {
+                        valueSuffix: '%'
+                    }
+                }];
+            }
+        };
+    });
+
 }]);
