@@ -7,7 +7,7 @@ def javaProjects = [project(':luna-core'), project(':luna-common-util'), project
                     project(':luna-biz'), project(':luna-web')]
 
 buildscript {
-    ext.springRepo = 'http://maven.oschina.net/content/groups/public/'
+    ext.springRepo = 'http://maven.aliyun.com/nexus/content/groups/public/'
 
     repositories {
         maven { url springRepo }
