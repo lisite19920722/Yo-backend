@@ -6,6 +6,7 @@ package tiger.web.api;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import tiger.biz.TigerApplication;
+import test.ClassTest;
 
 /**
  * Spring boot 启动类
@@ -21,6 +22,16 @@ public class APIMain extends SpringBootServletInitializer {
      * @param args the arguments
      */
     public static void main(String[] args) {
+        System.out.println("#####################HEHE**************************");
+        ClassTest t;
+        try {
+            t = new ClassTest();
+            Object[] a = t.operation(1, 2, 3);
+            System.out.println("a=" + a[0]);
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
         new TigerApplication(AppConfig.class).run(args);
     }
 
