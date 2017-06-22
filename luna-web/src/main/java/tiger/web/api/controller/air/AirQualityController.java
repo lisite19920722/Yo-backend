@@ -14,7 +14,7 @@ import tiger.web.api.form.air.AirQualityCreateForm;
 import tiger.web.api.form.air.AirQualityUpdateForm;
 
 import javax.validation.Valid;
-
+import test.ClassTest;
 
 /**
  * Created by lisite on 16/5/21.
@@ -39,6 +39,15 @@ public class AirQualityController {
     @Permission(permission = {PermissionEnum.ENVIRONMENT,PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @ResponseBody
     public BaseResult getAirQuality(){
+        ClassTest t;
+        try {
+            t = new ClassTest();
+            Object[] a = t.operation(1, 3, 4);
+            System.out.println("air_quality=" + a[0]);
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
         return  airQualityManager.read();
     }
 
