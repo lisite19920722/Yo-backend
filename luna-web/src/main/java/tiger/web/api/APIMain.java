@@ -22,16 +22,6 @@ public class APIMain extends SpringBootServletInitializer {
      * @param args the arguments
      */
     public static void main(String[] args) {
-        System.out.println("#####################HEHE************************");
-        ClassTest t;
-        try {
-            t = new ClassTest();
-            Object[] a = t.operation(1, 2, 3);
-            System.out.println("a=" + a[0]);
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
         new TigerApplication(AppConfig.class).run(args);
     }
 

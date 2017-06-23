@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
-
+import test.ClassTest;
 /**
  * Created by lisite on 16/5/22.
  */
@@ -122,6 +122,19 @@ public class AirQualityManagerImpl implements AirQualityManager {
         }
         arrays.add(list3);
         //-----------------------------空气质量相关结束----------------------------
+
+        //-----------------------------测试----------------------------
+        ClassTest t;
+        try {
+            t = new ClassTest();
+            Object[] a = t.operation(1, 3, 4);
+            System.out.println("air_quality=" + a[0]);
+            String test = "air_quality=" + a[0];
+            arrays.add(test);
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
         return new BaseResult(arrays);
     }
 
