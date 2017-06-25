@@ -50,7 +50,7 @@ configure(javaProjects) {
         compile 'org.projectlombok:lombok'
         compile 'org.springframework.boot:spring-boot-starter-log4j'
         //local jars
-        compile files('libs/javabuilder.jar', 'libs/test.jar')
+        compile files('libs/javabuilder.jar', 'libs/test.jar', 'libs/ga_AQI_b.jar')
         testCompile 'junit:junit'
         testCompile 'org.springframework:spring-test'
         testCompile 'org.hamcrest:hamcrest-library'
