@@ -1,5 +1,7 @@
 package tiger.biz.air.support.impl;
 
+import com.mathworks.toolbox.javabuilder.MWClassID;
+import com.mathworks.toolbox.javabuilder.MWNumericArray;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.ibatis.jdbc.Null;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -137,9 +139,12 @@ public class AirQualityManagerImpl implements AirQualityManager {
 //            e.printStackTrace();
 //        }
         Class1 tt;
+        int[] dims = {1, 8};
+        double[] Adata = {9, 35, 53, 40, 116, 3, 0, 757};
+        MWNumericArray A = MWNumericArray.newInstance(dims, Adata, MWClassID.DOUBLE);
         try {
             tt = new Class1();
-            Object[] a = tt.ga_AQI_b(1);
+            Object[] a = tt.ga_AQI_b(1, A);
             System.out.println("model=" + a[0]);
             String test1 = "model=" + a[0];
             arrays.add(test1);
