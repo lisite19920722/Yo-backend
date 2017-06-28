@@ -138,20 +138,20 @@ public class AirQualityManagerImpl implements AirQualityManager {
 //            // TODO: handle exception
 //            e.printStackTrace();
 //        }
-        Class1 tt;
-        int[] dims = {1, 8};
-        double[] Adata = {9, 35, 53, 40, 116, 3, 0, 757};
-        MWNumericArray A = MWNumericArray.newInstance(dims, Adata, MWClassID.DOUBLE);
-        try {
-            tt = new Class1();
-            Object[] a = tt.ga_AQI_b(1, A);
-            System.out.println("model=" + a[0]);
-            String test1 = "model=" + a[0];
-            arrays.add(test1);
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
+//        Class1 tt;
+//        int[] dims = {1, 8};
+//        double[] Adata = {9, 35, 53, 40, 116, 3, 0, 757};
+//        MWNumericArray A = MWNumericArray.newInstance(dims, Adata, MWClassID.DOUBLE);
+//        try {
+//            tt = new Class1();
+//            Object[] a = tt.ga_AQI_b(1, A);
+//            System.out.println("model=" + a[0]);
+//            String test1 = "model=" + a[0];
+//            arrays.add(test1);
+//        } catch (Exception e) {
+//            // TODO: handle exception
+//            e.printStackTrace();
+//        }
         return new BaseResult(arrays);
     }
 
