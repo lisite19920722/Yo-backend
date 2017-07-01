@@ -1,5 +1,8 @@
 package tiger.biz.air.support.impl;
 
+import com.mathworks.toolbox.javabuilder.MWClassID;
+import com.mathworks.toolbox.javabuilder.MWNumericArray;
+import ga_AQI_b.Class1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tiger.biz.air.support.AirModelManager;
@@ -38,11 +41,6 @@ public class AirModelManagerImpl implements AirModelManager {
             date[i]=(now.get(Calendar.MONTH) + 1) + "月" + now.get(Calendar.DAY_OF_MONTH) +"日";
         }
         date1[0]=date[6];date1[1]=date[5];date1[2]=date[4];date1[3]=date[3];date1[4]=date[2];date1[5]=date[1];date1[6]=date[0];
-//        now.add(Calendar.DATE, 7);
-//        for (int i = 7; i < 15; i++) {
-//            date1[i]=(now.get(Calendar.MONTH) + 1) + "月" + now.get(Calendar.DAY_OF_MONTH) +"日";
-//            now.add(Calendar.DATE, 1);
-//        }
         for (int i = 0; i < 7; i++) {
             date2[i]=date1[i];
         }
@@ -53,6 +51,32 @@ public class AirModelManagerImpl implements AirModelManager {
         //盒子4的右侧的日期
         arrays.add(today1);
         //------------------------------日期相关结束-----------------------------
+        //-----------------------------测试----------------------------
+//        ClassTest t;
+//        try {
+//            t = new ClassTest();
+//            Object[] a = t.operation(1, 3, 4);
+//            System.out.println("air_quality=" + a[0]);
+//            String test = "air_quality=" + a[0];
+//            arrays.add(test);
+//        } catch (Exception e) {
+//            // TODO: handle exception
+//            e.printStackTrace();
+//        }
+        Class1 tt;
+        int[] dims = {1, 8};
+        double[] Adata = {9, 35, 53, 40, 116, 3, 0, 757};
+        MWNumericArray A = MWNumericArray.newInstance(dims, Adata, MWClassID.DOUBLE);
+        try {
+            tt = new Class1();
+            Object[] a = tt.ga_AQI_b(1, A);
+            System.out.println("model=" + a[0]);
+            String test1 = "model=" + a[0];
+            arrays.add(test1);
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
         return new BaseResult(arrays);
     }
 
