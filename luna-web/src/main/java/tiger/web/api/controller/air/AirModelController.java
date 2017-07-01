@@ -32,11 +32,11 @@ public class AirModelController {
      * @return
      */
     @LoginRequired
-    @RequestMapping(value = "/air_model", method = RequestMethod.GET)
+    @RequestMapping(value = "/air_model/{id}", method = RequestMethod.GET)
     @Permission(permission = {PermissionEnum.ENVIRONMENT,PermissionEnum.VIEW_ALL,PermissionEnum.MANAGE_ALL})
     @ResponseBody
-    public BaseResult getAirModel(){
-        return  airModelManager.read();
+    public BaseResult getAirModel(@PathVariable("id") Long id, @RequestParam("test") String test, @RequestParam("test") String test1){
+        return  airModelManager.read(id, test, test1);
     }
 
 }

@@ -22,10 +22,10 @@ import java.util.List;
 public class AirModelManagerImpl implements AirModelManager {
 
     /**
-     * @see AirModelManager#read()
+     * @see AirModelManager#read(Long id, String test, String test1)
      */
     @Override
-    public BaseResult read() {
+    public BaseResult read(Long id, String test, String test1) {
         List arrays=new ArrayList();
         //-------------------------------日期相关------------------------------
         String[] date=new String[7];
@@ -63,20 +63,27 @@ public class AirModelManagerImpl implements AirModelManager {
 //            // TODO: handle exception
 //            e.printStackTrace();
 //        }
-        Class1 tt;
-        int[] dims = {1, 8};
-        double[] Adata = {9, 35, 53, 40, 116, 3, 0, 757};
-        MWNumericArray A = MWNumericArray.newInstance(dims, Adata, MWClassID.DOUBLE);
-        try {
-            tt = new Class1();
-            Object[] a = tt.ga_AQI_b(1, A);
-            System.out.println("model=" + a[0]);
-            String test1 = "model=" + a[0];
-            arrays.add(test1);
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
+//        Class1 tt;
+//        int[] dims = {1, 8};
+//        double[] Adata = {9, 35, 53, 40, 116, 3, 0, 757};
+//        MWNumericArray A = MWNumericArray.newInstance(dims, Adata, MWClassID.DOUBLE);
+//        try {
+//            tt = new Class1();
+//            Object[] a = tt.ga_AQI_b(1, A);
+//            System.out.println("model=" + a[0]);
+//            String test1 = "model=" + a[0];
+//            arrays.add(test1);
+//        } catch (Exception e) {
+//            // TODO: handle exception
+//            e.printStackTrace();
+//        }
+        String mention = "获得了id=" + id;
+        System.out.println(mention);
+        System.out.println(test);
+        System.out.println(test1);
+        arrays.add(mention);
+        arrays.add(test);
+        arrays.add(test1);
         return new BaseResult(arrays);
     }
 
