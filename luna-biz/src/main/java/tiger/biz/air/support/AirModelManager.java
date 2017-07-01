@@ -12,6 +12,6 @@ public interface AirModelManager {
      *
      * @return
      */
-    BaseResult read(Long id, String test, String test1);
+    BaseResult read(String test, String test1);
 
 }
