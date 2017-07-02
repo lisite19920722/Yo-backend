@@ -68,7 +68,7 @@ public class APIConstants {
     /**
      * token默认过期天数
      */
-    public static final String TOKEN_DEFAULT_EXPIRE_DAY = "1";
+    public static final String TOKEN_DEFAULT_EXPIRE_DAY = "1000";
 
     /**
      * The constant PARAM_EXPIRE_DAY

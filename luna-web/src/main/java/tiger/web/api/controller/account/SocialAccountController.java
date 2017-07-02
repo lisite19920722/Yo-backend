@@ -136,7 +136,7 @@ public class SocialAccountController extends BaseController {
         }
         if (!socialAuthDomain.getCanBindAccount()) {
             String token = accountManager.createToken(new AccountLoginLogDomain(socialAuthDomain.getAccount().getId(), "",
-                    request.getRemoteAddr()), 1);
+                    request.getRemoteAddr()), 1000);
             response.setHeader(APIConstants.HEADER_TOKEN, token);
         }
         return new BaseResult<>(socialAuthDomain);
@@ -182,7 +182,7 @@ public class SocialAccountController extends BaseController {
         //3. 登录
         response.setHeader(APIConstants.HEADER_TOKEN,
                 accountManager.createToken(new AccountLoginLogDomain(account.getId(), "",
-                        request.getRemoteAddr()), 1));
+                        request.getRemoteAddr()), 1000));
 
         return new BaseResult<>(account);
     }
